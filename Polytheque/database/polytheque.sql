@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS polytheque CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS polytheque;
 USE polytheque;
 
 CREATE TABLE IF NOT EXISTS adherent (
@@ -12,11 +12,11 @@ CREATE TABLE IF NOT EXISTS adherent (
   telephone char(10) NOT NULL,
   pseudo varchar(15) NOT NULL,
   mdp varchar(10) NOT NULL,
-  admin BOOLEAN NULL,
-  liste_noire BOOLEAN NULL,
-  droits BOOLEAN NULL,
-  nb_retards INTEGER NULL,
-  nb_non_recup INTEGER NULL,
+  admin BOOLEAN NOT NULL,
+  liste_noire BOOLEAN NOT NULL,
+  droits BOOLEAN NOT NULL,
+  nb_retards INTEGER NOT NULL,
+  nb_non_recup INTEGER NOT NULL,
   UNIQUE (pseudo),
   UNIQUE (mdp)
 ) ENGINE=InnoDB CHARSET=utf8;
@@ -24,41 +24,41 @@ CREATE TABLE IF NOT EXISTS adherent (
 CREATE TABLE IF NOT EXISTS jeu (
   id_jeu INTEGER NOT NULL PRIMARY KEY,
   nom varchar(30) NOT NULL,
-  description varchar(300) NULL,
-  annee_parution char(4) NULL,
+  description varchar(300),
+  annee_parution char(4),
   statut varchar(20) NOT NULL,
-  nb_exemplaires INTEGER NULL,
-  nb_reserves INTEGER NULL,
+  nb_exemplaires INTEGER,
+  nb_reserves INTEGER,
   age_mini INTEGER NOT NULL,
-  nombre_joueurs INTEGER NULL,
+  nombre_joueurs INTEGER,
   FOREIGN KEY (id_categorie) REFERENCES categorie_jeu (id_categorie) ON DELETE CASCADE ON UPDATE CASCADE
   FOREIGN KEY (id_editeur) REFERENCES editeur_jeu (id_editeur) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS categorie_jeu (
-  id_categorie INT NOT NULL PRIMARY KEY,
+  id_categorie INTEGER NOT NULL PRIMARY KEY,
   nom_categorie varchar(30) NOT NULL
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS editeur_jeu (
-  id_editeur INT NOT NULL PRIMARY KEY,
+  id_editeur INTEGER NOT NULL PRIMARY KEY,
   nom_editeur varchar(30) NOT NULL
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS extension (
   id_extension INTEGER NOT NULL PRIMARY KEY,
   nom varchar(30) NOT NULL,
-  description varchar(300) NULL,
+  description varchar(300),
   statut varchar(20) NOT NULL,
-  nb_exemplaires INTEGER NULL,
-  nb_reserves INTEGER NULL,
+  nb_exemplaires INTEGER,
+  nb_reserves INTEGER,
   id_jeu INTEGER NOT NULL,
   FOREIGN KEY (id_jeu) REFERENCES jeu (id_jeu) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS reservation (
   id_reservation INTEGER NOT NULL PRIMARY KEY,
-  DATE_reservation DATE NULL,
+  date_reservation DATE NOT NULL,
   id_adherent INTEGER NOT NULL,
   FOREIGN KEY (id_adherent) REFERENCES adherent (id_adherent) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
