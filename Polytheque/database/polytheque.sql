@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS jeu (
   nb_reserves INTEGER,
   age_mini INTEGER NOT NULL,
   nombre_joueurs INTEGER,
+  id_categorie INTEGER NOT NULL,
+  id_editeur INTEGER NOT NULL,
   FOREIGN KEY (id_categorie) REFERENCES categorie_jeu (id_categorie) ON DELETE CASCADE ON UPDATE CASCADE
   FOREIGN KEY (id_editeur) REFERENCES editeur_jeu (id_editeur) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
