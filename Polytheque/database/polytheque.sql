@@ -71,5 +71,5 @@ CREATE TABLE IF NOT EXISTS emprunt (
   date_fin DATE NOT NULL,
   date_rendu DATE NOT NULL,
   id_reservation INTEGER NOT NULL,
-  FOREIGN KEY (id_reservation) REFERENCES reservation (id_reservation) ON DELETE CASCADE ON UPDATE CASCADE;
+  FOREIGN KEY (id_reservation) REFERENCES reservation (id_reservation) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
