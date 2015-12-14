@@ -33,7 +33,7 @@ public class DAO {
                            nombrereserves + "\t" + ageminimum + "\t" + nombrejoueurs
                            + "\t" +  idcategorie + "\t" + idediteur);
 	               
-	            }
+	            }  
 	            conn.close();
 	        } catch (Exception e) {
 	            System.err.println("Got an exception! ");
