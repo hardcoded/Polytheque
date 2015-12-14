@@ -42,6 +42,9 @@ public class Ensjeu {
     }
     public void affichage(ArrayList<Jeu> ensjeu)
     {
-    	
+    	for (Jeu elem: ensjeu )
+    	{
+    		System.out.println(elem);
+    	}
     }
 }
