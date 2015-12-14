@@ -6,7 +6,7 @@ import java.sql.*;
 public class DAO {
 
 
-	  public static void main (String[] args) {
+	  public static void main () {
 	        try {
 	            String url = "jdbc:msql://200.210.220.1:1114/Demo"; //adresse
 	            Connection conn = DriverManager.getConnection(url,"","");
@@ -32,6 +32,7 @@ public class DAO {
                            "\t" + statut + "\t" + nombreexemplaires + "\t" + 
                            nombrereserves + "\t" + ageminimum + "\t" + nombrejoueurs
                            + "\t" +  idcategorie + "\t" + idediteur);
+	               
 	            }
 	            conn.close();
 	        } catch (Exception e) {
