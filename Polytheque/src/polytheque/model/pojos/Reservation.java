@@ -4,7 +4,8 @@ import java.util.Calendar;
 
 /**
  * Classe permettant la réservation d'un jeu
- * @author laure
+ * 
+ * @author Laure Marchal
  */
 public class Reservation {
 	
@@ -13,7 +14,8 @@ public class Reservation {
 	private Calendar date;
 	
 	/**
-	 *  Constructeur de la classe Reservation
+	 * Constructeur de la classe Reservation
+	 *  
 	 * @param adherent
 	 * @param jeu
 	 * @param date
@@ -58,14 +60,14 @@ public class Reservation {
 	 * void annuler_reservation();
 	 */
 	
-	Emprunt valider_reservation(){
+	Emprunt validerReservation(){
 		Calendar dateFin = this.getDate();
 		dateFin.add(Calendar.DAY_OF_MONTH, 21);
 		Emprunt emprunt = new Emprunt (this.adherent, this.jeu, this.date, dateFin);
 		return emprunt;
 	}
 	
-	void annuler_reservation(){
+	void annulerReservation(){
 		
 	}
 }

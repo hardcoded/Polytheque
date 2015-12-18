@@ -4,7 +4,8 @@ import java.util.Calendar;
 
 /**
  * Classe permettant d'emprunter un jeu
- * @author laure
+ * 
+ * @author Laure Marchal
  *
  */
 public class Emprunt {
@@ -15,7 +16,8 @@ public class Emprunt {
 	private Calendar dateFin;
 	
 	/**
-	 * constructeur de la classe Emprunt
+	 * Constructeur de la classe Emprunt
+	 * 
 	 * @param adherent
 	 * @param jeu
 	 * @param dateDebut
@@ -31,11 +33,12 @@ public class Emprunt {
 	
 	/**
 	 * méthodes getter et setter des attributs de la classe Emprunt peremettant de les récupérer ou de les modifier dans une autre classe
-	 * @return
+	 * 
+	 * @return L'adhérent qui a réalisé l'emprunt
 	 */
 	
 	public Adherent getAdherent() {
-		return adherent;
+		return this.adherent;
 	}
 
 	public void setAdherent(Adherent adherent) {
@@ -66,12 +69,7 @@ public class Emprunt {
 		this.dateFin = dateFin;
 	}
 	
-	/**
-	 * méthodes
-	 * emprunter_jeu(Jeu j,Adherent a,Calendar d);
-	 */
-	
-	 Emprunt emprunter_jeu(Jeu jeu,Adherent adh,Calendar date){
+	Emprunt emprunterJeu(Jeu jeu,Adherent adh,Calendar date){
 		 Emprunt emprunt = new Emprunt(adh,jeu,date,date);
 		 return emprunt;
 	 }
