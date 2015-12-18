@@ -1,6 +1,5 @@
 package polytheque.model.pojos;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 /**
