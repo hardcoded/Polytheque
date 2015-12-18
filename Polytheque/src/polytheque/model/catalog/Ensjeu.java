@@ -41,6 +41,11 @@ public class Ensjeu {
         this.ensjeu.add(jeu);
     }
     
+    /**
+     * Methode permettant de supprimer un Jeu present dans l'ensemble de jeu
+     * @param jeu
+     * 		l'objet de type jeu a supprimer de la liste
+     */
     public void supprimerJeu(Jeu jeu) {   
         Jeu k;
         
@@ -52,15 +57,47 @@ public class Ensjeu {
             } 
         }   
     }
-  
-    public void modifierNomJeu (String nm,Jeu j) {
+    
+  /**
+   * Methode permettant de modifier le Status d'un Jeu
+   * @param Status
+   * 	Nouveau status du jeu
+   * 
+   * @param j
+   * 	Jeu dont le status doit etre modifie
+   */
+    public void modifierStatusJeu (String Status,Jeu j) 
+    {
         Jeu k;
         
-        for (int i = 0; i < ensjeu.size(); i++ ) {
+        for (int i = 0; i < ensjeu.size(); i++ ) 
+        {
            k = ensjeu.get(i);
            
-           if (k == j) {
-             ensjeu.get(i).setNom(nm);
+           if (k == j) 
+           {
+             ensjeu.get(i).setStatus(Status);
+           }
+        }     
+    }
+    
+    /**
+     * Method de modification du booleen disponibilite Jeu utile pour les reservations
+     * 
+     * @param j
+     * 		Jeu dont l'attribut disponibilite doit etre modifie
+     */
+    public void modifierDispoJeu (Jeu j) 
+    {
+        Jeu k;
+        
+        for (int i = 0; i < ensjeu.size(); i++ ) 
+        {
+           k = ensjeu.get(i);
+           
+           if (k == j) 
+           {
+             ensjeu.get(i).setDisponibilite(!ensjeu.get(i).isDisponibilite());
            }
         }     
     }

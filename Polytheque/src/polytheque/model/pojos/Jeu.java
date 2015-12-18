@@ -55,7 +55,7 @@ public class Jeu {
 	   this.edition = edition;
    }
    
-   public boolean disponibilite() {
+   public boolean isDisponibilite() {
 	   return disponibilite;
    }
    
