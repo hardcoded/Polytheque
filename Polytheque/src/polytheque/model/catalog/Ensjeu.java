@@ -1,4 +1,4 @@
-package polytheque.model.pojos;
+package polytheque.model.catalog;
 
 import java.util.ArrayList;
 import polytheque.model.pojos.Jeu;
