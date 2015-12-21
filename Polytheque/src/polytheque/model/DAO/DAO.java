@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 
 /**
  * Classe abstraite permettant de gérer la connexion à la base de données (BDD)
@@ -29,11 +31,6 @@ public abstract class DAO {
 	 * Mot de passe pour se connecter à la BDD
 	 */
 	private String password;
-
-	/**
-	 * Attribut pour la lecture de la configuration dans le fichier config.xml
-	 */
-	// private XMLConfiguration configReader;
 	
 	/**
 	 * Attribut représentant la connexion à la BDD.
@@ -46,6 +43,16 @@ public abstract class DAO {
 	 */
 	protected static Connection connection;
 
+	/**
+	 * Fichier de configuration
+	 */
+	private static final String CONFIG_FILE = "config.xml";
+	
+	/**
+	 * Attribut pour la lecture de la configuration dans le fichier config.xml
+	 */
+	private XMLConfiguration configReader;
+	
 	/**
 	 * Vérifie si le pilote JDBC spécifié existe bien dans l'application
 	 * 
@@ -87,6 +94,19 @@ public abstract class DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void readConfig(String configFile) {
+		try {
+			configReader = new XMLConfiguration(configFile);
+			this.driver = configReader.getString("driver");
+			this.url = configReader.getString("url");
+			this.username = configReader.getString("username");
+			this.password = configReader.getString("password");
+		} catch (ConfigurationException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
