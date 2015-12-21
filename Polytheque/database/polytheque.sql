@@ -62,7 +62,11 @@ CREATE TABLE IF NOT EXISTS reservation (
   id_reservation INTEGER NOT NULL PRIMARY KEY,
   date_reservation DATE NOT NULL,
   id_adherent INTEGER NOT NULL,
-  FOREIGN KEY (id_adherent) REFERENCES adherent (id_adherent) ON DELETE CASCADE ON UPDATE CASCADE
+  id_jeu INTEGER,
+  id_extension INTEGER,
+  FOREIGN KEY (id_adherent) REFERENCES adherent (id_adherent) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (id_jeu) REFERENCES jeu (id_jeu) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (id_jextension) REFERENCES extension (id_extension) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS emprunt (
@@ -70,6 +74,12 @@ CREATE TABLE IF NOT EXISTS emprunt (
   date_debut DATE NOT NULL,
   date_fin DATE NOT NULL,
   date_rendu DATE NOT NULL,
-  id_reservation INTEGER NOT NULL,
-  FOREIGN KEY (id_reservation) REFERENCES reservation (id_reservation) ON DELETE CASCADE ON UPDATE CASCADE
+  id_reservation INTEGER,
+  id_adherent INTEGER NOT NULL,
+  id_jeu INTEGER,
+  id_extension INTEGER,
+  FOREIGN KEY (id_reservation) REFERENCES reservation (id_reservation) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (id_adherent) REFERENCES adherent (id_adherent) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (id_jeu) REFERENCES jeu (id_jeu) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (id_extension) REFERENCES extension (id_extension) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
