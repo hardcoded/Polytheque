@@ -1,6 +1,5 @@
 package polytheque.model.pojos;
 
-import java.util.Calendar;
 
 /**
  * Classe permettant de représenter un adhérent
@@ -56,7 +55,7 @@ public class Adherent {
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
 	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
-			String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter){
+			String mail, int tel, String pseudo, String mdp){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
@@ -66,8 +65,8 @@ public class Adherent {
 		this.mail = mail;
 		this.pseudo = pseudo;
 		this.mdp = mdp;
-		this.estAJour = estAJour;
-		this.peutEmprunter = peutEmprunter;
+		this.estAJour = true;
+		this.peutEmprunter = true;
 		this.cptRetard = 0;
 	}
 
@@ -118,9 +117,9 @@ public class Adherent {
 	}
 
 	/**
-	 * Obtenir le nom de l'adhérent
+	 * Obtenir le nom de l'adherent
 	 * 
-	 * @return Le nom de l'adhérent
+	 * @return Le nom de l'adherent
 	 */
 
 	public String getNom() {
@@ -128,20 +127,20 @@ public class Adherent {
 	}
 
 	/**
-	 * Modifier le nom de l'adhérent
+	 * Modifier le nom de l'adherent
 	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param nom
-	 * 			le nom de l'adhérent
+	 * 			le nom de l'adherent
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * Obtenir le prénom de l'adhérent
+	 * Obtenir le prenom de l'adherent
 	 * 
-	 * @return le prénom de l'adhérent
+	 * @return le prenom de l'adherent
 	 */	
 	public String getPrenom() {
 		return this.prenom;
@@ -385,17 +384,5 @@ public class Adherent {
 		this.cptRetard ++;
 	}
 
-	/**
-	 * Cette fonction permet de savoir si l'adh�rent est en retard pour rendre son jeu
-	 */
-	public void estEnRetard(Emprunt e){
-		//TODO à bouger dans la classe Emprunt (c'est l'emprun qui est en retard)
-
-		//Par d�faut, date d'aujourd'hui
-		Calendar currentDate = Calendar.getInstance();
-		if(e.getDateFin().before(currentDate)){
-			// v�rification si l'ajout de est en retard � d�j� �t� effectu� pour ce jeu?
-			ajoutCompteurRetard(); //compteurRetard � ajouter sur la structure de donn�e (initialis� � 0 � la cr�ation de la variable)
-		}
-	}	
+	
 }

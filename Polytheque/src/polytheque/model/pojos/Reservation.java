@@ -63,7 +63,7 @@ public class Reservation {
 	Emprunt validerReservation(){
 		Calendar dateFin = this.getDate();
 		dateFin.add(Calendar.DAY_OF_MONTH, 21);
-		Emprunt emprunt = new Emprunt (this.adherent, this.jeu, this.date, dateFin);
+		Emprunt emprunt = new Emprunt (this.adherent, this.jeu, this.date, dateFin, false);
 		return emprunt;
 	}
 

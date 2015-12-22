@@ -14,6 +14,7 @@ public class Emprunt {
 	private Extension extention;
 	private Calendar dateDebut;
 	private Calendar dateFin;
+	private boolean retardCompte;
 
 	/**
 	 * Constructeur de la classe Emprunt
@@ -28,12 +29,14 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */	
-	public Emprunt(Adherent adherent,Jeu jeu, Calendar dateDebut,Calendar dateFin) {
+	public Emprunt(Adherent adherent,Jeu jeu, Calendar dateDebut,Calendar dateFin, boolean retard) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
+		this.setRetard(retard);
 	}
+
 
 	/**
 	 * Constructeur de la classe Emprunt
@@ -117,9 +120,17 @@ public class Emprunt {
 	public void setDateFin(Calendar dateFin) {
 		this.dateFin = dateFin;
 	}
+	
+	public boolean getRetard(){
+		return retardCompte;
+	}
+	
+	public void setRetard(boolean retard) {
+		this.retardCompte = retard;
+	}
 
-	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Calendar dateDebut, Calendar dateFin){
-		return new Emprunt(adh, jeu, dateDebut, dateFin);
+	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Calendar dateDebut, Calendar dateFin, boolean retard){
+		return new Emprunt(adh, jeu, dateDebut, dateFin, retard);
 	}
 
 	Emprunt emprunterExtension(Adherent adh, Extension extension, Calendar dateDebut, Calendar dateFin){
@@ -129,4 +140,42 @@ public class Emprunt {
 	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Calendar dateDebut, Calendar dateFin){
 		return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
 	}
+	
+	/**
+	 * Cette fonction permet d'ajouter 1 au nombre de retard deja effectue par l'adherent et modifie la variable disant que l'adherent est en retard pour ne pas compter plusieurs retard concernant un meme jeu
+	 */
+	public void retard(Emprunt e){
+		if(estEnRetard(e) && !(dejaEnRetard(e))){ // On verifie que l'adherent est en retard pour rendre son jeu et si le jeu est deja en retard
+			e.adherent.ajoutCompteurRetard();
+			e.setRetard(true);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param e
+	 * @return true si la date de fin de l'emprunt est inferieur à la date du jour, false sinon
+	 */
+	public boolean estEnRetard(Emprunt e){
+		//Par defaut, date d'aujourd'hui
+		Calendar currentDate = Calendar.getInstance();
+		if(e.getDateFin().before(currentDate)){ 
+			return true;
+		}
+		else 
+			 return false; 
+	}
+	
+	/**
+	 * 
+	 * @param e
+	 * @return vrai si l'emprunt est en retard, faux sinon
+	 */
+	public boolean dejaEnRetard(Emprunt e){
+			return e.retardCompte;
+	}
+	
+	
+	
+	
 }
