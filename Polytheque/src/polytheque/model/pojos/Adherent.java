@@ -23,7 +23,7 @@ public class Adherent {
 	private boolean estAJour;
 	private boolean peutEmprunter;
 	private int cptRetard;
-	
+
 	/**
 	 * Constructeur de la classe Adherent, permet de créer un nouvel adhérent
 	 * Le compteur de retards est donc à 0 de base
@@ -56,7 +56,7 @@ public class Adherent {
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
 	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
-					String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter){
+			String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
@@ -102,7 +102,7 @@ public class Adherent {
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
 	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
-					String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter, int nbRetards){
+			String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter, int nbRetards){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
@@ -116,17 +116,17 @@ public class Adherent {
 		this.peutEmprunter = peutEmprunter;
 		this.cptRetard = nbRetards;
 	}
-	
+
 	/**
 	 * Obtenir le nom de l'adhérent
 	 * 
 	 * @return Le nom de l'adhérent
 	 */
-	
+
 	public String getNom() {
 		return this.nom;
 	}
-	
+
 	/**
 	 * Modifier le nom de l'adhérent
 	 * Utilisable uniquement par un administrateur
@@ -157,7 +157,7 @@ public class Adherent {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
+
 	/**
 	 * Obtenir l'age de l'adhérent
 	 * 
@@ -177,7 +177,7 @@ public class Adherent {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	/**
 	 * Obtenir la rue de l'adhérent
 	 * 
@@ -366,7 +366,7 @@ public class Adherent {
 	public int getCompteurRetard(){
 		return this.cptRetard;
 	}
-	
+
 	/**
 	 * Modifier le nombre de retards de l'adhérent
 	 * Utilisable uniquement par un administrateur
@@ -377,25 +377,25 @@ public class Adherent {
 	public void setCompteurRetard(int nbRetards){
 		this.cptRetard = nbRetards; 
 	}
-	
+
 	/**
 	 * Ajouter un retard au compteur de l'adhérent
 	 */
 	public void ajoutCompteurRetard(){
 		this.cptRetard ++;
 	}
-	
+
 	/**
 	 * Cette fonction permet de savoir si l'adh�rent est en retard pour rendre son jeu
 	 */
 	public void estEnRetard(Emprunt e){
 		//TODO à bouger dans la classe Emprunt (c'est l'emprun qui est en retard)
-		
+
 		//Par d�faut, date d'aujourd'hui
-        Calendar currentDate = Calendar.getInstance();
-        if(e.getDateFin().before(currentDate)){
-        	// v�rification si l'ajout de est en retard � d�j� �t� effectu� pour ce jeu?
+		Calendar currentDate = Calendar.getInstance();
+		if(e.getDateFin().before(currentDate)){
+			// v�rification si l'ajout de est en retard � d�j� �t� effectu� pour ce jeu?
 			ajoutCompteurRetard(); //compteurRetard � ajouter sur la structure de donn�e (initialis� � 0 � la cr�ation de la variable)
-        }
+		}
 	}	
 }

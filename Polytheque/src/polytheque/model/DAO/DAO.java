@@ -23,17 +23,17 @@ public abstract class DAO {
 	 * URL utilisée par JDBC pour accéder à la BDD
 	 */
 	private String url;
-	
+
 	/**
 	 * Nom d'utilisateur à utiliser pour se connecter à la BDD
 	 */
 	private String username;
-	
+
 	/**
 	 * Mot de passe pour se connecter à la BDD
 	 */
 	private String password;
-	
+
 	/**
 	 * Attribut représentant la connexion à la BDD.
 	 * Trois états possibles :
@@ -49,12 +49,12 @@ public abstract class DAO {
 	 * Fichier de configuration au format XML
 	 */
 	private static final String CONFIG_FILE = "config.xml";
-	
+
 	/**
 	 * Attribut pour la lecture de la configuration dans le fichier config.xml
 	 */
 	private XMLConfiguration configReader;
-	
+
 	/**
 	 * Vérifie si le pilote JDBC spécifié existe bien dans l'application
 	 * 
@@ -99,7 +99,7 @@ public abstract class DAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Lecture de la configuration liée à la base de données dans le fichier XML
 	 */

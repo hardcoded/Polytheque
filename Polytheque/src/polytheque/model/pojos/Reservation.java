@@ -3,16 +3,16 @@ package polytheque.model.pojos;
 import java.util.Calendar;
 
 /**
- * Classe permettant la réservation d'un jeu
+ * Classe permettant la rï¿½servation d'un jeu
  * 
  * @author Laure Marchal
  */
 public class Reservation {
-	
+
 	private Adherent adherent;
 	private Jeu jeu;
 	private Calendar date;
-	
+
 	/**
 	 * Constructeur de la classe Reservation
 	 *  
@@ -27,8 +27,8 @@ public class Reservation {
 	}
 
 	/**
-	 * méthodes
-	 * getter et setter qui permettent de récupérer ou modifier les attributs de cette classe dans d'autres classes
+	 * mï¿½thodes
+	 * getter et setter qui permettent de rï¿½cupï¿½rer ou modifier les attributs de cette classe dans d'autres classes
 	 */
 	public Adherent getAdherent() {
 		return adherent;
@@ -53,21 +53,21 @@ public class Reservation {
 	public void setDate(Calendar date) {
 		this.date = date;
 	}
-	
+
 	/**
-	 * méthodes
+	 * mï¿½thodes
 	 * Emprunt valider_reservation();
 	 * void annuler_reservation();
 	 */
-	
+
 	Emprunt validerReservation(){
 		Calendar dateFin = this.getDate();
 		dateFin.add(Calendar.DAY_OF_MONTH, 21);
 		Emprunt emprunt = new Emprunt (this.adherent, this.jeu, this.date, dateFin);
 		return emprunt;
 	}
-	
+
 	void annulerReservation(){
-		
+
 	}
 }

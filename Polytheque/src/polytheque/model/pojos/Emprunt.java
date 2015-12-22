@@ -8,13 +8,13 @@ import java.util.Calendar;
  * @author Laure Marchal
  */
 public class Emprunt {
-	
+
 	private Adherent adherent;
 	private Jeu jeu;
 	private Extension extention;
 	private Calendar dateDebut;
 	private Calendar dateFin;
-	
+
 	/**
 	 * Constructeur de la classe Emprunt
 	 * Pour un jeu uniquement
@@ -34,7 +34,7 @@ public class Emprunt {
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
 	}
-	
+
 	/**
 	 * Constructeur de la classe Emprunt
 	 * Pour une extension uniquement
@@ -54,7 +54,7 @@ public class Emprunt {
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
 	}
-	
+
 	/**
 	 * Constructeur de la classe Emprunt
 	 * Pour un jeu et une extension
@@ -77,7 +77,7 @@ public class Emprunt {
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
 	}
-	
+
 	public Adherent getAdherent() {
 		return this.adherent;
 	}
@@ -93,11 +93,11 @@ public class Emprunt {
 	public void setJeu(Jeu jeu) {
 		this.jeu = jeu;
 	}
-	
+
 	public Extension getExtension() {
 		return this.extention;
 	}
-	
+
 	public void setExtension(Extension extention) {
 		this.extention = extention;
 	}
@@ -117,16 +117,16 @@ public class Emprunt {
 	public void setDateFin(Calendar dateFin) {
 		this.dateFin = dateFin;
 	}
-	
+
 	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Calendar dateDebut, Calendar dateFin){
-		 return new Emprunt(adh, jeu, dateDebut, dateFin);
-	 }
-	
+		return new Emprunt(adh, jeu, dateDebut, dateFin);
+	}
+
 	Emprunt emprunterExtension(Adherent adh, Extension extension, Calendar dateDebut, Calendar dateFin){
-		 return new Emprunt(adh, extension, dateDebut, dateFin);
-	 }
-	
+		return new Emprunt(adh, extension, dateDebut, dateFin);
+	}
+
 	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Calendar dateDebut, Calendar dateFin){
-		 return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
-	 }
+		return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
+	}
 }

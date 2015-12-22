@@ -10,9 +10,9 @@ public class PolythequeApplication extends JFrame {
 	public static final String APPLICATION_TITLE = "Polytheque";
 
 	public PolythequeApplication() {
-		
+
 	}
-	
+
 	public void run() {
 		this.makeGUI();
 		this.setVisible(true);
@@ -24,7 +24,7 @@ public class PolythequeApplication extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);
-		
+
 	}
 
 }
