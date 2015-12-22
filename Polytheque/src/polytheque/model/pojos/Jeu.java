@@ -10,9 +10,12 @@ public class Jeu {
    private String etat;
    private String status;
    private String anneeParution;
+   private int nbExemplaires;
+   private int nbReserves;
+   private int nbJoueurs;
    
    public Jeu(String nom, String description, int ageMini, String edition, boolean disponibilite, String etat,
-			String statut, String anneeParution) {
+			String statut, String anneeParution, int nbExemplaires, int nbReserves, int nbJoueurs) {
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setAgeMini(ageMini);
@@ -21,6 +24,9 @@ public class Jeu {
 		this.setEtat(etat);
 		this.setStatus(statut);
 		this.setAnneeParution(anneeParution);
+		this.setNbExemplaires(nbExemplaires);
+		this.setNbReserves(nbReserves);
+		this.setNbJoueurs(nbJoueurs);
 	}
 
    public String getNom() {
@@ -86,5 +92,28 @@ public class Jeu {
    public void setAnneeParution(String anneeParution) {
 	   this.anneeParution = anneeParution;
    }
-   
+
+   public int getNbExemplaires() {
+	   return nbExemplaires;
+   }
+
+   public void setNbExemplaires(int nbExemplaires) {
+	   this.nbExemplaires = nbExemplaires;
+   }
+
+   public int getNbReserves() {
+	   return nbReserves;
+   }
+
+   public void setNbReserves(int nbReserves) {
+	   this.nbReserves = nbReserves;
+   }
+
+   public int getNbJoueurs() {
+	   return nbJoueurs;
+   }
+
+   public void setNbJoueurs(int nbJoueurs) {
+	   this.nbJoueurs = nbJoueurs;
+   }
 }
