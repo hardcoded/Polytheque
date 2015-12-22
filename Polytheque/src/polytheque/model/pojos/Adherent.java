@@ -3,7 +3,7 @@ package polytheque.model.pojos;
 import java.util.Calendar;
 
 /**
- * Classe permettant de définir un adhérent
+ * Classe permettant de dÃ©finir un adhÃ©rent
  * 
  * @author Godefroi Roussel
  *
@@ -59,7 +59,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le nom de l'adhérent
+	 * @return le nom de l'adhï¿½rent
 	 */
 	
 	public String getNom() {
@@ -69,7 +69,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param nom
-	 * Permet de changer le nom de l'adhérent (fonction disponible que par l'administrateur)
+	 * Permet de changer le nom de l'adhï¿½rent (fonction disponible que par l'administrateur)
 	 */
 	
 	public void setNom(String nom) {
@@ -78,7 +78,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le prénonom de l'adhérent
+	 * @return le prï¿½nonom de l'adhï¿½rent
 	 */
 	
 	public String getPrenom() {
@@ -88,7 +88,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param prenom
-	 * Permet de changer le prénom de l'adhérent (fonction disponible que par l'administrateur)
+	 * Permet de changer le prï¿½nom de l'adhï¿½rent (fonction disponible que par l'administrateur)
 	 */
 	
 	public void setPrenom(String prenom) {
@@ -97,7 +97,7 @@ public class Adherent {
 	
 	/**
 	 * 
-	 * @return l'âge de l'adhérent
+	 * @return l'ï¿½ge de l'adhï¿½rent
 	 */
 	
 	public int getAge() {
@@ -107,7 +107,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param age
-	 * Permet de changer la date de naissance de l'adhérent (fonction disponible que par l'administrateur)
+	 * Permet de changer la date de naissance de l'adhï¿½rent (fonction disponible que par l'administrateur)
 	 */
 	
 	public void setAge(int age) {
@@ -116,7 +116,7 @@ public class Adherent {
 	
 	/**
 	 * 
-	 * @return la rue de l'adhérent
+	 * @return la rue de l'adhï¿½rent
 	 */
 	
 	public String getRue() {
@@ -126,7 +126,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param rue
-	 * Permet de changer la rue de l'adhérent
+	 * Permet de changer la rue de l'adhï¿½rent
 	 */
 	
 	public void setRue(String rue) {
@@ -135,7 +135,7 @@ public class Adherent {
 
 	/**
 	 * 	
-	 * @return le Code Postal de l'adhérent
+	 * @return le Code Postal de l'adhï¿½rent
 	 */
 	
 	public int getCP() {
@@ -145,7 +145,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param cP 
-	 * Permet de changer le Code Postal de l'adhérent
+	 * Permet de changer le Code Postal de l'adhï¿½rent
 	 */
 	
 	public void setCP(int cP) {
@@ -154,7 +154,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le nom de la ville de l'adhérent
+	 * @return le nom de la ville de l'adhï¿½rent
 	 */
 	
 	public String getVille() {
@@ -164,7 +164,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param ville
-	 * Permet de changer la ville de l'adhérent
+	 * Permet de changer la ville de l'adhï¿½rent
 	 */
 	
 	public void setVille(String ville) {
@@ -173,7 +173,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return l'adresse mail de l'adhérent
+	 * @return l'adresse mail de l'adhï¿½rent
 	 */
 	
 	public String getMail() {
@@ -183,7 +183,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param mail
-	 * Permet de changer l'adresse mail de l'adhérent
+	 * Permet de changer l'adresse mail de l'adhï¿½rent
 	 */
 	
 	public void setMail(String mail) {
@@ -192,7 +192,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le numéro de téléphone de l'adhérent
+	 * @return le numï¿½ro de tï¿½lï¿½phone de l'adhï¿½rent
 	 */
 	
 	public int getTelephone() {
@@ -202,7 +202,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param telephone
-	 * Permet de changer le numéro de téléphone de l'adhérent
+	 * Permet de changer le numï¿½ro de tï¿½lï¿½phone de l'adhï¿½rent
 	 */
 	
 	public void setTelephone(int telephone) {
@@ -211,7 +211,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le pseudo qu'a choisi l'adhérent
+	 * @return le pseudo qu'a choisi l'adhï¿½rent
 	 */
 	
 	public String getPseudo() {
@@ -221,7 +221,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param pseudo
-	 * Permet de changer le pseudo de l'adhérent
+	 * Permet de changer le pseudo de l'adhï¿½rent
 	 */
 	
 	public void setPseudo(String pseudo) {
@@ -230,7 +230,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le mot de passe de l'adhérent
+	 * @return le mot de passe de l'adhï¿½rent
 	 */
 	
 	public String getMdp() {
@@ -240,7 +240,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param mdp
-	 * Permet de changer le mot de passe de l'adhérent
+	 * Permet de changer le mot de passe de l'adhï¿½rent
 	 */
 	
 	public void setMdp(String mdp) {
@@ -249,7 +249,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return un booléen disant si l'adhérent est à jour
+	 * @return un boolï¿½en disant si l'adhï¿½rent est ï¿½ jour
 	 */
 	
 	public boolean isEstAJour() {
@@ -259,7 +259,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param estAJour
-	 * Permet de changer le booléen disant si l'adhérent est à jour
+	 * Permet de changer le boolï¿½en disant si l'adhï¿½rent est ï¿½ jour
 	 */
 	
 	public void setEstAJour(boolean estAJour) {
@@ -268,7 +268,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le booléen disant si l'adhérent est à jour
+	 * @return le boolï¿½en disant si l'adhï¿½rent est ï¿½ jour
 	 */
 	
 	public boolean isPeutEmprunter() {
@@ -278,7 +278,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param peutEmprunter
-	 * Permet de changer le booléen disant si l'adhérent est à jour
+	 * Permet de changer le boolï¿½en disant si l'adhï¿½rent est ï¿½ jour
 	 */
 	
 	public void setPeutEmprunter(boolean peutEmprunter) {
@@ -287,7 +287,7 @@ public class Adherent {
 
 	/**
 	 * 
-	 * @return le nombre de retard accumulé par le client
+	 * @return le nombre de retard accumulï¿½ par le client
 	 */
 	
 	public int getCompteurRetard(){
@@ -297,7 +297,7 @@ public class Adherent {
 	/**
 	 * 
 	 * @param ajoutRetard
-	 * Permet de modifier le nombre de retard accumulé par le client
+	 * Permet de modifier le nombre de retard accumulï¿½ par le client
 	 */
 	
 	public void setCompteurRetard(int ajoutRetard){
@@ -311,15 +311,15 @@ public class Adherent {
 	/**
 	 * 
 	 * @param e
-	 * Cette fonction permet de savoir si l'adhérent est en retard pour rendre son jeu et on 
-	 * Question est-ce qu'on rajoute un retard pour chaque jour ou ça compte juste +1 pour un jeu?
+	 * Cette fonction permet de savoir si l'adhï¿½rent est en retard pour rendre son jeu et on 
+	 * Question est-ce qu'on rajoute un retard pour chaque jour ou ï¿½a compte juste +1 pour un jeu?
 	 */
 	public void estEnRetard(Emprunt e){
-		//Par défaut, date d'aujourd'hui
+		//Par dï¿½faut, date d'aujourd'hui
         Calendar calAujourdhui = Calendar.getInstance();
         if(e.getDateFin().before(calAujourdhui)){
-        	// vérification si l'ajout de est en retard à déjà été effectué pour ce jeu?
-			ajoutCompteurRetard(); //compteurRetard à ajouter sur la structure de donnée (initialisé à 0 à la création de la variable)
+        	// vï¿½rification si l'ajout de est en retard ï¿½ dï¿½jï¿½ ï¿½tï¿½ effectuï¿½ pour ce jeu?
+			ajoutCompteurRetard(); //compteurRetard ï¿½ ajouter sur la structure de donnï¿½e (initialisï¿½ ï¿½ 0 ï¿½ la crï¿½ation de la variable)
         }
 	}
 	

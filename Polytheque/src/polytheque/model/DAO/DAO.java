@@ -9,6 +9,8 @@ import org.apache.commons.configuration.XMLConfiguration;
 
 /**
  * Classe abstraite permettant de gérer la connexion à la base de données (BDD)
+ * 
+ * @author Johan Brunet
  */
 public abstract class DAO {
 
@@ -36,15 +38,15 @@ public abstract class DAO {
 	 * Attribut représentant la connexion à la BDD.
 	 * Trois états possibles :
 	 * <ul>
-	 * 		<li> Null : connexion non existante </li>
-	 * 		<li> Fermée : connexion existante mais inutilisable </li>
-	 * 		<li> Ouverte : connexion existante et exploitable </li>
+	 * 	<li> Null : connexion non existante </li>
+	 * 	<li> Fermée : connexion existante mais inutilisable </li>
+	 * 	<li> Ouverte : connexion existante et exploitable </li>
 	 * </ul>
 	 */
 	protected static Connection connection;
 
 	/**
-	 * Fichier de configuration
+	 * Fichier de configuration au format XML
 	 */
 	private static final String CONFIG_FILE = "config.xml";
 	
@@ -57,21 +59,23 @@ public abstract class DAO {
 	 * Vérifie si le pilote JDBC spécifié existe bien dans l'application
 	 * 
 	 * @return true 
-	 * 				le pilote JDBC est bien présent dans l'application
+	 * 			le pilote JDBC est bien présent dans l'application
 	 * @return false 
-	 * 				le pilote JDBC n'a pas été trouvé
+	 * 			le pilote JDBC n'a pas été trouvé
 	 */
 	public boolean checkDriver() {
 		try {
 			Class.forName(driver);
 			return true;
-		} catch (ClassNotFoundException exception) {
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
 
 	/**
-	 * Ouvre une connexion à la base de données grâce à l'URL spécifiée
+	 * Ouvre une connexion à la base de données avec à l'URL, 
+	 * le nom d'utilisateur et le mot de passe spécifiés
 	 */
 	protected void connect() {
 		try {
@@ -96,6 +100,9 @@ public abstract class DAO {
 		}
 	}
 	
+	/**
+	 * Lecture de la configuration liée à la base de données dans le fichier XML
+	 */
 	public void readConfig() {
 		try {
 			configReader = new XMLConfiguration(CONFIG_FILE);
@@ -106,7 +113,5 @@ public abstract class DAO {
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
-		
 	}
-
 }
