@@ -3,27 +3,31 @@ package polytheque.model.pojos;
 import java.util.Calendar;
 
 /**
- * Classe permettant d'emprunter un jeu
+ * Classe permettant de reprÃ©senter un emprunt
  * 
  * @author Laure Marchal
- *
  */
 public class Emprunt {
 	
 	private Adherent adherent;
 	private Jeu jeu;
+	private Extension extention;
 	private Calendar dateDebut;
 	private Calendar dateFin;
 	
 	/**
 	 * Constructeur de la classe Emprunt
+	 * Pour un jeu uniquement
 	 * 
 	 * @param adherent
-	 * @param jeu
+	 * 				l'adhÃ©rent qui emprunte
+	 * @param extention
+	 * 				l'extention Ã  emprunter
 	 * @param dateDebut
+	 * 				la date du dÃ©but de l'emprunt
 	 * @param dateFin
-	 */
-	
+	 * 				la date de fin de l'emprunt
+	 */	
 	public Emprunt(Adherent adherent,Jeu jeu, Calendar dateDebut,Calendar dateFin) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
@@ -32,10 +36,47 @@ public class Emprunt {
 	}
 	
 	/**
-	 * méthodes getter et setter des attributs de la classe Emprunt peremettant de les récupérer ou de les modifier dans une autre classe
+	 * Constructeur de la classe Emprunt
+	 * Pour une extension uniquement
 	 * 
-	 * @return L'adhérent qui a réalisé l'emprunt
+	 * @param adherent
+	 * 				l'adhÃ©rent qui emprunte
+	 * @param extention
+	 * 				l'extention Ã  emprunter
+	 * @param dateDebut
+	 * 				la date du dÃ©but de l'emprunt
+	 * @param dateFin
+	 * 				la date de fin de l'emprunt
 	 */
+	public Emprunt(Adherent adherent, Extension extention, Calendar dateDebut,Calendar dateFin) {
+		this.setAdherent(adherent);
+		this.setExtension(extention);
+		this.setDateDebut(dateDebut);
+		this.setDateFin(dateFin);
+	}
+	
+	/**
+	 * Constructeur de la classe Emprunt
+	 * Pour un jeu et une extension
+	 * 
+	 * @param adherent
+	 * 				l'adhÃ©rent qui emprunte
+	 * @param jeu
+	 * 				le jeu Ã  emprunter
+	 * @param extention
+	 * 				l'extention Ã  emprunter
+	 * @param dateDebut
+	 * 				la date du dÃ©but de l'emprunt
+	 * @param dateFin
+	 * 				la date de fin de l'emprunt
+	 */
+	public Emprunt(Adherent adherent,Jeu jeu, Extension extention, Calendar dateDebut,Calendar dateFin) {
+		this.setAdherent(adherent);
+		this.setJeu(jeu);
+		this.setExtension(extention);
+		this.setDateDebut(dateDebut);
+		this.setDateFin(dateFin);
+	}
 	
 	public Adherent getAdherent() {
 		return this.adherent;
@@ -51,6 +92,14 @@ public class Emprunt {
 
 	public void setJeu(Jeu jeu) {
 		this.jeu = jeu;
+	}
+	
+	public Extension getExtension() {
+		return this.extention;
+	}
+	
+	public void setExtension(Extension extention) {
+		this.extention = extention;
 	}
 
 	public Calendar getDateDebut() {
@@ -69,7 +118,7 @@ public class Emprunt {
 		this.dateFin = dateFin;
 	}
 	
-	Emprunt emprunterJeu(Jeu jeu,Adherent adh,Calendar date){
+	Emprunt emprunterJeu(Jeu jeu, Adherent adh,Calendar date){
 		 Emprunt emprunt = new Emprunt(adh,jeu,date,date);
 		 return emprunt;
 	 }

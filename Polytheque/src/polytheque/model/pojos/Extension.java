@@ -6,7 +6,7 @@ package polytheque.model.pojos;
  * @author Johan Brunet
  *
  */
-public class Extention {
+public class Extension {
 
 	private int idExtension;
 	private String nom;
@@ -15,7 +15,7 @@ public class Extention {
 	private int nbExemplaires;
 	private int nbReserves;
 
-	public Extention(String nom, String desc, String statut, int nbExemplaires, int nbReserves) {
+	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves) {
 		this.setNom(nom);
 		this.setDescription(desc);
 		this.setStatut(statut);
