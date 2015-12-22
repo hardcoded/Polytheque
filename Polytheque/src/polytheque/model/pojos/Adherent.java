@@ -3,19 +3,18 @@ package polytheque.model.pojos;
 import java.util.Calendar;
 
 /**
- * Classe permettant de définir un adhérent
+ * Classe permettant de représenter un adhérent
  * 
  * @author Godefroi Roussel
  *
  */
-
 public class Adherent {
 
 	private String nom;
 	private String prenom;
 	private int age;
 	private String rue;
-	private int CP;
+	private int cp;
 	private String ville;
 	private String mail;
 	private int telephone;
@@ -26,303 +25,377 @@ public class Adherent {
 	private int cptRetard;
 	
 	/**
+	 * Constructeur de la classe Adherent, permet de créer un nouvel adhérent
+	 * Le compteur de retards est donc à 0 de base
 	 * 
 	 * @param nom
+	 * 			nom de l'adhérent
 	 * @param prenom
+	 * 			prénom de l'adhérent
 	 * @param age
-	 * @param adresse
+	 * 			age de l'adhérent
+	 * @param rue
+	 * 			rue de l'adhérent
 	 * @param cp
-	 * @param Ville
+	 * 			code postal de l'adhérent
+	 * @param ville
+	 * 			ville de l'adhérent
 	 * @param mail
+	 * 			adresse mail de l'adhérent
 	 * @param tel
+	 * 			numéro de téléphone de l'adhérent
 	 * @param pseudo
-	 * @param MDP
+	 * 			pseudo de l'adhérent
+	 * @param mdp
+	 * 			mot de passe de l'adhérent
 	 * @param estAJour
+	 * 			l'adhérent est à jour ou non dans le paiement de ses droits
 	 * @param peutEmprunter
+	 * 			l'adhérent a le droit d'emprunter un jeu ou une extension
 	 * @param cptRetard
-	 */
-	
-	public Adherent(String nom, String prenom, int age, String adresse, int cp, String Ville, String mail, int tel, String pseudo, String MDP, boolean estAJour, boolean peutEmprunter){
+	 * 			nombre de retards comptabilisés par l'adhérent
+	 */	
+	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
+					String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
 		this.rue = adresse;
-		this.CP = cp;
-		this.ville = Ville;
+		this.cp = cp;
+		this.ville = ville;
 		this.mail = mail;
 		this.pseudo = pseudo;
-		this.mdp = MDP;
+		this.mdp = mdp;
 		this.estAJour = estAJour;
 		this.peutEmprunter = peutEmprunter;
 		this.cptRetard = 0;
 	}
 
 	/**
+	 * Constructeur de la classe Adherent, permet de créer un Adhérent à partir des données existantes
 	 * 
-	 * @return le nom de l'adh�rent
-	 */
-	
-	public String getNom() {
-		return nom;
+	 * @param nom
+	 * 			nom de l'adhérent
+	 * @param prenom
+	 * 			prénom de l'adhérent
+	 * @param age
+	 * 			age de l'adhérent
+	 * @param rue
+	 * 			rue de l'adhérent
+	 * @param cp
+	 * 			code postal de l'adhérent
+	 * @param ville
+	 * 			ville de l'adhérent
+	 * @param mail
+	 * 			adresse mail de l'adhérent
+	 * @param tel
+	 * 			numéro de téléphone de l'adhérent
+	 * @param pseudo
+	 * 			pseudo de l'adhérent
+	 * @param mdp
+	 * 			mot de passe de l'adhérent
+	 * @param estAJour
+	 * 			l'adhérent est à jour ou non dans le paiement de ses droits
+	 * @param peutEmprunter
+	 * 			l'adhérent a le droit d'emprunter un jeu ou une extension
+	 * @param nbRetards
+	 * 			nombre de retards comptabilisés par l'adhérent
+	 */	
+	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
+					String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter, int nbRetards){
+		this.nom = nom;
+		this.prenom = prenom;
+		this.age = age;
+		this.rue = adresse;
+		this.cp = cp;
+		this.ville = ville;
+		this.mail = mail;
+		this.pseudo = pseudo;
+		this.mdp = mdp;
+		this.estAJour = estAJour;
+		this.peutEmprunter = peutEmprunter;
+		this.cptRetard = nbRetards;
 	}
 	
 	/**
+	 * Obtenir le nom de l'adhérent
 	 * 
-	 * @param nom
-	 * Permet de changer le nom de l'adh�rent (fonction disponible que par l'administrateur)
+	 * @return Le nom de l'adhérent
 	 */
 	
+	public String getNom() {
+		return this.nom;
+	}
+	
+	/**
+	 * Modifier le nom de l'adhérent
+	 * Utilisable uniquement par un administrateur
+	 * 
+	 * @param nom
+	 * 			le nom de l'adhérent
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
+	 * Obtenir le prénom de l'adhérent
 	 * 
-	 * @return le pr�nonom de l'adh�rent
-	 */
-	
+	 * @return le prénom de l'adhérent
+	 */	
 	public String getPrenom() {
-		return prenom;
+		return this.prenom;
 	}
 
 	/**
+	 * Modifier le prénom de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param prenom
-	 * Permet de changer le pr�nom de l'adh�rent (fonction disponible que par l'administrateur)
+	 * 			le prénom de l'adhérent
 	 */
-	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 	
 	/**
+	 * Obtenir l'age de l'adhérent
 	 * 
-	 * @return l'�ge de l'adh�rent
+	 * @return l'age de l'adhérent
 	 */
-	
 	public int getAge() {
-		return age;
+		return this.age;
 	}
 
 	/**
+	 * Modifier l'age de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param age
-	 * Permet de changer la date de naissance de l'adh�rent (fonction disponible que par l'administrateur)
+	 * 			l'age de l'adhérent
 	 */
-	
 	public void setAge(int age) {
 		this.age = age;
 	}
 	
 	/**
+	 * Obtenir la rue de l'adhérent
 	 * 
-	 * @return la rue de l'adh�rent
+	 * @return la rue de l'adhérent
 	 */
-	
 	public String getRue() {
-		return rue;
+		return this.rue;
 	}
 
 	/**
+	 * Modifier la rue de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param rue
-	 * Permet de changer la rue de l'adh�rent
+	 * 			la rue de l'adhérent
 	 */
-	
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
 
 	/**
-	 * 	
-	 * @return le Code Postal de l'adh�rent
+	 * Obtenir le code postal de l'adhérent
+	 * 
+	 * @return le code postal de l'adhérent
 	 */
-	
 	public int getCP() {
-		return CP;
+		return this.cp;
 	}
 
 	/**
+	 * Modifier le code postal de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
-	 * @param cP 
-	 * Permet de changer le Code Postal de l'adh�rent
+	 * @param cp
+	 * 			le code postal de l'adhérent
 	 */
-	
-	public void setCP(int cP) {
-		CP = cP;
+	public void setCP(int cp) {
+		this.cp = cp;
 	}
 
 	/**
+	 * Obtenir la ville de l'adhérent
 	 * 
-	 * @return le nom de la ville de l'adh�rent
+	 * @return la ville de l'adhérent
 	 */
-	
 	public String getVille() {
-		return ville;
+		return this.ville;
 	}
 
 	/**
+	 * Modifier la ville de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param ville
-	 * Permet de changer la ville de l'adh�rent
+	 * 			la ville de l'adhérent
 	 */
-	
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
 
 	/**
+	 * Obtenir l'adresse mail de l'adhérent
 	 * 
-	 * @return l'adresse mail de l'adh�rent
+	 * @return le mail de l'adhérent
 	 */
-	
 	public String getMail() {
-		return mail;
+		return this.mail;
 	}
 
 	/**
+	 * Modifier le mail de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param mail
-	 * Permet de changer l'adresse mail de l'adh�rent
+	 * 			le mail de l'adhérent
 	 */
-	
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
 	/**
+	 * Obtenir le numéro de téléphone de l'adhérent
 	 * 
-	 * @return le num�ro de t�l�phone de l'adh�rent
+	 * @return le téléphone de l'adhérent
 	 */
-	
 	public int getTelephone() {
-		return telephone;
+		return this.telephone;
 	}
 
 	/**
+	 * Modifier le numéro de téléphone de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param telephone
-	 * Permet de changer le num�ro de t�l�phone de l'adh�rent
+	 * 			le numéro de téléphone de l'adhérent
 	 */
-	
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
 
 	/**
+	 * Obtenir le pseudo de l'adhérent
 	 * 
-	 * @return le pseudo qu'a choisi l'adh�rent
+	 * @return le pseudo de l'adhérent
 	 */
-	
 	public String getPseudo() {
-		return pseudo;
+		return this.pseudo;
 	}
 
 	/**
+	 * Modifier le pseudo de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param pseudo
-	 * Permet de changer le pseudo de l'adh�rent
+	 * 			le pseudo de l'adhérent
 	 */
-	
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
 
 	/**
+	 * Obtenir le mot de passe de l'adhérent
 	 * 
-	 * @return le mot de passe de l'adh�rent
+	 * @return le mot de passe de l'adhérent
 	 */
-	
 	public String getMdp() {
-		return mdp;
+		return this.mdp;
 	}
 
 	/**
+	 * Modifier le mot de passe de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param mdp
-	 * Permet de changer le mot de passe de l'adh�rent
+	 * 			le mot de passe de l'adhérent
 	 */
-	
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
 
 	/**
+	 * Obtenir l'état des droits de l'adhérent
 	 * 
-	 * @return un bool�en disant si l'adh�rent est � jour
+	 * @return true si l'adhérent est à jour dans ses droits, false sinon
 	 */
-	
 	public boolean isEstAJour() {
-		return estAJour;
+		return this.estAJour;
 	}
 
 	/**
+	 * Modifier l'état des droits de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param estAJour
-	 * Permet de changer le bool�en disant si l'adh�rent est � jour
+	 * 			la validité des droits de l'adhérent
 	 */
-	
 	public void setEstAJour(boolean estAJour) {
 		this.estAJour = estAJour;
 	}
 
 	/**
+	 * Savoir si l'adhérent peut emprunter ou pas
 	 * 
-	 * @return le bool�en disant si l'adh�rent est � jour
+	 * @return true si l'adhérent peut emprunter, false sinon
 	 */
-	
-	public boolean isPeutEmprunter() {
-		return peutEmprunter;
+	public boolean peutEmprunter() {
+		return this.peutEmprunter;
 	}
 
 	/**
+	 * Modifier la possibilité d'emprunter de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
 	 * @param peutEmprunter
-	 * Permet de changer le bool�en disant si l'adh�rent est � jour
+	 * 			la possibilité d'emprunter de l'adhérent
 	 */
-	
 	public void setPeutEmprunter(boolean peutEmprunter) {
 		this.peutEmprunter = peutEmprunter;
 	}
 
 	/**
+	 * Obtenir le nombre de retards cumulés par l'adhérent
 	 * 
-	 * @return le nombre de retard accumul� par le client
+	 * @return le nombre de retard de l'adhérent
 	 */
-	
 	public int getCompteurRetard(){
 		return this.cptRetard;
 	}
 	
 	/**
+	 * Modifier le nombre de retards de l'adhérent
+	 * Utilisable uniquement par un administrateur
 	 * 
-	 * @param ajoutRetard
-	 * Permet de modifier le nombre de retard accumul� par le client
+	 * @param nbRetards
+	 * 			le nombre de retards de l'adhérent
 	 */
-	
-	public void setCompteurRetard(int ajoutRetard){
-		this.cptRetard = ajoutRetard; 
-	}
-	
-	public void ajoutCompteurRetard(){
-		this.cptRetard +=1;
+	public void setCompteurRetard(int nbRetards){
+		this.cptRetard = nbRetards; 
 	}
 	
 	/**
-	 * 
-	 * @param e
-	 * Cette fonction permet de savoir si l'adh�rent est en retard pour rendre son jeu et on 
-	 * Question est-ce qu'on rajoute un retard pour chaque jour ou �a compte juste +1 pour un jeu?
+	 * Ajouter un retard au compteur de l'adhérent
+	 */
+	public void ajoutCompteurRetard(){
+		this.cptRetard ++;
+	}
+	
+	/**
+	 * Cette fonction permet de savoir si l'adh�rent est en retard pour rendre son jeu
 	 */
 	public void estEnRetard(Emprunt e){
+		//TODO à bouger dans la classe Emprunt (c'est l'emprun qui est en retard)
+		
 		//Par d�faut, date d'aujourd'hui
-        Calendar calAujourdhui = Calendar.getInstance();
-        if(e.getDateFin().before(calAujourdhui)){
+        Calendar currentDate = Calendar.getInstance();
+        if(e.getDateFin().before(currentDate)){
         	// v�rification si l'ajout de est en retard � d�j� �t� effectu� pour ce jeu?
 			ajoutCompteurRetard(); //compteurRetard � ajouter sur la structure de donn�e (initialis� � 0 � la cr�ation de la variable)
         }
-	}
-	
-	
-	
+	}	
 }
