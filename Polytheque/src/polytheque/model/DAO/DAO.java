@@ -96,9 +96,9 @@ public abstract class DAO {
 		}
 	}
 	
-	public void readConfig(String configFile) {
+	public void readConfig() {
 		try {
-			configReader = new XMLConfiguration(configFile);
+			configReader = new XMLConfiguration(CONFIG_FILE);
 			this.driver = configReader.getString("driver");
 			this.url = configReader.getString("url");
 			this.username = configReader.getString("username");
