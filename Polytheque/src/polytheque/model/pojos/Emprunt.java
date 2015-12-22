@@ -118,9 +118,15 @@ public class Emprunt {
 		this.dateFin = dateFin;
 	}
 	
-	Emprunt emprunterJeu(Jeu jeu, Adherent adh,Calendar date){
-		 Emprunt emprunt = new Emprunt(adh,jeu,date,date);
-		 return emprunt;
+	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Calendar dateDebut, Calendar dateFin){
+		 return new Emprunt(adh, jeu, dateDebut, dateFin);
 	 }
-
+	
+	Emprunt emprunterExtension(Adherent adh, Extension extension, Calendar dateDebut, Calendar dateFin){
+		 return new Emprunt(adh, extension, dateDebut, dateFin);
+	 }
+	
+	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Calendar dateDebut, Calendar dateFin){
+		 return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
+	 }
 }
