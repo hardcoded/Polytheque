@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import polytheque.model.pojos.Jeu;
 
 /**
- * Classe repr�sentant la liste des jeux � emprunter.
+ * Classe representant la liste des jeux a emprunter.
  * 
  * @author Yves-Alain
  *

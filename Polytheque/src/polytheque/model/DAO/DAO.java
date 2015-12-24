@@ -14,6 +14,13 @@ import org.apache.commons.configuration.XMLConfiguration;
  */
 public abstract class DAO {
 
+	
+		   
+	protected static Connection connection;
+	public DAO(Connection conn)
+	{
+	    DAO.connection = conn;
+	}
 	/**
 	 * Pilote JDBC à utiliser pour se connecter à la BDD (ici mySQL)
 	 */
@@ -43,7 +50,7 @@ public abstract class DAO {
 	 * 	<li> Ouverte : connexion existante et exploitable </li>
 	 * </ul>
 	 */
-	protected static Connection connection;
+	
 
 	/**
 	 * Fichier de configuration au format XML

@@ -1,9 +1,15 @@
 package polytheque.model.DAO;
 
-public class EmpruntDAO extends DAO {
+import java.sql.Connection;
 
-	public EmpruntDAO() {
-		super();
+public class EmpruntDAO extends DAO 
+{
+
+	public EmpruntDAO(Connection conn) 
+	{
+		super(conn);
 	}
 
 }
+
+
