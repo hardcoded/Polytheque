@@ -1,6 +1,5 @@
 package polytheque.model.pojos;
 
-
 /**
  * Classe permettant de représenter un adhérent
  * 
@@ -384,5 +383,5 @@ public class Adherent {
 		this.cptRetard ++;
 	}
 
-	
+
 }

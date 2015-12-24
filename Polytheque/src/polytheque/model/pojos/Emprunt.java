@@ -120,11 +120,11 @@ public class Emprunt {
 	public void setDateFin(Calendar dateFin) {
 		this.dateFin = dateFin;
 	}
-	
+
 	public boolean getRetard(){
 		return retardCompte;
 	}
-	
+
 	public void setRetard(boolean retard) {
 		this.retardCompte = retard;
 	}
@@ -140,7 +140,7 @@ public class Emprunt {
 	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Calendar dateDebut, Calendar dateFin){
 		return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
 	}
-	
+
 	/**
 	 * Cette fonction permet d'ajouter 1 au nombre de retard deja effectue par l'adherent et modifie la variable disant que l'adherent est en retard pour ne pas compter plusieurs retard concernant un meme jeu
 	 */
@@ -150,7 +150,7 @@ public class Emprunt {
 			this.setRetard(true);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param emprunt
@@ -163,19 +163,19 @@ public class Emprunt {
 			return true;
 		}
 		else 
-			 return false; 
+			return false; 
 	}
-	
+
 	/**
 	 * 
 	 * @param emprunt
 	 * @return vrai si l'emprunt est en retard, faux sinon
 	 */
 	public boolean dejaEnRetard(){
-			return this.retardCompte;
+		return this.retardCompte;
 	}
-	
-	
-	
-	
+
+
+
+
 }

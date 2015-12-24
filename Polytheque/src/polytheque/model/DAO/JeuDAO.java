@@ -1,70 +1,101 @@
 package polytheque.model.DAO;
-import java.sql.Connection;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import polytheque.model.pojos.Jeu;
 
-public abstract class JeuDAO extends DAO {
-	
-	public JeuDAO(Connection conn) 
+public class JeuDAO extends DAO {
+
+	/**
+	 * Mï¿½thode de crï¿½ation
+	 * @param Jeu
+	 * @return boolean 
+	 */
+	public boolean create(Jeu jeu, int idCategorie, int idEditeur)
 	{
-		super(conn);
-	}
-		/**
-		  * Méthode de création
-		  * @param Jeu
-		  * @return boolean 
-		  */
-		  public boolean create(Jeu jeu)
-		  {
-			  return false;
-		  }
+		try {
+			super.connect();
+			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
+					+ "JEU(nom, description, annee_parution, satut, nombre_exemplaires, nombre_reserves,"
+					+ "age_mini, nombre_joueurs, id_categorie, id_editeur) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
+			// On n'ajoute pas l'ID du jeu car il s'incrÃ©mente automatiquement dans la base de donnÃ©es
+			psInsert.setString(1, jeu.getNom());
+			psInsert.setString(2, jeu.getDescription());
+			psInsert.setInt(3, jeu.getAnneeParution());
+			psInsert.setString(4, jeu.getStatut());
+			psInsert.setInt(5, jeu.getNbExemplaires());
+			psInsert.setInt(6, jeu.getNbReserves());
+			psInsert.setInt(7, jeu.getAgeMini());
+			psInsert.setInt(8, jeu.getNbJoueurs());
+			psInsert.setInt(9, idCategorie);
+			psInsert.setInt(10, idEditeur);
 
-		  /**
-		  * Méthode pour effacer
-		  * @param Jeu
-		  * @return boolean 
-		  */
-		  public boolean delete(Jeu jeu)
-		  {
-			  return false;
-		  }
+			psInsert.executeUpdate();
 
-		  /**
-		  * Méthode de mise à jour
-		  * @param obj
-		  * @return boolean
-		  */
-		  public boolean update(Jeu jeu)
-		  {
-			  return false;
-		  }
+			ResultSet idResult = psInsert.getGeneratedKeys();
+			if (idResult != null && idResult.next()) {
+				jeu.setIdJeu(idResult.getInt(1));;
+			} else {
+				throw new SQLException();
+			}
 
-		  /**
-		  * Méthode de recherche des informations
-		  * @param id
-		  * @return T
-		  */
-		  public Jeu find(int id)
-		  {
-			  Jeu jeu = new Jeu();
-			  try {
-			      ResultSet result = this.connect.createStatement(
-			        ResultSet.TYPE_SCROLL_INSENSITIVE,
-			        ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM eleve WHERE elv_id = " + id);
-			      if(result.first())
-			        jeu = new Jeu(
-			          id,
-			        ));         
-			    } catch (SQLException e) {
-			      e.printStackTrace();
-			    }
-			    return jeu;
-			  }  
-		  }
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		
-	
+	}
+
+	/**
+	 * Mï¿½thode pour effacer
+	 * @param Jeu
+	 * @return boolean 
+	 */
+	public boolean delete(Jeu jeu)
+	{
+		return false;
+	}
+
+	/**
+	 * Mï¿½thode de mise ï¿½ jour
+	 * @param obj
+	 * @return boolean
+	 */
+	public boolean update(Jeu jeu)
+	{
+		return false;
+	}
+
+	/**
+	 * Mï¿½thode de recherche des informations
+	 * @param id
+	 * @return T
+	 */
+	public Jeu retreive(int id) {
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM JEU WHERE id_jeu = ?");
+			psSelect.setInt(1, id);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			Jeu jeu = null;
+			if (resSet.next()) { // On se place sur le 1er rÃ©sultat
+				jeu = new Jeu(id, resSet.getString(1), resSet.getString(2), resSet.getInt(3), resSet.getString(4),
+						resSet.getInt(5), resSet.getInt(6), resSet.getInt(7), resSet.getInt(8), resSet.getString(9), resSet.getString(10));
+			}
+			super.disconnect();
+			return jeu;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+}
 
 

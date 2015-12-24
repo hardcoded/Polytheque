@@ -43,7 +43,7 @@ public class Jeu {
 	 * 		L'éditeur du jeu
 	 */
 	public Jeu(int id, String nom, String description, int anneeParution, String statut, int nbExemplaires, int nbReserves, 
-			   int ageMini, int nbJoueurs, String categorie, String editeur) {
+			int ageMini, int nbJoueurs, String categorie, String editeur) {
 		this.setIdJeu(id);
 		this.setNom(nom);
 		this.setDescription(description);
@@ -82,7 +82,7 @@ public class Jeu {
 	 * 		L'éditeur du jeu
 	 */
 	public Jeu(String nom, String description, int anneeParution, String statut, int nbExemplaires, int nbReserves, 
-			   int ageMini, int nbJoueurs, String categorie, String editeur) {
+			int ageMini, int nbJoueurs, String categorie, String editeur) {
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setAnneeParution(anneeParution);

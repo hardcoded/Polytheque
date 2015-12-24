@@ -1,6 +1,7 @@
 package polytheque.model.catalog;
 
 import java.util.ArrayList;
+
 import polytheque.model.pojos.Jeu;
 
 /**
@@ -48,17 +49,12 @@ public class Ensjeu {
 	 * @param j
 	 * 		Jeu dont l'attribut disponibilite doit etre modifie
 	 */
-	public void modifierDispoJeu (Jeu j) 
-	{
+	public void modifierDispoJeu (Jeu j) {
 		Jeu k;
-
-		for (int i = 0; i < ensjeu.size(); i++ ) 
-		{
+		for (int i = 0; i < ensjeu.size(); i++ ) {
 			k = ensjeu.get(i);
-
-			if (k == j) 
-			{
-				ensjeu.get(i).setDisponibilite(!ensjeu.get(i).isDisponibilite());
+			if (k == j) {
+				ensjeu.get(i).setDisponibilite(!ensjeu.get(i).getDisponibilite());
 			}
 		}     
 	}
