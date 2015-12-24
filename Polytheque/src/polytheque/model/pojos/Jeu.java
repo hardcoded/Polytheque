@@ -8,26 +8,91 @@ public class Jeu {
 	private int ageMini;
 	private String edition;
 	private boolean disponibilite;
-	private String etat;
-	private String status;
+	private String statut;
 	private int anneeParution;
 	private int nbExemplaires;
 	private int nbReserves;
 	private int nbJoueurs;
+	private String categorie;
+	private String editeur;
 
-	public Jeu(String nom, String description, int ageMini, String edition, boolean disponibilite, String etat,
-			String statut, int anneeParution, int nbExemplaires, int nbReserves, int nbJoueurs) {
+	/**
+	 * Construire un nouveau jeu dont on connait l'identifiant
+	 * 
+	 * @param id
+	 * 		L'identifiant du jeu
+	 * @param nom
+	 * 		Le nom du jeu
+	 * @param description
+	 * 		La description du jeu
+	 * @param anneeParution
+	 * 		L'année de parution du jeu
+	 * @param statut
+	 * 		Le statut du jeu
+	 * @param nbExemplaires
+	 * 		Le nombre d'exemplaires total du jeu
+	 * @param nbReserves
+	 * 		Le nombre d'exemplaires réservés
+	 * @param ageMini
+	 * 		L'age minimal auquel on peut jouer au jeu
+	 * @param nbJoueurs
+	 * 		Le nombre de joueurs requis (au minimum)
+	 * @param categorie
+	 * 		La catégorie du jeu
+	 * @param editeur
+	 * 		L'éditeur du jeu
+	 */
+	public Jeu(int id, String nom, String description, int anneeParution, String statut, int nbExemplaires, int nbReserves, 
+			   int ageMini, int nbJoueurs, String categorie, String editeur) {
+		this.setIdJeu(id);
 		this.setNom(nom);
 		this.setDescription(description);
-		this.setAgeMini(ageMini);
-		this.setEdition(edition);
-		this.setDisponibilite(disponibilite);
-		this.setEtat(etat);
-		this.setStatus(statut);
 		this.setAnneeParution(anneeParution);
+		this.setStatus(statut);
+		this.setAgeMini(ageMini);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
 		this.setNbJoueurs(nbJoueurs);
+		this.setCategorie(categorie);
+		this.setEditeur(editeur);
+	}
+
+	/**
+	 * Construire un nouveau jeu dont on ne connait pas l'identifiant
+	 * 
+	 * @param nom
+	 * 		Le nom du jeu
+	 * @param description
+	 * 		La description du jeu
+	 * @param anneeParution
+	 * 		L'année de parution du jeu
+	 * @param statut
+	 * 		Le statut du jeu
+	 * @param nbExemplaires
+	 * 		Le nombre d'exemplaires total du jeu
+	 * @param nbReserves
+	 * 		Le nombre d'exemplaires réservés
+	 * @param ageMini
+	 * 		L'age minimal auquel on peut jouer au jeu
+	 * @param nbJoueurs
+	 * 		Le nombre de joueurs requis (au minimum)
+	 * @param categorie
+	 * 		La catégorie du jeu
+	 * @param editeur
+	 * 		L'éditeur du jeu
+	 */
+	public Jeu(String nom, String description, int anneeParution, String statut, int nbExemplaires, int nbReserves, 
+			   int ageMini, int nbJoueurs, String categorie, String editeur) {
+		this.setNom(nom);
+		this.setDescription(description);
+		this.setAnneeParution(anneeParution);
+		this.setStatus(statut);
+		this.setAgeMini(ageMini);
+		this.setNbExemplaires(nbExemplaires);
+		this.setNbReserves(nbReserves);
+		this.setNbJoueurs(nbJoueurs);
+		this.setCategorie(categorie);
+		this.setEditeur(editeur);
 	}
 
 	public String getNom() {
@@ -62,28 +127,20 @@ public class Jeu {
 		this.edition = edition;
 	}
 
-	public boolean isDisponibilite() {
-		return disponibilite;
+	public boolean getDisponibilite() {
+		return this.disponibilite;
 	}
 
 	public void setDisponibilite(boolean disponibilite) {
 		this.disponibilite = disponibilite;
 	}
 
-	public String getEtat() {
-		return etat;
-	}
-
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
-
-	public String getStatus() {
-		return status;
+	public String getStatut() {
+		return statut;
 	}
 
 	public void setStatus(String status) {
-		this.status = status;
+		this.statut = status;
 	}
 
 	public int getAnneeParution() {
@@ -124,5 +181,21 @@ public class Jeu {
 
 	public void setIdJeu(int idJeu) {
 		this.idJeu = idJeu;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
+	public String getEditeur() {
+		return editeur;
+	}
+
+	public void setEditeur(String editeur) {
+		this.editeur = editeur;
 	}
 }
