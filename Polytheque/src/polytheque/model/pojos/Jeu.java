@@ -10,13 +10,13 @@ public class Jeu {
 	private boolean disponibilite;
 	private String etat;
 	private String status;
-	private String anneeParution;
+	private int anneeParution;
 	private int nbExemplaires;
 	private int nbReserves;
 	private int nbJoueurs;
 
 	public Jeu(String nom, String description, int ageMini, String edition, boolean disponibilite, String etat,
-			String statut, String anneeParution, int nbExemplaires, int nbReserves, int nbJoueurs) {
+			String statut, int anneeParution, int nbExemplaires, int nbReserves, int nbJoueurs) {
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setAgeMini(ageMini);
@@ -86,11 +86,11 @@ public class Jeu {
 		this.status = status;
 	}
 
-	public String getAnneeParution() {
+	public int getAnneeParution() {
 		return anneeParution;
 	}
 
-	public void setAnneeParution(String anneeParution) {
+	public void setAnneeParution(int anneeParution) {
 		this.anneeParution = anneeParution;
 	}
 
