@@ -18,7 +18,7 @@ public class JeuDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "JEU(nom, description, annee_parution, satut, nombre_exemplaires, nombre_reserves,"
+					+ "JEU(nom, description, annee_parution, status, nombre_exemplaires, nombre_reserves,"
 					+ "age_mini, nombre_joueurs, id_categorie, id_editeur) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
@@ -57,7 +57,25 @@ public class JeuDAO extends DAO {
 	 */
 	public boolean delete(Jeu jeu)
 	{
-		return false;
+		try {
+			super.connect();
+			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE id_jeu " + jeu.getIdJeu()); 
+
+			psDelete.executeUpdate();
+
+			ResultSet idResult = psDelete.getGeneratedKeys();
+			if (idResult != null && idResult.next()) {
+				jeu.setIdJeu(idResult.getInt(1));;
+			} else {
+				throw new SQLException();
+			}
+
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	/**
@@ -67,7 +85,31 @@ public class JeuDAO extends DAO {
 	 */
 	public boolean update(Jeu jeu)
 	{
-		return false;
+		try {
+			
+			super.connect();
+			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU SET nom_jeu = '" + jeu.getNom() + "',"+
+                	" jeu_description = '" + jeu.getDescription() + "',"+
+                	" jeu_anneeparution = '" + jeu.getAnneeParution() + "',"+
+                	" jeu_status = '" + jeu.getStatut() + "',"+
+                	" jeu_nbExemplaire = '" + jeu.getNbExemplaires() + "',"+
+                	" jeu_reserve = '" + jeu.getNbReserves() + "',"+
+                	" jeu_ageMini = '" + jeu.getAgeMini() + "',"+
+                	" jeu_joueurs = '" + jeu.getNbJoueurs() + "',"+
+                	" jeu_categorie = '" + jeu.getCategorie() + "',"+
+                	" jeu_editeur = '" + jeu.getEditeur() + "'"+
+                	" WHERE jeu_id = " + jeu.getIdJeu());
+			psUpdate.executeUpdate();
+
+			jeu = this.retreive(jeu.getIdJeu());
+			
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	/**
