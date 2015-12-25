@@ -13,13 +13,12 @@ public class JeuDAO extends DAO {
 	 * @param Jeu
 	 * @return boolean 
 	 */
-	public boolean create(Jeu jeu, int idCategorie, int idEditeur)
-	{
+	public boolean create(Jeu jeu, int idCategorie, int idEditeur) {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "JEU(nom, description, annee_parution, status, nombre_exemplaires, nombre_reserves,"
-					+ "age_mini, nombre_joueurs, id_categorie, id_editeur) "
+					+ "JEU(nom, description, annee_parution, statut, nombre_exemplaires, nombre_reserves,"
+					+ "age_mini, nombre_joueurs, id_categorie, id_editeur)"
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, jeu.getNom());
@@ -55,20 +54,13 @@ public class JeuDAO extends DAO {
 	 * @param Jeu
 	 * @return boolean 
 	 */
-	public boolean delete(Jeu jeu)
-	{
+	public boolean delete(int id) {
 		try {
 			super.connect();
-			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE id_jeu " + jeu.getIdJeu()); 
-
-			psDelete.executeUpdate();
-
-			ResultSet idResult = psDelete.getGeneratedKeys();
-			if (idResult != null && idResult.next()) {
-				jeu.setIdJeu(idResult.getInt(1));;
-			} else {
-				throw new SQLException();
-			}
+			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE id_jeu = ?"); 
+			psDelete.setInt(1, id);
+			psDelete.execute();
+			psDelete.closeOnCompletion();
 
 			super.disconnect();
 			return true;
@@ -83,25 +75,27 @@ public class JeuDAO extends DAO {
 	 * @param obj
 	 * @return boolean
 	 */
-	public boolean update(Jeu jeu)
-	{
+	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {
 		try {
-			
-			super.connect();
-			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU SET nom_jeu = '" + jeu.getNom() + "',"+
-                	" jeu_description = '" + jeu.getDescription() + "',"+
-                	" jeu_anneeparution = '" + jeu.getAnneeParution() + "',"+
-                	" jeu_status = '" + jeu.getStatut() + "',"+
-                	" jeu_nbExemplaire = '" + jeu.getNbExemplaires() + "',"+
-                	" jeu_reserve = '" + jeu.getNbReserves() + "',"+
-                	" jeu_ageMini = '" + jeu.getAgeMini() + "',"+
-                	" jeu_joueurs = '" + jeu.getNbJoueurs() + "',"+
-                	" jeu_categorie = '" + jeu.getCategorie() + "',"+
-                	" jeu_editeur = '" + jeu.getEditeur() + "'"+
-                	" WHERE jeu_id = " + jeu.getIdJeu());
-			psUpdate.executeUpdate();
 
-			jeu = this.retreive(jeu.getIdJeu());
+			super.connect();
+			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU "
+					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?,"
+					+ "nombre_reserves = ?, age_mini = ?, nombre_joueurs = ?, id_categorie = ?, id_editeur = ?)" 
+					+ " WHERE jeu_id = ?");
+			psUpdate.setString(1, jeu.getNom());
+			psUpdate.setString(2, jeu.getDescription());
+			psUpdate.setInt(3, jeu.getAnneeParution());
+			psUpdate.setString(4, jeu.getStatut());
+			psUpdate.setInt(5, jeu.getNbExemplaires());
+			psUpdate.setInt(6, jeu.getNbReserves());
+			psUpdate.setInt(7, jeu.getAgeMini());
+			psUpdate.setInt(8, jeu.getNbJoueurs());
+			psUpdate.setInt(9, idCategorie);
+			psUpdate.setInt(10, idEditeur);
+			
+			psUpdate.executeUpdate();
+			psUpdate.closeOnCompletion();
 			
 			super.disconnect();
 			return true;
@@ -109,7 +103,7 @@ public class JeuDAO extends DAO {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	/**
