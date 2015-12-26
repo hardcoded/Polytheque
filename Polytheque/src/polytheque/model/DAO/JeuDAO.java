@@ -9,7 +9,7 @@ import polytheque.model.pojos.Jeu;
 public class JeuDAO extends DAO {
 
 	/**
-	 * M�thode de cr�ation
+	 * Methode de creation
 	 * @param Jeu
 	 * @return boolean 
 	 */
@@ -50,7 +50,7 @@ public class JeuDAO extends DAO {
 	}
 
 	/**
-	 * M�thode pour effacer
+	 * Methode pour effacer
 	 * @param Jeu
 	 * @return boolean 
 	 */
@@ -71,7 +71,7 @@ public class JeuDAO extends DAO {
 	}
 
 	/**
-	 * M�thode de mise � jour
+	 * Methode de mise a jour
 	 * @param obj
 	 * @return boolean
 	 */
@@ -107,7 +107,7 @@ public class JeuDAO extends DAO {
 	}
 
 	/**
-	 * M�thode de recherche des informations
+	 * Methode de recherche des informations
 	 * @param id
 	 * @return T
 	 */
