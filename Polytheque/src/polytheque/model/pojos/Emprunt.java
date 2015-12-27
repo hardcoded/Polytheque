@@ -175,7 +175,20 @@ public class Emprunt {
 		return this.retardCompte;
 	}
 
-
+	/**
+	 * 
+	 * @param e
+	 * Permet de dire qu'un emprunt est ramené et donc de remettre les valeurs de l'emprunt à leurs états initiaux
+	 */
+	public void annulerEmprunt(){
+		//vérifier le nombre d'extension emprunter par l'adhérent
+		//vérifier que l'adhérent à tout ramener
+		this.adherent.setPeutEmprunter(true);
+		this.jeu.setDisponibilite(true);
+		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
+		this.extention.setNbReserves(this.extention.getNbReserves()+1);
+		ajoutRetard();
+	}
 
 
 }
