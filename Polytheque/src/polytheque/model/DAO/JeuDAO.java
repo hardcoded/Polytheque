@@ -33,6 +33,7 @@ public class JeuDAO extends DAO {
 			psInsert.setInt(10, idEditeur);
 
 			psInsert.executeUpdate();
+			psInsert.closeOnCompletion();
 
 			ResultSet idResult = psInsert.getGeneratedKeys();
 			if (idResult != null && idResult.next()) {
