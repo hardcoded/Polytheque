@@ -75,14 +75,14 @@ public class JeuDAO extends DAO {
 	 * @param obj
 	 * @return boolean
 	 */
-	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {
+	public boolean update(Jeu jeu, int idCategorie, int idEditeur, int idJeu) {
 		try {
 
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU "
 					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?,"
 					+ "nombre_reserves = ?, age_mini = ?, nombre_joueurs = ?, id_categorie = ?, id_editeur = ?)" 
-					+ " WHERE jeu_id = ?");
+					+ " WHERE id_jeu = ?");
 			psUpdate.setString(1, jeu.getNom());
 			psUpdate.setString(2, jeu.getDescription());
 			psUpdate.setInt(3, jeu.getAnneeParution());
@@ -93,6 +93,7 @@ public class JeuDAO extends DAO {
 			psUpdate.setInt(8, jeu.getNbJoueurs());
 			psUpdate.setInt(9, idCategorie);
 			psUpdate.setInt(10, idEditeur);
+			psUpdate.setInt(11, idJeu);
 			
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
