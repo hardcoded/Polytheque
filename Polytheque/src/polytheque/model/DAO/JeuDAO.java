@@ -75,7 +75,7 @@ public class JeuDAO extends DAO {
 	 * @param obj
 	 * @return boolean
 	 */
-	public boolean update(Jeu jeu, int idCategorie, int idEditeur, int idJeu) {
+	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {
 		try {
 
 			super.connect();
@@ -93,7 +93,7 @@ public class JeuDAO extends DAO {
 			psUpdate.setInt(8, jeu.getNbJoueurs());
 			psUpdate.setInt(9, idCategorie);
 			psUpdate.setInt(10, idEditeur);
-			psUpdate.setInt(11, idJeu);
+			psUpdate.setInt(11, jeu.getIdJeu());
 			
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
