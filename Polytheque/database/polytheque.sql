@@ -21,6 +21,16 @@ CREATE TABLE IF NOT EXISTS adherent (
   UNIQUE (mdp)
 ) ENGINE=InnoDB CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS categorie (
+  id_categorie INTEGER NOT NULL PRIMARY KEY,
+  nom_categorie varchar(30) NOT NULL
+) ENGINE=InnoDB CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS editeur (
+  id_editeur INTEGER NOT NULL PRIMARY KEY,
+  nom_editeur varchar(30) NOT NULL
+) ENGINE=InnoDB CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS jeu (
   id_jeu INTEGER NOT NULL PRIMARY KEY,
   nom varchar(30) NOT NULL,
@@ -35,16 +45,6 @@ CREATE TABLE IF NOT EXISTS jeu (
   id_editeur INTEGER NOT NULL,
   FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (id_editeur) REFERENCES editeur (id_editeur) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS categorie (
-  id_categorie INTEGER NOT NULL PRIMARY KEY,
-  nom_categorie varchar(30) NOT NULL
-) ENGINE=InnoDB CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS editeur (
-  id_editeur INTEGER NOT NULL PRIMARY KEY,
-  nom_editeur varchar(30) NOT NULL
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS extension (
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS reservation (
   id_extension INTEGER,
   FOREIGN KEY (id_adherent) REFERENCES adherent (id_adherent) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (id_jeu) REFERENCES jeu (id_jeu) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (id_jextension) REFERENCES extension (id_extension) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (id_extension) REFERENCES extension (id_extension) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS emprunt (
