@@ -1,5 +1,7 @@
 package polytheque.model.pojos;
 
+import java.sql.Date;
+
 /**
  * Classe permettant de représenter un adhérent
  * 
@@ -11,7 +13,7 @@ public class Adherent {
 	private int idAdherent;
 	private String nom;
 	private String prenom;
-	private int age;
+	private Date dateNaissance;
 	private String rue;
 	private int cp;
 	private String ville;
@@ -31,8 +33,8 @@ public class Adherent {
 	 * 			nom de l'adhérent
 	 * @param prenom
 	 * 			prénom de l'adhérent
-	 * @param age
-	 * 			age de l'adhérent
+	 * @param dateNaissance
+	 * 			la date de naissance de l'adherent
 	 * @param rue
 	 * 			rue de l'adhérent
 	 * @param cp
@@ -54,11 +56,11 @@ public class Adherent {
 	 * @param cptRetard
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
-	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
+	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, int cp, String ville, 
 			String mail, int tel, String pseudo, String mdp){
 		this.nom = nom;
 		this.prenom = prenom;
-		this.age = age;
+		this.dateNaissance = dateNaissance;
 		this.rue = adresse;
 		this.cp = cp;
 		this.ville = ville;
@@ -100,12 +102,12 @@ public class Adherent {
 	 * @param nbRetards
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
-	public Adherent(int id, String nom, String prenom, int age, String adresse, int cp, String ville, 
+	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, int cp, String ville, 
 			String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter, int nbRetards){
 		this.idAdherent = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.age = age;
+		this.dateNaissance = dateNaissance;
 		this.rue = adresse;
 		this.cp = cp;
 		this.ville = ville;
@@ -156,26 +158,6 @@ public class Adherent {
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	/**
-	 * Obtenir l'age de l'adhérent
-	 * 
-	 * @return l'age de l'adhérent
-	 */
-	public int getAge() {
-		return this.age;
-	}
-
-	/**
-	 * Modifier l'age de l'adhérent
-	 * Utilisable uniquement par un administrateur
-	 * 
-	 * @param age
-	 * 			l'age de l'adhérent
-	 */
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	/**
@@ -393,5 +375,11 @@ public class Adherent {
 		this.idAdherent = idAdherent;
 	}
 
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
 
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
 }
