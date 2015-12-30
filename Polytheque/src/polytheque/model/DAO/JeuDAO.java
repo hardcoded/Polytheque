@@ -111,7 +111,8 @@ public class JeuDAO extends DAO {
 	/**
 	 * Methode de recherche des informations
 	 * @param id
-	 * @return T
+	 * 			L'id du jeu à récupérer dans la BDD
+	 * @return Un jeu
 	 */
 	public Jeu retreive(int id) {
 		try {

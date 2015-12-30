@@ -15,14 +15,15 @@ public class Adherent {
 	private String prenom;
 	private Date dateNaissance;
 	private String rue;
-	private int cp;
+	private String cp;
 	private String ville;
 	private String mail;
-	private int telephone;
+	private String telephone;
 	private String pseudo;
 	private String mdp;
-	private boolean estAJour;
+	private boolean isAdmin;
 	private boolean peutEmprunter;
+	private boolean estAJour;
 	private int cptRetard;
 
 	/**
@@ -56,8 +57,8 @@ public class Adherent {
 	 * @param cptRetard
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
-	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, int cp, String ville, 
-			String mail, int tel, String pseudo, String mdp){
+	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
+					String mail, int tel, String pseudo, String mdp, boolean isAdmin){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
@@ -67,8 +68,9 @@ public class Adherent {
 		this.mail = mail;
 		this.pseudo = pseudo;
 		this.mdp = mdp;
-		this.estAJour = true;
+		this.isAdmin = isAdmin;
 		this.peutEmprunter = true;
+		this.estAJour = true;
 		this.cptRetard = 0;
 	}
 
@@ -102,8 +104,9 @@ public class Adherent {
 	 * @param nbRetards
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
-	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, int cp, String ville, 
-			String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter, int nbRetards){
+	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
+					String mail, int tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
+					boolean estAJour, int nbRetards){
 		this.idAdherent = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -114,6 +117,7 @@ public class Adherent {
 		this.mail = mail;
 		this.pseudo = pseudo;
 		this.mdp = mdp;
+		this.isAdmin = isAdmin;
 		this.estAJour = estAJour;
 		this.peutEmprunter = peutEmprunter;
 		this.cptRetard = nbRetards;
@@ -185,7 +189,7 @@ public class Adherent {
 	 * 
 	 * @return le code postal de l'adhérent
 	 */
-	public int getCP() {
+	public String getCP() {
 		return this.cp;
 	}
 
@@ -196,7 +200,7 @@ public class Adherent {
 	 * @param cp
 	 * 			le code postal de l'adhérent
 	 */
-	public void setCP(int cp) {
+	public void setCP(String cp) {
 		this.cp = cp;
 	}
 
@@ -245,7 +249,7 @@ public class Adherent {
 	 * 
 	 * @return le téléphone de l'adhérent
 	 */
-	public int getTelephone() {
+	public String getTelephone() {
 		return this.telephone;
 	}
 
@@ -256,7 +260,7 @@ public class Adherent {
 	 * @param telephone
 	 * 			le numéro de téléphone de l'adhérent
 	 */
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
@@ -305,7 +309,7 @@ public class Adherent {
 	 * 
 	 * @return true si l'adhérent est à jour dans ses droits, false sinon
 	 */
-	public boolean isEstAJour() {
+	public boolean estAJour() {
 		return this.estAJour;
 	}
 
@@ -381,5 +385,13 @@ public class Adherent {
 
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }
