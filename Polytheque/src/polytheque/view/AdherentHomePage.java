@@ -34,6 +34,11 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 	 * Un bouton.
 	 */
 	private JButton boutonModifierInfos;
+
+	/**
+	 * Un bouton.
+	 */
+	private JButton boutonEffectuerReservation;
 	
 	/**
 	 * Un bouton.
@@ -63,17 +68,22 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 	private void ajouterLesBoutons() {
 		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
 		
-		this.boutonAfficherListeJeux = new JButton("Liste des jeux");
+		this.boutonAfficherListeJeux = new JButton("Afficher la liste des jeux");
 		this.boutonAfficherListeJeux.setFocusable(false);
 		this.boutonAfficherListeJeux.addActionListener(this);
 		this.add(this.boutonAfficherListeJeux);
 		
-		this.boutonModifierInfos = new JButton("Modifier ses informations");
+		this.boutonModifierInfos = new JButton("Modifier mes informations");
 		this.boutonModifierInfos.setFocusable(false);
 		this.boutonModifierInfos.addActionListener(this);
 		this.add(this.boutonModifierInfos);
 		
-		this.boutonConsulterReservations = new JButton("Consultation des réservations");
+		this.boutonEffectuerReservation = new JButton("Effectuer une réservation");
+		this.boutonEffectuerReservation.setFocusable(false);
+		this.boutonEffectuerReservation.addActionListener(this);
+		this.add(this.boutonEffectuerReservation);
+		
+		this.boutonConsulterReservations = new JButton("Consulter mes réservations");
 		this.boutonConsulterReservations.setFocusable(false);
 		this.boutonConsulterReservations.addActionListener(this);
 		this.add(this.boutonConsulterReservations);

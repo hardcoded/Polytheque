@@ -70,7 +70,7 @@ public class AdminHomePage extends JPanel implements ActionListener {
 	private void ajouterLesBoutons() {
 		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
 		
-		this.boutonAfficherListeJeux = new JButton("Liste des jeux");
+		this.boutonAfficherListeJeux = new JButton("Afficher la liste des jeux");
 		this.boutonAfficherListeJeux.setFocusable(false);
 		this.boutonAfficherListeJeux.addActionListener(this);
 		this.add(this.boutonAfficherListeJeux);
@@ -80,12 +80,12 @@ public class AdminHomePage extends JPanel implements ActionListener {
 		this.boutonGestionAdherent.addActionListener(this);
 		this.add(this.boutonGestionAdherent);
 		
-		this.boutonValiderEmprunt = new JButton("Valider emprunt");
+		this.boutonValiderEmprunt = new JButton("Valider un emprunt");
 		this.boutonValiderEmprunt.setFocusable(false);
 		this.boutonValiderEmprunt.addActionListener(this);
 		this.add(this.boutonValiderEmprunt);
 		
-		this.boutonAnnulerReservation = new JButton("Annuler réservation");
+		this.boutonAnnulerReservation = new JButton("Annuler une réservation");
 		this.boutonAnnulerReservation.setFocusable(false);
 		this.boutonAnnulerReservation.addActionListener(this);
 		this.add(this.boutonAnnulerReservation);
