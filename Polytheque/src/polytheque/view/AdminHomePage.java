@@ -20,32 +20,17 @@ public class AdminHomePage extends JPanel implements ActionListener {
 	/**
 	 * La largeur.
 	 */
-	private static final int LARGEUR = 3;
+	private static final int LARGEUR = 2;
 	
 	/**
 	 * La hauteur.
 	 */
-	private static final int HAUTEUR = 3;
+	private static final int HAUTEUR = 2;
 	
 	/**
 	 * Un bouton.
 	 */
 	private JButton boutonAfficherListeJeux;
-	
-	/**
-	 * Un bouton.
-	 */
-	private JButton boutonAjoutJeu;
-	
-	/**
-	 * Un bouton.
-	 */
-	private JButton boutonModifJeu;
-	
-	/**
-	 * Un bouton.
-	 */
-	private JButton boutonSupprJeu;
 	
 	/**
 	 * Un bouton.
@@ -90,20 +75,10 @@ public class AdminHomePage extends JPanel implements ActionListener {
 		this.boutonAfficherListeJeux.addActionListener(this);
 		this.add(this.boutonAfficherListeJeux);
 		
-		this.boutonAjoutJeu = new JButton("Ajouter un jeu");
-		this.boutonAjoutJeu.setFocusable(false);
-		this.boutonAjoutJeu.addActionListener(this);
-		this.add(this.boutonAjoutJeu);
-		
-		this.boutonModifJeu = new JButton("Modifier un jeu");
-		this.boutonModifJeu.setFocusable(false);
-		this.boutonModifJeu.addActionListener(this);
-		this.add(this.boutonModifJeu);
-		
-		this.boutonSupprJeu = new JButton("Supprimer un jeu");
-		this.boutonSupprJeu.setFocusable(false);
-		this.boutonSupprJeu.addActionListener(this);
-		this.add(this.boutonSupprJeu);
+		this.boutonGestionAdherent = new JButton("Gestion adhérent");
+		this.boutonGestionAdherent.setFocusable(false);
+		this.boutonGestionAdherent.addActionListener(this);
+		this.add(this.boutonGestionAdherent);
 		
 		this.boutonValiderEmprunt = new JButton("Valider emprunt");
 		this.boutonValiderEmprunt.setFocusable(false);
@@ -115,11 +90,6 @@ public class AdminHomePage extends JPanel implements ActionListener {
 		this.boutonAnnulerReservation.addActionListener(this);
 		this.add(this.boutonAnnulerReservation);
 		
-		this.boutonGestionAdherent = new JButton("Gestion adhérent");
-		this.boutonGestionAdherent.setFocusable(false);
-		this.boutonGestionAdherent.addActionListener(this);
-		this.add(this.boutonGestionAdherent);
-		
 		this.updateUI();
 	}
 	
@@ -128,21 +98,6 @@ public class AdminHomePage extends JPanel implements ActionListener {
 		JButton boutonSelectionne = (JButton) event.getSource();
 		
 		if (boutonSelectionne == this.boutonAfficherListeJeux)
-		{
-			return;
-		}
-		
-		if (boutonSelectionne == this.boutonAjoutJeu)
-		{
-			return;
-		}
-		
-		if (boutonSelectionne == this.boutonModifJeu)
-		{
-			return;
-		}
-		
-		if (boutonSelectionne == this.boutonSupprJeu)
 		{
 			return;
 		}
