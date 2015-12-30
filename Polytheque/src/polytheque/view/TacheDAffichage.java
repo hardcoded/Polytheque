@@ -107,6 +107,12 @@ public class TacheDAffichage extends JFrame {
 		}
 	}
 	
+	public void afficherListeJeux() {
+		this.viderFenetre();
+		this.add(new AffichageListeJeux(this));
+		this.rafraichirFenetre();
+	}
+	
 	/**
 	 * Afficher une fenetre de dialogue.
 	 * 
