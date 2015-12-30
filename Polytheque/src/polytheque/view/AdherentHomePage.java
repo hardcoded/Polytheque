@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * @author Johan Brunet
  */
 @SuppressWarnings("serial")
-public class adherentHomePage extends JPanel implements ActionListener {
+public class AdherentHomePage extends JPanel implements ActionListener {
 	/**
 	 * La largeur.
 	 */
@@ -51,7 +51,7 @@ public class adherentHomePage extends JPanel implements ActionListener {
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
 	 */
-	public adherentHomePage(TacheDAffichage afficheAppli){
+	public AdherentHomePage(TacheDAffichage afficheAppli){
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		
 		ajouterLesBoutons();

@@ -90,7 +90,7 @@ public class TacheDAffichage extends JFrame {
 	
 	public void afficherAccueilAdherent() {
 		this.viderFenetre();
-		this.add(new adherentHomePage(this));
+		this.add(new AdherentHomePage(this));
 		this.rafraichirFenetre();
 	}
 	
