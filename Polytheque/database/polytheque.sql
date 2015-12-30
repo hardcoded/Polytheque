@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS adherent (
   id_adherent INTEGER NOT NULL PRIMARY KEY,
   nom varchar(30) NOT NULL,
   prenom varchar(30) NOT NULL,
+  date_naissance DATE NOT NULL,
   rue varchar(50) NOT NULL,
   code_postal char(5) NOT NULL,
   ville varchar(50) NOT NULL,
