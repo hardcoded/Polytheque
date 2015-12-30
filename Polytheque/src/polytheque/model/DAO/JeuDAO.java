@@ -23,7 +23,7 @@ public class JeuDAO extends DAO {
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, jeu.getNom());
 			psInsert.setString(2, jeu.getDescription());
-			psInsert.setInt(3, jeu.getAnneeParution());
+			psInsert.setString(3, jeu.getAnneeParution());
 			psInsert.setString(4, jeu.getStatut());
 			psInsert.setInt(5, jeu.getNbExemplaires());
 			psInsert.setInt(6, jeu.getNbReserves());
@@ -86,7 +86,7 @@ public class JeuDAO extends DAO {
 					+ " WHERE id_jeu = ?");
 			psUpdate.setString(1, jeu.getNom());
 			psUpdate.setString(2, jeu.getDescription());
-			psUpdate.setInt(3, jeu.getAnneeParution());
+			psUpdate.setString(3, jeu.getAnneeParution());
 			psUpdate.setString(4, jeu.getStatut());
 			psUpdate.setInt(5, jeu.getNbExemplaires());
 			psUpdate.setInt(6, jeu.getNbReserves());
@@ -125,8 +125,8 @@ public class JeuDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			Jeu jeu = null;
 			if (resSet.next()) { // On se place sur le 1er résultat
-				jeu = new Jeu(id, resSet.getString(1), resSet.getString(2), resSet.getInt(3), resSet.getString(4),
-						resSet.getInt(5), resSet.getInt(6), resSet.getInt(7), resSet.getInt(8), resSet.getString(9), resSet.getString(10));
+				jeu = new Jeu(id, resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
+							  resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs"), resSet.getString("id_categorie"), resSet.getString("id_categorie"));
 			}
 			super.disconnect();
 			return jeu;

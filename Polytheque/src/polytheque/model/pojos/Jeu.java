@@ -9,7 +9,7 @@ public class Jeu {
 	private String edition;
 	private boolean disponibilite;
 	private String statut;
-	private int anneeParution;
+	private String anneeParution;
 	private int nbExemplaires;
 	private int nbReserves;
 	private int nbJoueurs;
@@ -42,7 +42,7 @@ public class Jeu {
 	 * @param editeur
 	 * 		L'éditeur du jeu
 	 */
-	public Jeu(int id, String nom, String description, int anneeParution, String statut, int nbExemplaires, int nbReserves, 
+	public Jeu(int id, String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
 			int ageMini, int nbJoueurs, String categorie, String editeur) {
 		this.setIdJeu(id);
 		this.setNom(nom);
@@ -81,7 +81,7 @@ public class Jeu {
 	 * @param editeur
 	 * 		L'éditeur du jeu
 	 */
-	public Jeu(String nom, String description, int anneeParution, String statut, int nbExemplaires, int nbReserves, 
+	public Jeu(String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
 			int ageMini, int nbJoueurs, String categorie, String editeur) {
 		this.setNom(nom);
 		this.setDescription(description);
@@ -143,12 +143,12 @@ public class Jeu {
 		this.statut = status;
 	}
 
-	public int getAnneeParution() {
+	public String getAnneeParution() {
 		return anneeParution;
 	}
 
-	public void setAnneeParution(int anneeParution) {
-		this.anneeParution = anneeParution;
+	public void setAnneeParution(String anneeParution2) {
+		this.anneeParution = anneeParution2;
 	}
 
 	public int getNbExemplaires() {
