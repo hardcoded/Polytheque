@@ -1,10 +1,9 @@
-import polytheque.view.PolythequeApplication;
+import polytheque.view.TacheDAffichage;
 
 public class PolythequeLaucher {
 
 	public static void main(String[] args) {
-		PolythequeApplication appli = new PolythequeApplication();
+		TacheDAffichage appli = new TacheDAffichage();
 		appli.run();
 	}
-
 }

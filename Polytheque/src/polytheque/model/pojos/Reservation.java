@@ -9,9 +9,10 @@ import java.util.Calendar;
  */
 public class Reservation {
 
+	private int idReservation;
+	private Calendar date;
 	private Adherent adherent;
 	private Jeu jeu;
-	private Calendar date;
 
 	/**
 	 * Constructeur de la classe Reservation
@@ -47,7 +48,7 @@ public class Reservation {
 	}
 
 	public Calendar getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(Calendar date) {
@@ -69,5 +70,13 @@ public class Reservation {
 
 	void annulerReservation(){
 
+	}
+
+	public int getIdReservation() {
+		return idReservation;
+	}
+
+	public void setIdReservation(int idReservation) {
+		this.idReservation = idReservation;
 	}
 }
