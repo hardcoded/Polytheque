@@ -99,6 +99,7 @@ public class AdminHomePage extends JPanel implements ActionListener {
 		
 		if (boutonSelectionne == this.boutonAfficherListeJeux)
 		{
+			this.tacheDAffichageDeLApplication.afficherListeJeux();
 			return;
 		}
 		
