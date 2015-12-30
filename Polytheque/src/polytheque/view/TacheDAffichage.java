@@ -84,7 +84,13 @@ public class TacheDAffichage extends JFrame {
 	
 	public void afficherAccueilAdmin() {
 		this.viderFenetre();
-		this.add(new adminHomePage(this));
+		this.add(new AdminHomePage(this));
+		this.rafraichirFenetre();
+	}
+	
+	public void afficherAccueilAdherent() {
+		this.viderFenetre();
+		this.add(new adherentHomePage(this));
 		this.rafraichirFenetre();
 	}
 	
@@ -93,7 +99,7 @@ public class TacheDAffichage extends JFrame {
 	}
 	
 	public boolean testerValiditeConnexion(String userName, String password) {
-		if (userName.equals("test") && password.equals("test")) {
+		if (userName.equals("admin") && password.equals("admin")) {
 			return true;
 		}
 		else {
