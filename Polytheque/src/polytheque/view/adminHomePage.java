@@ -25,7 +25,7 @@ public class adminHomePage extends JPanel implements ActionListener {
 	/**
 	 * La hauteur.
 	 */
-	private static final int HAUTEUR = 2;
+	private static final int HAUTEUR = 3;
 	
 	/**
 	 * Un bouton.
@@ -56,6 +56,11 @@ public class adminHomePage extends JPanel implements ActionListener {
 	 * Un bouton.
 	 */
 	private JButton boutonAnnulerReservation;
+	
+	/**
+	 * Un bouton.
+	 */
+	private JButton boutonModifierAdherent;
 	
 	/**
 	 * Une tache d'affichage de l'application.
@@ -110,6 +115,11 @@ public class adminHomePage extends JPanel implements ActionListener {
 		this.boutonAnnulerReservation.addActionListener(this);
 		this.add(this.boutonAnnulerReservation);
 		
+		this.boutonModifierAdherent = new JButton("Modifier adhérent");
+		this.boutonModifierAdherent.setFocusable(false);
+		this.boutonModifierAdherent.addActionListener(this);
+		this.add(this.boutonModifierAdherent);
+		
 		this.updateUI();
 	}
 	
@@ -133,6 +143,21 @@ public class adminHomePage extends JPanel implements ActionListener {
 		}
 		
 		if (boutonSelectionne == this.boutonSupprJeu)
+		{
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonValiderEmprunt)
+		{
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonAnnulerReservation)
+		{
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonModifierAdherent)
 		{
 			return;
 		}
