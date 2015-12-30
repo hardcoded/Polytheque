@@ -99,7 +99,7 @@ public class TacheDAffichage extends JFrame {
 	}
 	
 	public boolean testerValiditeConnexion(String userName, String password) {
-		if (userName.equals("admin") && password.equals("admin")) {
+		if (userName.equals("admin") && password.equals("admin") || userName.equals("user") && password.equals("user")) {
 			return true;
 		}
 		else {
