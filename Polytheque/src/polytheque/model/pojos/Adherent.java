@@ -8,6 +8,7 @@ package polytheque.model.pojos;
  */
 public class Adherent {
 
+	private int idAdherent;
 	private String nom;
 	private String prenom;
 	private int age;
@@ -99,8 +100,9 @@ public class Adherent {
 	 * @param nbRetards
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
-	public Adherent(String nom, String prenom, int age, String adresse, int cp, String ville, 
+	public Adherent(int id, String nom, String prenom, int age, String adresse, int cp, String ville, 
 			String mail, int tel, String pseudo, String mdp, boolean estAJour, boolean peutEmprunter, int nbRetards){
+		this.idAdherent = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
@@ -381,6 +383,14 @@ public class Adherent {
 	 */
 	public void ajoutCompteurRetard(){
 		this.cptRetard ++;
+	}
+
+	public int getIdAdherent() {
+		return idAdherent;
+	}
+
+	public void setIdAdherent(int idAdherent) {
+		this.idAdherent = idAdherent;
 	}
 
 
