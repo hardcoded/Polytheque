@@ -16,7 +16,7 @@ import polytheque.view.TacheDAffichage;
  * @author Johan Brunet
  */
 @SuppressWarnings("serial")
-public class adminHomePage extends JPanel implements ActionListener {
+public class AdminHomePage extends JPanel implements ActionListener {
 	/**
 	 * La largeur.
 	 */
@@ -30,7 +30,7 @@ public class adminHomePage extends JPanel implements ActionListener {
 	/**
 	 * Un bouton.
 	 */
-	private JButton boutonAfficheListeJeux;
+	private JButton boutonAfficherListeJeux;
 	
 	/**
 	 * Un bouton.
@@ -60,7 +60,7 @@ public class adminHomePage extends JPanel implements ActionListener {
 	/**
 	 * Un bouton.
 	 */
-	private JButton boutonModifierAdherent;
+	private JButton boutonGestionAdherent;
 	
 	/**
 	 * Une tache d'affichage de l'application.
@@ -73,7 +73,7 @@ public class adminHomePage extends JPanel implements ActionListener {
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
 	 */
-	public adminHomePage(TacheDAffichage afficheAppli){
+	public AdminHomePage(TacheDAffichage afficheAppli){
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		
 		ajouterLesBoutons();
@@ -85,10 +85,10 @@ public class adminHomePage extends JPanel implements ActionListener {
 	private void ajouterLesBoutons() {
 		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
 		
-		this.boutonAfficheListeJeux = new JButton("Liste des jeux");
-		this.boutonAfficheListeJeux.setFocusable(false);
-		this.boutonAfficheListeJeux.addActionListener(this);
-		this.add(this.boutonAfficheListeJeux);
+		this.boutonAfficherListeJeux = new JButton("Liste des jeux");
+		this.boutonAfficherListeJeux.setFocusable(false);
+		this.boutonAfficherListeJeux.addActionListener(this);
+		this.add(this.boutonAfficherListeJeux);
 		
 		this.boutonAjoutJeu = new JButton("Ajouter un jeu");
 		this.boutonAjoutJeu.setFocusable(false);
@@ -115,10 +115,10 @@ public class adminHomePage extends JPanel implements ActionListener {
 		this.boutonAnnulerReservation.addActionListener(this);
 		this.add(this.boutonAnnulerReservation);
 		
-		this.boutonModifierAdherent = new JButton("Modifier adhérent");
-		this.boutonModifierAdherent.setFocusable(false);
-		this.boutonModifierAdherent.addActionListener(this);
-		this.add(this.boutonModifierAdherent);
+		this.boutonGestionAdherent = new JButton("Gestion adhérent");
+		this.boutonGestionAdherent.setFocusable(false);
+		this.boutonGestionAdherent.addActionListener(this);
+		this.add(this.boutonGestionAdherent);
 		
 		this.updateUI();
 	}
@@ -127,7 +127,7 @@ public class adminHomePage extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 		
-		if (boutonSelectionne == this.boutonAfficheListeJeux)
+		if (boutonSelectionne == this.boutonAfficherListeJeux)
 		{
 			return;
 		}
@@ -157,7 +157,7 @@ public class adminHomePage extends JPanel implements ActionListener {
 			return;
 		}
 		
-		if (boutonSelectionne == this.boutonModifierAdherent)
+		if (boutonSelectionne == this.boutonGestionAdherent)
 		{
 			return;
 		}
