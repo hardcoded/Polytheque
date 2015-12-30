@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.model.pojos.Jeu;
 
 public class AdherentDAO extends DAO {
 
@@ -19,8 +18,8 @@ public class AdherentDAO extends DAO {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
 					+ "ADHERENT(nom, prenom, date_naissance, rue, cp, ville, mail, telephone, pseudo, mdp, admin,"
-					+ "liste_noire, droits, nb_retards, nb_non_recup)"
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
+					+ "liste_noire, droits, nb_retards)"
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, adherent.getNom());
 			psInsert.setString(2, adherent.getPrenom());
@@ -36,7 +35,6 @@ public class AdherentDAO extends DAO {
 			psInsert.setBoolean(12, true);
 			psInsert.setBoolean(13, true);
 			psInsert.setInt(14, 0);
-			psInsert.setInt(15, 0);
 
 			psInsert.executeUpdate();
 			psInsert.closeOnCompletion();
@@ -58,7 +56,7 @@ public class AdherentDAO extends DAO {
 
 	/**
 	 * Methode pour effacer
-	 * @param Jeu
+	 * @param id
 	 * @return boolean 
 	 */
 	public boolean delete(int id) {
@@ -85,26 +83,25 @@ public class AdherentDAO extends DAO {
 	public boolean update(Adherent adherent) {
 		try {
 			super.connect();
-			PreparedStatement psUpdate = connection.prepareStatement("INSERT INTO "
-					+ "ADHERENT(nom, prenom, date_naissance, rue, cp, ville, mail, telephone, pseudo, mdp, admin,"
-					+ "liste_noire, droits, nb_retards, nb_non_recup)"
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
-			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
+			PreparedStatement psUpdate = connection.prepareStatement("UPDATE ADHERENT "
+					+ "SET nom = ?, prenom = ?, date_naissance = ?, rue = ?, cp = ?, ville = ?, mail = ?, telephone = ?,"
+					+ "pseudo = ?, mdp = ?, admin = ?,liste_noire = ?, droits = ?, nb_retards = ?)"
+					+ "WHERE id_adherent = ?"); 
 			psUpdate.setString(1, adherent.getNom());
-			psUpdate.setString(2, );
-			psUpdate.setDate(3, );
-			psUpdate.setString(4, );
-			psUpdate.setString(5, );
-			psUpdate.setString(6, );
-			psUpdate.setString(7, );
-			psUpdate.setString(8, );
-			psUpdate.setString(9, );
-			psUpdate.setString(10, );
-			psUpdate.setBoolean(11, );
-			psUpdate.setBoolean(12, );
-			psUpdate.setBoolean(13, );
-			psUpdate.setInt(14, );
-			psUpdate.setInt(15, );
+			psUpdate.setString(2, adherent.getPrenom());
+			psUpdate.setDate(3, adherent.getDateNaissance());
+			psUpdate.setString(4, adherent.getRue());
+			psUpdate.setString(5, adherent.getCP());
+			psUpdate.setString(6, adherent.getVille());
+			psUpdate.setString(7, adherent.getMail());
+			psUpdate.setString(8, adherent.getTelephone());
+			psUpdate.setString(9, adherent.getPseudo());
+			psUpdate.setString(10, adherent.getMdp());
+			psUpdate.setBoolean(11, adherent.isAdmin());
+			psUpdate.setBoolean(12, adherent.peutEmprunter());
+			psUpdate.setBoolean(13, adherent.estAJour());
+			psUpdate.setInt(14, adherent.getCompteurRetard());
+			psUpdate.setInt(15, adherent.getIdAdherent());
 
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
@@ -120,24 +117,26 @@ public class AdherentDAO extends DAO {
 	/**
 	 * Methode de recherche des informations
 	 * @param id
-	 * @return T
+	 * @return adherent
 	 */
-	public Jeu retreive(int id) {
+	public Adherent retreive(int id) {
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM JEU WHERE id_jeu = ?");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE id_adherent = ?");
 			psSelect.setInt(1, id);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
-			Jeu jeu = null;
-			if (resSet.next()) { // On se place sur le 1er résultat
-				jeu = new Jeu(id, resSet.getString(1), resSet.getString(2), resSet.getInt(3), resSet.getString(4),
-						resSet.getInt(5), resSet.getInt(6), resSet.getInt(7), resSet.getInt(8), resSet.getString(9), resSet.getString(10));
+			Adherent adherent = null;
+			if (resSet.next()) {
+				adherent = new Adherent(id, resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
+									    resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
+									    resSet.getString("pseudo"), resSet.getString("mdp"), resSet.getBoolean(12), 
+									    resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
 			}
 			super.disconnect();
-			return jeu;
+			return adherent;
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;

@@ -105,7 +105,7 @@ public class Adherent {
 	 * 			nombre de retards comptabilisés par l'adhérent
 	 */	
 	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
-					String mail, int tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
+					String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
 					boolean estAJour, int nbRetards){
 		this.idAdherent = id;
 		this.nom = nom;
@@ -115,6 +115,7 @@ public class Adherent {
 		this.cp = cp;
 		this.ville = ville;
 		this.mail = mail;
+		this.telephone = tel;
 		this.pseudo = pseudo;
 		this.mdp = mdp;
 		this.isAdmin = isAdmin;
