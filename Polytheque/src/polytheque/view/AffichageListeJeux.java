@@ -1,15 +1,23 @@
 package polytheque.view;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
-public class AffichageListeJeux extends JFrame implements ActionListener {
+import polytheque.view.modeles.ModeleTableauListeJeux;
+
+@SuppressWarnings("serial")
+public class AffichageListeJeux extends JPanel implements ActionListener {
 
 	private TacheDAffichage afficheAppli;
+	
+	/**
+	 * Les libellés des entêtes.
+	 */
+	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Nombre de joueurs mini", "Catégorie", "Editeur"};
+	
 	
 	public AffichageListeJeux(TacheDAffichage afficheAppli) {
 		this.afficheAppli = afficheAppli;
@@ -20,21 +28,14 @@ public class AffichageListeJeux extends JFrame implements ActionListener {
 	public void creerContenu() {
 		
         Object[][] donnees = {
-                {"Johnathan", "Sykes", "test", true, "dernierecase"},
-                {"Nicolas", "Van de Kampf", "test", true, "dernierecase"},
-                {"Damien", "Cuthbert", "test", true, "dernierecase"},
-                {"Corinne", "Valance", "test", false, "dernierecase"},
-                {"Emilie", "Schrödinger", "test", false, "dernierecase"},
-                {"Delphine", "Duke", "test", false, "dernierecase"},
-                {"Eric", "Trump", "test", true, "dernierecase"},
+                {"Nom1", "TEST", "2015", "OK", "3", "2", "Aventure", ""},
+                {"Nom2", "test", "1995", "Abimé", "8", "2", "Action", "Moi"},
+                {"Nom3", "Description", "2001", "OK", "12", "4", "", "Lui"},
+                {"Nom4", "Jeu de société", "2012", "OK", "3", "6", "Société", "Toi"},
         };
  
-        String[] entetes = {"Prénom", "Nom", "Couleur favorite", "Homme", "Sport"};
- 
-        JTable tableau = new JTable(donnees, entetes);
- 
-        getContentPane().add(tableau.getTableHeader(), BorderLayout.NORTH);
-        getContentPane().add(tableau, BorderLayout.CENTER);
+        JTable tableau = new JTable(new ModeleTableauListeJeux(donnees, LIBELLES));
+        this.add(tableau);
 	}
 	
 	@Override
