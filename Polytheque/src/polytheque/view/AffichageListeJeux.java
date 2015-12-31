@@ -53,6 +53,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
+	@SuppressWarnings("unused")
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	public AffichageListeJeux(TacheDAffichage afficheAppli) {
@@ -66,9 +67,9 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		
         Object[][] donnees = {
                 {"Nom1", "TEST", "2015", "OK", "3 ans", "2 pers.", "Aventure", ""},
-                {"Nom2", "test", "1995", "Abimé", "8 ans", "2 pers.", "Action", "Moi"},
+                {"Nom2", "test", "1995", "Abime", "8 ans", "2 pers.", "Action", "Moi"},
                 {"Nom3", "Description", "2001", "OK", "12 ans", "4 pers.", "", "Lui"},
-                {"Nom4", "Jeu de société", "2012", "OK", "3 ans", "6 pers.", "Société", "Toi"},
+                {"Nom4", "Jeu de société", "2012", "OK", "3 ans", "6 pers.", "Societe", "Toi"},
         };
 		
         JTable tableau = new JTable(new ModeleTableauListeJeux(donnees, LIBELLES));
@@ -120,8 +121,26 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO
+		JButton boutonSelectionne = (JButton) e.getSource();
+		
+		if (boutonSelectionne == this.boutonSupprimerJeu)
+		{
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonAjouterJeu)
+		{
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonModifierJeu)
+		{
+			return;
+		}
 		
 	}
 
+				
 }
+
+
