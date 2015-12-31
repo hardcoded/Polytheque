@@ -1,5 +1,6 @@
 package polytheque.model.DAO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class EmpruntDAO extends DAO
 	 * @param Jeu
 	 * @return boolean 
 	 */
-	public boolean create(Calendar dateDebut, Calendar dateFin, Reservation reservation, Adherent adherent, Jeu jeu, Extension extension) 
+	public boolean create(Date dateDebut, Date dateFin, Reservation reservation, Adherent adherent, Jeu jeu, Extension extension) 
 	{
 		try 
 		{

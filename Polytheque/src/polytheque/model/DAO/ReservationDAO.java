@@ -16,7 +16,7 @@ public class ReservationDAO extends DAO {
 					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension)"
 					+ "VALUES (?, ?, ?, ?)"); 
 			
-			psInsert.setInt(1, reservation.getDate()); //A voir pcq return type"date"
+			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
 			psInsert.setInt(3, idJeu);
 			psInsert.setInt(4, idJextension);
