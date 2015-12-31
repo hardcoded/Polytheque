@@ -48,6 +48,7 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
+	@SuppressWarnings("unused")
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	/**
