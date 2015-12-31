@@ -3,6 +3,7 @@ package polytheque.model.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 import polytheque.model.pojos.Reservation;
 
@@ -16,7 +17,7 @@ public class ReservationDAO extends DAO {
 					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension)"
 					+ "VALUES (?, ?, ?, ?)"); 
 			
-			psInsert.setInt(1, reservation.getDate()); //A voir pcq return type"date"
+			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
 			psInsert.setInt(3, idJeu);
 			psInsert.setInt(4, idJextension);
@@ -38,11 +39,7 @@ public class ReservationDAO extends DAO {
 		}
 	}
 
-	/**
-	 * Methode pour effacer
-	 * @param Jeu
-	 * @return boolean 
-	 */
+	
 	public boolean delete(int id) {
 		try {
 			super.connect();
@@ -59,18 +56,14 @@ public class ReservationDAO extends DAO {
 		}
 	}
 
-	/**
-	 * Methode de mise a jour
-	 * @param obj
-	 * @return boolean
-	 */
+
 	public boolean update(Reservation reservation, int idAdherent, int idJeu, int idJextension, int idReservation) {
 		try {
 
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE RESERVATION "
 					+ "SET date_reservation = ?, id_adherent = ?, id_jeu = ?, id_extension = ?)" + " WHERE id_reservation = ?");
-			psUpdate.setInt(1, reservation.getDate());
+			psUpdate.setDate(1, reservation.getDate());
 			psUpdate.setInt(2, idAdherent);
 			psUpdate.setInt(3, idJeu);
 			psUpdate.setInt(4, idJextension);
@@ -89,11 +82,7 @@ public class ReservationDAO extends DAO {
 
 	}
 
-	/**
-	 * Methode de recherche des informations
-	 * @param id
-	 * @return T
-	 */
+
 	public Reservation retreive(int idReservation) {
 		try {
 			super.connect();
