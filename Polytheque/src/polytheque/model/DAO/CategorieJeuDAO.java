@@ -28,5 +28,5 @@ public class CategorieJeuDAO extends DAO {
 			e.printStackTrace();
 			return null;
 		}
-}
+} 
 }

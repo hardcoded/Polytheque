@@ -83,7 +83,7 @@ public class ReservationDAO extends DAO {
 	}
 
 
-	public Reservation retreive(int idReservation) {
+	public Reservation retreive(int idReservation) { 
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION WHERE id_reservation = ?");
