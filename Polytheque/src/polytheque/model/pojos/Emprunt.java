@@ -9,6 +9,7 @@ import java.sql.Date;
  */
 public class Emprunt {
 
+	private int idEmprunt;
 	private Adherent adherent;
 	private Jeu jeu;
 	private Extension extention;
@@ -82,6 +83,10 @@ public class Emprunt {
 		this.setExtension(extention);
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
+	}
+	
+	public Emprunt(int id, Date dateDebut, Date dateFin, Date dateRendu, int idAdherent) {
+		this.setIdEmprunt(id);
 	}
 
 	public Adherent getAdherent() {
@@ -189,5 +194,15 @@ public class Emprunt {
 
 	public void setDateRendu(Date dateRendu) {
 		this.dateRendu = dateRendu;
+	}
+
+
+	public int getIdEmprunt() {
+		return idEmprunt;
+	}
+
+
+	public void setIdEmprunt(int id_emprunt) {
+		this.idEmprunt = id_emprunt;
 	}
 }
