@@ -14,6 +14,7 @@ public class Emprunt {
 	private Extension extention;
 	private Date dateDebut;
 	private Date dateFin;
+	private Date dateRendu;
 	private boolean retardCompte;
 
 	/**
@@ -29,11 +30,12 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */	
-	public Emprunt(Adherent adherent,Jeu jeu, Date dateDebut,Date dateFin, boolean retard) {
+	public Emprunt(Adherent adherent,Jeu jeu, Date dateDebut, Date dateFin, Date dateRendu, boolean retard) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
+		this.setDateRendu(dateRendu);
 		this.setRetard(retard);
 	}
 
@@ -51,11 +53,12 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */
-	public Emprunt(Adherent adherent, Extension extention, Date dateDebut,Date dateFin) {
+	public Emprunt(Adherent adherent, Extension extention, Date dateDebut,Date dateFin, Date dateRendu) {
 		this.setAdherent(adherent);
 		this.setExtension(extention);
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
+		this.setDateRendu(dateRendu);
 	}
 
 	/**
@@ -129,18 +132,6 @@ public class Emprunt {
 		this.retardCompte = retard;
 	}
 
-	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Date dateDebut, Date dateFin, boolean retard){
-		return new Emprunt(adh, jeu, dateDebut, dateFin, retard);
-	}
-
-	Emprunt emprunterExtension(Adherent adh, Extension extension, Date dateDebut, Date dateFin){
-		return new Emprunt(adh, extension, dateDebut, dateFin);
-	}
-
-	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Date dateDebut, Date dateFin){
-		return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
-	}
-
 	/**
 	 * Cette fonction permet d'ajouter 1 au nombre de retard deja effectue par l'adherent et modifie la variable disant que l'adherent est en retard pour ne pas compter plusieurs retard concernant un meme jeu
 	 */
@@ -188,5 +179,15 @@ public class Emprunt {
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
 		ajoutRetard();
+	}
+
+
+	public Date getDateRendu() {
+		return dateRendu;
+	}
+
+
+	public void setDateRendu(Date dateRendu) {
+		this.dateRendu = dateRendu;
 	}
 }
