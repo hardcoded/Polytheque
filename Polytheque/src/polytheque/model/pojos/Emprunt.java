@@ -1,6 +1,6 @@
 package polytheque.model.pojos;
 
-import java.util.Calendar;
+import java.sql.Date;
 
 /**
  * Classe permettant de reprÃ©senter un emprunt
@@ -12,8 +12,8 @@ public class Emprunt {
 	private Adherent adherent;
 	private Jeu jeu;
 	private Extension extention;
-	private Calendar dateDebut;
-	private Calendar dateFin;
+	private Date dateDebut;
+	private Date dateFin;
 	private boolean retardCompte;
 
 	/**
@@ -29,7 +29,7 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */	
-	public Emprunt(Adherent adherent,Jeu jeu, Calendar dateDebut,Calendar dateFin, boolean retard) {
+	public Emprunt(Adherent adherent,Jeu jeu, Date dateDebut,Date dateFin, boolean retard) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDateDebut(dateDebut);
@@ -51,7 +51,7 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */
-	public Emprunt(Adherent adherent, Extension extention, Calendar dateDebut,Calendar dateFin) {
+	public Emprunt(Adherent adherent, Extension extention, Date dateDebut,Date dateFin) {
 		this.setAdherent(adherent);
 		this.setExtension(extention);
 		this.setDateDebut(dateDebut);
@@ -73,7 +73,7 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */
-	public Emprunt(Adherent adherent,Jeu jeu, Extension extention, Calendar dateDebut,Calendar dateFin) {
+	public Emprunt(Adherent adherent,Jeu jeu, Extension extention, Date dateDebut,Date dateFin) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setExtension(extention);
@@ -105,19 +105,19 @@ public class Emprunt {
 		this.extention = extention;
 	}
 
-	public Calendar getDateDebut() {
+	public Date getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Calendar dateDebut) {
+	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Calendar getDateFin() {
+	public Date getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Calendar dateFin) {
+	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
 
@@ -129,15 +129,15 @@ public class Emprunt {
 		this.retardCompte = retard;
 	}
 
-	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Calendar dateDebut, Calendar dateFin, boolean retard){
+	Emprunt emprunterJeu(Adherent adh, Jeu jeu, Date dateDebut, Date dateFin, boolean retard){
 		return new Emprunt(adh, jeu, dateDebut, dateFin, retard);
 	}
 
-	Emprunt emprunterExtension(Adherent adh, Extension extension, Calendar dateDebut, Calendar dateFin){
+	Emprunt emprunterExtension(Adherent adh, Extension extension, Date dateDebut, Date dateFin){
 		return new Emprunt(adh, extension, dateDebut, dateFin);
 	}
 
-	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Calendar dateDebut, Calendar dateFin){
+	Emprunt emprunterJeuExtension(Adherent adh, Jeu jeu, Extension extension, Date dateDebut, Date dateFin){
 		return new Emprunt(adh, jeu, extension, dateDebut, dateFin);
 	}
 
@@ -158,7 +158,7 @@ public class Emprunt {
 	 */
 	public boolean estEnRetard(){
 		//Par defaut, date d'aujourd'hui
-		Calendar currentDate = Calendar.getInstance();
+		Date currentDate = new Date(new java.util.Date().getTime());
 		if(this.getDateFin().before(currentDate)){ 
 			return true;
 		}
@@ -178,17 +178,15 @@ public class Emprunt {
 	/**
 	 * 
 	 * @param e
-	 * Permet de dire qu'un emprunt est ramené et donc de remettre les valeurs de l'emprunt à leurs états initiaux
+	 * Permet de dire qu'un emprunt est ramenï¿½ et donc de remettre les valeurs de l'emprunt ï¿½ leurs ï¿½tats initiaux
 	 */
 	public void annulerEmprunt(){
-		//vérifier le nombre d'extension emprunter par l'adhérent
-		//vérifier que l'adhérent à tout ramener
+		//vï¿½rifier le nombre d'extension emprunter par l'adhï¿½rent
+		//vï¿½rifier que l'adhï¿½rent ï¿½ tout ramener
 		this.adherent.setPeutEmprunter(true);
 		this.jeu.setDisponibilite(true);
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
 		ajoutRetard();
 	}
-
-
 }
