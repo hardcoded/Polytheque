@@ -17,7 +17,7 @@ public class EditeurJeuDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			String editeur = null;
 			if (resSet.next()) { // On se place sur le 1er résultat
-				editeur = resSet.getString("nom");
+				editeur = resSet.getString("nom_editeur");
 			}
 			super.disconnect();
 			return editeur;
