@@ -80,8 +80,8 @@ public class EmpruntDAO extends DAO
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE EMPRUNT "
 					+ "SET date_debut = ?, date_fin = ?, date_rendu = ?, id_reservation = ?, id_adherent = ?, id_jeu = ?, id_extension = ?)" + " WHERE id_emprunt = ?");
 			psUpdate.setDate(1, emprunt.getDateDebut());
-			psUpdate.setDate(2, emprunt.getDateFin);
-			psUpdate.setDate(3, emprunt.getDateRendu);
+			psUpdate.setDate(2, emprunt.getDateFin());
+			psUpdate.setDate(3, emprunt.getDateRendu());
 			psUpdate.setInt(4, idReservation);
 			psUpdate.setInt(5, idAdherent);
 			psUpdate.setInt(6, idJeu);
@@ -113,7 +113,7 @@ public class EmpruntDAO extends DAO
 			ResultSet resSet = psSelect.getResultSet();
 			Emprunt emprunt = null; 
 			if (resSet.next()) { // On se place sur le 1er résultat
-				emprunt = new Emprunt(idEmprunt, resSet.getDate(1), resSet.getDate(2), resSet.getDate(3), resSet.getInt(4), resSet.getInt(5), resSet.getInt(6), resSet.getInt(7));
+				emprunt = new Emprunt(idEmprunt, resSet.getDate("date_debut"), resSet.getDate("date_fin"), resSet.getDate("date_rendu"), resSet.getInt("id_adherent"));
 			}
 			super.disconnect();
 			return emprunt;
