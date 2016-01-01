@@ -3,6 +3,8 @@ package polytheque.model.pojos;
 import java.sql.Date;
 import java.util.Calendar;
 
+import polytheque.model.DAO.AdherentDAO;
+
 /**
  * Classe permettant la r�servation d'un jeu
  * 
@@ -14,6 +16,7 @@ public class Reservation {
 	private Date date;
 	private Adherent adherent;
 	private Jeu jeu;
+	private AdherentDAO adherentDAO;
 
 	/**
 	 * Constructeur de la classe Reservation
@@ -26,6 +29,34 @@ public class Reservation {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDate(date);
+	}
+	
+	/**
+	 * Constructeur de la classe Reservation
+	 *  
+	 * @param adherent
+	 * @param jeu
+	 * @param date
+	 */
+	public Reservation(int id, Adherent adherent,Jeu jeu, Date date) {
+		this.setIdReservation(id);
+		this.setAdherent(adherent);
+		this.setJeu(jeu);
+		this.setDate(date);
+	}
+	
+	/**
+	 * Constructeur de la classe Reservation
+	 *  
+	 * @param adherent
+	 * @param jeu
+	 * @param date
+	 */
+	public Reservation(int id, Date date, int idAdherent) {
+		this.adherentDAO = new AdherentDAO();
+		this.setIdReservation(id);
+		this.setDate(date);
+		this.setAdherent(adherentDAO.retreive(idAdherent));
 	}
 
 	/**
