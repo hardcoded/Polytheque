@@ -1,5 +1,6 @@
 package polytheque.model.pojos;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Calendar;
 public class Reservation {
 
 	private int idReservation;
-	private Calendar date;
+	private Date date;
 	private Adherent adherent;
 	private Jeu jeu;
 
@@ -21,7 +22,7 @@ public class Reservation {
 	 * @param jeu
 	 * @param date
 	 */
-	public Reservation(Adherent adherent,Jeu jeu, Calendar date) {
+	public Reservation(Adherent adherent,Jeu jeu, Date date) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDate(date);
@@ -47,11 +48,11 @@ public class Reservation {
 		this.jeu = jeu;
 	}
 
-	public Calendar getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 
-	public void setDate(Calendar date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -62,9 +63,9 @@ public class Reservation {
 	 */
 
 	Emprunt validerReservation(){
-		Calendar dateFin = this.getDate();
-		dateFin.add(Calendar.DAY_OF_MONTH, 21);
-		Emprunt emprunt = new Emprunt (this.adherent, this.jeu, this.date, dateFin, false);
+		Date dateFin = this.getDate();
+		//TODO trouver moyen de fixer la date de fin à 3 semaines plus tard (= 21 jours)
+		Emprunt emprunt = new Emprunt (this.getAdherent(), this.getJeu(), this.getDate(), dateFin, null);
 		return emprunt;
 	}
 

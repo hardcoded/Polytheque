@@ -31,13 +31,12 @@ public class Emprunt {
 	 * @param dateFin
 	 * 				la date de fin de l'emprunt
 	 */	
-	public Emprunt(Adherent adherent,Jeu jeu, Date dateDebut, Date dateFin, Date dateRendu, boolean retard) {
+	public Emprunt(Adherent adherent,Jeu jeu, Date dateDebut, Date dateFin, Date dateRendu) {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
 		this.setDateRendu(dateRendu);
-		this.setRetard(retard);
 	}
 
 
