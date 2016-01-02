@@ -141,5 +141,26 @@ public class AdherentDAO extends DAO {
 			e.printStackTrace();
 			return null;
 		}
-	}	
+	}
+	
+	public boolean connectionAuthorized(String userName, String password) {
+		boolean isAuthorized = false;
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE pseudo = ? AND mdp = ?");
+			psSelect.setString(1, userName);
+			psSelect.setString(2, password);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			if (resSet.next()) {
+				isAuthorized = true;
+			}
+			super.disconnect();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return isAuthorized;
+	}
 }
