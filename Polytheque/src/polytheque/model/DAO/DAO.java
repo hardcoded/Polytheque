@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.XMLConfiguration;
-
 /**
  * Classe abstraite permettant de gérer la connexion à la base de données (BDD)
  * 
@@ -19,22 +16,22 @@ public abstract class DAO {
 	/**
 	 * Pilote JDBC à utiliser pour se connecter à la BDD (ici mySQL)
 	 */
-	private String driver;
+	private final static String DRIVER = "com.mysql.jdbc.Driver";
 
 	/**
 	 * URL utilisée par JDBC pour accéder à la BDD
 	 */
-	private String url;
+	private final static String URL = "jdbc:mysql://localhost:3306/polytheque";
 
 	/**
 	 * Nom d'utilisateur à utiliser pour se connecter à la BDD
 	 */
-	private String username;
+	private final static String USER_NAME = "root";
 
 	/**
 	 * Mot de passe pour se connecter à la BDD
 	 */
-	private String password;
+	private final static String PASSWORD = "";
 
 	/**
 	 * Attribut représentant la connexion à la BDD.
@@ -46,17 +43,11 @@ public abstract class DAO {
 	 * </ul>
 	 */
 
-
-	/**
-	 * Fichier de configuration au format XML
-	 */
+	/*
 	private static final String CONFIG_FILE = "config.xml";
-
-	/**
-	 * Attribut pour la lecture de la configuration dans le fichier config.xml
-	 */
 	private XMLConfiguration configReader;
-
+	*/
+	
 	/**
 	 * Vérifie si le pilote JDBC spécifié existe bien dans l'application
 	 * 
@@ -67,7 +58,7 @@ public abstract class DAO {
 	 */
 	public boolean checkDriver() {
 		try {
-			Class.forName(driver);
+			Class.forName(DRIVER);
 			return true;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -82,7 +73,7 @@ public abstract class DAO {
 	protected void connect() {
 		try {
 			if (connection == null || connection.isClosed()) {
-				connection = DriverManager.getConnection(url, username, password);
+				connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,10 +92,8 @@ public abstract class DAO {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * Lecture de la configuration liée à la base de données dans le fichier XML
-	 */
+	
+	/*
 	public void readConfig() {
 		try {
 			configReader = new XMLConfiguration(CONFIG_FILE);
@@ -115,5 +104,5 @@ public abstract class DAO {
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 }
