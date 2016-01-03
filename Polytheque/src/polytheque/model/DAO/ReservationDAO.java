@@ -3,20 +3,19 @@ package polytheque.model.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 
 import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {
 
-	
+
 	public boolean create(Reservation reservation, int idAdherent, int idJeu, int idJextension) {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
 					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension)"
 					+ "VALUES (?, ?, ?, ?)"); 
-			
+
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
 			psInsert.setInt(3, idJeu);
@@ -39,7 +38,7 @@ public class ReservationDAO extends DAO {
 		}
 	}
 
-	
+
 	public boolean delete(int id) {
 		try {
 			super.connect();
@@ -68,11 +67,11 @@ public class ReservationDAO extends DAO {
 			psUpdate.setInt(3, idJeu);
 			psUpdate.setInt(4, idJextension);
 			psUpdate.setInt(5, idReservation);
-		
-			
+
+
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
-			
+
 			super.disconnect();
 			return true;
 		} catch (SQLException e) {

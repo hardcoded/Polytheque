@@ -19,17 +19,17 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 	 * La largeur.
 	 */
 	private static final int LARGEUR = 2;
-	
+
 	/**
 	 * La hauteur.
 	 */
 	private static final int HAUTEUR = 2;
-	
+
 	/**
 	 * Un bouton.
 	 */
 	private JButton boutonAfficherListeJeux;
-	
+
 	/**
 	 * Un bouton.
 	 */
@@ -39,18 +39,18 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 	 * Un bouton.
 	 */
 	private JButton boutonEffectuerReservation;
-	
+
 	/**
 	 * Un bouton.
 	 */
 	private JButton boutonConsulterReservations;
-	
+
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
 	@SuppressWarnings("unused")
 	private TacheDAffichage tacheDAffichageDeLApplication;
-	
+
 	/**
 	 * Création de la page d'accueil.
 	 * 
@@ -59,58 +59,58 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 	 */
 	public AdherentHomePage(TacheDAffichage afficheAppli){
 		this.tacheDAffichageDeLApplication = afficheAppli;
-		
+
 		ajouterLesBoutons();
 	}
-	
+
 	/**
 	 * Ajouter les boutons dans la this.
 	 */
 	private void ajouterLesBoutons() {
 		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
-		
+
 		this.boutonAfficherListeJeux = new JButton("Afficher la liste des jeux");
 		this.boutonAfficherListeJeux.setFocusable(false);
 		this.boutonAfficherListeJeux.addActionListener(this);
 		this.add(this.boutonAfficherListeJeux);
-		
+
 		this.boutonModifierInfos = new JButton("Modifier mes informations");
 		this.boutonModifierInfos.setFocusable(false);
 		this.boutonModifierInfos.addActionListener(this);
 		this.add(this.boutonModifierInfos);
-		
+
 		this.boutonEffectuerReservation = new JButton("Effectuer une réservation");
 		this.boutonEffectuerReservation.setFocusable(false);
 		this.boutonEffectuerReservation.addActionListener(this);
 		this.add(this.boutonEffectuerReservation);
-		
+
 		this.boutonConsulterReservations = new JButton("Consulter mes réservations");
 		this.boutonConsulterReservations.setFocusable(false);
 		this.boutonConsulterReservations.addActionListener(this);
 		this.add(this.boutonConsulterReservations);
-		
+
 		this.updateUI();
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
-		
+
 		if (boutonSelectionne == this.boutonAfficherListeJeux)
 		{
 			return;
 		}
-		
+
 		if (boutonSelectionne == this.boutonModifierInfos)
 		{
 			return;
 		}
-		
+
 		if (boutonSelectionne == this.boutonConsulterReservations)
 		{
 			return;
 		}
-		
+
 		return;
 	}
 }

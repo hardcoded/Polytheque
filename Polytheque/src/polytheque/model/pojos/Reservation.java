@@ -1,7 +1,6 @@
 package polytheque.model.pojos;
 
 import java.sql.Date;
-import java.util.Calendar;
 
 import polytheque.model.DAO.AdherentDAO;
 
@@ -30,7 +29,7 @@ public class Reservation {
 		this.setJeu(jeu);
 		this.setDate(date);
 	}
-	
+
 	/**
 	 * Constructeur de la classe Reservation
 	 *  
@@ -44,7 +43,7 @@ public class Reservation {
 		this.setJeu(jeu);
 		this.setDate(date);
 	}
-	
+
 	/**
 	 * Constructeur de la classe Reservation
 	 *  

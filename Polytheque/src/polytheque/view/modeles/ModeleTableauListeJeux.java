@@ -16,12 +16,12 @@ public class ModeleTableauListeJeux extends AbstractTableModel
 	 * Les données des cellules.
 	 */
 	private Object[][] donnees;
-	
+
 	/**
 	 * Les titres des colonnes.
 	 */
 	private String[] libelles;
-	
+
 	/**
 	 * Création d'un modèle de tableau.
 	 * 
@@ -35,37 +35,37 @@ public class ModeleTableauListeJeux extends AbstractTableModel
 		this.donnees = donnees;
 		this.libelles = libelles;
 	}
-	
+
 	@Override
 	public int getColumnCount()
 	{
 		return this.libelles.length;
 	}
-	
+
 	@Override
 	public int getRowCount()
 	{
 		return this.donnees.length;
 	}
-	
+
 	@Override
 	public Object getValueAt(int row, int col)
 	{
 		return this.donnees[row][col];
 	}
-	
+
 	@Override
 	public String getColumnName(int col)
 	{
 		return this.libelles[col];
 	}
-	
+
 	@Override
 	public Class getColumnClass(int col)
 	{
 		return this.donnees[0][col].getClass();
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int row, int col)
 	{

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EditeurJeuDAO extends DAO {
-	
+
 	public String retreiveEditeur(int idEditeur) {
 		try {
 			super.connect();
@@ -25,5 +25,5 @@ public class EditeurJeuDAO extends DAO {
 			e.printStackTrace();
 			return null;
 		} 
-}
+	}
 }

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategorieJeuDAO extends DAO {
-	
+
 	public String retreiveCategorie(int idCategorie) {
 		try {
 			super.connect();
@@ -25,5 +25,5 @@ public class CategorieJeuDAO extends DAO {
 			e.printStackTrace();
 			return null;
 		}
-} 
+	} 
 }
