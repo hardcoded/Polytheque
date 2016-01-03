@@ -163,4 +163,34 @@ public class AdherentDAO extends DAO {
 		}
 		return isAuthorized;
 	}
+	
+	/**
+	 * Obtient la colonne définissant si un adhérent est ou non un
+	 * administrateur
+	 * 
+	 * @param memberID
+	 *            L'identifiant d'un adhérent existant
+	 * @return La valeur de la colonne définissant si l'adhérent est administrateur
+	 */
+	public boolean isAdmin(String pseudo) {
+		boolean isAdmin = false;
+		try {
+			super.connect();
+
+			PreparedStatement psSelect = connection.prepareStatement("SELECT admin FROM ADHERENT WHERE pseudo = ?");
+			psSelect.setString(1, pseudo);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resultSet = psSelect.getResultSet();
+			if (resultSet.next()) {
+				isAdmin = resultSet.getBoolean("admin");
+			}
+
+			super.disconnect();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return isAdmin;
+	}
 }
