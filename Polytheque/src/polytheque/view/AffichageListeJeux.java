@@ -111,7 +111,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		buttonsPanel.add(boutonModifierJeu);
 		buttonsPanel.add(boutonSupprimerJeu);
 
-		this.updateUI();
+		this.add(buttonsPanel);
 	}
 
 	@Override

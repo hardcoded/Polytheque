@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -98,17 +99,22 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonAfficherListeJeux)
 		{
-			return;
+			this.tacheDAffichageDeLApplication.afficherListeJeux();
 		}
 
 		if (boutonSelectionne == this.boutonModifierInfos)
 		{
-			return;
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 		}
-
+		
+		if (boutonSelectionne == this.boutonEffectuerReservation)
+		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 		if (boutonSelectionne == this.boutonConsulterReservations)
 		{
-			return;
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		return;
