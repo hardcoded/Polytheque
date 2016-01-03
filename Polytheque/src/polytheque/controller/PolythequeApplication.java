@@ -37,4 +37,11 @@ public class PolythequeApplication {
 		}
 		return false;
 	}
+	
+	public boolean checkAdmin(String userName) {
+		if(this.adherentDAO.isAdmin(userName)) {
+			return true;
+		}
+		return false;
+	}
 }

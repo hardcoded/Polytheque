@@ -184,7 +184,9 @@ public class AdherentDAO extends DAO {
 
 			ResultSet resultSet = psSelect.getResultSet();
 			if (resultSet.next()) {
-				isAdmin = resultSet.getBoolean("admin");
+				if(resultSet.getBoolean("admin")) {
+					isAdmin = true;
+				}
 			}
 
 			super.disconnect();

@@ -79,7 +79,7 @@ public class EcranConnexion extends JPanel implements ActionListener {
 				this.tacheDAffichageDeLApplication.afficherEcranConnexion();
 			}
 			else {
-				if (this.userName.getText().equals("admin")) {
+				if (this.tacheDAffichageDeLApplication.adherentAdmin(this.userName.getText())) {
 					this.tacheDAffichageDeLApplication.afficherAccueilAdmin();
 				}
 				else {

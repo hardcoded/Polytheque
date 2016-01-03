@@ -112,6 +112,9 @@ public class TacheDAffichage extends JFrame {
 	}
 
 	public boolean adherentAdmin(String userName) {
+		if (this.polythequeApplication.checkAdmin(userName)) {
+			return true;
+		}
 		return false;
 	}
 
