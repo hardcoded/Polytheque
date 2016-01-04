@@ -55,4 +55,8 @@ public class PolythequeApplication {
 	public ArrayList<Jeu> getGamesList() {
 		return this.jeuDAO.getAll();
 	}
+	
+	public ArrayList<Jeu> searchGames(String nomJeu) {
+		return this.jeuDAO.searchByName(nomJeu);
+	}
 }

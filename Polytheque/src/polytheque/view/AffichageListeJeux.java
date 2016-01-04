@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
@@ -18,10 +20,10 @@ import polytheque.view.modeles.ModeleTableauListeJeux;
 public class AffichageListeJeux extends JPanel implements ActionListener {
 
 
-	public final static int LONGUEUR_COLONNE_0 = 100;
+	public final static int LONGUEUR_COLONNE_0 = 200;
 	public final static int LONGUEUR_COLONNE_1 = 200;
 	public final static int LONGUEUR_COLONNE_2 = 50;
-	public final static int LONGUEUR_COLONNE_3 = 50;
+	public final static int LONGUEUR_COLONNE_3 = 100;
 	public final static int LONGUEUR_COLONNE_4 = 50;
 	public final static int LONGUEUR_COLONNE_5 = 50;
 	public final static int LONGUEUR_COLONNE_6 = 50;
@@ -47,11 +49,12 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private JButton boutonAjouterJeu;
 	private JButton boutonModifierJeu;
-	private JButton boutonSupprimerJeu;
-	
-	private JButton boutonReserverJeu;
-	
+	private JButton boutonSupprimerJeu;	
+	private JButton boutonReserverJeu;	
 	private JButton boutonRetourAccueil;
+	private JButton boutonRecherche;
+	
+	private JTextField searchContent;
 
 	/**
 	 * Une tache d'affichage de l'application.
@@ -61,6 +64,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public AffichageListeJeux(TacheDAffichage afficheAppli, ArrayList<Jeu> listeJeux) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 
+		creerPanneauRecherche();
 		creerTableau(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
@@ -165,6 +169,27 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.add(buttonsPanel);
 	}
+	
+	/**
+	 * Panneau de recherche
+	 */
+	private void creerPanneauRecherche() {
+		JPanel searchPanel = new JPanel();
+
+		JLabel labelSearch = new JLabel("Recherche par nom :");
+		labelSearch.setBounds(0, 150, 100, 30);
+		searchPanel.add(labelSearch);
+		this.searchContent = new JTextField();
+		this.searchContent.setBounds(100, 150, 100, 30);
+		this.searchContent.setColumns(10);
+		searchPanel.add(this.searchContent);
+		
+		this.boutonRecherche = new JButton("Rechercher");
+		this.boutonRecherche.addActionListener(this);
+		searchPanel.add(boutonRecherche);
+
+		this.add(searchPanel);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -197,6 +222,12 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		if (boutonSelectionne == this.boutonRetourAccueil)
 		{
 			this.tacheDAffichageDeLApplication.afficherAccueil();
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonRecherche)
+		{
+			this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText());;
 			return;
 		}
 		return;

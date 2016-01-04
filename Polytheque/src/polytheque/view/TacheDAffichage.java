@@ -122,6 +122,12 @@ public class TacheDAffichage extends JFrame {
 		this.add(new AffichageListeJeux(this, this.polythequeApplication.getGamesList()));
 		this.rafraichirFenetre();
 	}
+	
+	public void rechercherJeux(String nomJeu) {
+		this.viderFenetre();
+		this.add(new AffichageListeJeux(this, this.polythequeApplication.searchGames(nomJeu)));
+		this.rafraichirFenetre();
+	}
 
 	/**
 	 * Afficher une fenetre de dialogue.
