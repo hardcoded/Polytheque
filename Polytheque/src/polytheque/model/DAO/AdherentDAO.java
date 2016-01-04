@@ -120,6 +120,7 @@ public class AdherentDAO extends DAO {
 	 * @return adherent
 	 */
 	public Adherent retreive(int id) {
+		Adherent adherent = null;
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE id_adherent = ?");
@@ -128,7 +129,6 @@ public class AdherentDAO extends DAO {
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
-			Adherent adherent = null;
 			if (resSet.next()) {
 				adherent = new Adherent(id, resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
 						resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
@@ -136,18 +136,17 @@ public class AdherentDAO extends DAO {
 						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
 			}
 			super.disconnect();
-			return adherent;
 		} catch(SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
+		return adherent;
 	}
 
-	public boolean connectionAuthorized(String userName, String password) {
-		boolean isAuthorized = false;
+	public Adherent connectionAuthorized(String userName, String password) {
+		Adherent adherent = null;
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE pseudo = ? AND mdp = ?");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE pseudo = ?, mdp = ?");
 			psSelect.setString(1, userName);
 			psSelect.setString(2, password);
 			psSelect.execute();
@@ -155,13 +154,16 @@ public class AdherentDAO extends DAO {
 
 			ResultSet resSet = psSelect.getResultSet();
 			if (resSet.next()) {
-				isAuthorized = true;
+				adherent = new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
+						resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
+						resSet.getString("pseudo"), resSet.getString("mdp"), resSet.getBoolean(12), 
+						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
 			}
 			super.disconnect();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return isAuthorized;
+		return adherent;
 	}
 
 	/**
