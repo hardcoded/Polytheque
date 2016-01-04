@@ -144,9 +144,7 @@ public class JeuDAO extends DAO {
 	
 	/**
 	 * Methode de recuperation des jeux
-	 * @param id
-	 * 			L'id du jeu à récupérer dans la BDD
-	 * @return Un jeu
+	 * @return La liste de tous les jeux
 	 */
 	public List<Jeu> getAll() {
 		List<Jeu> tousLesJeux = new ArrayList<>();
@@ -170,6 +168,40 @@ public class JeuDAO extends DAO {
 			e.printStackTrace();
 		}
 		return tousLesJeux;
+	}
+	
+	/**
+	 * Methode de recherche de jeu(x)
+	 * @param nomJeu
+	 * 			Le nom du jeu à récupérer dans la BDD
+	 * @return Un jeu
+	 */
+	public List<Jeu> search(String nomJeu) {
+		List<Jeu> jeuxFiltres = new ArrayList<>();
+		String filtre = nomJeu + "%";
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur"
+					+ "FROM JEU"
+					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie"
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur"
+					+ "WHERE nom CONTAINS ?");
+			psSelect.setString(1, filtre);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			while (resSet.next()) { // On se place sur le 1er résultat
+				jeuxFiltres.add(new Jeu(resSet.getInt("id"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs"), 
+						resSet.getString("nom_categorie"), resSet.getString("nom_editeur")));
+			}
+			super.disconnect();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return jeuxFiltres;
 	}
 }
 
