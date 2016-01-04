@@ -119,7 +119,7 @@ public class TacheDAffichage extends JFrame {
 
 	public void afficherListeJeux() {
 		this.viderFenetre();
-		this.add(new AffichageListeJeux(this));
+		this.add(new AffichageListeJeux(this, this.polythequeApplication.getGamesList()));
 		this.rafraichirFenetre();
 	}
 

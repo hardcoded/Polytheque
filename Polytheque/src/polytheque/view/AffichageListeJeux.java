@@ -3,6 +3,7 @@ package polytheque.view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
 @SuppressWarnings("serial")
@@ -29,6 +31,11 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 * Hauteur des lignes.
 	 */
 	public final static int HAUTEUR_DES_LIGNES = 35;
+	
+	/**
+	 * Nombre de colonnes du tableau.
+	 */
+	public final static int NOMBRE_COLONNES = 8;
 
 	/**
 	 * Les libellés des entêtes.
@@ -51,10 +58,10 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
-	public AffichageListeJeux(TacheDAffichage afficheAppli) {
+	public AffichageListeJeux(TacheDAffichage afficheAppli, ArrayList<Jeu> listeJeux) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 
-		creerTableau();
+		creerTableau(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
 		}
@@ -63,16 +70,9 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		}
 	}
 
-	public void creerTableau() {
+	public void creerTableau(ArrayList<Jeu> listeJeux) {
 
-		Object[][] donnees = {
-				{"Nom1", "TEST", "2015", "OK", "3 ans", "2 pers.", "Aventure", ""},
-				{"Nom2", "test", "1995", "Abime", "8 ans", "2 pers.", "Action", "Moi"},
-				{"Nom3", "Description", "2001", "OK", "12 ans", "4 pers.", "", "Lui"},
-				{"Nom4", "Jeu de société", "2012", "OK", "3 ans", "6 pers.", "Societe", "Toi"},
-		};
-
-		JTable tableau = new JTable(new ModeleTableauListeJeux(donnees, LIBELLES));
+		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
 
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
@@ -91,6 +91,35 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.add(new JScrollPane(tableau), BorderLayout.CENTER);
 
 		this.add(tableau);
+	}
+	
+	/**
+	 * Initialiser les données du tableau.
+	 * 
+	 * @param tachesARealiser
+	 *            Une collection de taches à réaliser.
+	 * @return Un tableau d'objets.
+	 */
+	private static Object[][] initialiserDonnees(ArrayList<Jeu> listeJeux)
+	{
+		Object[][] donnees = new Object[listeJeux.size()][NOMBRE_COLONNES];
+		
+		int index = 0;
+		
+		for (Jeu jeuCourant : listeJeux)
+		{
+			donnees[index][0] = jeuCourant.getNom();
+			donnees[index][1] = jeuCourant.getDescription();
+			donnees[index][2] = jeuCourant.getAnneeParution();
+			donnees[index][3] = jeuCourant.getStatut();
+			donnees[index][4] = jeuCourant.getAgeMini();
+			donnees[index][5] = jeuCourant.getNbJoueurs();
+			donnees[index][6] = jeuCourant.getCategorie();
+			donnees[index][7] = jeuCourant.getEditeur();
+			index++;
+		}
+		
+		return donnees;
 	}
 
 	/**

@@ -1,5 +1,7 @@
 package polytheque.controller;
 
+import java.util.ArrayList;
+
 import polytheque.model.DAO.AdherentDAO;
 import polytheque.model.DAO.CategorieJeuDAO;
 import polytheque.model.DAO.EditeurJeuDAO;
@@ -7,6 +9,7 @@ import polytheque.model.DAO.EmpruntDAO;
 import polytheque.model.DAO.JeuDAO;
 import polytheque.model.DAO.ReservationDAO;
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Jeu;
 import polytheque.view.TacheDAffichage;
 
 public class PolythequeApplication {
@@ -47,5 +50,9 @@ public class PolythequeApplication {
 			return true;
 		}
 		return false;
+	}
+	
+	public ArrayList<Jeu> getGamesList() {
+		return this.jeuDAO.getAll();
 	}
 }

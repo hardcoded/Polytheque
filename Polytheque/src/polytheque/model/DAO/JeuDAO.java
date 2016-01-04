@@ -146,8 +146,8 @@ public class JeuDAO extends DAO {
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux
 	 */
-	public List<Jeu> getAll() {
-		List<Jeu> tousLesJeux = new ArrayList<>();
+	public ArrayList<Jeu> getAll() {
+		ArrayList<Jeu> tousLesJeux = new ArrayList<>();
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU"
