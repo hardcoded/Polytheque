@@ -6,6 +6,7 @@ import polytheque.model.DAO.EditeurJeuDAO;
 import polytheque.model.DAO.EmpruntDAO;
 import polytheque.model.DAO.JeuDAO;
 import polytheque.model.DAO.ReservationDAO;
+import polytheque.model.pojos.Adherent;
 import polytheque.view.TacheDAffichage;
 
 public class PolythequeApplication {
@@ -17,6 +18,8 @@ public class PolythequeApplication {
 	private ReservationDAO reservationDAO;
 	private EmpruntDAO empruntDAO;
 	private TacheDAffichage tacheDAffichageDeLApplication;
+	
+	private Adherent adherentCourant;
 
 	public PolythequeApplication(){
 		this.adherentDAO = new AdherentDAO();
@@ -32,14 +35,15 @@ public class PolythequeApplication {
 	}
 
 	public boolean checkConnexion(String userName, String password) {
-		if(this.adherentDAO.connectionAuthorized(userName, password)) {
+		if(this.adherentDAO.connectionAuthorized(userName, password) != null) {
+			this.adherentCourant = this.adherentDAO.retreive(this.adherentDAO.connectionAuthorized(userName, password).getIdAdherent());
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean checkAdmin(String userName) {
-		if(this.adherentDAO.isAdmin(userName)) {
+	public boolean checkAdmin() {
+		if(this.adherentDAO.isAdmin(this.adherentCourant.getPseudo())) {
 			return true;
 		}
 		return false;

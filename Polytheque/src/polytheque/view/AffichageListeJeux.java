@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -35,31 +36,31 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Nombre de joueurs mini", "Catégorie", "Editeur"};
 
 	/**
-	 * Un bouton.
+	 * Boutons.
 	 */
 	private JButton boutonAjouterJeu;
-
-	/**
-	 * Un bouton.
-	 */
 	private JButton boutonModifierJeu;
-
-	/**
-	 * Un bouton.
-	 */
 	private JButton boutonSupprimerJeu;
+	
+	private JButton boutonReserverJeu;
+	
+	private JButton boutonRetourAccueil;
 
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
-	@SuppressWarnings("unused")
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	public AffichageListeJeux(TacheDAffichage afficheAppli) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 
 		creerTableau();
-		ajouterLesBoutons();
+		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
+			ajouterBoutonsAdmin();
+		}
+		else {
+			ajouterBoutonsAdherent();
+		}
 	}
 
 	public void creerTableau() {
@@ -93,9 +94,9 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Ajouter les boutons dans la this.
+	 * Ajouter les boutons de l'administrateur.
 	 */
-	private void ajouterLesBoutons() {
+	private void ajouterBoutonsAdmin() {
 		JPanel buttonsPanel = new JPanel();
 
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
@@ -106,10 +107,32 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.boutonSupprimerJeu = new JButton("Supprimer un jeu");
 		this.boutonSupprimerJeu.addActionListener(this);
+		
+		this.boutonRetourAccueil = new JButton("Accueil");
+		this.boutonRetourAccueil.addActionListener(this);
 
 		buttonsPanel.add(boutonAjouterJeu);
 		buttonsPanel.add(boutonModifierJeu);
 		buttonsPanel.add(boutonSupprimerJeu);
+		buttonsPanel.add(boutonRetourAccueil);
+
+		this.add(buttonsPanel);
+	}
+	
+	/**
+	 * Ajouter les boutons dans la this.
+	 */
+	private void ajouterBoutonsAdherent() {
+		JPanel buttonsPanel = new JPanel();
+
+		this.boutonReserverJeu = new JButton("Réserver un jeu");
+		this.boutonReserverJeu.addActionListener(this);
+		
+		this.boutonRetourAccueil = new JButton("Accueil");
+		this.boutonRetourAccueil.addActionListener(this);
+
+		buttonsPanel.add(boutonReserverJeu);
+		buttonsPanel.add(boutonRetourAccueil);
 
 		this.add(buttonsPanel);
 	}
@@ -120,18 +143,34 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonAjouterJeu)
 		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonModifierJeu)
 		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerJeu)
 		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
+		
+		if (boutonSelectionne == this.boutonReserverJeu)
+		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+		
+		if (boutonSelectionne == this.boutonRetourAccueil)
+		{
+			this.tacheDAffichageDeLApplication.afficherAccueil();
+			return;
+		}
+		return;
 	}		
 }
 

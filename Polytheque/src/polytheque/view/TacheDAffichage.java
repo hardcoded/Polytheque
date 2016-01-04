@@ -90,15 +90,14 @@ public class TacheDAffichage extends JFrame {
 		this.rafraichirFenetre();
 	}
 
-	public void afficherAccueilAdmin() {
+	public void afficherAccueil() {
 		this.viderFenetre();
-		this.add(new AdminHomePage(this));
-		this.rafraichirFenetre();
-	}
-
-	public void afficherAccueilAdherent() {
-		this.viderFenetre();
-		this.add(new AdherentHomePage(this));
+		if (this.adherentAdmin()) {
+			this.add(new AdminHomePage(this));
+		}
+		else {
+			this.add(new AdherentHomePage(this));
+		}
 		this.rafraichirFenetre();
 	}
 
@@ -111,8 +110,8 @@ public class TacheDAffichage extends JFrame {
 		}
 	}
 
-	public boolean adherentAdmin(String userName) {
-		if (this.polythequeApplication.checkAdmin(userName)) {
+	public boolean adherentAdmin() {
+		if (this.polythequeApplication.checkAdmin()) {
 			return true;
 		}
 		return false;

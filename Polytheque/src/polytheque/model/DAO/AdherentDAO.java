@@ -146,7 +146,7 @@ public class AdherentDAO extends DAO {
 		Adherent adherent = null;
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE pseudo = ?, mdp = ?");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE pseudo = ? AND mdp = ?");
 			psSelect.setString(1, userName);
 			psSelect.setString(2, password);
 			psSelect.execute();

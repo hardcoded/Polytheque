@@ -75,7 +75,7 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 		this.boutonAfficherListeJeux.addActionListener(this);
 		this.add(this.boutonAfficherListeJeux);
 
-		this.boutonModifierInfos = new JButton("Modifier mes informations");
+		this.boutonModifierInfos = new JButton("Afficher mes informations");
 		this.boutonModifierInfos.setFocusable(false);
 		this.boutonModifierInfos.addActionListener(this);
 		this.add(this.boutonModifierInfos);
