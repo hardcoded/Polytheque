@@ -176,9 +176,9 @@ public class JeuDAO extends DAO {
 	 * 			Le nom du jeu à récupérer dans la BDD
 	 * @return Un jeu
 	 */
-	public List<Jeu> search(String nomJeu) {
+	public List<Jeu> searchByName(String nomJeu) {
 		List<Jeu> jeuxFiltres = new ArrayList<>();
-		String filtre = nomJeu + "%";
+		String filtre = "%" + nomJeu.toLowerCase() + "%";
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur"
