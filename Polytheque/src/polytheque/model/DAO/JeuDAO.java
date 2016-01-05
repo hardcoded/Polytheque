@@ -19,7 +19,7 @@ public class JeuDAO extends DAO {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
 					+ "JEU(nom, description, annee_parution, statut, nombre_exemplaires, nombre_reserves,"
-					+ "age_mini, nombre_joueurs, id_categorie, id_editeur)"
+					+ "age_mini, nb_joueurs_min, nb_joueurs_max,id_categorie, id_editeur)"
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, jeu.getNom());
@@ -29,9 +29,10 @@ public class JeuDAO extends DAO {
 			psInsert.setInt(5, jeu.getNbExemplaires());
 			psInsert.setInt(6, jeu.getNbReserves());
 			psInsert.setInt(7, jeu.getAgeMini());
-			psInsert.setInt(8, jeu.getNbJoueurs());
-			psInsert.setInt(9, idCategorie);
-			psInsert.setInt(10, idEditeur);
+			psInsert.setInt(8, jeu.getNbJoueursMin());
+			psInsert.setInt(9, jeu.getNbJoueursMax());
+			psInsert.setInt(10, idCategorie);
+			psInsert.setInt(11, idEditeur);
 
 			psInsert.executeUpdate();
 			psInsert.closeOnCompletion();
@@ -83,7 +84,7 @@ public class JeuDAO extends DAO {
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU "
 					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?,"
-					+ "nombre_reserves = ?, age_mini = ?, nombre_joueurs = ?, id_categorie = ?, id_editeur = ?)" 
+					+ "nombre_reserves = ?, age_mini = ?, nb_joueurs_min = ?, nb_joueurs_max = ?, id_categorie = ?, id_editeur = ?)" 
 					+ " WHERE id_jeu = ?");
 			psUpdate.setString(1, jeu.getNom());
 			psUpdate.setString(2, jeu.getDescription());
@@ -92,10 +93,11 @@ public class JeuDAO extends DAO {
 			psUpdate.setInt(5, jeu.getNbExemplaires());
 			psUpdate.setInt(6, jeu.getNbReserves());
 			psUpdate.setInt(7, jeu.getAgeMini());
-			psUpdate.setInt(8, jeu.getNbJoueurs());
-			psUpdate.setInt(9, idCategorie);
-			psUpdate.setInt(10, idEditeur);
-			psUpdate.setInt(11, jeu.getIdJeu());
+			psUpdate.setInt(8, jeu.getNbJoueursMin());
+			psUpdate.setInt(9, jeu.getNbJoueursMax());
+			psUpdate.setInt(10, idCategorie);
+			psUpdate.setInt(11, idEditeur);
+			psUpdate.setInt(12, jeu.getIdJeu());
 
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
@@ -130,7 +132,7 @@ public class JeuDAO extends DAO {
 			Jeu jeu = null;
 			if (resSet.next()) { // On se place sur le 1er résultat
 				jeu = new Jeu(id, resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nombre_joueurs"), 
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
 						resSet.getString("nom_categorie"), resSet.getString("nom_editeur"));
 			}
 			super.disconnect();
@@ -159,7 +161,7 @@ public class JeuDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
 				tousLesJeux.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nombre_joueurs"), 
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
 						resSet.getString("nom_categorie"), resSet.getString("nom_editeur")));
 			}
 			super.disconnect();
@@ -193,7 +195,7 @@ public class JeuDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
 				jeuxFiltres.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nombre_joueurs"), 
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
 						resSet.getString("nom_categorie"), resSet.getString("nom_editeur")));
 			}
 			super.disconnect();

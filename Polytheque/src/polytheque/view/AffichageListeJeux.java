@@ -37,12 +37,12 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	/**
 	 * Nombre de colonnes du tableau.
 	 */
-	public final static int NOMBRE_COLONNES = 8;
+	public final static int NOMBRE_COLONNES = 9;
 
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Nombre de joueurs mini", "Catégorie", "Editeur"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Nombre de joueurs min", "Nombre de joueurs max", "Catégorie", "Editeur"};
 
 	/**
 	 * Boutons.
@@ -74,6 +74,27 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		}
 	}
 
+	/**
+	 * Panneau de recherche
+	 */
+	private void creerPanneauRecherche() {
+		JPanel searchPanel = new JPanel();
+
+		JLabel labelSearch = new JLabel("Recherche par nom :");
+		labelSearch.setBounds(0, 150, 100, 30);
+		searchPanel.add(labelSearch);
+		this.searchContent = new JTextField();
+		this.searchContent.setBounds(100, 150, 100, 30);
+		this.searchContent.setColumns(10);
+		searchPanel.add(this.searchContent);
+		
+		this.boutonRecherche = new JButton("Rechercher");
+		this.boutonRecherche.addActionListener(this);
+		searchPanel.add(boutonRecherche);
+
+		this.add(searchPanel);
+	}
+	
 	public void creerTableau(ArrayList<Jeu> listeJeux) {
 
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
@@ -116,12 +137,12 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 			donnees[index][2] = jeuCourant.getAnneeParution();
 			donnees[index][3] = jeuCourant.getStatut();
 			donnees[index][4] = jeuCourant.getAgeMini();
-			donnees[index][5] = jeuCourant.getNbJoueurs();
-			donnees[index][6] = jeuCourant.getCategorie();
-			donnees[index][7] = jeuCourant.getEditeur();
+			donnees[index][5] = jeuCourant.getNbJoueursMin();
+			donnees[index][6] = jeuCourant.getNbJoueursMax();
+			donnees[index][7] = jeuCourant.getCategorie();
+			donnees[index][8] = jeuCourant.getEditeur();
 			index++;
-		}
-		
+		}		
 		return donnees;
 	}
 
@@ -167,27 +188,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		buttonsPanel.add(boutonRetourAccueil);
 
 		this.add(buttonsPanel);
-	}
-	
-	/**
-	 * Panneau de recherche
-	 */
-	private void creerPanneauRecherche() {
-		JPanel searchPanel = new JPanel();
-
-		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(0, 150, 100, 30);
-		searchPanel.add(labelSearch);
-		this.searchContent = new JTextField();
-		this.searchContent.setBounds(100, 150, 100, 30);
-		this.searchContent.setColumns(10);
-		searchPanel.add(this.searchContent);
-		
-		this.boutonRecherche = new JButton("Rechercher");
-		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche);
-
-		this.add(searchPanel);
 	}
 
 	@Override

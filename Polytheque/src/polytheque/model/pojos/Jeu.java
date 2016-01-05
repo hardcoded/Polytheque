@@ -12,7 +12,8 @@ public class Jeu {
 	private String anneeParution;
 	private int nbExemplaires;
 	private int nbReserves;
-	private int nbJoueurs;
+	private int nbJoueursMin;
+	private int nbJoueursMax;
 	private String categorie;
 	private String editeur;
 
@@ -43,7 +44,7 @@ public class Jeu {
 	 * 		L'éditeur du jeu
 	 */
 	public Jeu(int id, String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
-			int ageMini, int nbJoueurs, String categorie, String editeur) {
+			int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
 		this.setIdJeu(id);
 		this.setNom(nom);
 		this.setDescription(description);
@@ -52,7 +53,8 @@ public class Jeu {
 		this.setAgeMini(ageMini);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
-		this.setNbJoueurs(nbJoueurs);
+		this.setNbJoueursMin(nbJoueursMin);
+		this.setNbJoueursMax(nbJoueursMax);
 		this.setCategorie(categorie);
 		this.setEditeur(editeur);
 	}
@@ -82,7 +84,7 @@ public class Jeu {
 	 * 		L'éditeur du jeu
 	 */
 	public Jeu(String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
-			int ageMini, int nbJoueurs, String categorie, String editeur) {
+			int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setAnneeParution(anneeParution);
@@ -90,7 +92,8 @@ public class Jeu {
 		this.setAgeMini(ageMini);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
-		this.setNbJoueurs(nbJoueurs);
+		this.setNbJoueursMin(nbJoueursMin);
+		this.setNbJoueursMax(nbJoueursMax);
 		this.setCategorie(categorie);
 		this.setEditeur(editeur);
 	}
@@ -167,14 +170,6 @@ public class Jeu {
 		this.nbReserves = nbReserves;
 	}
 
-	public int getNbJoueurs() {
-		return nbJoueurs;
-	}
-
-	public void setNbJoueurs(int nbJoueurs) {
-		this.nbJoueurs = nbJoueurs;
-	}
-
 	public int getIdJeu() {
 		return idJeu;
 	}
@@ -197,5 +192,21 @@ public class Jeu {
 
 	public void setEditeur(String editeur) {
 		this.editeur = editeur;
+	}
+
+	public int getNbJoueursMin() {
+		return nbJoueursMin;
+	}
+
+	public void setNbJoueursMin(int nbJoueursMin) {
+		this.nbJoueursMin = nbJoueursMin;
+	}
+
+	public int getNbJoueursMax() {
+		return nbJoueursMax;
+	}
+
+	public void setNbJoueursMax(int nbJoueursMax) {
+		this.nbJoueursMax = nbJoueursMax;
 	}
 }
