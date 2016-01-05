@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS jeu (
   nb_reserves INTEGER,
   age_mini INTEGER NOT NULL,
   nombre_joueurs INTEGER,
-  id_categorie INTEGER NOT NULL,
-  id_editeur INTEGER NOT NULL,
+  id_categorie INTEGER,
+  id_editeur INTEGER,
   PRIMARY KEY(id_jeu),
   FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (id_editeur) REFERENCES editeur (id_editeur) ON DELETE CASCADE ON UPDATE CASCADE
