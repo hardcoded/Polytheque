@@ -41,7 +41,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	/**
 	 * Nombre de colonnes du tableau.
 	 */
-	public final static int NOMBRE_COLONNES = 10;
+	public final static int NOMBRE_COLONNES = 9;
 
 	/**
 	 * Les libellés des entêtes.
@@ -101,15 +101,14 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		for (Jeu jeuCourant : listeJeux)
 		{
 			donnees[index][0] = jeuCourant.getNom();
-			donnees[index][1] = jeuCourant.getNom();
-			donnees[index][2] = jeuCourant.getDescription();
-			donnees[index][3] = jeuCourant.getAnneeParution();
-			donnees[index][4] = jeuCourant.getStatut();
-			donnees[index][5] = jeuCourant.getAgeMini();
-			donnees[index][6] = jeuCourant.getNbJoueursMin();
-			donnees[index][7] = jeuCourant.getNbJoueursMax();
-			donnees[index][8] = jeuCourant.getCategorie();
-			donnees[index][9] = jeuCourant.getEditeur();
+			donnees[index][1] = jeuCourant.getDescription();
+			donnees[index][2] = jeuCourant.getAnneeParution();
+			donnees[index][3] = jeuCourant.getStatut();
+			donnees[index][4] = jeuCourant.getAgeMini();
+			donnees[index][5] = jeuCourant.getNbJoueursMin();
+			donnees[index][6] = jeuCourant.getNbJoueursMax();
+			donnees[index][7] = jeuCourant.getCategorie();
+			donnees[index][8] = jeuCourant.getEditeur();
 			index++;
 		}
 		return donnees;
