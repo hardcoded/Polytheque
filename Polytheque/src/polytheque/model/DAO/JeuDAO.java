@@ -153,7 +153,8 @@ public class JeuDAO extends DAO {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
 					+ "FROM JEU "
- 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur");
+ 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
+ 					+ "ORDER BY nom ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 			
@@ -185,7 +186,8 @@ public class JeuDAO extends DAO {
 			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
 					+ "FROM JEU "
 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
-					+ "WHERE nom LIKE ?");
+					+ "WHERE nom LIKE ? "
+					+ "ORDER BY nom ASC");
 			psSelect.setString(1, filtre);
 			psSelect.execute();
 			psSelect.closeOnCompletion();

@@ -41,7 +41,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	/**
 	 * Nombre de colonnes du tableau.
 	 */
-	public final static int NOMBRE_COLONNES = 8;
+	public final static int NOMBRE_COLONNES = 10;
 
 	/**
 	 * Les libellÃ©s des entÃªtes.
@@ -59,8 +59,8 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	
 
 	//TODO
-	//"Veuiller indiquer la date souhaité de l'emprunt"
-	//faire un afficherListe de jeux avec que ces jeux là
+	//"Veuiller indiquer la date souhaitï¿½ de l'emprunt"
+	//faire un afficherListe de jeux avec que ces jeux lï¿½
 	
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
 	{
@@ -101,13 +101,15 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		for (Jeu jeuCourant : listeJeux)
 		{
 			donnees[index][0] = jeuCourant.getNom();
-			donnees[index][1] = jeuCourant.getDescription();
-			donnees[index][2] = jeuCourant.getAnneeParution();
-			donnees[index][3] = jeuCourant.getStatut();
-			donnees[index][4] = jeuCourant.getAgeMini();
-			donnees[index][5] = jeuCourant.getNbJoueurs();
-			donnees[index][6] = jeuCourant.getCategorie();
-			donnees[index][7] = jeuCourant.getEditeur();
+			donnees[index][1] = jeuCourant.getNom();
+			donnees[index][2] = jeuCourant.getDescription();
+			donnees[index][3] = jeuCourant.getAnneeParution();
+			donnees[index][4] = jeuCourant.getStatut();
+			donnees[index][5] = jeuCourant.getAgeMini();
+			donnees[index][6] = jeuCourant.getNbJoueursMin();
+			donnees[index][7] = jeuCourant.getNbJoueursMax();
+			donnees[index][8] = jeuCourant.getCategorie();
+			donnees[index][9] = jeuCourant.getEditeur();
 			index++;
 		}
 		return donnees;

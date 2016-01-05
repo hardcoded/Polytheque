@@ -1,15 +1,11 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.EventObject;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,10 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.event.CellEditorListener;
-import javax.swing.table.TableCellEditor;
-
 import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
@@ -28,14 +20,15 @@ import polytheque.view.modeles.ModeleTableauListeJeux;
 public class AffichageListeJeux extends JPanel implements ActionListener {
 
 
-	public final static int LONGUEUR_COLONNE_0 = 200;
-	public final static int LONGUEUR_COLONNE_1 = 200;
-	public final static int LONGUEUR_COLONNE_2 = 50;
+	public final static int LONGUEUR_COLONNE_0 = 150;
+	public final static int LONGUEUR_COLONNE_1 = 150;
+	public final static int LONGUEUR_COLONNE_2 = 70;
 	public final static int LONGUEUR_COLONNE_3 = 50;
-	public final static int LONGUEUR_COLONNE_4 = 50;
+	public final static int LONGUEUR_COLONNE_4 = 60;
 	public final static int LONGUEUR_COLONNE_5 = 100;
 	public final static int LONGUEUR_COLONNE_6 = 100;
-	public final static int LONGUEUR_COLONNE_7 = 150;
+	public final static int LONGUEUR_COLONNE_7 = 100;
+	public final static int LONGUEUR_COLONNE_8 = 150;
 
 	/**
 	 * Hauteur des lignes.

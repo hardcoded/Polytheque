@@ -1,19 +1,17 @@
 package polytheque.view;
 
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
- * Classe permettant de gerer la modification des informations liées au compte de l'utilisateur.
+ * Classe permettant de gerer la modification des informations liï¿½es au compte de l'utilisateur.
  * 
  * @author Godefroi Roussel
  *

@@ -21,12 +21,12 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * La largeur.
 	 */
-	public final static int LARGEUR = 1000;
+	public final static int LARGEUR = 1200;
 
 	/**
 	 * La hauteur.
 	 */
-	public final static int HAUTEUR = 600;
+	public final static int HAUTEUR = 700;
 
 	/**
 	 * Application de gestion de la ludothèque
