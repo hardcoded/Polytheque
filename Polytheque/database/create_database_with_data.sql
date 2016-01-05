@@ -94,6 +94,13 @@ CREATE TABLE IF NOT EXISTS emprunt (
   FOREIGN KEY (id_extension) REFERENCES extension (id_extension) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8;
 
+/* Insertion adhérents */
+INSERT INTO ADHERENT (nom, prenom, date_naissance, rue, code_postal, ville, mail, telephone, pseudo, mdp, admin, liste_noire, droits, nb_retards, nb_non_recup) VALUES ("Brunet","Johan","1995-08-23","rue","00000","ville","mail","0000000000","johan","brunet",true,false,true,0,0);
+INSERT INTO ADHERENT (nom, prenom, date_naissance, rue, code_postal, ville, mail, telephone, pseudo, mdp, admin, liste_noire, droits, nb_retards, nb_non_recup) VALUES ("Agbodjogbe","Yves-Alain","1995-08-23","rue","00000","ville","mail","0000000000","blackhole","cacao",true,false,true,0,0);
+INSERT INTO ADHERENT (nom, prenom, date_naissance, rue, code_postal, ville, mail, telephone, pseudo, mdp, admin, liste_noire, droits, nb_retards, nb_non_recup) VALUES ("Roussel","Godefroi","1995-08-23","rue","00000","ville","mail","0000000000","godefroi","roussel",true,false,true,0,0);
+INSERT INTO ADHERENT (nom, prenom, date_naissance, rue, code_postal, ville, mail, telephone, pseudo, mdp, admin, liste_noire, droits, nb_retards, nb_non_recup) VALUES ("Marchal","Laure","1995-08-23","rue","00000","ville","mail","0000000000","laure","marchal",false,false,true,0,0);
+INSERT INTO ADHERENT (nom, prenom, date_naissance, rue, code_postal, ville, mail, telephone, pseudo, mdp, admin, liste_noire, droits, nb_retards, nb_non_recup) VALUES ("Lee","San Wei","1995-08-23","rue","00000","ville","mail","0000000000","sanwei","lee",false,false,true,0,0);
+
 /* Instertion des éditeurs */
 INSERT INTO EDITEUR (nom_editeur) VALUES ('AEG');
 INSERT INTO EDITEUR (nom_editeur) VALUES ('Ajax Games');
