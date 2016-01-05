@@ -26,8 +26,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public final static int LONGUEUR_COLONNE_3 = 100;
 	public final static int LONGUEUR_COLONNE_4 = 50;
 	public final static int LONGUEUR_COLONNE_5 = 50;
-	public final static int LONGUEUR_COLONNE_6 = 50;
-	public final static int LONGUEUR_COLONNE_7 = 50;
+	public final static int LONGUEUR_COLONNE_6 = 150;
+	public final static int LONGUEUR_COLONNE_7 = 150;
 
 	/**
 	 * Hauteur des lignes.
@@ -108,8 +108,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	{
 		Object[][] donnees = new Object[listeJeux.size()][NOMBRE_COLONNES];
 		
-		int index = 0;
-		
+		int index = 0;		
 		for (Jeu jeuCourant : listeJeux)
 		{
 			donnees[index][0] = jeuCourant.getNom();

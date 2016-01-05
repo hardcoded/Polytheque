@@ -150,7 +150,10 @@ public class JeuDAO extends DAO {
 		ArrayList<Jeu> tousLesJeux = new ArrayList<>();
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM JEU");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom_categorie, EDITEUR.nom_editeur "
+					+ "FROM JEU "
+ 					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
+ 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
@@ -158,7 +161,7 @@ public class JeuDAO extends DAO {
 			while (resSet.next()) { // On se place sur le 1er résultat
 				tousLesJeux.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
 						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nombre_joueurs"), 
-						"cat", "ed"));
+						resSet.getString("nom_categorie"), resSet.getString("nom_editeur")));
 			}
 			super.disconnect();
 			
