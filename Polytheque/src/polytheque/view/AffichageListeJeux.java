@@ -1,9 +1,14 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.EventObject;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,6 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.event.CellEditorListener;
+import javax.swing.table.TableCellEditor;
 
 import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
@@ -23,10 +31,10 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public final static int LONGUEUR_COLONNE_0 = 200;
 	public final static int LONGUEUR_COLONNE_1 = 200;
 	public final static int LONGUEUR_COLONNE_2 = 50;
-	public final static int LONGUEUR_COLONNE_3 = 100;
+	public final static int LONGUEUR_COLONNE_3 = 50;
 	public final static int LONGUEUR_COLONNE_4 = 50;
-	public final static int LONGUEUR_COLONNE_5 = 50;
-	public final static int LONGUEUR_COLONNE_6 = 150;
+	public final static int LONGUEUR_COLONNE_5 = 100;
+	public final static int LONGUEUR_COLONNE_6 = 100;
 	public final static int LONGUEUR_COLONNE_7 = 150;
 
 	/**
@@ -40,9 +48,19 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public final static int NOMBRE_COLONNES = 9;
 
 	/**
+	 * Séparation de la fenêtre dans le sens de la hauteur
+	 */
+	public final static int HAUTEUR = 3;
+	
+	/**
+	 * Séparation de la fenêtre dans le sens de la largeur
+	 */
+	public final static int LARGEUR = 1;
+	
+	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Nombre de joueurs min", "Nombre de joueurs max", "Catégorie", "Editeur"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Joueurs mini", "Joueurs maxi", "Catégorie", "Editeur"};
 
 	/**
 	 * Boutons.
@@ -63,7 +81,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 	public AffichageListeJeux(TacheDAffichage afficheAppli, ArrayList<Jeu> listeJeux) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
-
+		
+		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
 		creerPanneauRecherche();
 		creerTableau(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
@@ -79,26 +98,29 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void creerPanneauRecherche() {
 		JPanel searchPanel = new JPanel();
-
+		searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		
 		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(0, 150, 100, 30);
+		labelSearch.setBounds(300, 0, 100, 30);
 		searchPanel.add(labelSearch);
 		this.searchContent = new JTextField();
-		this.searchContent.setBounds(100, 150, 100, 30);
+		this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
-		searchPanel.add(this.searchContent);
+		searchPanel.add(this.searchContent, BorderLayout.NORTH);
 		
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche);
+		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 
 		this.add(searchPanel);
 	}
 	
 	public void creerTableau(ArrayList<Jeu> listeJeux) {
-
+		JPanel arrayPanel = new JPanel();
+		arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
+		arrayPanel.setLayout(new BorderLayout());
+		
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
-
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
@@ -112,10 +134,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		tableau.getTableHeader().setReorderingAllowed(false);
 		tableau.getTableHeader().setResizingAllowed(false);
-
-		this.add(new JScrollPane(tableau), BorderLayout.CENTER);
-
-		this.add(tableau);
+		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
+		this.add(arrayPanel);
 	}
 	
 	/**
@@ -132,15 +152,27 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		int index = 0;		
 		for (Jeu jeuCourant : listeJeux)
 		{
-			donnees[index][0] = jeuCourant.getNom();
-			donnees[index][1] = jeuCourant.getDescription();
-			donnees[index][2] = jeuCourant.getAnneeParution();
-			donnees[index][3] = jeuCourant.getStatut();
+			if (jeuCourant.getNom() != null) {
+				donnees[index][0] = jeuCourant.getNom();
+			}
+			if (jeuCourant.getDescription() != null) {
+				donnees[index][1] = jeuCourant.getDescription();
+			}
+			if (jeuCourant.getAnneeParution() != null) {
+				donnees[index][2] = jeuCourant.getAnneeParution();
+			}
+			if (jeuCourant.getStatut() != null) {
+				donnees[index][3] = jeuCourant.getStatut();
+			}
 			donnees[index][4] = jeuCourant.getAgeMini();
 			donnees[index][5] = jeuCourant.getNbJoueursMin();
 			donnees[index][6] = jeuCourant.getNbJoueursMax();
-			donnees[index][7] = jeuCourant.getCategorie();
-			donnees[index][8] = jeuCourant.getEditeur();
+			if (jeuCourant.getCategorie() != null) {
+				donnees[index][7] = jeuCourant.getCategorie();
+			}
+			if (jeuCourant.getEditeur() != null) {
+				donnees[index][8] = jeuCourant.getEditeur();
+			}
 			index++;
 		}		
 		return donnees;
@@ -151,6 +183,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdmin() {
 		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
 		this.boutonAjouterJeu.addActionListener(this);
@@ -164,10 +197,10 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonAjouterJeu);
-		buttonsPanel.add(boutonModifierJeu);
-		buttonsPanel.add(boutonSupprimerJeu);
-		buttonsPanel.add(boutonRetourAccueil);
+		buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(buttonsPanel);
 	}
@@ -177,15 +210,16 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdherent() {
 		JPanel buttonsPanel = new JPanel();
-
+		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		
 		this.boutonReserverJeu = new JButton("Réserver un jeu");
 		this.boutonReserverJeu.addActionListener(this);
 		
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonReserverJeu);
-		buttonsPanel.add(boutonRetourAccueil);
+		buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(buttonsPanel);
 	}

@@ -63,7 +63,10 @@ public class ModeleTableauListeJeux extends AbstractTableModel
 	@Override
 	public Class getColumnClass(int col)
 	{
-		return this.donnees[0][col].getClass();
+		if (this.donnees[0][col] != null) {
+			return this.donnees[0][col].getClass();
+		}
+		return Object.class;
 	}
 
 	@Override

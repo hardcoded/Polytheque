@@ -151,18 +151,17 @@ public class JeuDAO extends DAO {
 		ArrayList<Jeu> tousLesJeux = new ArrayList<>();
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom_categorie, EDITEUR.nom_editeur "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
 					+ "FROM JEU "
- 					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
  					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
-
+			
 			ResultSet resSet = psSelect.getResultSet();
-			while (resSet.next()) { // On se place sur le 1er résultat
+			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesJeux.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
 						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-						resSet.getString("nom_categorie"), resSet.getString("nom_editeur")));
+						"", resSet.getString("nom_editeur")));
 			}
 			super.disconnect();
 			
@@ -183,9 +182,8 @@ public class JeuDAO extends DAO {
 		String filtre = "%" + nomJeu.toLowerCase() + "%";
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom_categorie, EDITEUR.nom_editeur "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
 					+ "FROM JEU "
-					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
 					+ "WHERE nom LIKE ?");
 			psSelect.setString(1, filtre);
@@ -196,7 +194,7 @@ public class JeuDAO extends DAO {
 			while (resSet.next()) { // On se place sur le 1er résultat
 				jeuxFiltres.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
 						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-						resSet.getString("nom_categorie"), resSet.getString("nom_editeur")));
+						"", resSet.getString("nom_editeur")));
 			}
 			super.disconnect();
 			
