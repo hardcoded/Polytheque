@@ -103,7 +103,7 @@ public class AdherentHomePage extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonModifierInfos)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherMonCompte();
 		}
 		
 		if (boutonSelectionne == this.boutonEffectuerReservation)
