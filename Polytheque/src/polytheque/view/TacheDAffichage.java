@@ -128,6 +128,12 @@ public class TacheDAffichage extends JFrame {
 		this.add(new AffichageListeJeux(this, this.polythequeApplication.searchGames(nomJeu)));
 		this.rafraichirFenetre();
 	}
+	
+	public void afficherMonCompte() {
+		this.viderFenetre();
+		this.add(new AffichageMonCompte(this));
+		this.rafraichirFenetre();
+	}
 
 	/**
 	 * Afficher une fenetre de dialogue.
@@ -141,5 +147,14 @@ public class TacheDAffichage extends JFrame {
 	 */
 	public void afficherMessage(String message, String titreFenetre, int codeInformation) {
 		JOptionPane.showMessageDialog(this, message, titreFenetre, codeInformation);
+	}
+	
+	/**
+	 * 
+	 * @param message
+	 * 			Le message
+	 */
+	public void afficherMessage(String message) {
+		JOptionPane.showMessageDialog(this, message);
 	}
 }
