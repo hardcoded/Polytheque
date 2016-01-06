@@ -135,6 +135,12 @@ public class TacheDAffichage extends JFrame {
 		this.rafraichirFenetre();
 	}
 	
+	public void rechercherExtensions(String nomExtension) {
+		this.viderFenetre();
+		this.add(new AffichageListeExtensions(this, this.polythequeApplication.searchExtensions(nomExtension)));
+		this.rafraichirFenetre();
+	}
+	
 	public void afficherMonCompte() {
 		this.viderFenetre();
 		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));

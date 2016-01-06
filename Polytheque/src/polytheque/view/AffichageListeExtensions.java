@@ -233,7 +233,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		
 		if (boutonSelectionne == this.boutonRecherche)
 		{
-			this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText());;
+			this.tacheDAffichageDeLApplication.rechercherExtensions(this.searchContent.getText());;
 			return;
 		}
 		
