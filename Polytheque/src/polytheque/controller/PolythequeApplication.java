@@ -1,5 +1,6 @@
 package polytheque.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import polytheque.model.DAO.AdherentDAO;
@@ -12,6 +13,7 @@ import polytheque.model.DAO.ReservationDAO;
 import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
+import polytheque.model.pojos.Reservation;
 import polytheque.view.TacheDAffichage;
 
 public class PolythequeApplication {
