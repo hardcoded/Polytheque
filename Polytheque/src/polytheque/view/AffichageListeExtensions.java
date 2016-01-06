@@ -62,6 +62,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	public AffichageListeExtensions(TacheDAffichage afficheAppli, ArrayList<Extension> listeExtensions) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		
+		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
 		creerTableau(listeExtensions);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
@@ -77,7 +78,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 */
 	private void creerPanneauRecherche() {
 		JPanel searchPanel = new JPanel();
-		searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		//searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		
 		JLabel labelSearch = new JLabel("Recherche par nom :");
 		labelSearch.setBounds(300, 0, 100, 30);
@@ -96,7 +97,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	
 	public void creerTableau(ArrayList<Extension> listeExtensions) {
 		JPanel arrayPanel = new JPanel();
-		arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
+		//arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
 		arrayPanel.setLayout(new BorderLayout());
 		
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeExtensions), LIBELLES));
@@ -104,12 +105,13 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
 		tableau.getColumn(LIBELLES[3]).setPreferredWidth(LONGUEUR_COLONNE_3);
-
+		tableau.getTableHeader().setReorderingAllowed(true);
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 
-		tableau.getTableHeader().setReorderingAllowed(false);
+		tableau.getTableHeader().setReorderingAllowed(true);
 		tableau.getTableHeader().setResizingAllowed(true);
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
+		
 		this.add(arrayPanel, BorderLayout.CENTER);
 	}
 	
@@ -141,7 +143,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdmin() {
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		//buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonAjouterExtension = new JButton("Ajouter un jeu");
 		this.boutonAjouterExtension.addActionListener(this);
