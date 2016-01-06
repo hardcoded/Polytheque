@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import java.awt.Dimension;
 
 import polytheque.model.pojos.Adherent;
 
@@ -19,20 +21,26 @@ import polytheque.model.pojos.Adherent;
  *
  */
 @SuppressWarnings("serial")
-public class AffichageMonCompte extends JPanel implements ActionListener {
+public class AffichageModificationAdherent extends JPanel implements ActionListener {
 	
-		private JLabel userName;
-		private JLabel userFirstName;
-		private JLabel userBirthday;
-		private JLabel userPseudo;
+		private JTextField userName;
+		private JTextField userFirstName;
+		private JTextField userBirthday;
+		private JTextField userPseudo;
 		private JTextField userRue;
 		private JTextField userCP;
 		private JTextField userVille;
 		private JTextField userPhone;
 		private JTextField userMail;
-		private JPasswordField password;	
+		private JTextField userCptRetard;
+		private JPasswordField password;
+		private JComboBox userIsAdmin;
+		private JComboBox userPeutEmprunter;
+		private JComboBox userEstAJour;
+		
 		private JButton boutonValider;
 		private JButton boutonRetourAccueil;
+		private JButton boutonRetourGestionAdherent;
 		private Adherent adherentCourant;
 		
 		/**
@@ -47,7 +55,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 		 *            Une tache d'affichage de l'application.
 		 * @return 
 		 */
-		public AffichageMonCompte(TacheDAffichage afficheAppli, Adherent adherent){
+		public AffichageModificationAdherent(TacheDAffichage afficheAppli, Adherent adherent){
 			this.tacheDAffichageDeLApplication = afficheAppli;
 			this.adherentCourant = adherent;
 			ajouterChamps();
@@ -65,14 +73,14 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			JLabel labelUserName = new JLabel("Nom :");
 			labelUserName.setBounds(300, 150, 100, 30);
 			this.add(labelUserName);
-			this.userName = new JLabel(this.adherentCourant.getNom());
+			this.userName = new JTextField(this.adherentCourant.getNom());
 			this.userName.setBounds(350, 150, 100, 30);
 			this.add(this.userName);
 			
 			JLabel labelUserFirstName = new JLabel("Prenom :");
 			labelUserFirstName.setBounds(300, 180, 100, 30);
 			this.add(labelUserFirstName);
-			this.userFirstName = new JLabel(this.adherentCourant.getPrenom());
+			this.userFirstName = new JTextField(this.adherentCourant.getPrenom());
 			this.userFirstName.setBounds(360, 180, 100, 30);
 			this.add(this.userFirstName);
 			
@@ -80,7 +88,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			JLabel labelUserBirthday = new JLabel("Date de naissance :");
 			labelUserBirthday.setBounds(300, 210, 150, 30);
 			this.add(labelUserBirthday);
-			this.userBirthday = new JLabel(this.adherentCourant.getDateNaissance().toString());
+			this.userBirthday = new JTextField(this.adherentCourant.getDateNaissance().toString());
 			this.userBirthday.setBounds(420, 210, 100, 30);
 			this.add(this.userBirthday);
 			
@@ -128,7 +136,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			JLabel labelUserPseudo = new JLabel("Pseudo :");
 			labelUserPseudo.setBounds(300, 390, 100, 30);
 			this.add(labelUserPseudo);
-			this.userPseudo = new JLabel(this.adherentCourant.getPseudo());
+			this.userPseudo = new JTextField(this.adherentCourant.getPseudo());
 			this.userPseudo.setBounds(360, 390, 100, 30);
 			this.add(this.userPseudo);
 			
@@ -140,18 +148,60 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			this.password.setBounds(380, 420, 190, 30);
 			this.password.setColumns(10);
 			this.add(this.password);
+			
+			JLabel labelUserIsAdmin = new JLabel("Admin :");
+			labelUserIsAdmin.setBounds(300, 390, 100, 30);
+			this.add(labelUserIsAdmin);
+			JComboBox userIsAdmin = new JComboBox();
+		    this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
+		    this.userIsAdmin.addItem("True");
+		    this.userIsAdmin.addItem("False");
+			this.userIsAdmin.setBounds(360, 390, 100, 30);
+			this.add(this.userIsAdmin);
+			
+			JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
+			labelUserPeutEmprunter.setBounds(300, 390, 100, 30);
+			this.add(labelUserPeutEmprunter);
+			JComboBox userPeutEmprunter = new JComboBox();
+		    this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
+		    this.userPeutEmprunter.addItem("True");
+		    this.userPeutEmprunter.addItem("False");
+			this.userPeutEmprunter.setBounds(360, 390, 100, 30);
+			this.add(this.userPeutEmprunter);
+			
+			JLabel labelUserEstAJour = new JLabel("Est a jour :");
+			labelUserEstAJour.setBounds(300, 390, 100, 30);
+			this.add(labelUserEstAJour);
+			JComboBox userEstAJour = new JComboBox();
+		    this.userEstAJour.setPreferredSize(new Dimension(100, 20));
+		    this.userEstAJour.addItem("True");
+		    this.userEstAJour.addItem("False");
+			this.userEstAJour.setBounds(360, 390, 100, 30);
+			this.add(this.userEstAJour);
+			
+			JLabel labelUserCptRetard = new JLabel("Compteur Retard :");
+			labelUserCptRetard.setBounds(300, 390, 100, 30);
+			this.add(labelUserCptRetard);
+			this.userCptRetard = new JTextField(this.adherentCourant.getCompteurRetard());
+			this.userCptRetard.setBounds(360, 390, 100, 30);
+			this.add(this.userCptRetard);
 		}
 		
 		public void ajouterBoutons(){
 			this.boutonValider = new JButton("Valider");
-			this.boutonValider.setBounds(200, 500, 200, 30);
+			this.boutonValider.setBounds(200, 500, 150, 30);
 			this.boutonValider.addActionListener(this);
 			this.add(this.boutonValider);
 			
 			this.boutonRetourAccueil = new JButton("Accueil");
-			this.boutonRetourAccueil.setBounds(500, 500, 200, 30);
+			this.boutonRetourAccueil.setBounds(500, 500, 150, 30);
 			this.boutonRetourAccueil.addActionListener(this);
 			this.add(this.boutonRetourAccueil);
+			
+			this.boutonRetourGestionAdherent = new JButton("Gestion Adherent");
+			this.boutonRetourGestionAdherent.setBounds(800, 500, 150, 30);
+			this.boutonRetourGestionAdherent.addActionListener(this);
+			this.add(this.boutonRetourGestionAdherent);
 		}
 
 		@Override

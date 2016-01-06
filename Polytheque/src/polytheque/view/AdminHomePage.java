@@ -116,7 +116,7 @@ public class AdminHomePage extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonGestionAdherent)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherGestionAdherent();
 			return;
 		}
 

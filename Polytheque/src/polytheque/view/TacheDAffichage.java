@@ -142,6 +142,18 @@ public class TacheDAffichage extends JFrame {
 		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));
 		this.rafraichirFenetre();
 	}
+	
+	public void afficherGestionAdherent() {
+		this.viderFenetre();
+		this.add(new AffichageGestionAdherent(this, this.polythequeApplication.getAdherentCourant())); //Surement un probleme
+		this.rafraichirFenetre();
+	}
+	
+	public void afficherModificationAdherent() {
+		this.viderFenetre();
+		this.add(new AffichageModificationAdherent(this, this.polythequeApplication.getAdherentCourant()));//Surement un probleme
+		this.rafraichirFenetre();
+	}
 
 	/**
 	 * Afficher une fenetre de dialogue.
