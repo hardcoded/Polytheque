@@ -144,32 +144,77 @@ public class Reservation {
 	}
 	
 	/**méthodes
+	 * modifDate(date, int); elle ajoute un entier (nb jours) à la date donnée en prenant en compte les mois et l'année.
 	 * emprunter()
 	 * annuler_reservation()
 	 * */
 	
+	public Date modifDate(Date d,int nbjours){
+		@SuppressWarnings("deprecation")
+		int jour = d.getDay();
+		@SuppressWarnings("deprecation")
+		int mois = d.getMonth();
+		@SuppressWarnings("deprecation")
+		int annee = d.getYear();
+		if (mois==1 || mois==3 || mois==5 || mois==7 || mois==8 || mois==10 || mois==12){
+			if (jour+nbjours >31 && mois==12){
+				jour=(jour+nbjours)%31;
+				mois=1;
+				annee=annee+1;}
+			else{
+				if (jour+nbjours >31){
+					jour=(jour+nbjours)%31;
+					mois=mois+1;
+				}
+				else{
+					jour=jour+nbjours;
+				}
+			}
+		}
+		else{
+			if (mois==2){
+				if (jour+nbjours >28){
+					jour=(jour+nbjours)%28;
+					mois=mois+1;
+				}
+				else{
+					jour=jour+nbjours;
+				}	
+			}
+			else{
+				if (jour+nbjours >30){
+					jour=(jour+nbjours)%30;
+					mois=mois+1;
+				}
+				else{
+					jour=jour+nbjours;
+				}
+			}	
+		}
+		@SuppressWarnings("deprecation")
+		Date date= new Date(annee,mois,jour);
+		return date;
+	}
+	
 	public Emprunt validerReservation(){
-		Date dateFin = this.date;
-		//TODO trouver moyen de fixer la date de fin à 3 semaines plus tard (= 21 jours)
+		Date datefin = modifDate(this.getDate(),21); //appel à une fonction qui s'occupe d'ajouter les jours
 		if (this.extention == null){
 			this.jeu.setStatus("emprunté");
 			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
 			this.jeu.setNbEmpruntes(this.jeu.getNbEmpruntes()+1);
-			return new Emprunt(this.adherent,this.jeu,this.date,dateFin,null);}
+			return new Emprunt(this.adherent,this.jeu,this.date,datefin,null);}
 		else{
 			if (this.jeu == null){
 				this.extention.setStatut("emprunté");
 				this.extention.setNbReserves(this.extention.getNbReserves()-1);
-				this.extention.setNbEmpruntes(this.extention.getNbEmpruntes()+1);
-				return new Emprunt(this.adherent,this.extention,this.date,dateFin,null);}
+				return new Emprunt(this.adherent,this.extention,this.date,datefin,null);}
 			else{
 				this.jeu.setStatus("emprunté");
 				this.jeu.setNbEmpruntes(this.jeu.getNbEmpruntes()+1);
 				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
 				this.extention.setNbReserves(this.extention.getNbReserves()-1);
-				this.extention.setNbEmpruntes(this.extention.getNbEmpruntes()+1);
 				this.extention.setStatut("emprunté");
-				return new Emprunt(this.adherent,this.jeu,this.extention,this.date,dateFin);}
+				return new Emprunt(this.adherent,this.jeu,this.extention,this.date,datefin);}
 		}
 	}
 
