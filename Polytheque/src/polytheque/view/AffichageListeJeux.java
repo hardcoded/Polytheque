@@ -40,15 +40,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	public final static int NOMBRE_COLONNES = 9;
 
-	/**
-	 * Séparation de la fenêtre dans le sens de la hauteur
-	 */
-	public final static int HAUTEUR = 3;
-	
-	/**
-	 * Séparation de la fenêtre dans le sens de la largeur
-	 */
-	public final static int LARGEUR = 1;
 	
 	/**
 	 * Les libellés des entêtes.
@@ -76,7 +67,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public AffichageListeJeux(TacheDAffichage afficheAppli, ArrayList<Jeu> listeJeux) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		
-		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
+		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
 		creerTableau(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
@@ -106,7 +97,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonRecherche.addActionListener(this);
 		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 
-		this.add(searchPanel);
+		this.add(searchPanel, BorderLayout.NORTH);
 	}
 	
 	public void creerTableau(ArrayList<Jeu> listeJeux) {
@@ -129,7 +120,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		tableau.getTableHeader().setReorderingAllowed(false);
 		tableau.getTableHeader().setResizingAllowed(true);
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
-		this.add(arrayPanel);
+		this.add(arrayPanel, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -188,7 +179,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel);
+		this.add(buttonsPanel, BorderLayout.SOUTH);
 	}
 	
 	/**
@@ -211,7 +202,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel);
+		this.add(buttonsPanel, BorderLayout.SOUTH);
 	}
 
 	@Override
