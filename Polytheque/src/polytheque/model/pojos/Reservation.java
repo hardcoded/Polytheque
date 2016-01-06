@@ -14,6 +14,7 @@ public class Reservation {
 	private Date date;
 	private Adherent adherent;
 	private Jeu jeu;
+	private Extension extention;
 	private AdherentDAO adherentDAO;
 
 	/**
@@ -28,7 +29,35 @@ public class Reservation {
 		this.setJeu(jeu);
 		this.setDate(date);
 	}
-
+	
+	/**
+	 * Constructeur de la classe Reservation
+	 * 
+	 * @param adherent
+	 * @param extention
+	 * @param date
+	 */
+	public Reservation(Adherent adherent,Extension extention, Date date) {
+		this.setAdherent(adherent);
+		this.setExtension(extention);
+		this.setDate(date);
+	}
+	
+	/**
+	 * Constructeur de la classe Reservation
+	 * 
+	 * @param adherent
+	 * @param jeu
+	 * @param extention
+	 * @param date
+	 */
+	public Reservation(Adherent adherent,Jeu jeu,Extension extention, Date date) {
+		this.setAdherent(adherent);
+		this.setJeu(jeu);
+		this.setExtension(extention);
+		this.setDate(date);
+	}
+	
 	/**
 	 * Constructeur de la classe Reservation
 	 *  
@@ -85,7 +114,17 @@ public class Reservation {
 	public void setJeu(Jeu jeu) {
 		this.jeu = jeu;
 	}
-
+	
+	public void setExtension(Extension extention) {
+		this.extention=extention;
+		
+	}
+	
+	public Extension getExtension() {
+		return extention;
+		
+	}
+	
 	public Date getDate() {
 		return this.date;
 	}

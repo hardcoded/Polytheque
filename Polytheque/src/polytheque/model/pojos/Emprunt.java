@@ -180,8 +180,15 @@ public class Emprunt {
 		//v�rifier que l'adh�rent � tout ramener
 		this.adherent.setPeutEmprunter(true);
 		this.jeu.setDisponibilite(true);
-		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.extention.setNbReserves(this.extention.getNbReserves()+1);
+		if (this.extention==null){
+			this.jeu.setNbReserves(this.jeu.getNbReserves()+1);}
+		else{
+			if(this.jeu==null){
+				this.extention.setNbReserves(this.extention.getNbReserves()+1);}
+			else{
+				this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
+				this.extention.setNbReserves(this.extention.getNbReserves()+1);}
+			}
 		ajoutRetard();
 	}
 
