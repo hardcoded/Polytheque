@@ -12,6 +12,7 @@ public class Jeu {
 	private String anneeParution;
 	private int nbExemplaires;
 	private int nbReserves;
+	private int nbEmpruntes;
 	private int nbJoueursMin;
 	private int nbJoueursMax;
 	private String categorie;
@@ -34,6 +35,8 @@ public class Jeu {
 	 * 		Le nombre d'exemplaires total du jeu
 	 * @param nbReserves
 	 * 		Le nombre d'exemplaires réservés
+	 * @param nbEmpruntes
+	 * 		Le nombre d'exemplaires emprunt�s
 	 * @param ageMini
 	 * 		L'age minimal auquel on peut jouer au jeu
 	 * @param nbJoueurs
@@ -44,7 +47,7 @@ public class Jeu {
 	 * 		L'éditeur du jeu
 	 */
 	public Jeu(int id, String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
-			int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
+			int nbEmpruntes,int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
 		this.setIdJeu(id);
 		this.setNom(nom);
 		this.setDescription(description);
@@ -53,6 +56,7 @@ public class Jeu {
 		this.setAgeMini(ageMini);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
+		this.setNbEmpruntes(nbEmpruntes);
 		this.setNbJoueursMin(nbJoueursMin);
 		this.setNbJoueursMax(nbJoueursMax);
 		this.setCategorie(categorie);
@@ -74,6 +78,8 @@ public class Jeu {
 	 * 		Le nombre d'exemplaires total du jeu
 	 * @param nbReserves
 	 * 		Le nombre d'exemplaires réservés
+	 * @param nbEmpruntes
+	 * 		Le nombre d'exemplaires emprunt�s
 	 * @param ageMini
 	 * 		L'age minimal auquel on peut jouer au jeu
 	 * @param nbJoueurs
@@ -83,7 +89,7 @@ public class Jeu {
 	 * @param editeur
 	 * 		L'éditeur du jeu
 	 */
-	public Jeu(String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
+	public Jeu(String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves,int nbEmpruntes, 
 			int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
 		this.setNom(nom);
 		this.setDescription(description);
@@ -92,6 +98,7 @@ public class Jeu {
 		this.setAgeMini(ageMini);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
+		this.setNbEmpruntes(nbEmpruntes);
 		this.setNbJoueursMin(nbJoueursMin);
 		this.setNbJoueursMax(nbJoueursMax);
 		this.setCategorie(categorie);
@@ -169,7 +176,15 @@ public class Jeu {
 	public void setNbReserves(int nbReserves) {
 		this.nbReserves = nbReserves;
 	}
-
+	
+	public void setNbEmpruntes(int nbempruntes) {
+		this.nbEmpruntes = nbempruntes;
+	}
+	
+	public int getNbEmpruntes() {
+		return nbEmpruntes;
+	}
+	
 	public int getIdJeu() {
 		return idJeu;
 	}
