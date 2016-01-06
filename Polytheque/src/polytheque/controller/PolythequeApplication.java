@@ -1,17 +1,17 @@
 package polytheque.controller;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import polytheque.model.DAO.AdherentDAO;
 import polytheque.model.DAO.CategorieJeuDAO;
 import polytheque.model.DAO.EditeurJeuDAO;
 import polytheque.model.DAO.EmpruntDAO;
+import polytheque.model.DAO.ExtensionDAO;
 import polytheque.model.DAO.JeuDAO;
 import polytheque.model.DAO.ReservationDAO;
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
-import polytheque.model.pojos.Reservation;
 import polytheque.view.TacheDAffichage;
 
 public class PolythequeApplication {
@@ -22,6 +22,8 @@ public class PolythequeApplication {
 	private EditeurJeuDAO editeurJeuDAO;
 	private ReservationDAO reservationDAO;
 	private EmpruntDAO empruntDAO;
+	private ExtensionDAO extensionDAO;
+	
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	private Adherent adherentCourant;
@@ -33,6 +35,7 @@ public class PolythequeApplication {
 		this.editeurJeuDAO = new EditeurJeuDAO();
 		this.reservationDAO = new ReservationDAO();
 		this.empruntDAO = new EmpruntDAO();
+		this.extensionDAO = new ExtensionDAO();
 	}
 
 	public void associerTacheDAffichage(TacheDAffichage affichageAppli) {
@@ -69,5 +72,14 @@ public class PolythequeApplication {
 	public void enregistrerModifsAdherent(Adherent adherent) {
 		this.adherentDAO.update(adherent);
 		
+	}
+	
+
+	public ArrayList<Extension> getExtensionsList() {
+		return this.extensionDAO.getAll();
+	}
+	
+	public ArrayList<Extension> searchExtensions(String nomExtension) {
+		return this.extensionDAO.searchByName(nomExtension);
 	}
 }

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import polytheque.model.DAO.AdherentDAO;
 /**
- * Classe permettant la réservation d'un jeu
+ * Classe permettant la rï¿½servation d'un jeu
  * 
  * @author Laure Marchal
  */
@@ -59,8 +59,8 @@ public class Reservation {
 	}
 
 	/**
-	 * méthodes
-	 * getter et setter qui permettent de récupérer ou modifier les attributs de cette classe dans d'autres classes
+	 * mï¿½thodes
+	 * getter et setter qui permettent de rï¿½cupï¿½rer ou modifier les attributs de cette classe dans d'autres classes
 	 */
 	public Adherent getAdherent() {
 		return adherent;
