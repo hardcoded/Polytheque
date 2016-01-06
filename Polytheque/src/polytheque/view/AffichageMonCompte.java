@@ -164,9 +164,8 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			{
 				String password = new String(this.password.getPassword());
 				Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard());
-				this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 				this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte");
-				this.tacheDAffichageDeLApplication.afficherMonCompte();
+				this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 				return;
 				}
 			
