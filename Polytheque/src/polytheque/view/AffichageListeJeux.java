@@ -167,6 +167,9 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
+		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
+		this.boutonAfficherExtensions.addActionListener(this);
+		
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
 		this.boutonAjouterJeu.addActionListener(this);
 
@@ -179,6 +182,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
+		buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
