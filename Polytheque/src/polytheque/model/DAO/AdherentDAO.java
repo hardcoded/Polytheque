@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.model.pojos.Jeu;
 
 public class AdherentDAO extends DAO {
 
@@ -155,7 +154,6 @@ public class AdherentDAO extends DAO {
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT ORDER BY nom ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
-			
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesAdherent.add(new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 

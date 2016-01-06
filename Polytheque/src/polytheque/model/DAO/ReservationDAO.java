@@ -1,9 +1,11 @@
 package polytheque.model.DAO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {
@@ -82,18 +84,21 @@ public class ReservationDAO extends DAO {
 	}
 
 
-	public Reservation retreive(int idReservation) { 
+	public Reservation retreive(Adherent adherent, Date date) { 
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION WHERE id_reservation = ?");
-			psSelect.setInt(1, idReservation);
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM `reservation` "
+					+ "WHERE id_adherent = (SELECT id_adherent from adherent where pseudo = ?) "
+					+ "AND date_reservation = ?");
+			psSelect.setString(1, adherent.getPseudo());
+			psSelect.setDate(2, date);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
 			Reservation reservation = null;
 			if (resSet.next()) { // On se place sur le 1er résultat
-				reservation = new Reservation(idReservation, resSet.getDate("date_reservation"), resSet.getInt("id_adherent"));
+				reservation = new Reservation(resSet.getInt("id_reservation"), resSet.getDate("date_reservation"), resSet.getInt("id_adherent"));
 			}
 			super.disconnect();
 			return reservation;
