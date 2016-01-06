@@ -5,16 +5,12 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
-
-import polytheque.model.pojos.Jeu;
 
 @SuppressWarnings("serial")
 public class AppliReserverJeu extends JPanel implements ActionListener
@@ -38,7 +34,9 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	{		
 		creerPanneauRecherche();
 		creerPanneauExtension();
-		creerPanneauDate();		
+		creerPanneauDate();	
+		boutonRetourAccueil = new JButton("Acceuil");
+		this.add(boutonRetourAccueil);
 	}
 
 	private void creerPanneauExtension() 
@@ -68,10 +66,10 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JPanel DatePanel = new JPanel();
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
-		labelDate.setBounds(0, 150, 100, 30);
+		labelDate.setBounds(400, 150, 100, 30);
 		this.add(labelDate);
 	    JDateChooser dateChooser = new JDateChooser();
-	    dateChooser.setBounds(20, 20, 60, 20);
+	    dateChooser.setBounds(400, 200, 60, 20);
 	    DatePanel.add(dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
