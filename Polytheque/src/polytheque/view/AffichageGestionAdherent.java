@@ -30,7 +30,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		private JTextField userMail;
 		private JPasswordField password;	
 		
-		private JButton boutonValider;
+		private JButton boutonCreerAdherent;
 		private JButton boutonRetourAccueil;
 		private JButton boutonModifierAdherent;
 		private JButton boutonSupprimerAdherent;
@@ -144,32 +144,33 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		}*/
 		
 		public void ajouterBoutons(){
-			this.boutonValider = new JButton("Valider");
-			this.boutonValider.setBounds(200, 500, 100, 30);
-			this.boutonValider.addActionListener(this);
-			this.add(this.boutonValider);
+			this.boutonCreerAdherent = new JButton("Créer Adherent");
+			this.boutonCreerAdherent.setBounds(200, 500, 100, 30);
+			this.boutonCreerAdherent.addActionListener(this);
+			this.add(this.boutonCreerAdherent);
 			
-			this.boutonRetourAccueil = new JButton("Accueil");
-			this.boutonRetourAccueil.setBounds(400, 500, 200, 30);
-			this.boutonRetourAccueil.addActionListener(this);
-			this.add(this.boutonRetourAccueil);
+			this.boutonSupprimerAdherent = new JButton("Supprimer Adherent");
+			this.boutonSupprimerAdherent.setBounds(400, 500, 100, 30);
+			this.boutonSupprimerAdherent.addActionListener(this);
+			this.add(this.boutonSupprimerAdherent);
 			
 			this.boutonModifierAdherent = new JButton("Modifier Adherent");
 			this.boutonModifierAdherent.setBounds(600, 500, 100, 30);
 			this.boutonModifierAdherent.addActionListener(this);
 			this.add(this.boutonModifierAdherent);
-			
-			this.boutonSupprimerAdherent = new JButton("Supprimer Adherent");
-			this.boutonSupprimerAdherent.setBounds(800, 500, 100, 30);
-			this.boutonSupprimerAdherent.addActionListener(this);
-			this.add(this.boutonSupprimerAdherent);
+
+			this.boutonRetourAccueil = new JButton("Accueil");
+			this.boutonRetourAccueil.setBounds(800, 500, 200, 30);
+			this.boutonRetourAccueil.addActionListener(this);
+			this.add(this.boutonRetourAccueil);
+
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			JButton boutonSelectionne = (JButton) event.getSource();
 
-			if (boutonSelectionne == this.boutonValider)
+			if (boutonSelectionne == this.boutonCreerAdherent)
 			{
 				String password = new String(this.password.getPassword());
 				Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard());
@@ -197,6 +198,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 			}
 			return;
 		}
+
 
 
 
