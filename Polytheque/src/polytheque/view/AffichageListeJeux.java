@@ -252,7 +252,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		
 		if (boutonSelectionne == this.boutonAfficherExtensions)
 		{
-			this.tacheDAffichageDeLApplication.afficherListeExtension();
+			this.tacheDAffichageDeLApplication.afficherListeExtensions();
 			return;
 		}
 		return;
