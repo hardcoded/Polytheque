@@ -181,13 +181,17 @@ public class Emprunt {
 		this.adherent.setPeutEmprunter(true);
 		this.jeu.setDisponibilite(true);
 		if (this.extention==null){
-			this.jeu.setNbReserves(this.jeu.getNbReserves()+1);}
+			this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
+			this.jeu.setStatus("libre");}
 		else{
 			if(this.jeu==null){
-				this.extention.setNbReserves(this.extention.getNbReserves()+1);}
+				this.extention.setNbReserves(this.extention.getNbReserves()+1);
+				this.extention.setStatut("libre");}
 			else{
 				this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-				this.extention.setNbReserves(this.extention.getNbReserves()+1);}
+				this.extention.setNbReserves(this.extention.getNbReserves()+1);
+				this.jeu.setStatus("libre");
+				this.extention.setStatut("libre");}
 			}
 		ajoutRetard();
 	}
