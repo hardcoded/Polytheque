@@ -172,7 +172,7 @@ public class Jeu {
 	public void setNbReserves(int nbReserves) {
 		this.nbReserves = nbReserves;
 	}
-	
+
 	public int getIdJeu() {
 		return idJeu;
 	}

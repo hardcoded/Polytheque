@@ -128,50 +128,50 @@ public class TacheDAffichage extends JFrame {
 		this.add(new AffichageListeExtensions(this, this.polythequeApplication.getExtensionsList()));
 		this.rafraichirFenetre();
 	}
-	
+
 	public void rechercherJeux(String nomJeu) {
 		this.viderFenetre();
 		this.add(new AffichageListeJeux(this, this.polythequeApplication.searchGames(nomJeu)));
 		this.rafraichirFenetre();
 	}
-	
+
 	public void rechercherExtensions(String nomExtension) {
 		this.viderFenetre();
 		this.add(new AffichageListeExtensions(this, this.polythequeApplication.searchExtensions(nomExtension)));
 		this.rafraichirFenetre();
 	}
-	
+
 	public void afficherMonCompte() {
 		this.viderFenetre();
 		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));
 		this.rafraichirFenetre();
 	}
-	
+
 	public void modifAdherent(Adherent adherent) {
 		this.polythequeApplication.enregistrerModifsAdherent(adherent);
 		this.viderFenetre();
 		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));
 		this.rafraichirFenetre();
 	}
-	
+
 	public void rechercherAdherent(String nomAdherent) {
 		this.viderFenetre();
 		this.add(new AffichageGestionAdherent(this, this.polythequeApplication.searchAdherents(nomAdherent)));
 		this.rafraichirFenetre();
 	}
-	
+
 	public void afficherGestionAdherent() {
 		this.viderFenetre();
 		this.add(new AffichageGestionAdherent(this, this.polythequeApplication.getAdherentsList())); //Surement un probleme
 		this.rafraichirFenetre();
 	}
-	
+
 	public void afficherModificationAdherent() {
 		this.viderFenetre();
 		this.add(new AffichageModificationAdherent(this, this.polythequeApplication.getAdherentCourant()));//Surement un probleme
 		this.rafraichirFenetre();
 	}
-	
+
 	public void afficherEcranReservation() {
 		this.viderFenetre();
 		this.add(new AppliReserverJeu(this));

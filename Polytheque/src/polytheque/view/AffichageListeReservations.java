@@ -16,7 +16,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	 * Hauteur des lignes.
 	 */
 	public final static int HAUTEUR_DES_LIGNES = 35;
-	
+
 	/**
 	 * Nombre de colonnes du tableau.
 	 */
@@ -26,21 +26,21 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	 * Séparation de la fenêtre dans le sens de la hauteur
 	 */
 	public final static int HAUTEUR = 3;
-	
+
 	/**
 	 * Séparation de la fenêtre dans le sens de la largeur
 	 */
 	public final static int LARGEUR = 1;
-	
+
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Pr�nom", "Titre", "Date"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Pr�nom", "Titre", "Date"};
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

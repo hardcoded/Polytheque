@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.model.pojos.Jeu;
 
 public class AdherentDAO extends DAO {
 
@@ -143,7 +142,7 @@ public class AdherentDAO extends DAO {
 		}
 		return adherent;
 	}
-	
+
 	/**
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux
@@ -158,19 +157,19 @@ public class AdherentDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesAdherent.add(new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
-							                     resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
-							                     resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
-							                     resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
-							                     resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
+						resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
+						resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
+						resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
+						resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
 			}
 			super.disconnect();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return tousLesAdherent;
 	}
-	
+
 	/**
 	 * Methode de recherche d'adhérent(s)
 	 * @param nomAdherent
@@ -194,13 +193,13 @@ public class AdherentDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
 				adherentsFiltres.add(new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
-	                     resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
-	                     resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
-	                     resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
-	                     resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
+						resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
+						resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
+						resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
+						resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
 			}
 			super.disconnect();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

@@ -24,7 +24,7 @@ public class Extension {
 		this.setNbReserves(nbReserves);
 		this.setNomJeu(nomJeu);
 	}
-	
+
 	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves, String nomJeu) {
 		this.setIdExtension(id);
 		this.setNom(nom);

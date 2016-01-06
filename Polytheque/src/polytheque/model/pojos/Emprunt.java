@@ -192,7 +192,7 @@ public class Emprunt {
 				this.extention.setNbReserves(this.extention.getNbReserves()-1);
 				this.jeu.setStatus("libre");
 				this.extention.setStatut("libre");}
-			}
+		}
 		ajoutRetard();
 	}
 

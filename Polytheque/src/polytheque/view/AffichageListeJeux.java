@@ -33,13 +33,13 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 * Hauteur des lignes.
 	 */
 	public final static int HAUTEUR_DES_LIGNES = 35;
-	
+
 	/**
 	 * Nombre de colonnes du tableau.
 	 */
 	public final static int NOMBRE_COLONNES = 9;
 
-	
+
 	/**
 	 * Les libellés des entêtes.
 	 */
@@ -55,7 +55,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	private JButton boutonRetourAccueil;
 	private JButton boutonRecherche;
 	private JButton boutonAfficherExtensions;
-	
+
 	private JTextField searchContent;
 
 	/**
@@ -65,7 +65,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 	public AffichageListeJeux(TacheDAffichage afficheAppli, ArrayList<Jeu> listeJeux) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
-		
+
 		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
 		creerTableau(listeJeux);
@@ -82,7 +82,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void creerPanneauRecherche() {
 		JPanel searchPanel = new JPanel();
-		
+
 		JLabel labelSearch = new JLabel("Recherche par nom :");
 		labelSearch.setBounds(300, 0, 100, 30);
 		searchPanel.add(labelSearch);
@@ -90,18 +90,18 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
 		searchPanel.add(this.searchContent, BorderLayout.NORTH);
-		
+
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
 		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 
 		this.add(searchPanel, BorderLayout.NORTH);
 	}
-	
+
 	public void creerTableau(ArrayList<Jeu> listeJeux) {
 		JPanel arrayPanel = new JPanel();
 		arrayPanel.setLayout(new BorderLayout());
-		
+
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
@@ -116,11 +116,11 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		tableau.getTableHeader().setReorderingAllowed(true);
 		tableau.getTableHeader().setResizingAllowed(true);
 		tableau.setAutoCreateRowSorter(true);
-		
+
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
 		this.add(arrayPanel, BorderLayout.CENTER);
 	}
-	
+
 	/**
 	 * Initialiser les données du tableau.
 	 * 
@@ -131,7 +131,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	private static Object[][] initialiserDonnees(ArrayList<Jeu> listeJeux)
 	{
 		Object[][] donnees = new Object[listeJeux.size()][NOMBRE_COLONNES];
-		
+
 		int index = 0;		
 		for (Jeu jeuCourant : listeJeux)
 		{
@@ -158,7 +158,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
 		this.boutonAfficherExtensions.addActionListener(this);
-		
+
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
 		this.boutonAjouterJeu.addActionListener(this);
 
@@ -167,7 +167,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.boutonSupprimerJeu = new JButton("Supprimer un jeu");
 		this.boutonSupprimerJeu.addActionListener(this);
-		
+
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
@@ -179,20 +179,20 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.add(buttonsPanel, BorderLayout.SOUTH);
 	}
-	
+
 	/**
 	 * Ajouter les boutons dans la this.
 	 */
 	private void ajouterBoutonsAdherent() {
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-		
+
 		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
 		this.boutonAfficherExtensions.addActionListener(this);
-		
+
 		this.boutonReserverJeu = new JButton("Réserver un jeu");
 		this.boutonReserverJeu.addActionListener(this);
-		
+
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
@@ -224,25 +224,25 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		
+
 		if (boutonSelectionne == this.boutonReserverJeu)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		
+
 		if (boutonSelectionne == this.boutonRetourAccueil)
 		{
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 			return;
 		}
-		
+
 		if (boutonSelectionne == this.boutonRecherche)
 		{
 			this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText());;
 			return;
 		}
-		
+
 		if (boutonSelectionne == this.boutonAfficherExtensions)
 		{
 			this.tacheDAffichageDeLApplication.afficherListeExtensions();

@@ -137,7 +137,7 @@ public class ExtensionDAO extends DAO {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux
@@ -151,20 +151,20 @@ public class ExtensionDAO extends DAO {
 					+ "ORDER BY EXTENSION.nom ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
-			
+
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesJeux.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
-								resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getString("nom_jeu")));
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getString("nom_jeu")));
 			}
 			super.disconnect();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return tousLesJeux;
 	}
-	
+
 	/**
 	 * Methode de recherche d'extension(s)
 	 * @param nomExtension
@@ -190,7 +190,7 @@ public class ExtensionDAO extends DAO {
 						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getString("nom_jeu")));
 			}
 			super.disconnect();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

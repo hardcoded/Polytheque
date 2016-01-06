@@ -11,6 +11,15 @@ import java.sql.SQLException;
  */
 public abstract class DAO {
 
+	/**
+	 * Attribut représentant la connexion à la BDD.
+	 * Trois états possibles :
+	 * <ul>
+	 * 	<li> Null : connexion non existante </li>
+	 * 	<li> Fermée : connexion existante mais inutilisable </li>
+	 * 	<li> Ouverte : connexion existante et exploitable </li>
+	 * </ul>
+	 */
 	protected static Connection connection;
 
 	/**
@@ -33,21 +42,6 @@ public abstract class DAO {
 	 */
 	private final static String PASSWORD = "";
 
-	/**
-	 * Attribut représentant la connexion à la BDD.
-	 * Trois états possibles :
-	 * <ul>
-	 * 	<li> Null : connexion non existante </li>
-	 * 	<li> Fermée : connexion existante mais inutilisable </li>
-	 * 	<li> Ouverte : connexion existante et exploitable </li>
-	 * </ul>
-	 */
-
-	/*
-	private static final String CONFIG_FILE = "config.xml";
-	private XMLConfiguration configReader;
-	*/
-	
 	/**
 	 * Vérifie si le pilote JDBC spécifié existe bien dans l'application
 	 * 
@@ -92,7 +86,7 @@ public abstract class DAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*
 	public void readConfig() {
 		try {

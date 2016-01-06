@@ -142,7 +142,7 @@ public class JeuDAO extends DAO {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux
@@ -153,11 +153,11 @@ public class JeuDAO extends DAO {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
 					+ "FROM JEU "
- 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
- 					+ "ORDER BY nom ASC");
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
+					+ "ORDER BY nom ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
-			
+
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesJeux.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
@@ -165,13 +165,13 @@ public class JeuDAO extends DAO {
 						"", resSet.getString("nom_editeur")));
 			}
 			super.disconnect();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return tousLesJeux;
 	}
-	
+
 	/**
 	 * Methode de recherche de jeu(x)
 	 * @param nomJeu
@@ -199,7 +199,7 @@ public class JeuDAO extends DAO {
 						"", resSet.getString("nom_editeur")));
 			}
 			super.disconnect();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

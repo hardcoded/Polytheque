@@ -29,7 +29,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	//TODO
 	//"Veuiller indiquer la date souhaite de l'emprunt"
 	//faire un afficherListe de jeux avec que ces jeux l�
-	
+
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
 	{		
 		creerPanneauRecherche();
@@ -42,7 +42,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	private void creerPanneauExtension() 
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void creerPanneauRecherche() 
@@ -61,22 +61,22 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 		this.add(searchPanel);		
 	}
-	
+
 	private void creerPanneauDate() {
 		JPanel DatePanel = new JPanel();
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
 		labelDate.setBounds(400, 150, 100, 30);
 		this.add(labelDate);
-	    JDateChooser dateChooser = new JDateChooser();
-	    dateChooser.setBounds(400, 200, 60, 20);
-	    DatePanel.add(dateChooser);
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(400, 200, 60, 20);
+		DatePanel.add(dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.addActionListener(this);
 		this.add(boutonValider);
 	}
-	
+
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton boutonSelectionne = (JButton) e.getSource();

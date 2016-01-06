@@ -2,8 +2,6 @@ package polytheque.view.modeles;
 
 import javax.swing.table.AbstractTableModel;
 
-import polytheque.view.AffichageListeJeux;
-
 /**
  * Classe permettant de modéliser la liste des jeux.
  * 

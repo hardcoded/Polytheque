@@ -31,7 +31,7 @@ public class Reservation {
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 		this.jeu.setStatus("r�serv�");
 	}
-	
+
 	/**
 	 * Constructeur de la classe Reservation
 	 * 
@@ -46,7 +46,7 @@ public class Reservation {
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
 		this.extention.setStatut("r�serv�");
 	}
-	
+
 	/**
 	 * Constructeur de la classe Reservation
 	 * 
@@ -65,7 +65,7 @@ public class Reservation {
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
 		this.extention.setStatut("r�serv�");
 	}
-	
+
 	/**
 	 * Constructeur de la classe Reservation
 	 *  
@@ -120,21 +120,21 @@ public class Reservation {
 	public void setIdReservation(int idReservation) {
 		this.idReservation = idReservation;
 	}
-	
+
 	public void setJeu(Jeu jeu) {
 		this.jeu = jeu;
 	}
-	
+
 	public void setExtension(Extension extention) {
 		this.extention=extention;
-		
+
 	}
-	
+
 	public Extension getExtension() {
 		return extention;
-		
+
 	}
-	
+
 	public Date getDate() {
 		return this.date;
 	}
@@ -142,13 +142,13 @@ public class Reservation {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 	/**m�thodes
 	 * modifDate(date, int); elle ajoute un entier (nb jours) � la date donn�e en prenant en compte les mois et l'ann�e.
 	 * emprunter()
 	 * annuler_reservation()
 	 * */
-	
+
 	public Date modifDate(Date d,int nbjours){
 		@SuppressWarnings("deprecation")
 		int jour = d.getDay();
@@ -195,7 +195,7 @@ public class Reservation {
 		Date date= new Date(annee,mois,jour);
 		return date;
 	}
-	
+
 	public Emprunt validerReservation(){
 		Date datefin = modifDate(this.getDate(),21); //appel � une fonction qui s'occupe d'ajouter les jours
 		if (this.extention == null){

@@ -25,9 +25,9 @@ public class PolythequeApplication {
 	private ReservationDAO reservationDAO;
 	private EmpruntDAO empruntDAO;
 	private ExtensionDAO extensionDAO;
-	
+
 	private TacheDAffichage tacheDAffichageDeLApplication;
-	
+
 	private Adherent adherentCourant;
 
 	public PolythequeApplication(){
@@ -51,38 +51,38 @@ public class PolythequeApplication {
 		}
 		return false;
 	}
-	
+
 	public boolean checkAdmin() {
 		if(this.adherentDAO.isAdmin(this.adherentCourant.getPseudo())) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public ArrayList<Jeu> getGamesList() {
 		return this.jeuDAO.getAll();
 	}
-	
+
 	public ArrayList<Jeu> searchGames(String nomJeu) {
 		return this.jeuDAO.searchByName(nomJeu);
 	}
-	
+
 	public ArrayList<Extension> getExtensionsList() {
 		return this.extensionDAO.getAll();
 	}
-	
+
 	public ArrayList<Extension> searchExtensions(String nomExtension) {
 		return this.extensionDAO.searchByName(nomExtension);
 	}
-	
+
 	public Adherent getAdherentCourant() {
 		return this.adherentCourant;
 	}
-	
+
 	public ArrayList<Adherent> getAdherentsList() {
 		return this.adherentDAO.getAll();
 	}
-	
+
 	public ArrayList<Adherent> searchAdherents(String nomAdherent) {
 		return this.adherentDAO.searchByName(nomAdherent);
 	}
@@ -91,7 +91,7 @@ public class PolythequeApplication {
 		this.adherentDAO.update(adherent);
 		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
-	
+
 	public void annulerReservation(){
 		Date d = null;
 		d.getTime();
