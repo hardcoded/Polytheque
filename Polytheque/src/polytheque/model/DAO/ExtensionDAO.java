@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 
-public class ExtensionsDAO extends DAO {
+public class ExtensionDAO extends DAO {
 
 	/**
 	 * Methode de creation
@@ -142,8 +142,8 @@ public class ExtensionsDAO extends DAO {
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux
 	 */
-	public ArrayList<Jeu> getAll() {
-		ArrayList<Jeu> tousLesJeux = new ArrayList<>();
+	public ArrayList<Extension> getAll() {
+		ArrayList<Extension> tousLesJeux = new ArrayList<>();
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
@@ -155,9 +155,8 @@ public class ExtensionsDAO extends DAO {
 			
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
-				tousLesJeux.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-						"", resSet.getString("nom_editeur")));
+				tousLesJeux.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
+								resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("id_jeu")));
 			}
 			super.disconnect();
 			
@@ -169,18 +168,17 @@ public class ExtensionsDAO extends DAO {
 	
 	/**
 	 * Methode de recherche de jeu(x)
-	 * @param nomJeu
+	 * @param nomExtension
 	 * 			Le nom du jeu à récupérer dans la BDD
 	 * @return Un jeu
 	 */
-	public ArrayList<Jeu> searchByName(String nomJeu) {
-		ArrayList<Jeu> jeuxFiltres = new ArrayList<>();
-		String filtre = "%" + nomJeu.toLowerCase() + "%";
+	public ArrayList<Extension> searchByName(String nomExtension) {
+		ArrayList<Extension> extensionsFiltres = new ArrayList<>();
+		String filtre = "%" + nomExtension.toLowerCase() + "%";
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
-					+ "FROM JEU "
-					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom FROM EXTENSION "
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
 					+ "WHERE nom LIKE ? "
 					+ "ORDER BY nom ASC");
 			psSelect.setString(1, filtre);
@@ -189,15 +187,14 @@ public class ExtensionsDAO extends DAO {
 
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
-				jeuxFiltres.add(new Jeu(resSet.getInt("id_jeu"), resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-						"", resSet.getString("nom_editeur")));
+				extensionsFiltres.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("id_jeu")));
 			}
 			super.disconnect();
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return jeuxFiltres;
+		return extensionsFiltres;
 	}
 }
