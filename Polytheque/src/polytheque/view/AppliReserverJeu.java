@@ -27,7 +27,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	private JTextField ExtensionContent;
 
 	//TODO
-	//"Veuiller indiquer la date souhait� de l'emprunt"
+	//"Veuiller indiquer la date souhaite de l'emprunt"
 	//faire un afficherListe de jeux avec que ces jeux l�
 	
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
