@@ -181,18 +181,14 @@ public class AdherentDAO extends DAO {
 		String filtre = "%" + nomAdherent.toLowerCase() + "%";
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
-					+ "FROM JEU "
-					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
-					+ "WHERE nom LIKE ? "
-					+ "ORDER BY nom ASC");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE nom  LIKE ? ORDER BY nom ASC");
 			psSelect.setString(1, filtre);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
-				adherentsFiltres.add(new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
+				adherentsFiltres.add(new Adherent(resSet.getInt(1), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
 						resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
 						resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
 						resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
