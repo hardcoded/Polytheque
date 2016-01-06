@@ -14,13 +14,25 @@ public class Extension {
 	private String statut;
 	private int nbExemplaires;
 	private int nbReserves;
+	private int idJeu;
 
-	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves) {
+	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves, int idJeu) {
 		this.setNom(nom);
 		this.setDescription(desc);
 		this.setStatut(statut);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
+		this.setIdJeu(idJeu);
+	}
+	
+	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves, int idJeu) {
+		this.setIdExtension(id);
+		this.setNom(nom);
+		this.setDescription(desc);
+		this.setStatut(statut);
+		this.setNbExemplaires(nbExemplaires);
+		this.setNbReserves(nbReserves);
+		this.setIdJeu(idJeu);
 	}
 
 	public int getIdExtension() {
@@ -69,5 +81,13 @@ public class Extension {
 
 	public void setNbReserves(int nbReserves) {
 		this.nbReserves = nbReserves;
+	}
+
+	public int getIdJeu() {
+		return idJeu;
+	}
+
+	public void setIdJeu(int nomJeu) {
+		this.idJeu = nomJeu;
 	}
 }
