@@ -83,7 +83,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void creerPanneauRecherche() {
 		JPanel searchPanel = new JPanel();
-		//searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		
 		JLabel labelSearch = new JLabel("Recherche par nom :");
 		labelSearch.setBounds(300, 0, 100, 30);
@@ -102,7 +101,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	
 	public void creerTableau(ArrayList<Jeu> listeJeux) {
 		JPanel arrayPanel = new JPanel();
-		//arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
 		arrayPanel.setLayout(new BorderLayout());
 		
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
@@ -114,12 +112,11 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_5);
 		tableau.getColumn(LIBELLES[6]).setPreferredWidth(LONGUEUR_COLONNE_6);
 		tableau.getColumn(LIBELLES[7]).setPreferredWidth(LONGUEUR_COLONNE_7);
-		
-		tableau.getTableHeader().setReorderingAllowed(true);
-		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 
-		tableau.getTableHeader().setReorderingAllowed(false);
+		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
+		tableau.getTableHeader().setReorderingAllowed(true);
 		tableau.getTableHeader().setResizingAllowed(true);
+		
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
 		this.add(arrayPanel, BorderLayout.CENTER);
 	}

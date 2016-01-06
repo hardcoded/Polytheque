@@ -105,11 +105,11 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
 		tableau.getColumn(LIBELLES[3]).setPreferredWidth(LONGUEUR_COLONNE_3);
-		tableau.getTableHeader().setReorderingAllowed(true);
+		
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
-
 		tableau.getTableHeader().setReorderingAllowed(true);
 		tableau.getTableHeader().setResizingAllowed(true);
+		
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
 		
 		this.add(arrayPanel, BorderLayout.CENTER);
