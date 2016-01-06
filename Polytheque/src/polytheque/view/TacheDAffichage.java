@@ -154,6 +154,12 @@ public class TacheDAffichage extends JFrame {
 		this.add(new AffichageModificationAdherent(this, this.polythequeApplication.getAdherentCourant()));//Surement un probleme
 		this.rafraichirFenetre();
 	}
+	
+	public void afficherEcranReservation() {
+		this.viderFenetre();
+		this.add(new AppliReserverJeu(this));
+		this.rafraichirFenetre();
+	}
 
 	/**
 	 * Afficher une fenetre de dialogue.

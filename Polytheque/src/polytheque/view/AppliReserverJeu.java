@@ -31,7 +31,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 {
 	
 	private TacheDAffichage tacheDAffichageDeLApplication;
-	private JButton boutonvalider = new JButton("Valider");
+	private JButton boutonvalider;
 	private	Date datedebut;
 	private Date datefin;
 	private JButton boutonRetourAccueil;
@@ -91,13 +91,14 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
 		labelDate.setBounds(0, 150, 100, 30);
-		DatePanel.add(labelDate);
+		this.add(labelDate);
 	    JDateChooser dateChooser = new JDateChooser();
 	    dateChooser.setBounds(20, 20, 60, 20);
 	    DatePanel.add(dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.addActionListener(this);
+		this.add(boutonValider);
 	}
 	
 	
@@ -116,7 +117,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 				}
 				else
 				{
-					/*le redirigé vers la page de confirmation de la reservation*/
+					/*le redirigï¿½ vers la page de confirmation de la reservation*/
 				}
 			
 			// Dans applireservation2 il faut afficher la liste des jeux disponibles pour la date donnee par l'user
