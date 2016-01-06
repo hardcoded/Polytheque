@@ -85,16 +85,16 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		JPanel searchPanel = new JPanel();
 
 		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(300, 0, 100, 30);
-		searchPanel.add(labelSearch);
+		//labelSearch.setBounds(300, 0, 100, 30);
+		searchPanel.add(labelSearch, BorderLayout.CENTER);
 		this.searchContent = new JTextField();
-		this.searchContent.setBounds(450, 0, 100, 30);
+		//this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
-		searchPanel.add(this.searchContent, BorderLayout.NORTH);
+		searchPanel.add(this.searchContent, BorderLayout.CENTER);
 
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
+		searchPanel.add(boutonRecherche, BorderLayout.CENTER);
 
 		this.add(searchPanel, BorderLayout.NORTH);
 	}
@@ -155,7 +155,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdmin() {
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		//buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
 		this.boutonAfficherExtensions.addActionListener(this);

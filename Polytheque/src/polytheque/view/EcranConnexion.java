@@ -1,5 +1,6 @@
 package polytheque.view;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,40 +32,45 @@ public class EcranConnexion extends JPanel implements ActionListener {
 	 *            Une tache d'affichage de l'application.
 	 */
 	public EcranConnexion(TacheDAffichage afficheAppli){
-		this.setLayout(new GridLayout(1, 2));
+		this.setLayout(new BorderLayout());
 
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		ajouterChamps();
 	}
 
 	public void ajouterChamps() {
-		this.setLayout(null);
+		JPanel titrePanel = new JPanel();
+		JPanel champsPanel = new JPanel();
+		JPanel boutonPanel = new JPanel();
 
 		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaît !");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
-		titrePrincipal.setBounds(450, 20, 260, 30);
-		this.add(titrePrincipal);
-
+		//titrePrincipal.setBounds(450, 20, 260, 30);
+		titrePanel.add(titrePrincipal);		
+		this.add(titrePanel, BorderLayout.NORTH);
+		
 		JLabel labelUserName = new JLabel("Pseudo :");
-		labelUserName.setBounds(500, 150, 100, 30);
-		this.add(labelUserName);
+		//labelUserName.setBounds(500, 150, 100, 30);
+		champsPanel.add(labelUserName, BorderLayout.CENTER);
 		this.userName = new JTextField();
-		this.userName.setBounds(450, 200, 190, 30);
+		//this.userName.setBounds(450, 200, 190, 30);
 		this.userName.setColumns(10);
-		this.add(this.userName);
+		champsPanel.add(this.userName, BorderLayout.CENTER);
 
-		JLabel labelpassword = new JLabel("Mot de passe :");
-		labelpassword.setBounds(500, 300, 100, 30);
-		this.add(labelpassword);
+		JLabel labelPassword = new JLabel("Mot de passe :");
+		//labelPassword.setBounds(500, 300, 100, 30);
+		champsPanel.add(labelPassword, BorderLayout.CENTER);
 		this.password = new JPasswordField();
-		this.password.setBounds(450, 350, 190, 30);
+		//this.password.setBounds(450, 350, 190, 30);
 		this.password.setColumns(10);
-		this.add(this.password);
+		champsPanel.add(this.password, BorderLayout.CENTER);
+		this.add(champsPanel, BorderLayout.CENTER);
 
 		this.boutonValider = new JButton("Valider");
-		this.boutonValider.setBounds(350, 450, 400, 30);
+		//this.boutonValider.setBounds(350, 450, 400, 30);
 		this.boutonValider.addActionListener(this);
-		this.add(this.boutonValider);
+		boutonPanel.add(this.boutonValider, BorderLayout.CENTER);
+		this.add(boutonValider, BorderLayout.SOUTH);
 	}
 
 	@Override

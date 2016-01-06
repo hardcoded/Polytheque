@@ -26,15 +26,18 @@ import polytheque.view.modeles.ModeleTableauListeJeux;
 @SuppressWarnings("serial")
 public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
-	public final static int LONGUEUR_COLONNE_0 = 150;
-	public final static int LONGUEUR_COLONNE_1 = 150;
-	public final static int LONGUEUR_COLONNE_2 = 70;
-	public final static int LONGUEUR_COLONNE_3 = 50;
-	public final static int LONGUEUR_COLONNE_4 = 60;
+	public final static int LONGUEUR_COLONNE_0 = 100;
+	public final static int LONGUEUR_COLONNE_1 = 100;
+	public final static int LONGUEUR_COLONNE_2 = 100;
+	public final static int LONGUEUR_COLONNE_3 = 100;
+	public final static int LONGUEUR_COLONNE_4 = 100;
 	public final static int LONGUEUR_COLONNE_5 = 100;
 	public final static int LONGUEUR_COLONNE_6 = 100;
 	public final static int LONGUEUR_COLONNE_7 = 100;
-	public final static int LONGUEUR_COLONNE_8 = 150;
+	public final static int LONGUEUR_COLONNE_8 = 100;
+	public final static int LONGUEUR_COLONNE_9 = 100;
+	public final static int LONGUEUR_COLONNE_10 = 100;
+	public final static int LONGUEUR_COLONNE_11 = 100;
 
 	/**
 	 * Hauteur des lignes.
@@ -50,7 +53,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	 * Les libellés des entêtes.
 	 */
 	public final static String[] LIBELLES = new String[] {"Nom", "Prénom", "Date de naissance", "Rue", 
-			"Code postal", "Ville", "Mail", "Télphone", "Pseudo", 
+			"Code postal", "Ville", "Mail", "Téléphone", "Pseudo", 
 			"Sur liste noire", "Est à jour", "Nombre de retards"};
 
 	private JTextField searchContent;
@@ -126,6 +129,10 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_5);
 		tableau.getColumn(LIBELLES[6]).setPreferredWidth(LONGUEUR_COLONNE_6);
 		tableau.getColumn(LIBELLES[7]).setPreferredWidth(LONGUEUR_COLONNE_7);
+		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_8);
+		tableau.getColumn(LIBELLES[6]).setPreferredWidth(LONGUEUR_COLONNE_9);
+		tableau.getColumn(LIBELLES[7]).setPreferredWidth(LONGUEUR_COLONNE_10);
+		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_11);
 
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 		tableau.getTableHeader().setReorderingAllowed(true);
