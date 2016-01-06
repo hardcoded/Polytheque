@@ -84,8 +84,8 @@ public class AdherentDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE ADHERENT "
-					+ "SET nom = ?, prenom = ?, date_naissance = ?, rue = ?, cp = ?, ville = ?, mail = ?, telephone = ?,"
-					+ "pseudo = ?, mdp = ?, admin = ?,liste_noire = ?, droits = ?, nb_retards = ?)"
+					+ "SET nom = ?, prenom = ?, date_naissance = ?, rue = ?, code_postal = ?, ville = ?, mail = ?, telephone = ?,"
+					+ "pseudo = ?, mdp = ?, admin = ?,liste_noire = ?, droits = ?, nb_retards = ? "
 					+ "WHERE id_adherent = ?"); 
 			psUpdate.setString(1, adherent.getNom());
 			psUpdate.setString(2, adherent.getPrenom());
