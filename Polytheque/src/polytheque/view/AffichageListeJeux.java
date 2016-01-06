@@ -116,6 +116,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 		tableau.getTableHeader().setReorderingAllowed(true);
 		tableau.getTableHeader().setResizingAllowed(true);
+		tableau.setAutoCreateRowSorter(true);
 		
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
 		this.add(arrayPanel, BorderLayout.CENTER);
