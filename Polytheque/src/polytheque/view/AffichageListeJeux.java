@@ -145,27 +145,15 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		int index = 0;		
 		for (Jeu jeuCourant : listeJeux)
 		{
-			if (jeuCourant.getNom() != null) {
-				donnees[index][0] = jeuCourant.getNom();
-			}
-			if (jeuCourant.getDescription() != null) {
-				donnees[index][1] = jeuCourant.getDescription();
-			}
-			if (jeuCourant.getAnneeParution() != null) {
-				donnees[index][2] = jeuCourant.getAnneeParution();
-			}
-			if (jeuCourant.getStatut() != null) {
-				donnees[index][3] = jeuCourant.getStatut();
-			}
+			donnees[index][0] = jeuCourant.getNom();
+			donnees[index][1] = jeuCourant.getDescription();
+			donnees[index][2] = jeuCourant.getAnneeParution();
+			donnees[index][3] = jeuCourant.getStatut();
 			donnees[index][4] = jeuCourant.getAgeMini();
 			donnees[index][5] = jeuCourant.getNbJoueursMin();
 			donnees[index][6] = jeuCourant.getNbJoueursMax();
-			if (jeuCourant.getCategorie() != null) {
-				donnees[index][7] = jeuCourant.getCategorie();
-			}
-			if (jeuCourant.getEditeur() != null) {
-				donnees[index][8] = jeuCourant.getEditeur();
-			}
+			donnees[index][7] = jeuCourant.getCategorie();
+			donnees[index][8] = jeuCourant.getEditeur();
 			index++;
 		}		
 		return donnees;
