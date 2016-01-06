@@ -143,13 +143,17 @@ public class Reservation {
 		//TODO trouver moyen de fixer la date de fin à 3 semaines plus tard (= 21 jours)
 		if (this.extention == null){
 			this.jeu.setStatus("emprunté");
+			this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 			return new Emprunt(this.adherent,this.jeu,this.date,dateFin,null);}
 		else{
 			if (this.jeu == null){
 				this.extention.setStatut("emprunté");
+				this.extention.setNbReserves(this.extention.getNbReserves()+1);
 				return new Emprunt(this.adherent,this.extention,this.date,dateFin,null);}
 			else{
 				this.jeu.setStatus("emprunté");
+				this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
+				this.extention.setNbReserves(this.extention.getNbReserves()+1);
 				this.extention.setStatut("emprunté");
 				return new Emprunt(this.adherent,this.jeu,this.extention,this.date,dateFin);}
 		}
@@ -158,14 +162,18 @@ public class Reservation {
 
 	public void annulerReservation(){
 		if (this.extention == null){
-			this.jeu.setStatus("libre");}
+			this.jeu.setStatus("libre");
+			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);}
 		else{
 			if (this.jeu == null){
-				this.extention.setStatut("libre");}
+				this.extention.setStatut("libre");
+				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
 			else{
 				this.jeu.setStatus("libre");
-				this.extention.setStatut("libre");}
+				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
+				this.extention.setStatut("libre");
+				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
 		}
 	}
-	
+
 }
