@@ -1,35 +1,24 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
-import polytheque.controller.PolythequeApplication;
 import polytheque.model.pojos.Jeu;
-import polytheque.view.modeles.ModeleTableauListeJeux;
 
 @SuppressWarnings("serial")
 public class AppliReserverJeu extends JPanel implements ActionListener
 {
-	
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	private JButton boutonvalider;
 	private	Date datedebut;
@@ -40,31 +29,23 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	private JTextField searchContent;
 	private JTextField DateContent;
 	private JTextField ExtensionContent;
-	
-	
 
 	//TODO
 	//"Veuiller indiquer la date souhait� de l'emprunt"
 	//faire un afficherListe de jeux avec que ces jeux l�
 	
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
-	{
-		
+	{		
 		creerPanneauRecherche();
 		creerPanneauExtension();
-		creerPanneauDate();
-		
+		creerPanneauDate();		
 	}
-	
-	
-	
+
 	private void creerPanneauExtension() 
 	{
 		// TODO Auto-generated method stub
 		
 	}
-
-
 
 	private void creerPanneauRecherche() 
 	{
@@ -80,12 +61,9 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
 		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
-
-		
+		this.add(searchPanel);		
 	}
-
-
-
+	
 	private void creerPanneauDate() {
 		JPanel DatePanel = new JPanel();
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
@@ -101,40 +79,13 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.add(boutonValider);
 	}
 	
-	
-	
-	
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			ArrayList<Jeu> listeJeux = new ArrayList<Jeu>();
-			for(Jeu jeucourant : listeJeux)
-				if (jeucourant.getNom() == this.searchContent.getText() && !jeucourant.getDisponibilite() )
-				{
-					this.tacheDAffichageDeLApplication.afficherMessage("Ce jeu n'est pas disponible pour la date choisie", "Erreur!", JOptionPane.ERROR_MESSAGE);
-				}
-				else
-				{
-					/*le redirig� vers la page de confirmation de la reservation*/
-				}
-			
-			// Dans applireservation2 il faut afficher la liste des jeux disponibles pour la date donnee par l'user
-		
-		}
-		// TODO Auto-generated method stub
-		
-	}
-
-		
-
-
-
-	
-
-
-	
-	
+			return;
+		}		
+	}	
 }
 
