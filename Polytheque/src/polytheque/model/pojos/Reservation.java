@@ -29,7 +29,7 @@ public class Reservation {
 		this.setJeu(jeu);
 		this.setDate(date);
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("réservé");
+		this.jeu.setStatus("rï¿½servï¿½");
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class Reservation {
 		this.setExtension(extention);
 		this.setDate(date);
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
-		this.extention.setStatut("réservé");
+		this.extention.setStatut("rï¿½servï¿½");
 	}
 	
 	/**
@@ -61,9 +61,9 @@ public class Reservation {
 		this.setExtension(extention);
 		this.setDate(date);
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("réservé");
+		this.jeu.setStatus("rï¿½servï¿½");
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
-		this.extention.setStatut("réservé");
+		this.extention.setStatut("rï¿½servï¿½");
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class Reservation {
 		this.setJeu(jeu);
 		this.setDate(date);
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("réservé");
+		this.jeu.setStatus("rï¿½servï¿½");
 	}
 
 	/**
@@ -143,8 +143,8 @@ public class Reservation {
 		this.date = date;
 	}
 	
-	/**méthodes
-	 * modifDate(date, int); elle ajoute un entier (nb jours) à la date donnée en prenant en compte les mois et l'année.
+	/**mï¿½thodes
+	 * modifDate(date, int); elle ajoute un entier (nb jours) ï¿½ la date donnï¿½e en prenant en compte les mois et l'annï¿½e.
 	 * emprunter()
 	 * annuler_reservation()
 	 * */
@@ -197,23 +197,23 @@ public class Reservation {
 	}
 	
 	public Emprunt validerReservation(){
-		Date datefin = modifDate(this.getDate(),21); //appel à une fonction qui s'occupe d'ajouter les jours
+		Date datefin = modifDate(this.getDate(),21); //appel ï¿½ une fonction qui s'occupe d'ajouter les jours
 		if (this.extention == null){
-			this.jeu.setStatus("emprunté");
+			this.jeu.setStatus("empruntï¿½");
 			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
-			this.jeu.setNbEmpruntes(this.jeu.getNbEmpruntes()+1);
+			this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 			return new Emprunt(this.adherent,this.jeu,this.date,datefin,null);}
 		else{
 			if (this.jeu == null){
-				this.extention.setStatut("emprunté");
+				this.extention.setStatut("empruntï¿½");
 				this.extention.setNbReserves(this.extention.getNbReserves()-1);
 				return new Emprunt(this.adherent,this.extention,this.date,datefin,null);}
 			else{
-				this.jeu.setStatus("emprunté");
-				this.jeu.setNbEmpruntes(this.jeu.getNbEmpruntes()+1);
+				this.jeu.setStatus("empruntï¿½");
+				this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
 				this.extention.setNbReserves(this.extention.getNbReserves()-1);
-				this.extention.setStatut("emprunté");
+				this.extention.setStatut("empruntï¿½");
 				return new Emprunt(this.adherent,this.jeu,this.extention,this.date,datefin);}
 		}
 	}

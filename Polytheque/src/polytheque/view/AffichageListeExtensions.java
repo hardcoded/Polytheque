@@ -15,7 +15,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Extension;
-import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
 @SuppressWarnings("serial")
@@ -142,7 +141,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 			donnees[index][0] = extensionCourante.getNom();
 			donnees[index][1] = extensionCourante.getDescription();
 			donnees[index][2] = extensionCourante.getStatut();
-			donnees[index][3] = extensionCourante.get;
+			donnees[index][3] = extensionCourante.getNomJeu();
 			index++;
 		}		
 		return donnees;
@@ -240,7 +239,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		
 		if (boutonSelectionne == this.boutonAfficherExtensions)
 		{
-			this.tacheDAffichageDeLApplication.afficherListeExtension();
+			this.tacheDAffichageDeLApplication.afficherListeExtensions();
 			return;
 		}
 		return;

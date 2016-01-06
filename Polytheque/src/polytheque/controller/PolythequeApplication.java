@@ -67,6 +67,14 @@ public class PolythequeApplication {
 		return this.jeuDAO.searchByName(nomJeu);
 	}
 	
+	public ArrayList<Extension> getExtensionsList() {
+		return this.extensionDAO.getAll();
+	}
+	
+	public ArrayList<Extension> searchExtensions(String nomExtension) {
+		return this.extensionDAO.searchByName(nomExtension);
+	}
+	
 	public Adherent getAdherentCourant() {
 		return this.adherentCourant;
 	}
@@ -74,14 +82,5 @@ public class PolythequeApplication {
 	public void enregistrerModifsAdherent(Adherent adherent) {
 		this.adherentDAO.update(adherent);
 		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
-	}
-	
-
-	public ArrayList<Extension> getExtensionsList() {
-		return this.extensionDAO.getAll();
-	}
-	
-	public ArrayList<Extension> searchExtensions(String nomExtension) {
-		return this.extensionDAO.searchByName(nomExtension);
 	}
 }
