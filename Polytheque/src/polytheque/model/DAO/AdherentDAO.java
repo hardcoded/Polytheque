@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Jeu;
 
 public class AdherentDAO extends DAO {
 
@@ -168,6 +169,42 @@ public class AdherentDAO extends DAO {
 			e.printStackTrace();
 		}
 		return tousLesAdherent;
+	}
+	
+	/**
+	 * Methode de recherche d'adhérent(s)
+	 * @param nomAdherent
+	 * 			Le nom du jeu à récupérer dans la BDD
+	 * @return Un jeu
+	 */
+	public ArrayList<Adherent> searchByName(String nomAdherent) {
+		ArrayList<Adherent> adherentsFiltres = new ArrayList<>();
+		String filtre = "%" + nomAdherent.toLowerCase() + "%";
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
+					+ "FROM JEU "
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
+					+ "WHERE nom LIKE ? "
+					+ "ORDER BY nom ASC");
+			psSelect.setString(1, filtre);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			while (resSet.next()) { // On se place sur le 1er résultat
+				adherentsFiltres.add(new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
+	                     resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
+	                     resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
+	                     resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
+	                     resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
+			}
+			super.disconnect();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return adherentsFiltres;
 	}
 
 	public Adherent connectionAuthorized(String userName, String password) {

@@ -78,6 +78,14 @@ public class PolythequeApplication {
 	public Adherent getAdherentCourant() {
 		return this.adherentCourant;
 	}
+	
+	public ArrayList<Adherent> getAdherentsList() {
+		return this.adherentDAO.getAll();
+	}
+	
+	public ArrayList<Adherent> searchAdherents(String nomAdherent) {
+		return this.adherentDAO.searchByName(nomAdherent);
+	}
 
 	public void enregistrerModifsAdherent(Adherent adherent) {
 		this.adherentDAO.update(adherent);

@@ -19,7 +19,6 @@ import polytheque.view.modeles.ModeleTableauListeJeux;
 @SuppressWarnings("serial")
 public class AffichageListeJeux extends JPanel implements ActionListener {
 
-
 	public final static int LONGUEUR_COLONNE_0 = 150;
 	public final static int LONGUEUR_COLONNE_1 = 150;
 	public final static int LONGUEUR_COLONNE_2 = 70;

@@ -74,7 +74,7 @@ public class ModeleTableauListeJeux extends AbstractTableModel
 	{
 		int index;
 		for (index = 0; index < this.libelles.length; index++){
-			if (this.getColumnName(col).equals(AffichageListeJeux.LIBELLES[index])) {
+			if (this.getColumnName(col).equals(this.libelles[index])) {
 				return false;
 			}
 		}

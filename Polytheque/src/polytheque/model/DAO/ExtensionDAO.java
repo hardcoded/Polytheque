@@ -166,7 +166,7 @@ public class ExtensionDAO extends DAO {
 	}
 	
 	/**
-	 * Methode de recherche de jeu(x)
+	 * Methode de recherche d'extension(s)
 	 * @param nomExtension
 	 * 			Le nom du jeu à récupérer dans la BDD
 	 * @return Un jeu

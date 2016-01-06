@@ -154,9 +154,15 @@ public class TacheDAffichage extends JFrame {
 		this.rafraichirFenetre();
 	}
 	
+	public void rechercherAdherent(String nomAdherent) {
+		this.viderFenetre();
+		this.add(new AffichageGestionAdherent(this, this.polythequeApplication.searchAdherents(nomAdherent)));
+		this.rafraichirFenetre();
+	}
+	
 	public void afficherGestionAdherent() {
 		this.viderFenetre();
-		this.add(new AffichageGestionAdherent(this, this.polythequeApplication.getAdherentCourant())); //Surement un probleme
+		this.add(new AffichageGestionAdherent(this, this.polythequeApplication.getAdherentsList())); //Surement un probleme
 		this.rafraichirFenetre();
 	}
 	
