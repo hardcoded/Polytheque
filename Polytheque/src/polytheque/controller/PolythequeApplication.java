@@ -83,4 +83,13 @@ public class PolythequeApplication {
 		this.adherentDAO.update(adherent);
 		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
+	
+	public void annulerReservation(){
+		Date d = null;
+		d.getTime();
+		Adherent adh=null;
+		//adh = this.adherentDAO.retreive(this.adherentDAO.getIdAdherent());
+		Reservation r = this.reservationDAO.retreive(adh,d);
+		this.reservationDAO.delete(r.getIdReservation());
+	}
 }
