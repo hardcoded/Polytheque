@@ -16,23 +16,23 @@ public class Extension {
 	private int nbReserves;
 	private String nomJeu;
 
-	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves, String idJeu) {
+	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves, String nomJeu) {
 		this.setNom(nom);
 		this.setDescription(desc);
 		this.setStatut(statut);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
-		this.setNomJeu(idJeu);
+		this.setNomJeu(nomJeu);
 	}
 	
-	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves, String idJeu) {
+	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves, String nomJeu) {
 		this.setIdExtension(id);
 		this.setNom(nom);
 		this.setDescription(desc);
 		this.setStatut(statut);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
-		this.setNomJeu(idJeu);
+		this.setNomJeu(nomJeu);
 	}
 
 	public int getIdExtension() {

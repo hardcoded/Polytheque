@@ -27,7 +27,7 @@ public class ExtensionDAO extends DAO {
 			psInsert.setString(3, extension.getStatut());
 			psInsert.setInt(4, extension.getNbExemplaires());
 			psInsert.setInt(5, extension.getNbReserves());
-			psInsert.setInt(6, extension.getIdJeu());
+			psInsert.setString(6, extension.getNomJeu());
 
 			psInsert.executeUpdate();
 			psInsert.closeOnCompletion();
@@ -146,17 +146,16 @@ public class ExtensionDAO extends DAO {
 		ArrayList<Extension> tousLesJeux = new ArrayList<>();
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, EDITEUR.nom_editeur "
-					+ "FROM JEU "
- 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
- 					+ "ORDER BY nom ASC");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom as nom_jeu FROM EXTENSION "
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
+					+ "ORDER BY EXTENSION.nom ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 			
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesJeux.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
-								resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getInt("nb_empruntes"), resSet.getInt("id_jeu")));
+								resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getString("nom_jeu")));
 			}
 			super.disconnect();
 			
@@ -177,10 +176,10 @@ public class ExtensionDAO extends DAO {
 		String filtre = "%" + nomExtension.toLowerCase() + "%";
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom FROM EXTENSION "
-					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
-					+ "WHERE nom LIKE ? "
-					+ "ORDER BY nom ASC");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom as nom_jeu FROM EXTENSION "
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu "
+					+ "WHERE EXTENSION.nom LIKE ? "
+					+ "ORDER BY EXTENSION.nom ASC");
 			psSelect.setString(1, filtre);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
@@ -188,7 +187,7 @@ public class ExtensionDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
 				extensionsFiltres.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getInt("nb_empruntes"), resSet.getInt("id_jeu")));
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getString("nom_jeu")));
 			}
 			super.disconnect();
 			
