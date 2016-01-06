@@ -1,5 +1,6 @@
 package polytheque.view;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,27 +43,27 @@ public class EcranConnexion extends JPanel implements ActionListener {
 
 		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaît !");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
-		titrePrincipal.setBounds(350, 20, 260, 30);
+		titrePrincipal.setBounds(450, 20, 260, 30);
 		this.add(titrePrincipal);
 
 		JLabel labelUserName = new JLabel("Pseudo :");
-		labelUserName.setBounds(300, 150, 100, 30);
+		labelUserName.setBounds(500, 150, 100, 30);
 		this.add(labelUserName);
 		this.userName = new JTextField();
-		this.userName.setBounds(400, 150, 190, 30);
+		this.userName.setBounds(450, 200, 190, 30);
 		this.userName.setColumns(10);
 		this.add(this.userName);
 
 		JLabel labelpassword = new JLabel("Mot de passe :");
-		labelpassword.setBounds(300, 300, 100, 30);
+		labelpassword.setBounds(500, 300, 100, 30);
 		this.add(labelpassword);
 		this.password = new JPasswordField();
-		this.password.setBounds(400, 300, 190, 30);
+		this.password.setBounds(450, 350, 190, 30);
 		this.password.setColumns(10);
 		this.add(this.password);
 
 		this.boutonValider = new JButton("Valider");
-		this.boutonValider.setBounds(300, 400, 400, 30);
+		this.boutonValider.setBounds(350, 450, 400, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider);
 	}

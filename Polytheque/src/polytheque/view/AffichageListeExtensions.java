@@ -35,16 +35,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 * Nombre de colonnes du tableau.
 	 */
 	public final static int NOMBRE_COLONNES = 9;
-
-	/**
-	 * Séparation de la fenêtre dans le sens de la hauteur
-	 */
-	public final static int HAUTEUR = 3;
-	
-	/**
-	 * Séparation de la fenêtre dans le sens de la largeur
-	 */
-	public final static int LARGEUR = 1;
 	
 	/**
 	 * Les libellés des entêtes.
@@ -72,7 +62,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	public AffichageListeExtensions(TacheDAffichage afficheAppli, ArrayList<Extension> listeExtensions) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		
-		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
 		creerPanneauRecherche();
 		creerTableau(listeExtensions);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
@@ -102,7 +91,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.boutonRecherche.addActionListener(this);
 		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 
-		this.add(searchPanel);
+		this.add(searchPanel, BorderLayout.NORTH);
 	}
 	
 	public void creerTableau(ArrayList<Extension> listeExtensions) {
@@ -121,7 +110,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		tableau.getTableHeader().setReorderingAllowed(false);
 		tableau.getTableHeader().setResizingAllowed(true);
 		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
-		this.add(arrayPanel);
+		this.add(arrayPanel, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -171,7 +160,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		buttonsPanel.add(boutonSupprimerExtension, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel);
+		this.add(buttonsPanel, BorderLayout.SOUTH);
 	}
 	
 	/**
