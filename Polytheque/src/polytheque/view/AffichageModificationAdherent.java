@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -34,9 +35,6 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		private JTextField userMail;
 		private JTextField userCptRetard;
 		private JPasswordField password;
-		private JComboBox userIsAdmin;
-		private JComboBox userPeutEmprunter;
-		private JComboBox userEstAJour;
 		
 		private JButton boutonValider;
 		private JButton boutonRetourAccueil;
@@ -151,39 +149,39 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 			
 			JLabel labelUserIsAdmin = new JLabel("Admin :");
 			labelUserIsAdmin.setBounds(300, 390, 100, 30);
-			this.add(labelUserIsAdmin);
-			JComboBox userIsAdmin = new JComboBox();
-		    this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
-		    this.userIsAdmin.addItem("True");
-		    this.userIsAdmin.addItem("False");
-			this.userIsAdmin.setBounds(360, 390, 100, 30);
-			this.add(this.userIsAdmin);
+			this.add(labelUserIsAdmin);			
+			JComboBox<Boolean>userIsAdmin = new JComboBox<Boolean>();
+			userIsAdmin.addItem(Boolean.TRUE);
+			userIsAdmin.addItem(Boolean.FALSE);
+		    userIsAdmin.setPreferredSize(new Dimension(100, 20));
+			userIsAdmin.setBounds(360, 390, 100, 30);
+			this.add(userIsAdmin);
 			
 			JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
-			labelUserPeutEmprunter.setBounds(300, 390, 100, 30);
+			labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
 			this.add(labelUserPeutEmprunter);
-			JComboBox userPeutEmprunter = new JComboBox();
-		    this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
-		    this.userPeutEmprunter.addItem("True");
-		    this.userPeutEmprunter.addItem("False");
-			this.userPeutEmprunter.setBounds(360, 390, 100, 30);
-			this.add(this.userPeutEmprunter);
+			JComboBox<Boolean> userPeutEmprunter = new JComboBox<Boolean>();
+			userPeutEmprunter.addItem(Boolean.TRUE);
+			userPeutEmprunter.addItem(Boolean.FALSE);
+		    userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
+			userPeutEmprunter.setBounds(600, 150, 100, 30);
+			this.add(userPeutEmprunter);
 			
 			JLabel labelUserEstAJour = new JLabel("Est a jour :");
-			labelUserEstAJour.setBounds(300, 390, 100, 30);
+			labelUserEstAJour.setBounds(600, 200, 100, 30);
 			this.add(labelUserEstAJour);
-			JComboBox userEstAJour = new JComboBox();
-		    this.userEstAJour.setPreferredSize(new Dimension(100, 20));
-		    this.userEstAJour.addItem("True");
-		    this.userEstAJour.addItem("False");
-			this.userEstAJour.setBounds(360, 390, 100, 30);
-			this.add(this.userEstAJour);
+			JComboBox<Boolean> userEstAJour = new JComboBox<Boolean>();
+			userEstAJour.addItem(Boolean.TRUE);
+			userEstAJour.addItem(Boolean.FALSE);
+		    userEstAJour.setPreferredSize(new Dimension(100, 20));
+			userEstAJour.setBounds(600, 250, 100, 30);
+			this.add(userEstAJour);
 			
 			JLabel labelUserCptRetard = new JLabel("Compteur Retard :");
-			labelUserCptRetard.setBounds(300, 390, 100, 30);
+			labelUserCptRetard.setBounds(600, 300, 150, 30);
 			this.add(labelUserCptRetard);
 			this.userCptRetard = new JTextField(this.adherentCourant.getCompteurRetard());
-			this.userCptRetard.setBounds(360, 390, 100, 30);
+			this.userCptRetard.setBounds(600, 350, 100, 30);
 			this.add(this.userCptRetard);
 		}
 		
@@ -212,7 +210,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 			{
 				String password = new String(this.password.getPassword());
 				Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard());
-				this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte");
+				this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte !", "Modifications terminées", JOptionPane.INFORMATION_MESSAGE);
 				this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 				return;
 				}

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -162,7 +163,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			{
 				String password = new String(this.password.getPassword());
 				Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard());
-				this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte");
+				this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte !", "Modification terminée", JOptionPane.INFORMATION_MESSAGE);
 				this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 				return;
 				}

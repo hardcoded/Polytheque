@@ -71,7 +71,7 @@ public class PolythequeApplication {
 
 	public void enregistrerModifsAdherent(Adherent adherent) {
 		this.adherentDAO.update(adherent);
-		
+		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
 	
 
