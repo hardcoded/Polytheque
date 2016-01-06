@@ -3,9 +3,8 @@ package polytheque.model.pojos;
 import java.sql.Date;
 
 import polytheque.model.DAO.AdherentDAO;
-
 /**
- * Classe permettant la rï¿½servation d'un jeu
+ * Classe permettant la réservation d'un jeu
  * 
  * @author Laure Marchal
  */
@@ -19,7 +18,7 @@ public class Reservation {
 
 	/**
 	 * Constructeur de la classe Reservation
-	 *  
+	 * 
 	 * @param adherent
 	 * @param jeu
 	 * @param date
@@ -33,6 +32,7 @@ public class Reservation {
 	/**
 	 * Constructeur de la classe Reservation
 	 *  
+	 * @param idReservation
 	 * @param adherent
 	 * @param jeu
 	 * @param date
@@ -46,9 +46,9 @@ public class Reservation {
 
 	/**
 	 * Constructeur de la classe Reservation
-	 *  
-	 * @param adherent
-	 * @param jeu
+	 * 
+	 * @param idReservation
+	 * @param idAdherent
 	 * @param date
 	 */
 	public Reservation(int id, Date date, int idAdherent) {
@@ -59,8 +59,8 @@ public class Reservation {
 	}
 
 	/**
-	 * mï¿½thodes
-	 * getter et setter qui permettent de rï¿½cupï¿½rer ou modifier les attributs de cette classe dans d'autres classes
+	 * méthodes
+	 * getter et setter qui permettent de récupérer ou modifier les attributs de cette classe dans d'autres classes
 	 */
 	public Adherent getAdherent() {
 		return adherent;
@@ -74,6 +74,14 @@ public class Reservation {
 		return jeu;
 	}
 
+	public int getIdReservation() {
+		return idReservation;
+	}
+
+	public void setIdReservation(int idReservation) {
+		this.idReservation = idReservation;
+	}
+	
 	public void setJeu(Jeu jeu) {
 		this.jeu = jeu;
 	}
@@ -86,28 +94,4 @@ public class Reservation {
 		this.date = date;
 	}
 
-	/**
-	 * mï¿½thodes
-	 * Emprunt valider_reservation();
-	 * void annuler_reservation();
-	 */
-
-	Emprunt validerReservation(){
-		Date dateFin = this.getDate();
-		//TODO trouver moyen de fixer la date de fin Ã  3 semaines plus tard (= 21 jours)
-		Emprunt emprunt = new Emprunt (this.getAdherent(), this.getJeu(), this.getDate(), dateFin, null);
-		return emprunt;
-	}
-
-	void annulerReservation(){
-
-	}
-
-	public int getIdReservation() {
-		return idReservation;
-	}
-
-	public void setIdReservation(int idReservation) {
-		this.idReservation = idReservation;
-	}
 }
