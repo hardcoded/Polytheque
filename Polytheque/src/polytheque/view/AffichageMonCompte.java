@@ -169,12 +169,8 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 
 			if (boutonSelectionne == this.boutonValider)
 			{
-				//BDDRue= this.userRue.getText();
-				//BDDCP= this.userCP.getText();
-				//BDDVille = this.userVille.getText();
-				//BDDMail = this.userMail.getText();
-				//BDDTelephone = this.userTelephone.getText();
-				//BDDMdp = this.userPasswort.getText();
+				Adherent adherent = new Adherent(this.userName.getText(), prenom, dateNaissance, this.userRue.getText(), cp, ville, mail, tel, pseudo, mdp, isAdmin)
+				this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 				this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte");
 				this.tacheDAffichageDeLApplication.afficherMonCompte();
 				return;

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import polytheque.controller.PolythequeApplication;
+import polytheque.model.pojos.Adherent;
 
 /**
  * Classe permettant de gérer l'affichage de l'appication.
@@ -130,6 +131,13 @@ public class TacheDAffichage extends JFrame {
 	}
 	
 	public void afficherMonCompte() {
+		this.viderFenetre();
+		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));
+		this.rafraichirFenetre();
+	}
+	
+	public void modifAdherent(Adherent adherent) {
+		this.polythequeApplication.enregistrerModifsAdherent(adherent);
 		this.viderFenetre();
 		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));
 		this.rafraichirFenetre();
