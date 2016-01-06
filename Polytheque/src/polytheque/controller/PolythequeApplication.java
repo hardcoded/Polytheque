@@ -59,4 +59,8 @@ public class PolythequeApplication {
 	public ArrayList<Jeu> searchGames(String nomJeu) {
 		return this.jeuDAO.searchByName(nomJeu);
 	}
+	
+	public Adherent getAdherentCourant() {
+		return this.adherentCourant;
+	}
 }

@@ -131,7 +131,7 @@ public class TacheDAffichage extends JFrame {
 	
 	public void afficherMonCompte() {
 		this.viderFenetre();
-		this.add(new AffichageMonCompte(this));
+		this.add(new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant()));
 		this.rafraichirFenetre();
 	}
 

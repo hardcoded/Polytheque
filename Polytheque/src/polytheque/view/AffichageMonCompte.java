@@ -10,6 +10,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import polytheque.model.pojos.Adherent;
+
 /**
  * Classe permettant de gerer la modification des informations li�es au compte de l'utilisateur.
  * 
@@ -31,7 +33,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 		private JPasswordField password;	
 		private JButton boutonValider;
 		private JButton boutonRetourAccueil;
-
+		private Adherent adherentCourant;
 		
 		/**
 		 * Une tache d'affichage de l'application.
@@ -45,9 +47,9 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 		 *            Une tache d'affichage de l'application.
 		 * @return 
 		 */
-		public AffichageMonCompte(TacheDAffichage afficheAppli){
+		public AffichageMonCompte(TacheDAffichage afficheAppli, Adherent adherent){
 			this.tacheDAffichageDeLApplication = afficheAppli;
-
+			this.adherentCourant = adherent;
 			ajouterChamps();
 			ajouterBoutons();
 		}
@@ -63,7 +65,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			JLabel labelUserName = new JLabel("Nom :");
 			labelUserName.setBounds(300, 150, 100, 30);
 			this.add(labelUserName);
-			this.userName = new JLabel("TEST");
+			this.userName = new JLabel(this.adherentCourant.getNom());
 			this.userName.setBounds(350, 150, 100, 30);
 			this.add(this.userName);
 			//this.adherentDAO.retreive(this.adherentCourant.getNom())
@@ -71,7 +73,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			JLabel labelUserFirstName = new JLabel("Prenom :");
 			labelUserFirstName.setBounds(300, 180, 100, 30);
 			this.add(labelUserFirstName);
-			this.userFirstName = new JLabel("TEST");
+			this.userFirstName = new JLabel(this.adherentCourant.getPrenom());
 			this.userFirstName.setBounds(360, 180, 100, 30);
 			this.add(this.userFirstName);
 			//this.adherentDAO.retreive(this.adherentCourant.getPrenom())
