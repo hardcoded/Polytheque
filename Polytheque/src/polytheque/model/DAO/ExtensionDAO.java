@@ -127,7 +127,7 @@ public class ExtensionDAO extends DAO {
 			Jeu jeu = null;
 			if (resSet.next()) { // On se place sur le 1er résultat
 				jeu = new Jeu(id, resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getInt("nb_empruntes"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
 						resSet.getString("nom_categorie"), resSet.getString("nom_editeur"));
 			}
 			super.disconnect();
@@ -156,7 +156,7 @@ public class ExtensionDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
 				tousLesJeux.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
-								resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("id_jeu")));
+								resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getInt("nb_empruntes"), resSet.getInt("id_jeu")));
 			}
 			super.disconnect();
 			
@@ -188,7 +188,7 @@ public class ExtensionDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
 				extensionsFiltres.add(new Extension(resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"), 
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("id_jeu")));
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getInt("nb_empruntes"), resSet.getInt("id_jeu")));
 			}
 			super.disconnect();
 			
