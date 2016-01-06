@@ -200,20 +200,18 @@ public class Reservation {
 		Date datefin = modifDate(this.getDate(),21); //appel � une fonction qui s'occupe d'ajouter les jours
 		if (this.extention == null){
 			this.jeu.setStatus("emprunt�");
-			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
-			this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
+			if (this.jeu.getNbReserves()==this.jeu.getNbExemplaires()){
+				this.jeu.setDisponibilite(false);}
 			return new Emprunt(this.adherent,this.jeu,this.date,datefin,null);}
 		else{
 			if (this.jeu == null){
 				this.extention.setStatut("emprunt�");
-				this.extention.setNbReserves(this.extention.getNbReserves()-1);
 				return new Emprunt(this.adherent,this.extention,this.date,datefin,null);}
 			else{
 				this.jeu.setStatus("emprunt�");
-				this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
-				this.extention.setNbReserves(this.extention.getNbReserves()-1);
 				this.extention.setStatut("emprunt�");
+				if (this.jeu.getNbReserves()==this.jeu.getNbExemplaires()){
+					this.jeu.setDisponibilite(false);}
 				return new Emprunt(this.adherent,this.jeu,this.extention,this.date,datefin);}
 		}
 	}
