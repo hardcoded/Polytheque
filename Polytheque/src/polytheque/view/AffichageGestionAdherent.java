@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
 import polytheque.model.pojos.Adherent;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
