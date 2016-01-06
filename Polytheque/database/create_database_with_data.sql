@@ -455,7 +455,7 @@ INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Tie-Bomber", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Navette lambda", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("HWK-290", "", "OK", 0, 0, 182);
-INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("As impÃ©riaux", "", "OK", 0, 0, 182);
+INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("As impériaux", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Z-95", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("E-Wing", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("E-Wing", "", "OK", 0, 0, 182);
@@ -470,8 +470,8 @@ INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Star-Viper", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("M3-A", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("IG-2000", "", "OK", 0, 0, 182);
-INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Raider ImpÃ©rial", "", "OK", 0, 0, 182);
-INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Houndâ€™s Tooth", "", "OK", 0, 0, 182);
+INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Raider Impérial", "", "OK", 0, 0, 182);
+INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Hound's Tooth", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Kihraxz", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("K-Wing", "", "OK", 0, 0, 182);
 INSERT INTO EXTENSION (nom, description, statut, nb_exemplaires, nb_reserves, id_jeu) VALUES ("Tie-Punisher", "", "OK", 0, 0, 182);

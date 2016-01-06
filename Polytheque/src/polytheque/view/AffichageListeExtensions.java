@@ -13,22 +13,19 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
 @SuppressWarnings("serial")
-public class AffichageListeJeux extends JPanel implements ActionListener {
+public class AffichageListeExtensions extends JPanel implements ActionListener {
 
 
 	public final static int LONGUEUR_COLONNE_0 = 150;
 	public final static int LONGUEUR_COLONNE_1 = 150;
 	public final static int LONGUEUR_COLONNE_2 = 70;
 	public final static int LONGUEUR_COLONNE_3 = 50;
-	public final static int LONGUEUR_COLONNE_4 = 60;
-	public final static int LONGUEUR_COLONNE_5 = 100;
-	public final static int LONGUEUR_COLONNE_6 = 100;
-	public final static int LONGUEUR_COLONNE_7 = 100;
-	public final static int LONGUEUR_COLONNE_8 = 150;
 
 	/**
 	 * Hauteur des lignes.
@@ -53,15 +50,15 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Joueurs mini", "Joueurs maxi", "Catégorie", "Editeur"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Statut", "Jeu"};
 
 	/**
 	 * Boutons.
 	 */
-	private JButton boutonAjouterJeu;
-	private JButton boutonModifierJeu;
-	private JButton boutonSupprimerJeu;	
-	private JButton boutonReserverJeu;	
+	private JButton boutonAjouterExtension;
+	private JButton boutonModifierExtension;
+	private JButton boutonSupprimerExtension;	
+	private JButton boutonReserverExtension;	
 	private JButton boutonRetourAccueil;
 	private JButton boutonRecherche;
 	private JButton boutonAfficherExtensions;
@@ -73,12 +70,12 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
-	public AffichageListeJeux(TacheDAffichage afficheAppli, ArrayList<Jeu> listeJeux) {
+	public AffichageListeExtensions(TacheDAffichage afficheAppli, ArrayList<Extension> listeExtensions) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		
 		this.setLayout(new GridLayout(HAUTEUR, LARGEUR));
 		creerPanneauRecherche();
-		creerTableau(listeJeux);
+		creerTableau(listeExtensions);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
 		}
@@ -109,20 +106,16 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.add(searchPanel);
 	}
 	
-	public void creerTableau(ArrayList<Jeu> listeJeux) {
+	public void creerTableau(ArrayList<Extension> listeExtensions) {
 		JPanel arrayPanel = new JPanel();
 		arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
 		arrayPanel.setLayout(new BorderLayout());
 		
-		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
+		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeExtensions), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
 		tableau.getColumn(LIBELLES[3]).setPreferredWidth(LONGUEUR_COLONNE_3);
-		tableau.getColumn(LIBELLES[4]).setPreferredWidth(LONGUEUR_COLONNE_4);
-		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_5);
-		tableau.getColumn(LIBELLES[6]).setPreferredWidth(LONGUEUR_COLONNE_6);
-		tableau.getColumn(LIBELLES[7]).setPreferredWidth(LONGUEUR_COLONNE_7);
 
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 
@@ -139,22 +132,17 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 *            Une collection de taches à réaliser.
 	 * @return Un tableau d'objets.
 	 */
-	private static Object[][] initialiserDonnees(ArrayList<Jeu> listeJeux)
+	private static Object[][] initialiserDonnees(ArrayList<Extension> listeExtensions)
 	{
-		Object[][] donnees = new Object[listeJeux.size()][NOMBRE_COLONNES];
+		Object[][] donnees = new Object[listeExtensions.size()][NOMBRE_COLONNES];
 		
 		int index = 0;		
-		for (Jeu jeuCourant : listeJeux)
+		for (Extension extensionCourante : listeExtensions)
 		{
-			donnees[index][0] = jeuCourant.getNom();
-			donnees[index][1] = jeuCourant.getDescription();
-			donnees[index][2] = jeuCourant.getAnneeParution();
-			donnees[index][3] = jeuCourant.getStatut();
-			donnees[index][4] = jeuCourant.getAgeMini();
-			donnees[index][5] = jeuCourant.getNbJoueursMin();
-			donnees[index][6] = jeuCourant.getNbJoueursMax();
-			donnees[index][7] = jeuCourant.getCategorie();
-			donnees[index][8] = jeuCourant.getEditeur();
+			donnees[index][0] = extensionCourante.getNom();
+			donnees[index][1] = extensionCourante.getDescription();
+			donnees[index][2] = extensionCourante.getStatut();
+			donnees[index][3] = extensionCourante.get;
 			index++;
 		}		
 		return donnees;
@@ -167,21 +155,21 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
-		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
-		this.boutonAjouterJeu.addActionListener(this);
+		this.boutonAjouterExtension = new JButton("Ajouter un jeu");
+		this.boutonAjouterExtension.addActionListener(this);
 
-		this.boutonModifierJeu = new JButton("Modifier un jeu");
-		this.boutonModifierJeu.addActionListener(this);
+		this.boutonModifierExtension = new JButton("Modifier un jeu");
+		this.boutonModifierExtension.addActionListener(this);
 
-		this.boutonSupprimerJeu = new JButton("Supprimer un jeu");
-		this.boutonSupprimerJeu.addActionListener(this);
+		this.boutonSupprimerExtension = new JButton("Supprimer un jeu");
+		this.boutonSupprimerExtension.addActionListener(this);
 		
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonAjouterExtension, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonModifierExtension, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonSupprimerExtension, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(buttonsPanel);
@@ -197,14 +185,14 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
 		this.boutonAfficherExtensions.addActionListener(this);
 		
-		this.boutonReserverJeu = new JButton("Réserver un jeu");
-		this.boutonReserverJeu.addActionListener(this);
+		this.boutonReserverExtension = new JButton("Réserver un jeu");
+		this.boutonReserverExtension.addActionListener(this);
 		
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
 		buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
+		buttonsPanel.add(boutonReserverExtension, BorderLayout.SOUTH);
 		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(buttonsPanel);
@@ -214,25 +202,25 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
 
-		if (boutonSelectionne == this.boutonAjouterJeu)
+		if (boutonSelectionne == this.boutonAjouterExtension)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
-		if (boutonSelectionne == this.boutonModifierJeu)
+		if (boutonSelectionne == this.boutonModifierExtension)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
-		if (boutonSelectionne == this.boutonSupprimerJeu)
+		if (boutonSelectionne == this.boutonSupprimerExtension)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 		
-		if (boutonSelectionne == this.boutonReserverJeu)
+		if (boutonSelectionne == this.boutonReserverExtension)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
@@ -258,5 +246,3 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		return;
 	}		
 }
-
-

@@ -14,28 +14,25 @@ public class Extension {
 	private String statut;
 	private int nbExemplaires;
 	private int nbReserves;
-	private int nbEmpruntes;
-	private int idJeu;
+	private String nomJeu;
 
-	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves,int nbEmpruntes, int idJeu) {
+	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves, String idJeu) {
 		this.setNom(nom);
 		this.setDescription(desc);
 		this.setStatut(statut);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
-		this.setNbEmpruntes(nbEmpruntes);
-		this.setIdJeu(idJeu);
+		this.setNomJeu(idJeu);
 	}
 	
-	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves,int nbEmpruntes,int idJeu) {
+	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves, String idJeu) {
 		this.setIdExtension(id);
 		this.setNom(nom);
 		this.setDescription(desc);
 		this.setStatut(statut);
 		this.setNbExemplaires(nbExemplaires);
 		this.setNbReserves(nbReserves);
-		this.setNbEmpruntes(nbEmpruntes);
-		this.setIdJeu(idJeu);
+		this.setNomJeu(idJeu);
 	}
 
 	public int getIdExtension() {
@@ -86,20 +83,11 @@ public class Extension {
 		this.nbReserves = nbReserves;
 	}
 
-	
-	public void setNbEmpruntes(int nbempruntes) {
-		this.nbEmpruntes = nbempruntes;
-	}
-	
-	public int getNbEmpruntes() {
-		return nbEmpruntes;
-	}
-	
-	public int getIdJeu() {
-		return idJeu;
+	public String getNomJeu() {
+		return nomJeu;
 	}
 
-	public void setIdJeu(int nomJeu) {
-		this.idJeu = nomJeu;
+	public void setNomJeu(String nomJeu) {
+		this.nomJeu = nomJeu;
 	}
 }
