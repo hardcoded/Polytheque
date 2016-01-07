@@ -200,7 +200,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 	
-	public void afficherEcranModifAdherent(JPanel panel) {
+	public void modifierMainPanel(JPanel panel) {
 		this.mainPanel.removeAll();
 		this.mainPanel = panel;
 		this.add(this.mainPanel, BorderLayout.CENTER);
@@ -231,7 +231,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonCreerAdherent)
 		{
-			this.tacheDAffichageDeLApplication.afficherCreationAdherent(this.tacheDAffichageDeLApplication.afficher); //A VOIR SUR LES AUTRES
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationAdherent()); //A VOIR SUR LES AUTRES
 			return;
 		}
 
@@ -243,7 +243,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonModifierAdherent)
 		{
-			this.afficherEcranModifAdherent(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.modifContent.getText())));
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.modifContent.getText())));
 			return;
 		}
 		return;

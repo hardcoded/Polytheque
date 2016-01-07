@@ -207,8 +207,9 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			{
 				int cptRetard = Integer.parseInt(this.userCptRetard.getText());
 				String password = new String(this.password.getPassword());
+				//TODO faire un DatePicker pour la date de naissance car besoin d'un format date pour insérer nouvel adhérent
 				Adherent adherent = new Adherent(this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), cptRetard);
-				this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adh�rent a ete cree !", "Creation terminee", JOptionPane.INFORMATION_MESSAGE);
+				this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adhérent a ete crée !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
 				this.tacheDAffichageDeLApplication.creerAdherent(adherent);
 				this.tacheDAffichageDeLApplication.afficherGestionAdherent();
 				return;
