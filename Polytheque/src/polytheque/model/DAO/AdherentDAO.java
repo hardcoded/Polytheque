@@ -143,6 +143,28 @@ public class AdherentDAO extends DAO {
 		return adherent;
 	}
 
+	public Adherent getByPseudp(String pseudo) {
+		Adherent adherent = null;
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM ADHERENT WHERE pseudo = ?");
+			psSelect.setString(1, pseudo);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			if (resSet.next()) {
+				adherent = new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
+						resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
+						pseudo, resSet.getString("mdp"), resSet.getBoolean(12), 
+						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
+			}
+			super.disconnect();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return adherent;
+	}
 	/**
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux
