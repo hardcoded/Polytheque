@@ -53,11 +53,15 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	private JButton boutonModifierJeu;
 	private JButton boutonSupprimerJeu;	
 	private JButton boutonReserverJeu;	
-	private JButton boutonRetourAccueil;
+	//private JButton boutonRetourAccueil;
 	private JButton boutonRecherche;
-	private JButton boutonAfficherExtensions;
+	//private JButton boutonAfficherExtensions;
 
 	private JTextField searchContent;
+	
+	private JPanel buttonsPanel;
+	private JPanel arrayPanel;
+	private JPanel searchPanel;
 
 	/**
 	 * Une tache d'affichage de l'application.
@@ -82,7 +86,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 * Panneau de recherche
 	 */
 	private void creerPanneauRecherche() {
-		JPanel searchPanel = new JPanel();
+		searchPanel = new JPanel();
 
 		JLabel labelSearch = new JLabel("Recherche par nom :");
 		//labelSearch.setBounds(300, 0, 100, 30);
@@ -100,8 +104,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	}
 
 	public void creerTableau(ArrayList<Jeu> listeJeux) {
-		JPanel arrayPanel = new JPanel();
-		arrayPanel.setLayout(new BorderLayout());
+		this.arrayPanel = new JPanel();
+		this.arrayPanel.setLayout(new BorderLayout());
 
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeJeux), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
@@ -118,8 +122,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		tableau.getTableHeader().setResizingAllowed(true);
 		tableau.setAutoCreateRowSorter(true);
 
-		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
-		this.add(arrayPanel, BorderLayout.CENTER);
+		this.arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
+		this.add(this.arrayPanel, BorderLayout.CENTER);
 	}
 
 	/**
@@ -154,11 +158,11 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 * Ajouter les boutons de l'administrateur.
 	 */
 	private void ajouterBoutonsAdmin() {
-		JPanel buttonsPanel = new JPanel();
+		this.buttonsPanel = new JPanel();
 		//buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
-		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
-		this.boutonAfficherExtensions.addActionListener(this);
+		//this.boutonAfficherExtensions = new JButton("Afficher les extensions");
+		//this.boutonAfficherExtensions.addActionListener(this);
 
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
 		this.boutonAjouterJeu.addActionListener(this);
@@ -169,39 +173,45 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonSupprimerJeu = new JButton("Supprimer un jeu");
 		this.boutonSupprimerJeu.addActionListener(this);
 
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.addActionListener(this);
+		//this.boutonRetourAccueil = new JButton("Accueil");
+		//this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
+		//buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
+		//buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel, BorderLayout.SOUTH);
+		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 
 	/**
 	 * Ajouter les boutons dans la this.
 	 */
 	private void ajouterBoutonsAdherent() {
-		JPanel buttonsPanel = new JPanel();
+		this.buttonsPanel = new JPanel();
 		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
-		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
-		this.boutonAfficherExtensions.addActionListener(this);
+		//this.boutonAfficherExtensions = new JButton("Afficher les extensions");
+		//this.boutonAfficherExtensions.addActionListener(this);
 
 		this.boutonReserverJeu = new JButton("Réserver un jeu");
 		this.boutonReserverJeu.addActionListener(this);
 
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.addActionListener(this);
+		//this.boutonRetourAccueil = new JButton("Accueil");
+		//this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
+		//buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
+		//buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel, BorderLayout.SOUTH);
+		this.add(this.buttonsPanel, BorderLayout.SOUTH);
+	}
+	
+	public void rafraichir(ArrayList<Jeu> jeux) {
+		this.arrayPanel.removeAll();
+		this.creerTableau(jeux);
+		this.arrayPanel.updateUI();
 	}
 
 	@Override
@@ -231,24 +241,23 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
+		/*
 		if (boutonSelectionne == this.boutonRetourAccueil)
 		{
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonRecherche)
-		{
-			this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText());;
-			return;
-		}
-
 		if (boutonSelectionne == this.boutonAfficherExtensions)
 		{
 			this.tacheDAffichageDeLApplication.afficherListeExtensions();
 			return;
-		}
+		}*/
+
+		if (boutonSelectionne == this.boutonRecherche)
+		{
+			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText()));;
+			return;
+		}		
 		return;
 	}		
 }

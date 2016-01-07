@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Extension;
+import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
 @SuppressWarnings("serial")
@@ -53,6 +54,10 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	private JButton boutonAfficherExtensions;
 
 	private JTextField searchContent;
+	
+	private JPanel buttonsPanel;
+	private JPanel arrayPanel;
+	private JPanel searchPanel;
 
 	/**
 	 * Une tache d'affichage de l'application.
@@ -96,7 +101,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	}
 
 	public void creerTableau(ArrayList<Extension> listeExtensions) {
-		JPanel arrayPanel = new JPanel();
+		this.arrayPanel = new JPanel();
 		//arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
 		arrayPanel.setLayout(new BorderLayout());
 
@@ -111,9 +116,9 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		tableau.getTableHeader().setResizingAllowed(true);
 		tableau.setAutoCreateRowSorter(true);
 
-		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
+		this.arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
 
-		this.add(arrayPanel, BorderLayout.CENTER);
+		this.add(this.arrayPanel, BorderLayout.CENTER);
 	}
 
 	/**
@@ -143,7 +148,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 * Ajouter les boutons de l'administrateur.
 	 */
 	private void ajouterBoutonsAdmin() {
-		JPanel buttonsPanel = new JPanel();
+		this.buttonsPanel = new JPanel();
 		//buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonAjouterExtension = new JButton("Ajouter un jeu");
@@ -158,20 +163,20 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonAjouterExtension, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonModifierExtension, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonSupprimerExtension, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonAjouterExtension, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonModifierExtension, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonSupprimerExtension, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel, BorderLayout.SOUTH);
+		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 
 	/**
 	 * Ajouter les boutons dans la this.
 	 */
 	private void ajouterBoutonsAdherent() {
-		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		this.buttonsPanel = new JPanel();
+		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
 		this.boutonAfficherExtensions.addActionListener(this);
@@ -182,11 +187,17 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
-		buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonReserverExtension, BorderLayout.SOUTH);
-		buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonReserverExtension, BorderLayout.SOUTH);
+		this.buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
-		this.add(buttonsPanel);
+		this.add(this.buttonsPanel);
+	}
+	
+	public void rafraichir(ArrayList<Extension> affichageListeExtensions) {
+		this.arrayPanel.removeAll();
+		this.creerTableau(affichageListeExtensions);
+		this.arrayPanel.updateUI();
 	}
 
 	@Override
@@ -217,23 +228,24 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 			return;
 		}
 
+		/*
 		if (boutonSelectionne == this.boutonRetourAccueil)
 		{
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonRecherche)
-		{
-			this.tacheDAffichageDeLApplication.rechercherExtensions(this.searchContent.getText());
-			return;
-		}
-
 		if (boutonSelectionne == this.boutonAfficherExtensions)
 		{
 			this.tacheDAffichageDeLApplication.afficherListeExtensions();
 			return;
+		}*/
+
+		if (boutonSelectionne == this.boutonRecherche)
+		{
+			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherExtensions(this.searchContent.getText()));
+			return;
 		}
+
 		return;
 	}		
 }
