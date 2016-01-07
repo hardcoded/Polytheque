@@ -235,12 +235,6 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 			return;
 		}
 
-		if (boutonSelectionne == this.boutonRetourAccueil)
-		{
-			this.tacheDAffichageDeLApplication.afficherAccueil();
-			return;
-		}
-
 		if (boutonSelectionne == this.boutonSupprimerAdherent)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
