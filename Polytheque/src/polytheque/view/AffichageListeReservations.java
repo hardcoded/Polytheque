@@ -1,9 +1,18 @@
 package polytheque.view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import polytheque.model.pojos.Reservation;
+import polytheque.view.modeles.ModeleTableauListeJeux;
 
 public class AffichageListeReservations extends JPanel implements ActionListener {
 
@@ -35,12 +44,94 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Pr�nom", "Titre", "Date"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Prenom", "Titre", "Date"};
 
+	private JButton boutonAnnulerReservation;
+	
+	private JPanel buttonsPanel;
+	private JPanel arrayPanel;
+	
+	private TacheDAffichage tacheDAffichageDeLApplication;
+	
+	public AffichageListeReservations(TacheDAffichage afficheAppli, ArrayList<Reservation> listeReservations) {
+		this.tacheDAffichageDeLApplication = afficheAppli;
+
+		this.setLayout(new BorderLayout());
+		rafraichir(listeReservations);
+		ajouterBoutonAdmin();
+	}
+	
+	/**
+	 * Ajouter les boutons de l'administrateur.
+	 */
+	private void ajouterBoutonAdmin() {
+		this.buttonsPanel = new JPanel();
+		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+
+		this.boutonAnnulerReservation = new JButton("Annuler une r�servation");
+		this.boutonAnnulerReservation.addActionListener(this);
+
+		this.buttonsPanel.add(boutonAnnulerReservation, BorderLayout.SOUTH);
+
+		this.add(this.buttonsPanel, BorderLayout.SOUTH);
+	}
+	
+	public void creerTableau(ArrayList<Reservation> listeReservations) {
+		this.arrayPanel = new JPanel();
+		this.arrayPanel.setLayout(new BorderLayout());
+
+		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeReservations), LIBELLES));
+		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
+		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
+		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
+		tableau.getColumn(LIBELLES[3]).setPreferredWidth(LONGUEUR_COLONNE_3);
+
+		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
+		tableau.getTableHeader().setReorderingAllowed(true);
+		tableau.getTableHeader().setResizingAllowed(true);
+		tableau.setAutoCreateRowSorter(true);
+
+		this.arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
+		this.add(this.arrayPanel, BorderLayout.CENTER);
+	}
+	
+	/**
+	 * Initialiser les données du tableau.
+	 * 
+	 * @param tachesARealiser
+	 *            Une collection de taches à réaliser.
+	 * @return Un tableau d'objets.
+	 */
+	private static Object[][] initialiserDonnees(ArrayList<Reservation> listeReservations)
+	{
+		Object[][] donnees = new Object[listeReservations.size()][NOMBRE_COLONNES];
+
+		int index = 0;		
+		for (Reservation reservationCourante : listeReservations)
+		{
+			donnees[index][0] = reservationCourante.getAdherent().getNom();
+			donnees[index][1] = reservationCourante.getAdherent().getPrenom();
+			donnees[index][2] = reservationCourante.getJeu();
+			donnees[index][3] = reservationCourante.getDate();
+			index++;
+		}		
+		return donnees;
+	}
+	public void rafraichir(ArrayList<Reservation> reservations) {
+		this.creerTableau(reservations);
+		this.arrayPanel.updateUI();
+	}
+	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		JButton boutonSelectionne = (JButton) e.getSource();
 
+		if (boutonSelectionne == this.boutonAnnulerReservation)
+		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}	
+		return;
 	}
 
 }
