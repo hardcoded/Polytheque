@@ -168,6 +168,9 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Jeu> jeux) {
+		if (this.arrayPanel != null) {
+			this.arrayPanel.removeAll();
+		}
 		this.creerTableau(jeux);
 		this.arrayPanel.updateUI();
 	}
