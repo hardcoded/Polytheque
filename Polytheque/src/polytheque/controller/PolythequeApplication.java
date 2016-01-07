@@ -104,6 +104,10 @@ public class PolythequeApplication {
 		return this.reservationDAO.getAll();
 	}
 	
+	public Jeu getByName(String nom) {
+		return this.jeuDAO.getByName(nom);
+	}
+	
 	public void annulerReservation(){
 		Date d = null;
 		d.getTime();

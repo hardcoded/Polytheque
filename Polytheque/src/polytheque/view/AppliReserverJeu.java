@@ -8,6 +8,7 @@ import java.sql.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -79,11 +80,11 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent e) 
 	{
-		JPanel AfficheJeux = new JPanel();
+		JPanel Afficherep = new JPanel();
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			
+			this.tacheDAffichageDeLApplication.afficherMessage("Resertion confirmee", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}		
 	}	

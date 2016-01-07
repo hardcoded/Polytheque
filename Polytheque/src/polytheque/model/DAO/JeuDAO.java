@@ -178,6 +178,33 @@ public class JeuDAO extends DAO {
 	 * 			Le nom du jeu à récupérer dans la BDD
 	 * @return Un jeu
 	 */
+	public Jeu getByName(String nom)
+	{
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU"
+					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie"
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur"
+					+ "WHERE nom = ?");
+			psSelect.setString(1, nom);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			Jeu jeu = null;
+			if (resSet.next()) { // On se place sur le 1er résultat
+				jeu = new Jeu(resSet.getInt("id_jeu"), nom, resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
+						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
+						resSet.getString("nom_categorie"), resSet.getString("nom_editeur"));
+			}
+			super.disconnect();
+			return jeu;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public ArrayList<Jeu> searchByName(String nomJeu) {
 		ArrayList<Jeu> jeuxFiltres = new ArrayList<>();
 		String filtre = "%" + nomJeu.toLowerCase() + "%";

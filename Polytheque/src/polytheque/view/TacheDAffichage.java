@@ -51,6 +51,7 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * Démarrer l'affichage de l'application.
 	 */
+	
 	public void run()
 	{
 		initialiserFenetre();
@@ -185,4 +186,8 @@ public class TacheDAffichage extends JFrame {
 	public void afficherMessage(String message, String titreFenetre, int codeInformation) {
 		JOptionPane.showMessageDialog(this, message, titreFenetre, codeInformation);
 	}
+	
+	public Jeu getJeu(String nom) {
+		return this.polythequeApplication.getByName(nom);
+}
 }
