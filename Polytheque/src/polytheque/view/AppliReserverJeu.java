@@ -36,8 +36,6 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		creerPanneauRecherche();
 		creerPanneauExtension();
 		creerPanneauDate();	
-		boutonRetourAccueil = new JButton("Acceuil");
-		this.add(boutonRetourAccueil);
 	}
 
 	private void creerPanneauExtension() 
@@ -70,19 +68,22 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		labelDate.setBounds(400, 150, 100, 30);
 		this.add(labelDate);
 		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(400, 200, 60, 20);
+		dateChooser.setBounds(400, 200, 200, 30);
 		DatePanel.add(dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
+		this.boutonValider.setBounds(400, 300, 200, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(boutonValider);
 	}
 
 	public void actionPerformed(ActionEvent e) 
 	{
+		JPanel AfficheJeux = new JPanel();
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
+			
 			return;
 		}		
 	}	
