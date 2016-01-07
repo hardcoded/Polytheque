@@ -210,7 +210,7 @@ public class AdherentDAO extends DAO {
 
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat
-				adherentsFiltres.add(new Adherent(resSet.getInt(1), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
+				adherentsFiltres.add(new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
 						resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
 						resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
 						resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),

@@ -153,7 +153,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		champsPanel.add(labelUserCptRetard, BorderLayout.EAST);
 		this.userCptRetard = new JTextField(this.adherentCourant.getCompteurRetard());
 		champsPanel.add(this.userCptRetard);
-		this.add(champsPanel, BorderLayout.EAST);
+		this.add(champsPanel, BorderLayout.CENTER);
 	}
 
 	public void ajouterBoutons(){

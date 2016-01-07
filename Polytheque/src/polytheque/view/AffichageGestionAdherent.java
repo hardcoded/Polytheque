@@ -57,6 +57,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 			"Sur liste noire", "Est à jour", "Nombre de retards"};
 
 	private JTextField searchContent;
+	private JTextField modifContent;
 	private JTextField userName;
 	private JTextField userFirstName;
 	private JTextField userBirthday;
@@ -117,13 +118,13 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		
 		JLabel pseudoSearch = new JLabel("Modifier par pseudo :");
 		this.searchPanel.add(pseudoSearch);
-		this.searchContent = new JTextField();
-		this.searchContent.setColumns(10);
-		this.searchPanel.add(this.searchContent, BorderLayout.NORTH);
+		this.modifContent = new JTextField();
+		this.modifContent.setColumns(10);
+		this.searchPanel.add(this.modifContent, BorderLayout.NORTH);
 
 		this.boutonModifierAdherent = new JButton("Modifier Adherent");
 		this.boutonModifierAdherent.addActionListener(this);
-		this.searchPanel.add(this.boutonModifierAdherent);
+		this.searchPanel.add(boutonModifierAdherent, BorderLayout.NORTH);
 
 		this.add(this.searchPanel, BorderLayout.NORTH);
 	}
@@ -218,7 +219,6 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonRecherche)
 		{
-			//TODO corriger recherche ne s'affiche pas
 			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherAdherents(this.searchContent.getText()));
 			return;
 		}
@@ -242,7 +242,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonModifierAdherent)
 		{
-			this.afficherEcranModifAdherent(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.searchContent.getText())));
+			this.afficherEcranModifAdherent(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.modifContent.getText())));
 			return;
 		}
 		return;
