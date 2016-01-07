@@ -163,7 +163,11 @@ public class TacheDAffichage extends JFrame {
 	public AffichageCreationAdherent afficherCreationAdherent(){
 		return new AffichageCreationAdherent(this); //a commit
 	}
-
+	
+	public AffichageListeReservations afficherListeReservations() {
+		return new AffichageListeReservations(this, this.polythequeApplication.getReservationList());
+	}
+	
 	public void creerAdherent(Adherent adherent) {
 		this.polythequeApplication.creerAdherent(adherent);
 	}

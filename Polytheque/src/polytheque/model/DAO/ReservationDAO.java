@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Reservation;
@@ -106,5 +107,31 @@ public class ReservationDAO extends DAO {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	/**
+	 * Methode de recuperation des reservations
+	 * @return La liste de toutes les reservations
+	 */
+	public ArrayList<Reservation> getAll() {
+		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *"
+					+ "FROM RESERVATION "
+					+ "ORDER BY nom ASC");
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			while (resSet.next()) { // On se place sur le 1er résultat				
+				//toutesLesReservations.add(new Reservation(resSet.getAdherent("adherent"), resSet.getJeu("jeu"), resSet.getExtension("extension"),resSet.getDate("date_reservation")));
+			}
+			super.disconnect();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return toutesLesReservations;
 	}
 }

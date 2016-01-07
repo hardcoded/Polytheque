@@ -99,7 +99,11 @@ public class PolythequeApplication {
 	public void creerAdherent(Adherent adherent){
 		this.adherentDAO.create(adherent);
 	}
-
+	
+	public ArrayList<Reservation> getReservationList() {
+		return this.reservationDAO.getAll();
+	}
+	
 	public void annulerReservation(){
 		Date d = null;
 		d.getTime();
