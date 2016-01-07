@@ -51,6 +51,7 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * Démarrer l'affichage de l'application.
 	 */
+	
 	public void run()
 	{
 		initialiserFenetre();
@@ -159,6 +160,18 @@ public class TacheDAffichage extends JFrame {
 	public Adherent getAdherent(String pseudo) {
 		return this.polythequeApplication.getAdherent(pseudo);
 	}
+	
+	public AffichageCreationAdherent afficherCreationAdherent(){
+		return new AffichageCreationAdherent(this); //a commit
+	}
+	
+	public AffichageListeReservations afficherListeReservations() {
+		return new AffichageListeReservations(this, this.polythequeApplication.getReservationList());
+	}
+	
+	public void creerAdherent(Adherent adherent) {
+		this.polythequeApplication.creerAdherent(adherent);
+	}
 
 	/**
 	 * Afficher une fenetre de dialogue.
@@ -173,4 +186,8 @@ public class TacheDAffichage extends JFrame {
 	public void afficherMessage(String message, String titreFenetre, int codeInformation) {
 		JOptionPane.showMessageDialog(this, message, titreFenetre, codeInformation);
 	}
+	
+	public Jeu getJeu(String nom) {
+		return this.polythequeApplication.getByName(nom);
+}
 }
