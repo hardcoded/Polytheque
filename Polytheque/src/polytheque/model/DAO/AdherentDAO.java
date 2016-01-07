@@ -143,7 +143,7 @@ public class AdherentDAO extends DAO {
 		return adherent;
 	}
 
-	public Adherent getByPseudp(String pseudo) {
+	public Adherent getByPseudo(String pseudo) {
 		Adherent adherent = null;
 		try {
 			super.connect();

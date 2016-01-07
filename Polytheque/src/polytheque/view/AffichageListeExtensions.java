@@ -46,11 +46,8 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 */
 	private JButton boutonAjouterExtension;
 	private JButton boutonModifierExtension;
-	private JButton boutonSupprimerExtension;	
-	private JButton boutonReserverExtension;	
-	private JButton boutonRetourAccueil;
+	private JButton boutonSupprimerExtension;
 	private JButton boutonRecherche;
-	private JButton boutonAfficherExtensions;
 
 	private JTextField searchContent;
 	
@@ -71,9 +68,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		rafraichir(listeExtensions);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
-		}
-		else {
-			ajouterBoutonsAdherent();
 		}
 	}
 
@@ -162,27 +156,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
-
-	/**
-	 * Ajouter les boutons dans la this.
-	 */
-	private void ajouterBoutonsAdherent() {
-		this.buttonsPanel = new JPanel();
-		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-
-		this.boutonAfficherExtensions = new JButton("Afficher les extensions");
-		this.boutonAfficherExtensions.addActionListener(this);
-
-		this.boutonReserverExtension = new JButton("Réserver un jeu");
-		this.boutonReserverExtension.addActionListener(this);
-
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.addActionListener(this);
-
-		this.buttonsPanel.add(boutonReserverExtension, BorderLayout.SOUTH);
-
-		this.add(this.buttonsPanel);
-	}
 	
 	public void rafraichir(ArrayList<Extension> affichageListeExtensions) {
 		this.creerTableau(affichageListeExtensions);
@@ -206,12 +179,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerExtension)
-		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
-			return;
-		}
-
-		if (boutonSelectionne == this.boutonReserverExtension)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;

@@ -1,9 +1,9 @@
 package polytheque.view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -11,8 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
 import polytheque.model.pojos.Adherent;
 
 /**
@@ -53,153 +51,118 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	 *            Une tache d'affichage de l'application.
 	 * @return 
 	 */
-	public AffichageModificationAdherent(TacheDAffichage afficheAppli, Adherent adherent){
+	public AffichageModificationAdherent(TacheDAffichage afficheAppli, Adherent adherent) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		this.adherentCourant = adherent;
+		this.setLayout(new BorderLayout());
 		ajouterChamps();
 		ajouterBoutons();
 	}
 
 	public void ajouterChamps() {
-		this.setLayout(null);
-
+		JPanel champsPanel = new JPanel(); 
+		
 		JLabel titrePrincipal = new JLabel("Mon compte");
-		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
-		titrePrincipal.setBounds(350, 20, 260, 30);
-		this.add(titrePrincipal);
+		champsPanel.add(titrePrincipal, BorderLayout.CENTER);
 
 		JLabel labelUserName = new JLabel("Nom :");
-		labelUserName.setBounds(300, 150, 100, 30);
-		this.add(labelUserName);
+		champsPanel.add(labelUserName, BorderLayout.WEST);
 		this.userName = new JTextField(this.adherentCourant.getNom());
-		this.userName.setBounds(350, 150, 100, 30);
-		this.add(this.userName);
+		champsPanel.add(this.userName, BorderLayout.WEST);
 
 		JLabel labelUserFirstName = new JLabel("Prenom :");
-		labelUserFirstName.setBounds(300, 180, 100, 30);
-		this.add(labelUserFirstName);
+		champsPanel.add(labelUserFirstName, BorderLayout.WEST);
 		this.userFirstName = new JTextField(this.adherentCourant.getPrenom());
-		this.userFirstName.setBounds(360, 180, 100, 30);
-		this.add(this.userFirstName);
+		champsPanel.add(this.userFirstName, BorderLayout.WEST);
 
 
 		JLabel labelUserBirthday = new JLabel("Date de naissance :");
-		labelUserBirthday.setBounds(300, 210, 150, 30);
-		this.add(labelUserBirthday);
+		champsPanel.add(labelUserBirthday, BorderLayout.WEST);
 		this.userBirthday = new JTextField(this.adherentCourant.getDateNaissance().toString());
-		this.userBirthday.setBounds(420, 210, 100, 30);
-		this.add(this.userBirthday);
+		champsPanel.add(this.userBirthday, BorderLayout.WEST);
 
 
 		JLabel labelUserRue = new JLabel("Rue :");
-		labelUserRue.setBounds(300, 240, 100, 30);
-		this.add(labelUserRue);
+		champsPanel.add(labelUserRue, BorderLayout.WEST);
 		this.userRue = new JTextField(this.adherentCourant.getRue());
-		this.userRue.setBounds(350, 240, 100, 30);
-		this.add(this.userRue);
+		champsPanel.add(this.userRue, BorderLayout.WEST);
 
 
 
 		JLabel labelUserCP = new JLabel("Code Postal:");
-		labelUserCP.setBounds(300, 270, 100, 30);
-		this.add(labelUserCP);
+		champsPanel.add(labelUserCP);
 		this.userCP = new JTextField(this.adherentCourant.getCP());
-		this.userCP.setBounds(390, 270, 100, 30);
-		this.add(this.userCP);
+		champsPanel.add(this.userCP, BorderLayout.WEST);
 
 
 		JLabel labelUserVille = new JLabel("Ville :");
-		labelUserVille.setBounds(300, 300, 100, 30);
-		this.add(labelUserVille);
+		champsPanel.add(labelUserVille, BorderLayout.WEST);
 		this.userVille = new JTextField(this.adherentCourant.getVille());
-		this.userVille.setBounds(350, 300, 100, 30);
-		this.add(this.userVille);
+		champsPanel.add(this.userVille, BorderLayout.WEST);
 
 		JLabel labelUserMail = new JLabel("Mail :");
-		labelUserMail.setBounds(300, 330, 100, 30);
-		this.add(labelUserMail);
+		champsPanel.add(labelUserMail, BorderLayout.WEST);
 		this.userMail = new JTextField(this.adherentCourant.getMail());
-		this.userMail.setBounds(350, 330, 100, 30);
-		this.add(this.userMail);
+		champsPanel.add(this.userMail, BorderLayout.WEST);
 
 
 		JLabel labelUserTelephone = new JLabel("Telephone :");
-		labelUserTelephone.setBounds(300, 360, 100, 30);
-		this.add(labelUserTelephone);
+		champsPanel.add(labelUserTelephone, BorderLayout.WEST);
 		this.userPhone = new JTextField(this.adherentCourant.getTelephone());
-		this.userPhone.setBounds(370, 360, 100, 30);
-		this.add(this.userPhone);
+		champsPanel.add(this.userPhone, BorderLayout.WEST);
 
 
 		JLabel labelUserPseudo = new JLabel("Pseudo :");
-		labelUserPseudo.setBounds(300, 390, 100, 30);
-		this.add(labelUserPseudo);
+		champsPanel.add(labelUserPseudo, BorderLayout.EAST);
 		this.userPseudo = new JTextField(this.adherentCourant.getPseudo());
-		this.userPseudo.setBounds(360, 390, 100, 30);
-		this.add(this.userPseudo);
+		champsPanel.add(this.userPseudo, BorderLayout.EAST);
 
 
 		JLabel labelpassword = new JLabel("Mot de passe :");
-		labelpassword.setBounds(300, 420, 100, 30);
-		this.add(labelpassword);
+		champsPanel.add(labelpassword, BorderLayout.EAST);
 		this.password = new JPasswordField(this.adherentCourant.getMdp());
-		this.password.setBounds(380, 420, 190, 30);
 		this.password.setColumns(10);
-		this.add(this.password);
+		champsPanel.add(this.password, BorderLayout.EAST);
 
 		JLabel labelUserIsAdmin = new JLabel("Admin :");
-		labelUserIsAdmin.setBounds(300, 390, 100, 30);
-		this.add(labelUserIsAdmin);			
+		champsPanel.add(labelUserIsAdmin, BorderLayout.EAST);			
 		JComboBox<Boolean>userIsAdmin = new JComboBox<Boolean>();
 		userIsAdmin.addItem(Boolean.TRUE);
 		userIsAdmin.addItem(Boolean.FALSE);
 		userIsAdmin.setPreferredSize(new Dimension(100, 20));
-		userIsAdmin.setBounds(360, 390, 100, 30);
-		this.add(userIsAdmin);
+		champsPanel.add(userIsAdmin, BorderLayout.EAST);
 
 		JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
-		labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
-		this.add(labelUserPeutEmprunter);
+		champsPanel.add(labelUserPeutEmprunter, BorderLayout.EAST);
 		JComboBox<Boolean> userPeutEmprunter = new JComboBox<Boolean>();
 		userPeutEmprunter.addItem(Boolean.TRUE);
 		userPeutEmprunter.addItem(Boolean.FALSE);
 		userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
-		userPeutEmprunter.setBounds(600, 150, 100, 30);
-		this.add(userPeutEmprunter);
+		champsPanel.add(userPeutEmprunter, BorderLayout.EAST);
 
 		JLabel labelUserEstAJour = new JLabel("Est a jour :");
-		labelUserEstAJour.setBounds(600, 200, 100, 30);
-		this.add(labelUserEstAJour);
+		champsPanel.add(labelUserEstAJour, BorderLayout.EAST);
 		JComboBox<Boolean> userEstAJour = new JComboBox<Boolean>();
 		userEstAJour.addItem(Boolean.TRUE);
 		userEstAJour.addItem(Boolean.FALSE);
 		userEstAJour.setPreferredSize(new Dimension(100, 20));
-		userEstAJour.setBounds(600, 250, 100, 30);
-		this.add(userEstAJour);
+		champsPanel.add(userEstAJour, BorderLayout.EAST);
 
 		JLabel labelUserCptRetard = new JLabel("Compteur Retard :");
-		labelUserCptRetard.setBounds(600, 300, 150, 30);
-		this.add(labelUserCptRetard);
+		champsPanel.add(labelUserCptRetard, BorderLayout.EAST);
 		this.userCptRetard = new JTextField(this.adherentCourant.getCompteurRetard());
-		this.userCptRetard.setBounds(600, 350, 100, 30);
-		this.add(this.userCptRetard);
+		champsPanel.add(this.userCptRetard);
+		this.add(champsPanel, BorderLayout.EAST);
 	}
 
 	public void ajouterBoutons(){
+		JPanel boutonPanel = new JPanel();
+		
 		this.boutonValider = new JButton("Valider");
-		this.boutonValider.setBounds(200, 500, 150, 30);
 		this.boutonValider.addActionListener(this);
-		this.add(this.boutonValider);
-
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.setBounds(500, 500, 150, 30);
-		this.boutonRetourAccueil.addActionListener(this);
-		this.add(this.boutonRetourAccueil);
-
-		this.boutonRetourGestionAdherent = new JButton("Gestion Adherent");
-		this.boutonRetourGestionAdherent.setBounds(800, 500, 150, 30);
-		this.boutonRetourGestionAdherent.addActionListener(this);
-		this.add(this.boutonRetourGestionAdherent);
+		boutonPanel.add(this.boutonValider, BorderLayout.CENTER);
+		
+		this.add(boutonPanel, BorderLayout.CENTER);
 	}
 
 	@Override

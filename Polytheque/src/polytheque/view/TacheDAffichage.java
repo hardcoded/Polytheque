@@ -140,20 +140,24 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant());
 	}
 
-	public AffichageGestionAdherent rechercherAdherent(String nomAdherent) {
-		return new AffichageGestionAdherent(this, this.polythequeApplication.searchAdherents(nomAdherent));
+	public ArrayList<Adherent> rechercherAdherents(String nomAdherent) {
+		return this.polythequeApplication.searchAdherents(nomAdherent);
 	}
 
 	public AffichageGestionAdherent afficherGestionAdherent() {
 		return new AffichageGestionAdherent(this, this.polythequeApplication.getAdherentsList()); //Surement un probleme
 	}
 
-	public AffichageModificationAdherent afficherModificationAdherent() {
-		return new AffichageModificationAdherent(this, this.polythequeApplication.getAdherentCourant());//Surement un probleme
+	public AffichageModificationAdherent afficherModificationAdherent(Adherent adherent) {
+		return new AffichageModificationAdherent(this, this.polythequeApplication.getAdherent(adherent.getPseudo()));//Surement un probleme
 	}
 
 	public AppliReserverJeu afficherEcranReservation() {
 		return new AppliReserverJeu(this);
+	}
+	
+	public Adherent getAdherent(String pseudo) {
+		return this.polythequeApplication.getAdherent(pseudo);
 	}
 
 	/**

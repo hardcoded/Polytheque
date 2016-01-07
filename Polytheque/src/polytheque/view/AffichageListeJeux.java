@@ -1,7 +1,6 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -51,8 +50,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private JButton boutonAjouterJeu;
 	private JButton boutonModifierJeu;
-	private JButton boutonSupprimerJeu;	
-	private JButton boutonReserverJeu;
+	private JButton boutonSupprimerJeu;
 	private JButton boutonRecherche;
 
 	private JTextField searchContent;
@@ -74,9 +72,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		rafraichir(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
-		}
-		else {
-			ajouterBoutonsAdherent();
 		}
 	}
 
@@ -171,21 +166,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
-
-	/**
-	 * Ajouter les boutons dans la this.
-	 */
-	private void ajouterBoutonsAdherent() {
-		this.buttonsPanel = new JPanel();
-		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-
-		this.boutonReserverJeu = new JButton("Réserver un jeu");
-		this.boutonReserverJeu.addActionListener(this);
-
-		this.buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
-
-		this.add(this.buttonsPanel, BorderLayout.SOUTH);
-	}
 	
 	public void rafraichir(ArrayList<Jeu> jeux) {
 		this.creerTableau(jeux);
@@ -209,12 +189,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerJeu)
-		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
-			return;
-		}
-
-		if (boutonSelectionne == this.boutonReserverJeu)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;

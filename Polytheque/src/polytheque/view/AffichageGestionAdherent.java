@@ -73,6 +73,10 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	private JButton boutonModifierAdherent;
 	private JButton boutonSupprimerAdherent;
 	private JButton boutonRecherche;
+	
+	private JPanel buttonsPanel;
+	private JPanel mainPanel;
+	private JPanel searchPanel;
 
 	/**
 	 * Une tache d'affichage de l'application.
@@ -99,26 +103,34 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	 * Panneau de recherche
 	 */
 	private void creerPanneauRecherche() {
-		JPanel searchPanel = new JPanel();
+		this.searchPanel = new JPanel();
 
-		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(300, 0, 100, 30);
-		searchPanel.add(labelSearch);
+		JLabel nameSearch = new JLabel("Recherche par nom :");
+		this.searchPanel.add(nameSearch);
 		this.searchContent = new JTextField();
-		this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
-		searchPanel.add(this.searchContent, BorderLayout.NORTH);
+		this.searchPanel.add(this.searchContent, BorderLayout.NORTH);
 
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
+		this.searchPanel.add(boutonRecherche, BorderLayout.NORTH);
+		
+		JLabel pseudoSearch = new JLabel("Modifier par pseudo :");
+		this.searchPanel.add(pseudoSearch);
+		this.searchContent = new JTextField();
+		this.searchContent.setColumns(10);
+		this.searchPanel.add(this.searchContent, BorderLayout.NORTH);
 
-		this.add(searchPanel, BorderLayout.NORTH);
+		this.boutonModifierAdherent = new JButton("Modifier Adherent");
+		this.boutonModifierAdherent.addActionListener(this);
+		this.searchPanel.add(this.boutonModifierAdherent);
+
+		this.add(this.searchPanel, BorderLayout.NORTH);
 	}
 
 	public void creerTableau(ArrayList<Adherent> listeAdherents) {
-		JPanel arrayPanel = new JPanel();
-		arrayPanel.setLayout(new BorderLayout());
+		this.mainPanel = new JPanel();
+		this.mainPanel.setLayout(new BorderLayout());
 
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeAdherents), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
@@ -139,8 +151,8 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		tableau.getTableHeader().setResizingAllowed(true);
 		tableau.setAutoCreateRowSorter(true);
 
-		arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
-		this.add(arrayPanel, BorderLayout.CENTER);
+		this.mainPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
+		this.add(this.mainPanel, BorderLayout.CENTER);
 	}
 
 	/**
@@ -175,28 +187,29 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	}
 
 	public void ajouterBoutons(){
-		JPanel boutonsPanel = new JPanel();
+		this.buttonsPanel = new JPanel();
 		this.boutonCreerAdherent = new JButton("Créer Adherent");
-		this.boutonCreerAdherent.setBounds(200, 500, 100, 30);
 		this.boutonCreerAdherent.addActionListener(this);
-		boutonsPanel.add(this.boutonCreerAdherent);
+		this.buttonsPanel.add(this.boutonCreerAdherent);
 
 		this.boutonSupprimerAdherent = new JButton("Supprimer Adherent");
-		this.boutonSupprimerAdherent.setBounds(400, 500, 100, 30);
 		this.boutonSupprimerAdherent.addActionListener(this);
-		boutonsPanel.add(this.boutonSupprimerAdherent);
+		this.buttonsPanel.add(this.boutonSupprimerAdherent);
 
-		this.boutonModifierAdherent = new JButton("Modifier Adherent");
-		this.boutonModifierAdherent.setBounds(600, 500, 100, 30);
-		this.boutonModifierAdherent.addActionListener(this);
-		boutonsPanel.add(this.boutonModifierAdherent);
-
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.setBounds(800, 500, 200, 30);
-		this.boutonRetourAccueil.addActionListener(this);
-		boutonsPanel.add(this.boutonRetourAccueil);
-
-		this.add(boutonsPanel, BorderLayout.SOUTH);
+		this.add(this.buttonsPanel, BorderLayout.SOUTH);
+	}
+	
+	public void afficherEcranModifAdherent(JPanel panel) {
+		this.mainPanel.removeAll();
+		this.mainPanel = panel;
+		this.add(this.mainPanel, BorderLayout.CENTER);
+		this.mainPanel.updateUI();
+	}
+	
+	public void rafraichir(ArrayList<Adherent> adherents) {
+		this.mainPanel.removeAll();
+		this.creerTableau(adherents);
+		this.mainPanel.updateUI();
 	}
 
 	@Override
@@ -205,7 +218,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonRecherche)
 		{
-			this.tacheDAffichageDeLApplication.rechercherAdherent(this.searchContent.getText());
+			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherAdherents(this.searchContent.getText()));
 			return;
 		}
 
@@ -228,7 +241,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonModifierAdherent)
 		{
-			this.tacheDAffichageDeLApplication.afficherModificationAdherent();
+			this.afficherEcranModifAdherent(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.searchContent.getText())));
 			return;
 		}
 		return;

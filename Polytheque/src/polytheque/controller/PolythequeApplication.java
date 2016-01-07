@@ -91,6 +91,10 @@ public class PolythequeApplication {
 		this.adherentDAO.update(adherent);
 		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
+	
+	public Adherent getAdherent(String pseudo) {
+		return this.adherentDAO.getByPseudo(pseudo);
+	}
 
 	public void annulerReservation(){
 		Date d = null;
