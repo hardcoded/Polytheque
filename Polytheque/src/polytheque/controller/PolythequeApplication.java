@@ -95,6 +95,10 @@ public class PolythequeApplication {
 	public Adherent getAdherent(String pseudo) {
 		return this.adherentDAO.getByPseudo(pseudo);
 	}
+	
+	public void creerAdherent(Adherent adherent){
+		this.adherentDAO.create(adherent);
+	}
 
 	public void annulerReservation(){
 		Date d = null;

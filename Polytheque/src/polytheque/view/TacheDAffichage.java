@@ -159,6 +159,14 @@ public class TacheDAffichage extends JFrame {
 	public Adherent getAdherent(String pseudo) {
 		return this.polythequeApplication.getAdherent(pseudo);
 	}
+	
+	public AffichageCreationAdherent afficherCreationAdherent(){
+		return new AffichageCreationAdherent(this); //a commit
+	}
+
+	public void creerAdherent(Adherent adherent) {
+		this.polythequeApplication.creerAdherent(adherent);
+	}
 
 	/**
 	 * Afficher une fenetre de dialogue.

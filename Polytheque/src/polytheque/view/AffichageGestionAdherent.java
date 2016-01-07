@@ -211,6 +211,12 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.creerTableau(adherents);
 		this.mainPanel.updateUI();
 	}
+	
+	public void afficherCreationAdherent(JPanel panel){
+		this.mainPanel.removeAll();
+		this.mainPanel=panel;
+		this.add(this.mainPanel,BorderLayout.CENTER);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -225,6 +231,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonCreerAdherent)
 		{
+			this.tacheDAffichageDeLApplication.afficherCreationAdherent(this.tacheDAffichageDeLApplication.afficher); //A VOIR SUR LES AUTRES
 			return;
 		}
 
