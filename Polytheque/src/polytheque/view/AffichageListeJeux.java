@@ -52,10 +52,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	private JButton boutonAjouterJeu;
 	private JButton boutonModifierJeu;
 	private JButton boutonSupprimerJeu;	
-	private JButton boutonReserverJeu;	
-	//private JButton boutonRetourAccueil;
+	private JButton boutonReserverJeu;
 	private JButton boutonRecherche;
-	//private JButton boutonAfficherExtensions;
 
 	private JTextField searchContent;
 	
@@ -73,7 +71,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
-		creerTableau(listeJeux);
+		rafraichir(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
 		}
@@ -86,19 +84,17 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 * Panneau de recherche
 	 */
 	private void creerPanneauRecherche() {
-		searchPanel = new JPanel();
+		this.searchPanel = new JPanel();
 
 		JLabel labelSearch = new JLabel("Recherche par nom :");
-		//labelSearch.setBounds(300, 0, 100, 30);
 		searchPanel.add(labelSearch, BorderLayout.CENTER);
 		this.searchContent = new JTextField();
-		//this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
-		searchPanel.add(this.searchContent, BorderLayout.CENTER);
+		this.searchPanel.add(this.searchContent, BorderLayout.CENTER);
 
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche, BorderLayout.CENTER);
+		this.searchPanel.add(boutonRecherche, BorderLayout.CENTER);
 
 		this.add(searchPanel, BorderLayout.NORTH);
 	}
@@ -159,10 +155,6 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdmin() {
 		this.buttonsPanel = new JPanel();
-		//buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-
-		//this.boutonAfficherExtensions = new JButton("Afficher les extensions");
-		//this.boutonAfficherExtensions.addActionListener(this);
 
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
 		this.boutonAjouterJeu.addActionListener(this);
@@ -172,15 +164,10 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.boutonSupprimerJeu = new JButton("Supprimer un jeu");
 		this.boutonSupprimerJeu.addActionListener(this);
-
-		//this.boutonRetourAccueil = new JButton("Accueil");
-		//this.boutonRetourAccueil.addActionListener(this);
-
-		//buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
+		
 		this.buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
-		//buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
@@ -190,26 +177,17 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdherent() {
 		this.buttonsPanel = new JPanel();
-		buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-
-		//this.boutonAfficherExtensions = new JButton("Afficher les extensions");
-		//this.boutonAfficherExtensions.addActionListener(this);
+		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonReserverJeu = new JButton("Réserver un jeu");
 		this.boutonReserverJeu.addActionListener(this);
 
-		//this.boutonRetourAccueil = new JButton("Accueil");
-		//this.boutonRetourAccueil.addActionListener(this);
-
-		//buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonReserverJeu, BorderLayout.SOUTH);
-		//buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 	
 	public void rafraichir(ArrayList<Jeu> jeux) {
-		this.arrayPanel.removeAll();
 		this.creerTableau(jeux);
 		this.arrayPanel.updateUI();
 	}
@@ -241,18 +219,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		/*
-		if (boutonSelectionne == this.boutonRetourAccueil)
-		{
-			this.tacheDAffichageDeLApplication.afficherAccueil();
-			return;
-		}
-		if (boutonSelectionne == this.boutonAfficherExtensions)
-		{
-			this.tacheDAffichageDeLApplication.afficherListeExtensions();
-			return;
-		}*/
-
+		
 		if (boutonSelectionne == this.boutonRecherche)
 		{
 			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText()));;

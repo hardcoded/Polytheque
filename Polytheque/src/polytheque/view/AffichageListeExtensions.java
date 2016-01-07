@@ -15,7 +15,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Extension;
-import polytheque.model.pojos.Jeu;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
 @SuppressWarnings("serial")
@@ -69,7 +68,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 
 		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
-		creerTableau(listeExtensions);
+		rafraichir(listeExtensions);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
 		}
@@ -82,28 +81,26 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 * Panneau de recherche
 	 */
 	private void creerPanneauRecherche() {
-		JPanel searchPanel = new JPanel();
-		//searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		this.searchPanel = new JPanel();
 
 		JLabel labelSearch = new JLabel("Recherche par nom :");
 		labelSearch.setBounds(300, 0, 100, 30);
-		searchPanel.add(labelSearch);
+		this.searchPanel.add(labelSearch);
 		this.searchContent = new JTextField();
 		this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
-		searchPanel.add(this.searchContent, BorderLayout.NORTH);
+		this.searchPanel.add(this.searchContent, BorderLayout.NORTH);
 
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
+		this.searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 
-		this.add(searchPanel, BorderLayout.NORTH);
+		this.add(this.searchPanel, BorderLayout.NORTH);
 	}
 
 	public void creerTableau(ArrayList<Extension> listeExtensions) {
 		this.arrayPanel = new JPanel();
-		//arrayPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 1000));
-		arrayPanel.setLayout(new BorderLayout());
+		this.arrayPanel.setLayout(new BorderLayout());
 
 		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeExtensions), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
@@ -149,7 +146,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 */
 	private void ajouterBoutonsAdmin() {
 		this.buttonsPanel = new JPanel();
-		//buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
 		this.boutonAjouterExtension = new JButton("Ajouter un jeu");
 		this.boutonAjouterExtension.addActionListener(this);
@@ -160,13 +156,9 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.boutonSupprimerExtension = new JButton("Supprimer un jeu");
 		this.boutonSupprimerExtension.addActionListener(this);
 
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.addActionListener(this);
-
 		this.buttonsPanel.add(boutonAjouterExtension, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonModifierExtension, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonSupprimerExtension, BorderLayout.SOUTH);
-		this.buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
@@ -187,15 +179,12 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.boutonRetourAccueil = new JButton("Accueil");
 		this.boutonRetourAccueil.addActionListener(this);
 
-		this.buttonsPanel.add(boutonAfficherExtensions, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonReserverExtension, BorderLayout.SOUTH);
-		this.buttonsPanel.add(boutonRetourAccueil, BorderLayout.SOUTH);
 
 		this.add(this.buttonsPanel);
 	}
 	
 	public void rafraichir(ArrayList<Extension> affichageListeExtensions) {
-		this.arrayPanel.removeAll();
 		this.creerTableau(affichageListeExtensions);
 		this.arrayPanel.updateUI();
 	}
@@ -227,18 +216,6 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
-		/*
-		if (boutonSelectionne == this.boutonRetourAccueil)
-		{
-			this.tacheDAffichageDeLApplication.afficherAccueil();
-			return;
-		}
-		if (boutonSelectionne == this.boutonAfficherExtensions)
-		{
-			this.tacheDAffichageDeLApplication.afficherListeExtensions();
-			return;
-		}*/
 
 		if (boutonSelectionne == this.boutonRecherche)
 		{
