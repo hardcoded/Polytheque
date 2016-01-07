@@ -65,7 +65,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 
 		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
-		rafraichir(listeExtensions);
+		creerTableau(listeExtensions);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
 		}
@@ -158,9 +158,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Extension> affichageListeExtensions) {
-		if (this.arrayPanel != null) {
-			this.arrayPanel.removeAll();
-		}
+		this.arrayPanel.removeAll();
 		this.creerTableau(affichageListeExtensions);
 		this.arrayPanel.updateUI();
 	}

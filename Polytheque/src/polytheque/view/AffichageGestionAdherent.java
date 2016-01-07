@@ -207,9 +207,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Adherent> adherents) {
-		if (this.mainPanel != null) {
-			this.mainPanel.removeAll();
-		}
+		this.mainPanel.removeAll();
 		this.creerTableau(adherents);
 		this.mainPanel.updateUI();
 	}
@@ -220,6 +218,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonRecherche)
 		{
+			//TODO corriger recherche ne s'affiche pas
 			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherAdherents(this.searchContent.getText()));
 			return;
 		}

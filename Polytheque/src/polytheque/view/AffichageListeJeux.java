@@ -69,7 +69,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.setLayout(new BorderLayout());
 		creerPanneauRecherche();
-		rafraichir(listeJeux);
+		creerTableau(listeJeux);
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			ajouterBoutonsAdmin();
 		}
@@ -168,9 +168,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Jeu> jeux) {
-		if (this.arrayPanel != null) {
-			this.arrayPanel.removeAll();
-		}
+		this.arrayPanel.removeAll();
 		this.creerTableau(jeux);
 		this.arrayPanel.updateUI();
 	}

@@ -60,6 +60,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	}
 
 	public void ajouterChamps() {
+		//TODO corriger affichage éléments
 		JPanel champsPanel = new JPanel(); 
 		
 		JLabel titrePrincipal = new JLabel("Mon compte");
