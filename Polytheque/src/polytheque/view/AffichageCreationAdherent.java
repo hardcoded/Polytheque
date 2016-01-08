@@ -69,36 +69,40 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		 * @return 
 		 */
 		public AffichageCreationAdherent(TacheDAffichage afficheAppli) {
+			this.tacheDAffichageDeLApplication = afficheAppli;
 			this.setLayout(new BorderLayout());
 			
 			ajouterChamps();
 			creerPanneauDate();
-			ajouterBoutons();
+			//ajouterBoutons();
 		}
 		
-		public void ajouterChamps() {
-			this.setLayout(null);
-
+		public void ajouterChamps() {			
 			JLabel titrePrincipal = new JLabel("Mon compte");
 			titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 			titrePrincipal.setBounds(350, 20, 260, 30);
 			this.add(titrePrincipal);
 			
 			this.userInfoPanel = new JPanel();
+
+			JLabel labelUserName = new JLabel("Nom :");
+			this.userInfoPanel.add(labelUserName);
+			/*this.userName = new JTextField();
+			this.userName.setColumns(10);
+			this.add(this.userName, BorderLayout.CENTER);
+			*/
+			
 			this.userInfoPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 			
 			
-			
-			
-			JLabel labelUserName = new JLabel("Nom :");
 			this.userInfoPanel.add(labelUserName);
 			labelUserName.setBounds(300, 150, 100, 30);
 			this.userName = new JTextField();
 			this.userName.setBounds(350, 150, 100, 30);
 			this.userInfoPanel.add(this.userName);
-			//this.add(this.userInfoPanel);
+			this.add(this.userInfoPanel);
 			
-			JLabel labelUserFirstName = new JLabel("Prenom :");
+			/*JLabel labelUserFirstName = new JLabel("Prenom :");
 			labelUserFirstName.setBounds(300, 180, 100, 30);
 			this.userInfoPanel.add(labelUserFirstName);
 			this.userFirstName = new JTextField();
@@ -187,7 +191,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
 			this.userIsAdmin.setBounds(860, 450, 100, 30);
 			this.userIsAdminPanel.add(this.userIsAdmin);
-			this.add(this.userIsAdminPanel);
+			this.add(this.userIsAdminPanel, BorderLayout.CENTER);
 			
 			this.userPeutEmprunterPanel = new JPanel();
 			this.userPeutEmprunterPanel.setPreferredSize(new Dimension(100, 20));
@@ -215,7 +219,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userEstAJour.setPreferredSize(new Dimension(20, 20));
 			this.userEstAJour.setBounds(600, 250, 100, 30);
 			this.userEstAJourPanel.add(this.userEstAJour);
-			this.add(this.userEstAJourPanel);
+			this.add(this.userEstAJourPanel);*/
 		}
 		
 		
@@ -237,11 +241,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.boutonValider.setBounds(200, 500, 200, 30);
 			this.boutonValider.addActionListener(this);
 			this.add(this.boutonValider);
-			
-			this.boutonRetourAccueil = new JButton("Accueil");
-			this.boutonRetourAccueil.setBounds(500, 500, 200, 30);
-			this.boutonRetourAccueil.addActionListener(this);
-			this.add(this.boutonRetourAccueil);
 		}
 
 		@Override
