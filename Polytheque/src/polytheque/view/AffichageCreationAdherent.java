@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.toedter.calendar.JDateChooser;
+
 import polytheque.model.pojos.Adherent;
 
 /**
@@ -56,8 +58,8 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		 * @return 
 		 */
 		public AffichageCreationAdherent(TacheDAffichage afficheAppli) {
-			this.tacheDAffichageDeLApplication = afficheAppli;
 			ajouterChamps();
+			creerPanneauDate();
 			ajouterBoutons();
 		}
 		
@@ -81,16 +83,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.add(labelUserFirstName);
 			this.userFirstName = new JTextField();
 			this.userFirstName.setBounds(360, 180, 100, 30);
-			this.add(this.userFirstName);
-			
-			
-			JLabel labelUserBirthday = new JLabel("Date de naissance :");
-			labelUserBirthday.setBounds(300, 210, 150, 30);
-			this.add(labelUserBirthday);
-			this.userBirthday = new JTextField();
-			this.userBirthday.setBounds(420, 210, 100, 30);
-			this.add(this.userBirthday);
-			
+			this.add(this.userFirstName); 
 			
 			JLabel labelUserRue = new JLabel("Rue :");
 			labelUserRue.setBounds(300, 240, 100, 30);
@@ -98,8 +91,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userRue = new JTextField();
 			this.userRue.setBounds(350, 240, 100, 30);
 			this.add(this.userRue);
-			
-			
 			
 			JLabel labelUserCP = new JLabel("Code Postal:");
 			labelUserCP.setBounds(300, 270, 100, 30);
@@ -184,6 +175,19 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userCptRetard = new JTextField();
 			this.userCptRetard.setBounds(600, 350, 100, 30);
 			this.add(this.userCptRetard);
+		}
+		
+		
+		private void creerPanneauDate() {
+			JPanel DatePanel = new JPanel();
+			DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+			JLabel labelUserBirthday = new JLabel("Cliquez sur votre date de naissance :");
+			labelUserBirthday.setBounds(400, 150, 100, 30);
+			this.add(labelUserBirthday);
+			JDateChooser dateChooser = new JDateChooser();
+			dateChooser.setBounds(400, 200, 200, 30);
+			DatePanel.add(dateChooser);
+			this.add(DatePanel);
 		}
 		
 		
