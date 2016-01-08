@@ -1,8 +1,7 @@
 package polytheque.model.pojos;
 
 import java.sql.Date;
-import polytheque.model.DAO.JeuDAO;
-import polytheque.model.DAO.ExtensionDAO;
+
 import polytheque.model.DAO.AdherentDAO;
 /**
  * Classe permettant la rï¿½servation d'un jeu
@@ -17,25 +16,20 @@ public class Reservation {
 	private Jeu jeu;
 	private Extension extention;
 	private AdherentDAO adherentDAO;
-	private JeuDAO jeuDAO;
-	private ExtensionDAO extentionDAO;
 
 	/**
-	 * Constructeur de Reservation qui sert dans une fonction de ReservationDAO
+	 * constructeur de Reservation utilisé dans une fonction de ReservationDAO
 	 * @param id_reservation
 	 * @param date
-	 * @param id_adherent
-	 * @param id_jeu
-	 * @param id_extension
+	 * @param adh
+	 * @param jeu
+	 * @param ext
 	 */
-	public Reservation(int id_reservation,Date date,int id_adherent,int id_jeu,int id_extension){
+	public Reservation(int id_reservation,Date date,Adherent adh,Jeu jeu,Extension ext){
 		this.setIdReservation(id_reservation);
 		this.setDate(date);
-		Adherent adh=this.adherentDAO.retreive(id_adherent);
 		this.setAdherent(adh);
-		Jeu cejeu=this.jeuDAO.retreive(id_jeu);
-		this.setJeu(cejeu);
-		Extension ext=this.extentionDAO.retreive(id_extension);
+		this.setJeu(jeu);
 		this.setExtension(ext);
 	}
 	/**

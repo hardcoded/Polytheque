@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Extension;
+import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {
@@ -117,15 +119,18 @@ public class ReservationDAO extends DAO {
 		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *,ADHERENT.nom,ADHENRENT.prenom,JEU.nom,EXTENSION.nom"
 					+ "FROM RESERVATION "
-					+ "ORDER BY nom ASC");
+					+ "JOIN ADHERENT ON ADHERENT.id_adherent=RESERVATION.id_adherent"
+					+ "JOIN JEU ON JEU.id_jeu=RESERVATION.id_jeu"
+					+"JOIN EXTENSION ON EXTENSION.id_extension=RESERVATION.id_extension"
+					+ "ORDER BY id_reservation ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
-				toutesLesReservations.add(new Reservation(resSet.getInt("id_reservation"),resSet.getDate("date_reservation"),resSet.getInt("id_adherent"), resSet.getInt("id_jeu"),resSet.getInt("id_extension")));
+				toutesLesReservations.add(new Reservation(resSet.getInt("id_reservation"),resSet.getDate("date_reservation"),(Adherent)resSet.getObject("adherent"),(Jeu) resSet.getObject("jeu"),(Extension) resSet.getObject("extension")));
 			}
 			super.disconnect();
 
