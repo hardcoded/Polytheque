@@ -1,6 +1,7 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -62,6 +63,14 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		this.password = new JPasswordField();
 		//this.password.setBounds(450, 350, 190, 30);
 		this.password.setColumns(10);
+		
+		this.password.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loginRequest();				
+			}
+		});
+		
 		champsPanel.add(this.password, BorderLayout.CENTER);
 		this.add(champsPanel, BorderLayout.CENTER);
 
@@ -71,6 +80,17 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		boutonPanel.add(this.boutonValider, BorderLayout.CENTER);
 		this.add(boutonValider, BorderLayout.SOUTH);
 	}
+	
+	public void loginRequest() {
+		String pwd = new String(this.password.getPassword());
+		if (this.tacheDAffichageDeLApplication.testerValiditeConnexion(this.userName.getText(), pwd) == false) {
+			this.tacheDAffichageDeLApplication.afficherMessage("Identifiant ou mot de passe incorrect !", "Erreur !", JOptionPane.ERROR_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherEcranConnexion();
+		}
+		else {
+			this.tacheDAffichageDeLApplication.afficherAccueil();
+		}
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -78,17 +98,8 @@ public class EcranConnexion extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonValider)
 		{
-			String pwd = new String(this.password.getPassword());
-			if (this.tacheDAffichageDeLApplication.testerValiditeConnexion(this.userName.getText(), pwd) == false) {
-				this.tacheDAffichageDeLApplication.afficherMessage("Identifiant ou mot de passe incorrect !", "Erreur !", JOptionPane.ERROR_MESSAGE);
-				this.tacheDAffichageDeLApplication.afficherEcranConnexion();
-			}
-			else {
-				this.tacheDAffichageDeLApplication.afficherAccueil();
-			}
-			return;
+			loginRequest();
 		}
-
 		return;
 	}
 }
