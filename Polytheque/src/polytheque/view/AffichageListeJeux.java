@@ -82,7 +82,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.searchPanel = new JPanel();
 
 		JLabel labelSearch = new JLabel("Recherche par nom :");
-		searchPanel.add(labelSearch, BorderLayout.CENTER);
+		this.searchPanel.add(labelSearch, BorderLayout.CENTER);
 		this.searchContent = new JTextField();
 		this.searchContent.setColumns(10);
 		this.searchPanel.add(this.searchContent, BorderLayout.CENTER);

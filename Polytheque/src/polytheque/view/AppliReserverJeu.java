@@ -67,7 +67,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
 		labelDate.setBounds(400, 150, 100, 30);
-		this.add(labelDate);
+		DatePanel.add(labelDate);
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(400, 200, 200, 30);
 		DatePanel.add(dateChooser);
