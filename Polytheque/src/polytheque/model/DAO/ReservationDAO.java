@@ -125,7 +125,7 @@ public class ReservationDAO extends DAO {
 
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er résultat				
-				//toutesLesReservations.add(new Reservation(resSet.getAdherent("adherent"), resSet.getJeu("jeu"), resSet.getExtension("extension"),resSet.getDate("date_reservation")));
+				toutesLesReservations.add(new Reservation(resSet.getInt("id_reservation"),resSet.getDate("date_reservation"),resSet.getInt("id_adherent"), resSet.getInt("id_jeu"),resSet.getInt("id_extension")));
 			}
 			super.disconnect();
 

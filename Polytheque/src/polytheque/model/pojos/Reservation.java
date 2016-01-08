@@ -17,6 +17,16 @@ public class Reservation {
 	private Extension extention;
 	private AdherentDAO adherentDAO;
 
+	public Reservation(int id_reservation,Date date,int id_adherent,int id_jeu,int id_extension){
+		this.setIdReservation(id_reservation);
+		this.setDate(date);
+		Adherent adh=null;
+		this.setAdherent(adh);
+		Jeu cejeu=null;
+		this.setJeu(cejeu);
+		Extension ext=null;
+		this.setExtension(ext);
+	}
 	/**
 	 * Constructeur de la classe Reservation
 	 * 
