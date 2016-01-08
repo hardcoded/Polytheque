@@ -118,7 +118,7 @@ public class ReservationDAO extends DAO {
 	public ArrayList<Reservation> getAll() {
 		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
 		try {
-			super.connect();
+			super.connect(); //requete fausse à voir
 			PreparedStatement psSelect = connection.prepareStatement("SELECT ADHERENT.nom as nom_adh,ADHENRENT.prenom as prenom_adh,JEU.nom as titre,RESERVATION.date_reservation"
 					+ "FROM RESERVATION "
 					+ "JOIN ADHERENT ON ADHERENT.id_adherent = RESERVATION.id_adherent"
