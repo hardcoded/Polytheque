@@ -80,7 +80,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		public void ajouterChamps() {			
 			JPanel titrePanel = new JPanel();
 			
-			JLabel titrePrincipal = new JLabel("Mon compte");
+			JLabel titrePrincipal = new JLabel("Création Adhérent");
 			titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 			titrePrincipal.setBounds(350, 20, 260, 30);
 			titrePanel.add(titrePrincipal);
@@ -174,8 +174,8 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			userInfoPanel.add(this.userCptRetard);
 			this.add(userInfoPanel, BorderLayout.WEST); 
 			
-			/*this.userIsAdminPanel = new JPanel();
-			this.userIsAdminPanel.setPreferredSize(new Dimension(100, 20));
+			/*userIsAdminPanel = new JPanel();
+			userIsAdminPanel.setPreferredSize(new Dimension(100, 20));
 			
 			JLabel labelUserIsAdmin = new JLabel("Admin :");
 			labelUserIsAdmin.setBounds(800, 450, 100, 30);
@@ -185,11 +185,11 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userIsAdmin.addItem(Boolean.FALSE);
 			this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
 			this.userIsAdmin.setBounds(860, 450, 100, 30);
-			this.userIsAdminPanel.add(this.userIsAdmin);
-			this.add(this.userIsAdminPanel, BorderLayout.CENTER);
+			userIsAdminPanel.add(this.userIsAdmin);
+			this.add(userIsAdminPanel, BorderLayout.CENTER);
 			
-			this.userPeutEmprunterPanel = new JPanel();
-			this.userPeutEmprunterPanel.setPreferredSize(new Dimension(100, 20));
+			userPeutEmprunterPanel = new JPanel();
+			userPeutEmprunterPanel.setPreferredSize(new Dimension(100, 20));
 			
 			JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
 			labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
@@ -199,22 +199,22 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userPeutEmprunter.addItem(Boolean.FALSE);
 			this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
 		    this.userPeutEmprunter.setBounds(600, 150, 100, 30);
-		    this.userPeutEmprunterPanel.add(this.userPeutEmprunter);
-			this.add(this.userPeutEmprunterPanel);
+		    userPeutEmprunterPanel.add(this.userPeutEmprunter);
+			this.add(userPeutEmprunterPanel, BorderLayout.CENTER);
 			
-			this.userEstAJourPanel = new JPanel();
-			this.userEstAJourPanel.setPreferredSize(new Dimension(20, 20));
+			userEstAJourPanel = new JPanel();
+			userEstAJourPanel.setPreferredSize(new Dimension(20, 20));
 			
 			JLabel labelUserEstAJour = new JLabel("Est a jour :");
 			labelUserEstAJour.setBounds(600, 200, 100, 30);
-			this.userEstAJourPanel.add(labelUserEstAJour);
+			userEstAJourPanel.add(labelUserEstAJour);
 			this.userEstAJour = new JComboBox<Boolean>();
 			this.userEstAJour.addItem(Boolean.TRUE);
 			this.userEstAJour.addItem(Boolean.FALSE);
 			this.userEstAJour.setPreferredSize(new Dimension(20, 20));
 			this.userEstAJour.setBounds(600, 250, 100, 30);
-			this.userEstAJourPanel.add(this.userEstAJour);
-			this.add(this.userEstAJourPanel);*/
+			userEstAJourPanel.add(this.userEstAJour);
+			this.add(userEstAJourPanel, BorderLayout.CENTER);*/
 		}
 		
 		
@@ -227,15 +227,17 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			JDateChooser dateChooser = new JDateChooser();
 			dateChooser.setBounds(400, 200, 200, 30);
 			DatePanel.add(dateChooser);
-			this.add(DatePanel);
+			this.add(DatePanel, BorderLayout.EAST);
 		}
 		
 		
 		public void ajouterBoutons(){
+			JPanel panelButton = new JPanel();
 			this.boutonValider = new JButton("Valider");
-			this.boutonValider.setBounds(200, 500, 200, 30);
+			//this.boutonValider.setBounds(200, 500, 200, 30);
 			this.boutonValider.addActionListener(this);
-			this.add(this.boutonValider);
+			panelButton.add(this.boutonValider);
+			this.add(panelButton, BorderLayout.SOUTH);
 		}
 
 		@Override
