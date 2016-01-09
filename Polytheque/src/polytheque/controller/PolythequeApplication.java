@@ -100,6 +100,10 @@ public class PolythequeApplication {
 		this.adherentDAO.create(adherent);
 	}
 	
+	public void supprimerAdherent(String nom){
+		 this.adherentDAO.deleteAdherent(nom);
+				 	}
+	
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();
 	}

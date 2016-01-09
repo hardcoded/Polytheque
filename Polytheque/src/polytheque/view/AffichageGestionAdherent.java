@@ -219,6 +219,14 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.add(this.mainPanel,BorderLayout.CENTER);
 	}
 
+	public void afficherSupprimerAdherent(JPanel panel){
+		this.buttonsPanel.removeAll();
+		this.searchPanel.removeAll();
+		this.mainPanel.removeAll();
+		this.mainPanel=panel;
+		this.add(this.mainPanel,BorderLayout.CENTER);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -237,7 +245,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonSupprimerAdherent)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerAdherent());
 			return;
 		}
 

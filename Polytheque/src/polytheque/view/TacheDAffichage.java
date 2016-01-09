@@ -146,6 +146,7 @@ public class TacheDAffichage extends JFrame {
 	}
 
 	public AffichageGestionAdherent afficherGestionAdherent() {
+		this.viderFenetre();
 		return new AffichageGestionAdherent(this, this.polythequeApplication.getAdherentsList()); //Surement un probleme
 	}
 
@@ -165,6 +166,10 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageCreationAdherent(this); //a commit
 	}
 	
+	public AffichageSupprimerAdherent afficherSupprimerAdherent(){
+		return new AffichageSupprimerAdherent(this);
+	}
+	
 	public AffichageListeReservations afficherListeReservations() {
 		return new AffichageListeReservations(this, this.polythequeApplication.getReservationList());
 	}
@@ -173,6 +178,9 @@ public class TacheDAffichage extends JFrame {
 		this.polythequeApplication.creerAdherent(adherent);
 	}
 
+	public void supprimerAdherent(String nom){
+		this.polythequeApplication.supprimerAdherent(nom);
+	}
 	/**
 	 * Afficher une fenetre de dialogue.
 	 * 

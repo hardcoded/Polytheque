@@ -57,14 +57,14 @@ public class AdherentDAO extends DAO {
 
 	/**
 	 * Methode pour effacer
-	 * @param id
+	 * @param nom
 	 * @return boolean 
 	 */
-	public boolean delete(int id) {
+	public boolean deleteAdherent(String nom) {
 		try {
 			super.connect();
-			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM ADHERENT WHERE id_adherent = ?"); 
-			psDelete.setInt(1, id);
+			PreparedStatement psDelete = connection.prepareStatement("DELETE FROM ADHERENT WHERE nom = ?"); 
+			psDelete.setString(1, nom);
 			psDelete.execute();
 			psDelete.closeOnCompletion();
 
