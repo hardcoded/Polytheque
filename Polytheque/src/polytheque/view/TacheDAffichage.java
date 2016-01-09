@@ -159,6 +159,9 @@ public class TacheDAffichage extends JFrame {
 		return new AppliReserverJeu(this);
 	}
 	
+	public AppliAnnulerReservation afficherEcranAnnulationR() {
+		return new AppliAnnulerReservation(this);
+	}
 	public Adherent getAdherent(String pseudo) {
 		return this.polythequeApplication.getAdherent(pseudo);
 	}
@@ -208,5 +211,9 @@ public Adherent getAdherentByNothing() {
 	{
 		
 		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension);	
+	}
+	
+	public void deleteReservation(){
+		this.polythequeApplication.annulerReservation();
 	}
 }
