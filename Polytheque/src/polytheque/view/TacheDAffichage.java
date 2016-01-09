@@ -9,6 +9,7 @@ import polytheque.controller.PolythequeApplication;
 import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
+import polytheque.model.pojos.Reservation;
 
 /**
  * Classe permettant de gérer l'affichage de l'appication.
@@ -195,7 +196,17 @@ public class TacheDAffichage extends JFrame {
 		JOptionPane.showMessageDialog(this, message, titreFenetre, codeInformation);
 	}
 	
+public Adherent getAdherentByNothing() {
+		
+		return this.polythequeApplication.getAdherentByNothing();
+	}
+	
 	public Jeu getJeu(String nom) {
 		return this.polythequeApplication.getByName(nom);
 }
+	public void createReservation(int idAdherent, int idJeu, int idJextension)
+	{
+		
+		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension);	
+	}
 }
