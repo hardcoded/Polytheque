@@ -119,10 +119,12 @@ public class ReservationDAO extends DAO {
 		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
 		try {
 			super.connect(); //requete fausse à voir
-			PreparedStatement psSelect = connection.prepareStatement("SELECT ADHERENT.nom,ADHENRENT.prenom,JEU.nom,RESERVATION.date_reservation"
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, ADHERENT.pseudo,EXTENSION.nom,JEU.nom,RESERVATION.date_reservation"
 					+ "FROM RESERVATION"
 					+ "JOIN ADHERENT ON ADHERENT.id_adherent = RESERVATION.id_adherent"
-					+ "JOIN JEU ON JEU.id_jeu = RESERVATION.id_jeu");
+					+ "JOIN JEU ON JEU.id_jeu = RESERVATION.id_jeu"
+					+ "JOIN EXTENSION ON EXTENSION.id_extension = RESERVATION.id_extension"
+					+ "ORDER BY RESERVATION.id_reservation ASC");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 

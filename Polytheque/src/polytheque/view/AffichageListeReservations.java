@@ -17,7 +17,7 @@ import polytheque.view.modeles.ModeleTableauListeJeux;
 public class AffichageListeReservations extends JPanel implements ActionListener {
 
 	public final static int LONGUEUR_COLONNE_0 = 50;
-	public final static int LONGUEUR_COLONNE_1 = 50;
+	public final static int LONGUEUR_COLONNE_1 = 150;
 	public final static int LONGUEUR_COLONNE_2 = 150;
 	public final static int LONGUEUR_COLONNE_3 = 50;
 
@@ -44,7 +44,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Prenom", "Titre", "Date"};
+	public final static String[] LIBELLES = new String[] {"Pseudo", "Nom_jeu", "Nom_extention", "Date"};
 
 	private JButton boutonAnnulerReservation;
 	
@@ -109,9 +109,9 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		int index = 0;		
 		for (Reservation reservationCourante : listeReservations)
 		{
-			donnees[index][0] = reservationCourante.getAdherent().getNom();
-			donnees[index][1] = reservationCourante.getAdherent().getPrenom();
-			donnees[index][2] = reservationCourante.getJeu().getNom();
+			donnees[index][0] = reservationCourante.getAdherent().getPseudo();
+			donnees[index][1] = reservationCourante.getJeu().getNom();
+			donnees[index][2] = reservationCourante.getExtension().getNom();
 			donnees[index][3] = reservationCourante.getDate();
 			index++;
 		}		
