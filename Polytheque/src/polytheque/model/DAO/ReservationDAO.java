@@ -120,7 +120,7 @@ public class ReservationDAO extends DAO {
 		try {
 			super.connect(); //requete fausse à voir
 			PreparedStatement psSelect = connection.prepareStatement("SELECT ADHERENT.nom,ADHENRENT.prenom,JEU.nom,RESERVATION.date_reservation"
-					+ "FROM RESERVATION "
+					+ "FROM RESERVATION"
 					+ "JOIN ADHERENT ON ADHERENT.id_adherent = RESERVATION.id_adherent"
 					+ "JOIN JEU ON JEU.id_jeu = RESERVATION.id_jeu");
 			psSelect.execute();
