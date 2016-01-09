@@ -119,7 +119,7 @@ public class ReservationDAO extends DAO {
 		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
 		try {
 			super.connect(); //requete fausse ‡ voir
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, ADHERENT.pseudo,EXTENSION.nom,JEU.nom,RESERVATION.date_reservation"
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, RESERVATION.id_reservation,ADHERENT.pseudo,EXTENSION.nom,JEU.nom,RESERVATION.date_reservation"
 					+ "FROM RESERVATION"
 					+ "JOIN ADHERENT ON ADHERENT.id_adherent = RESERVATION.id_adherent"
 					+ "JOIN JEU ON JEU.id_jeu = RESERVATION.id_jeu"
@@ -130,7 +130,7 @@ public class ReservationDAO extends DAO {
 
 			ResultSet resSet = psSelect.getResultSet();
 			while (resSet.next()) { // On se place sur le 1er r√©sultat				
-				toutesLesReservations.add(new Reservation(resSet.getInt("id_reservation"),resSet.getDate("date_reservation"),(Adherent)resSet.getObject("adherent"),(Jeu) resSet.getObject("jeu"),(Extension) resSet.getObject("extension")));
+				toutesLesReservations.add(new Reservation(resSet.getInt("id_reservation"),(Adherent)resSet.getObject("adherent"),(Jeu) resSet.getObject("jeu"),(Extension) resSet.getObject("extension"),resSet.getDate("date_reservation")));
 			}
 			super.disconnect();
 

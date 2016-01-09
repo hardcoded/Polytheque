@@ -20,12 +20,12 @@ public class Reservation {
 	/**
 	 * constructeur de Reservation utilisé dans une fonction de ReservationDAO
 	 * @param id_reservation
-	 * @param date
 	 * @param adh
 	 * @param jeu
 	 * @param ext
+	 * @param date
 	 */
-	public Reservation(int id_reservation,Date date,Adherent adh,Jeu jeu,Extension ext){
+	public Reservation(int id_reservation,Adherent adh,Jeu jeu,Extension ext,Date date){
 		this.setIdReservation(id_reservation);
 		this.setDate(date);
 		this.setAdherent(adh);
