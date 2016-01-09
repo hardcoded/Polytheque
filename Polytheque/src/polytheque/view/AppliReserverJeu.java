@@ -1,10 +1,12 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,7 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.omg.CORBA.Object;
+
 import com.toedter.calendar.JDateChooser;
+
+import polytheque.model.pojos.Adherent;
 
 @SuppressWarnings("serial")
 public class AppliReserverJeu extends JPanel implements ActionListener
@@ -78,13 +84,18 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.add(boutonValider);
 	}
 
+	public void rafraichir(Object object) {
+		this.removeAll();
+		this.add(null,object);
+		this.updateUI(); 
+	}
 	public void actionPerformed(ActionEvent e) 
 	{
 		JPanel Afficherep = new JPanel();
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Resertion confirmee", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+			this.rafraichir(this.tacheDAffichageDeLApplication.afficherMessage("message"," titreFenetre", 0);)
 			return;
 		}		
 	}	
