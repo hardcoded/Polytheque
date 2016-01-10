@@ -3,6 +3,8 @@ package polytheque.controller;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import polytheque.model.DAO.AdherentDAO;
 import polytheque.model.DAO.ExtensionDAO;
 import polytheque.model.DAO.JeuDAO;
@@ -92,8 +94,11 @@ public class PolythequeApplication {
 		return this.adherentDAO.getByPseudo(pseudo);
 	}
 	
-	public void creerAdherent(Adherent adherent){
-		this.adherentDAO.create(adherent);
+	public boolean creerAdherent(Adherent adherent){
+		if (this.adherentDAO.create(adherent)) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void supprimerAdherent(String nom){

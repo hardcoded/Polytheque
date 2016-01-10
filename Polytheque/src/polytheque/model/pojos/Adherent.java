@@ -25,6 +25,7 @@ public class Adherent {
 	private boolean peutEmprunter;
 	private boolean estAJour;
 	private int cptRetard;
+	private int nbNonRecup;
 
 	/**
 	 * Constructeur de la classe Adherent, permet de créer un nouvel adhérent
@@ -72,6 +73,7 @@ public class Adherent {
 		this.peutEmprunter = true;
 		this.estAJour = true;
 		this.cptRetard = 0;
+		this.nbNonRecup = 0;
 	}
 
 	/**
@@ -106,7 +108,7 @@ public class Adherent {
 	 */	
 	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
-			boolean estAJour, int nbRetards){
+			boolean estAJour, int nbRetards, int nbNonRecup){
 		this.idAdherent = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -122,6 +124,7 @@ public class Adherent {
 		this.estAJour = estAJour;
 		this.peutEmprunter = peutEmprunter;
 		this.cptRetard = nbRetards;
+		this.nbNonRecup = nbNonRecup;
 	}
 	
 	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
@@ -413,5 +416,13 @@ public class Adherent {
 
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	public int getNbNonRecup() {
+		return nbNonRecup;
+	}
+
+	public void setNbNonRecup(int nbNonRecup) {
+		this.nbNonRecup = nbNonRecup;
 	}
 }

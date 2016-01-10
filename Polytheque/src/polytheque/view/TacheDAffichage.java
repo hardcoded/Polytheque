@@ -179,8 +179,11 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageListeReservations(this, this.polythequeApplication.getReservationList());
 	}
 	
-	public void creerAdherent(Adherent adherent) {
-		this.polythequeApplication.creerAdherent(adherent);
+	public boolean creerAdherent(Adherent adherent) {
+		if (this.polythequeApplication.creerAdherent(adherent)) {
+			return true;
+		}
+		return false;
 	}
 
 	public void supprimerAdherent(String nom){

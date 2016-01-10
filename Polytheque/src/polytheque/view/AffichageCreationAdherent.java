@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -169,15 +170,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.add(this.password);
 			//this.add(this.userInfoPanel, BorderLayout.WEST);
 			
-			JLabel labelUserCptRetard = new JLabel("Compteur Retard :");
-			labelUserCptRetard.setBounds(150, 450, 150, 30);
-			this.add(labelUserCptRetard);
-			this.userCptRetard = new JTextField("0");
-			this.userCptRetard.setBounds(270, 450, 20, 30);
-			this.userCptRetard.setColumns(2);
-			this.add(this.userCptRetard);
-			//this.add(userInfoPanel, BorderLayout.CENTER);  
-			
 			//userIsAdminPanel = new JPanel();
 			//userIsAdminPanel.setPreferredSize(new Dimension(100, 20));
 			
@@ -256,19 +248,24 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 
 			if (boutonSelectionne == this.boutonValider)
 			{
-				int cptRetard = Integer.parseInt(this.userCptRetard.getText());
-				String password = new String(this.password.getPassword());
-				//TODO faire un DatePicker pour la date de naissance car besoin d'un format date pour insÃ©rer nouvel adhÃ©rent
-				Adherent adherent = new Adherent(this.userName.getText(), this.userFirstName.getText(), (Date) this.dateChooser.getDate(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), cptRetard);
-				this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adhÃ©rent a ete crÃ©e !", "CrÃ©ation terminÃ©e", JOptionPane.INFORMATION_MESSAGE);
-				this.tacheDAffichageDeLApplication.creerAdherent(adherent);
-				this.tacheDAffichageDeLApplication.afficherGestionAdherent();
-				return;
+				if (this.userName.getText() != null && this.userFirstName.getText() != null && this.dateChooser.getDate() != null && this.userRue.getText() != null &&
+					this.userCP.getText() != null && this.userVille.getText() != null && this.userPseudo.getText() != null && this.password.getPassword() != null) {
+					String password = new String(this.password.getPassword());
+					Date dateNaissance = new Date(this.dateChooser.getDate().getTime());
+					
+					Adherent adherent = new Adherent(this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), 0);
+					if (this.tacheDAffichageDeLApplication.creerAdherent(adherent) == false) {
+						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la création d'un nouvel adhérent", "Erreur de création", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adhérent a été créé !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
 				}
-
+				else {
+					this.tacheDAffichageDeLApplication.afficherMessage("Veuillez renseigner tous les champs !", "Erreur champ(s) vide(s)", JOptionPane.ERROR_MESSAGE);
+				}
+			}
 			return;
 		}
-
-
-
 }

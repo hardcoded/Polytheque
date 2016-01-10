@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 import polytheque.model.pojos.Adherent;
 
 /**
@@ -52,27 +54,26 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	public AffichageModificationAdherent(TacheDAffichage afficheAppli, Adherent adherent) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		this.adherentCourant = adherent;
-		this.setLayout(new BorderLayout());
 		ajouterChamps();
 		ajouterBoutons();
 	}
 
 	public void ajouterChamps() {
-		//TODO corriger affichage éléments
+		this.setLayout(null);
 		JPanel champsPanel = new JPanel(); 
 		
 		JLabel titrePrincipal = new JLabel("Mon compte");
-		champsPanel.add(titrePrincipal, BorderLayout.CENTER);
+		champsPanel.add(titrePrincipal, SwingConstants.CENTER);
 
 		JLabel labelUserName = new JLabel("Nom :");
-		champsPanel.add(labelUserName, BorderLayout.WEST);
+		champsPanel.add(labelUserName);
 		this.userName = new JTextField(this.adherentCourant.getNom());
-		champsPanel.add(this.userName, BorderLayout.WEST);
+		champsPanel.add(this.userName);
 
 		JLabel labelUserFirstName = new JLabel("Prenom :");
 		champsPanel.add(labelUserFirstName, BorderLayout.WEST);
 		this.userFirstName = new JTextField(this.adherentCourant.getPrenom());
-		champsPanel.add(this.userFirstName, BorderLayout.WEST);
+		champsPanel.add(this.userFirstName);
 
 
 		JLabel labelUserBirthday = new JLabel("Date de naissance :");
@@ -171,7 +172,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		if (boutonSelectionne == this.boutonValider)
 		{
 			String password = new String(this.password.getPassword());
-			Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard());
+			Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard(), this.adherentCourant.getNbNonRecup());
 			this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte !", "Modifications terminées", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 			return;

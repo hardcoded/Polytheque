@@ -3,6 +3,7 @@ package polytheque.model.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
@@ -18,9 +19,9 @@ public class AdherentDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "ADHERENT(nom, prenom, date_naissance, rue, cp, ville, mail, telephone, pseudo, mdp, admin,"
-					+ "liste_noire, droits, nb_retards)"
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
+					+ "ADHERENT(nom, prenom, date_naissance, rue, code_postal, ville, mail, telephone, pseudo, mdp, admin, "
+					+ "liste_noire, droits, nb_retards, nb_non_recup) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, adherent.getNom());
 			psInsert.setString(2, adherent.getPrenom());
@@ -33,16 +34,16 @@ public class AdherentDAO extends DAO {
 			psInsert.setString(9, adherent.getPseudo());
 			psInsert.setString(10, adherent.getMdp());
 			psInsert.setBoolean(11, adherent.isAdmin());
-			psInsert.setBoolean(12, true);
-			psInsert.setBoolean(13, true);
-			psInsert.setInt(14, 0);
+			psInsert.setBoolean(12, adherent.peutEmprunter());
+			psInsert.setBoolean(13, adherent.estAJour());
+			psInsert.setInt(14, adherent.getCompteurRetard());
+			psInsert.setInt(15, adherent.getNbNonRecup());
 
 			psInsert.executeUpdate();
-			psInsert.closeOnCompletion();
 
 			ResultSet idResult = psInsert.getGeneratedKeys();
 			if (idResult != null && idResult.next()) {
-				adherent.setIdAdherent(idResult.getInt(1));;
+				adherent.setIdAdherent(idResult.getInt(1));
 			} else {
 				throw new SQLException();
 			}
@@ -86,7 +87,7 @@ public class AdherentDAO extends DAO {
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE ADHERENT "
 					+ "SET nom = ?, prenom = ?, date_naissance = ?, rue = ?, code_postal = ?, ville = ?, mail = ?, telephone = ?,"
-					+ "pseudo = ?, mdp = ?, admin = ?,liste_noire = ?, droits = ?, nb_retards = ? "
+					+ "pseudo = ?, mdp = ?, admin = ?,liste_noire = ?, droits = ?, nb_retards = ?, nb_non_recup = ? "
 					+ "WHERE id_adherent = ?"); 
 			psUpdate.setString(1, adherent.getNom());
 			psUpdate.setString(2, adherent.getPrenom());
@@ -102,7 +103,8 @@ public class AdherentDAO extends DAO {
 			psUpdate.setBoolean(12, adherent.peutEmprunter());
 			psUpdate.setBoolean(13, adherent.estAJour());
 			psUpdate.setInt(14, adherent.getCompteurRetard());
-			psUpdate.setInt(15, adherent.getIdAdherent());
+			psUpdate.setInt(15, adherent.getNbNonRecup());
+			psUpdate.setInt(16, adherent.getIdAdherent());
 
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
@@ -134,7 +136,7 @@ public class AdherentDAO extends DAO {
 				adherent = new Adherent(id, resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
 						resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
 						resSet.getString("pseudo"), resSet.getString("mdp"), resSet.getBoolean(12), 
-						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
+						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"), resSet.getInt("nb_non_recup"));
 			}
 			super.disconnect();
 		} catch(SQLException e) {
@@ -157,7 +159,7 @@ public class AdherentDAO extends DAO {
 				adherent = new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
 						resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
 						pseudo, resSet.getString("mdp"), resSet.getBoolean(12), 
-						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
+						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"), resSet.getInt("nb_non_recup"));
 			}
 			super.disconnect();
 		} catch(SQLException e) {
@@ -182,7 +184,7 @@ public class AdherentDAO extends DAO {
 						resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
 						resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
 						resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
-						resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
+						resSet.getBoolean("droits"), resSet.getInt("nb_retards"), resSet.getInt("nb_non_recup")));
 			}
 			super.disconnect();
 
@@ -214,7 +216,7 @@ public class AdherentDAO extends DAO {
 						resSet.getString("rue"), resSet.getString("code_postal"), resSet.getString("ville"), 
 						resSet.getString("mail"), resSet.getString("telephone"), resSet.getString("pseudo"), 
 						resSet.getString("mdp"), resSet.getBoolean("admin"), resSet.getBoolean("liste_noire"),
-						resSet.getBoolean("droits"), resSet.getInt("nb_retards")));
+						resSet.getBoolean("droits"), resSet.getInt("nb_retards"), resSet.getInt("nb_non_recup")));
 			}
 			super.disconnect();
 
@@ -239,7 +241,7 @@ public class AdherentDAO extends DAO {
 				adherent = new Adherent(resSet.getInt("id_adherent"), resSet.getString("nom"), resSet.getString("prenom"), resSet.getDate("date_naissance"), 
 						resSet.getString("rue"), resSet.getString("code_postal"),resSet.getString("ville"),resSet.getString("mail"),resSet.getString("telephone"), 
 						resSet.getString("pseudo"), resSet.getString("mdp"), resSet.getBoolean(12), 
-						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"));
+						resSet.getBoolean("liste_noire"), resSet.getBoolean("droits"), resSet.getInt("nb_retards"), resSet.getInt("nb_non_recup"));
 			}
 			super.disconnect();
 		} catch(SQLException e) {

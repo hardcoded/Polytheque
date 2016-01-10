@@ -121,7 +121,9 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		return donnees;
 	}
 	public void rafraichir(ArrayList<Reservation> reservations) {
-		this.arrayPanel.removeAll();
+		if (this.arrayPanel != null) {
+			this.arrayPanel.removeAll();
+		}
 		this.creerTableau(reservations);
 		this.arrayPanel.updateUI();
 	}
