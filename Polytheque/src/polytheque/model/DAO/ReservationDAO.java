@@ -64,7 +64,8 @@ public class ReservationDAO extends DAO {
 
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE RESERVATION "
-					+ "SET date_reservation = ?, id_adherent = ?, id_jeu = ?, id_extension = ?)" + " WHERE id_reservation = ?");
+					+ "SET date_reservation = ?, id_adherent = ?, id_jeu = ?, id_extension = ? " 
+					+ " WHERE id_reservation = ?");
 			psUpdate.setDate(1, reservation.getDate());
 			psUpdate.setInt(2, idAdherent);
 			psUpdate.setInt(3, idJeu);
@@ -89,7 +90,7 @@ public class ReservationDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION "
-					+ "WHERE id_adherent = (SELECT id_adherent from adherent where pseudo = ?) "
+					+ "WHERE id_adherent = (SELECT id_adherent from adherent where pseudo = ? "
 					+ "AND date_reservation = ?");
 			psSelect.setString(1, adherent.getPseudo());
 			psSelect.setDate(2, date);

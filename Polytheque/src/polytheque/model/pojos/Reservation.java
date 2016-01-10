@@ -84,9 +84,9 @@ public class Reservation {
 		this.setExtension(this.extensionDAO.retreive(idExtention));
 		this.setDate(date);
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("rï¿½servï¿½");
+		this.jeu.setStatus("réserver");
 		this.extention.setNbReserves(this.extention.getNbReserves()+1);
-		this.extention.setStatut("rï¿½servï¿½");
+		this.extention.setStatut("réservé");
 	}
 
 	/**
