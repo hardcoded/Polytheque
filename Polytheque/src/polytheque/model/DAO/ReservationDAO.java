@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.model.pojos.Extension;
-import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {

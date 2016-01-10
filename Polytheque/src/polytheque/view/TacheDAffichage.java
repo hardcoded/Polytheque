@@ -9,7 +9,6 @@ import polytheque.controller.PolythequeApplication;
 import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
-import polytheque.model.pojos.Reservation;
 
 /**
  * Classe permettant de gérer l'affichage de l'appication.

@@ -1,6 +1,5 @@
 package polytheque.view;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,7 +33,6 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	private JTextField userMail;
 	private JPasswordField password;	
 	private JButton boutonValider;
-	private JButton boutonRetourAccueil;
 	private Adherent adherentCourant;
 
 	/**

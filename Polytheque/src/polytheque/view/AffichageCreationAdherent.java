@@ -31,7 +31,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 	
 		private JTextField userName;
 		private JTextField userFirstName;
-		private JTextField userBirthday;
 		private JTextField userPseudo;
 		private JTextField userRue;
 		private JTextField userCP;
@@ -43,7 +42,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		private JPasswordField password;
 		
 		private JButton boutonValider;
-		private JButton boutonRetourAccueil;
 		
 		
 		private JPanel userIsAdminPanel;

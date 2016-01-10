@@ -7,9 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -57,20 +55,9 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 			"Sur liste noire", "Est à jour", "Nombre de retards"};
 
 	private JTextField searchContent;
-	private JTextField modifContent;
-	private JTextField userName;
-	private JTextField userFirstName;
-	private JTextField userBirthday;
-	private JTextField userPseudo;
-	private JTextField userRue;
-	private JTextField userCP;
-	private JTextField userVille;
-	private JTextField userPhone;
-	private JTextField userMail;
-	private JPasswordField password;	
+	private JTextField modifContent;	
 
 	private JButton boutonCreerAdherent;
-	private JButton boutonRetourAccueil;
 	private JButton boutonModifierAdherent;
 	private JButton boutonSupprimerAdherent;
 	private JButton boutonRecherche;

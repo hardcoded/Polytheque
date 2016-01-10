@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,18 +18,10 @@ import com.toedter.calendar.JDateChooser;
 public class AppliReserverJeu extends JPanel implements ActionListener
 {
 	private TacheDAffichage tacheDAffichageDeLApplication;
-	private JButton boutonvalider;
 	private JButton boutonRetourAccueil;
-	private JButton boutonRecherche;
 	private JButton boutonValider;
 	private JTextField searchContent;
-	private JTextField DateContent;
 	private JTextField ExtensionContent;
-
-	//TODO
-	//"Veuiller indiquer la date souhaite de l'emprunt"
-	//faire un afficherListe de jeux avec que ces jeux l�
-
 	
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
 	{		

@@ -35,8 +35,6 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	private JPasswordField password;
 
 	private JButton boutonValider;
-	private JButton boutonRetourAccueil;
-	private JButton boutonRetourGestionAdherent;
 	private Adherent adherentCourant;
 
 	/**
