@@ -1,7 +1,7 @@
 package polytheque.view;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -207,10 +207,10 @@ public Adherent getAdherentByNothing() {
 	public Jeu getJeu(String nom) {
 		return this.polythequeApplication.getByName(nom);
 }
-	public void createReservation(int idAdherent, int idJeu, int idJextension,java.sql.Date dateReservation)
+	public void createReservation(int idAdherent, int idJeu, int idJextension,Date date)
 	{
 		
-		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension,dateReservation);	
+		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension,date);	
 	}
 	
 	public void deleteReservation(){

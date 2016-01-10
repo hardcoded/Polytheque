@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.omg.CORBA.Object;
-
+import java.sql.Date;
 import com.toedter.calendar.JDateChooser;
 
 @SuppressWarnings("serial")
@@ -22,6 +22,8 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	private JButton boutonValider;
 	private JTextField searchContent;
 	private JTextField ExtensionContent;
+	private JDateChooser dateChooser;
+	
 	
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
 	{		
@@ -30,7 +32,6 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		creerPanneauRecherche();
 		creerPanneauExtension();
 		creerPanneauDate();	
-		creerPanneauDateFin();
 		this.boutonRetourAccueil = new JButton();
 		this.boutonRetourAccueil.setBounds(400, 700, 100, 30);
 		this.boutonRetourAccueil.addActionListener(this);
@@ -73,9 +74,9 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
 		labelDate.setBounds(400, 150, 100, 30);
 		DatePanel.add(labelDate);
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(450, 150, 100, 30);
-		DatePanel.add(dateChooser);
+		this.dateChooser = new JDateChooser();
+		this.dateChooser.setBounds(450, 150, 100, 30);
+		DatePanel.add(this.dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(400, 500, 100, 30);
@@ -90,7 +91,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20,this.dateChooser.getDate());
+			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20,(Date) this.dateChooser.getDate());
 			this.tacheDAffichageDeLApplication.afficherMessage("Reservation confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}		
