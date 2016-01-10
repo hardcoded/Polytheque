@@ -183,7 +183,10 @@ public class JeuDAO extends DAO {
 		Jeu jeu = null;
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM JEU WHERE nom = ?");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * , CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU "
+					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
+					+ "WHERE nom = ?");
 			psSelect.setString(1, nom);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
