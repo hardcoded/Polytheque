@@ -116,7 +116,7 @@ public class PolythequeApplication {
 			 return false;
 		 }
 	}
-	
+
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();
 	}

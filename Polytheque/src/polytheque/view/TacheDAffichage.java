@@ -198,6 +198,7 @@ public class TacheDAffichage extends JFrame {
 		}
 		return false;
 	}
+
 	/**
 	 * Afficher une fenetre de dialogue.
 	 * 

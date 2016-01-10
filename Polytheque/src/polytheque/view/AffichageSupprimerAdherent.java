@@ -67,6 +67,9 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 			else {
 				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez remplir le champs texte !", "Champ vide", JOptionPane.ERROR_MESSAGE);
 			}
+			String nom = new String(this.userName.getText());
+			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);
+			this.tacheDAffichageDeLApplication.afficherMessage("Le compte a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return;
 	}
