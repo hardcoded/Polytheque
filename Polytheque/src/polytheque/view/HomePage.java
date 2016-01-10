@@ -31,9 +31,9 @@ public class HomePage extends JTabbedPane {
 		this.addTab("Réserver", this.tacheDAffichageDeLApplication.afficherEcranReservation());
 		this.addTab("Profil", this.tacheDAffichageDeLApplication.afficherMonCompte());
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
-			this.addTab("Emprunt", new JLabel("Fonctionnalité à venir !"));
+			this.addTab("Emprunt", this.tacheDAffichageDeLApplication.afficherCreationEmprunt());
 			this.addTab("Adhérents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
-			this.addTab("Reservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
+			//this.addTab("Reservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
 		}
 	}
 }
