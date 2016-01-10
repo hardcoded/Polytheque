@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 
 /**
- * Classe permettant de gerer la modification des informations liï¿½es au compte de l'utilisateur.
+ * Classe permettant de gerer la deconnexion de l'utilisateur.
  * 
  * @author Godefroi Roussel
  *
@@ -27,7 +27,7 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	/**
-	 * Creation de la page d'accueil.
+	 * Creation de la page pour se déconnecter.
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
@@ -40,6 +40,9 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 		ajouterBoutons();
 	}
 
+	/**
+	 * Ajoute le bouton pour valider les informations et le place sur la page.
+	 */
 	public void ajouterBoutons(){
 		this.buttonsPanel = new JPanel();
 
@@ -51,6 +54,10 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 	}
 	
 	@Override
+	/**
+	 * Permet de rendre le bouton fonctionnel. D'abord on invalide les différentes informations de l'utilisateur puis on affiche le message
+	 * disant que l'utilisateur a bien été déconnecté pour enfin le ramener à l'écran de connexion.
+	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 
