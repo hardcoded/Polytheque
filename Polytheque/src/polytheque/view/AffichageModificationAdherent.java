@@ -1,9 +1,10 @@
 package polytheque.view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -11,10 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
+import com.toedter.calendar.JDateChooser;
 import polytheque.model.pojos.Adherent;
-
 /**
  * Classe permettant de gerer la modification des informations liï¿½es au compte de l'utilisateur.
  * 
@@ -23,10 +22,8 @@ import polytheque.model.pojos.Adherent;
  */
 @SuppressWarnings("serial")
 public class AffichageModificationAdherent extends JPanel implements ActionListener {
-
 	private JTextField userName;
 	private JTextField userFirstName;
-	private JTextField userBirthday;
 	private JTextField userPseudo;
 	private JTextField userRue;
 	private JTextField userCP;
@@ -34,16 +31,19 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	private JTextField userPhone;
 	private JTextField userMail;
 	private JTextField userCptRetard;
+	private JTextField userCptNonRecup;
 	private JPasswordField password;
-
+	private JDateChooser dateChooser;
 	private JButton boutonValider;
 	private Adherent adherentCourant;
-
+	
+	private JComboBox<Boolean> userEstAJour ;
+	private JComboBox<Boolean> userPeutEmprunter;
+	private JComboBox<Boolean> userIsAdmin;
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
-
 	/**
 	 * Creation de la page d'accueil.
 	 * 
@@ -54,133 +54,154 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	public AffichageModificationAdherent(TacheDAffichage afficheAppli, Adherent adherent) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		this.adherentCourant = adherent;
+		this.setLayout(null);
 		ajouterChamps();
 		ajouterBoutons();
+		creerPanneauDate();
 	}
-
 	public void ajouterChamps() {
-		this.setLayout(null);
-		JPanel champsPanel = new JPanel(); 
 		
-		JLabel titrePrincipal = new JLabel("Mon compte");
-		champsPanel.add(titrePrincipal, SwingConstants.CENTER);
-
+		JLabel titrePrincipal = new JLabel("Modification de l'adhérent");
+		titrePrincipal.setBounds(480, 20, 260, 30);
+		this.add(titrePrincipal);
 		JLabel labelUserName = new JLabel("Nom :");
-		champsPanel.add(labelUserName);
+		labelUserName.setBounds(150, 150, 100, 30);
+		this.add(labelUserName);
 		this.userName = new JTextField(this.adherentCourant.getNom());
-		champsPanel.add(this.userName);
-
+		this.userName.setBounds(200, 150, 100, 30);
+		this.add(userName);
 		JLabel labelUserFirstName = new JLabel("Prenom :");
-		champsPanel.add(labelUserFirstName, BorderLayout.WEST);
+		labelUserFirstName.setBounds(150, 200, 100, 30);
+		this.add(labelUserFirstName);
 		this.userFirstName = new JTextField(this.adherentCourant.getPrenom());
-		champsPanel.add(this.userFirstName);
-
-
-		JLabel labelUserBirthday = new JLabel("Date de naissance :");
-		champsPanel.add(labelUserBirthday, BorderLayout.WEST);
-		this.userBirthday = new JTextField(this.adherentCourant.getDateNaissance().toString());
-		champsPanel.add(this.userBirthday, BorderLayout.WEST);
-
-
+		this.userFirstName.setBounds(210, 200, 100, 30);
+		this.add(userFirstName);
 		JLabel labelUserRue = new JLabel("Rue :");
-		champsPanel.add(labelUserRue, BorderLayout.WEST);
+		labelUserRue.setBounds(150, 240, 100, 30);
+		this.add(labelUserRue);
 		this.userRue = new JTextField(this.adherentCourant.getRue());
-		champsPanel.add(this.userRue, BorderLayout.WEST);
-
-
-
+		this.userRue.setBounds(200, 240, 130, 30);
+		this.add(this.userRue);
 		JLabel labelUserCP = new JLabel("Code Postal:");
-		champsPanel.add(labelUserCP);
+		labelUserCP.setBounds(150, 270, 100, 30);
+		this.add(labelUserCP);
 		this.userCP = new JTextField(this.adherentCourant.getCP());
-		champsPanel.add(this.userCP, BorderLayout.WEST);
-
-
+		this.userCP.setBounds(240, 270, 100, 30);
+		this.add(this.userCP);
 		JLabel labelUserVille = new JLabel("Ville :");
-		champsPanel.add(labelUserVille, BorderLayout.WEST);
+		labelUserVille.setBounds(150, 300, 100, 30);
+		this.add(labelUserVille);
 		this.userVille = new JTextField(this.adherentCourant.getVille());
-		champsPanel.add(this.userVille, BorderLayout.WEST);
-
+		this.userVille.setBounds(200, 300, 100, 30);
+		this.add(this.userVille);
 		JLabel labelUserMail = new JLabel("Mail :");
-		champsPanel.add(labelUserMail, BorderLayout.WEST);
+		labelUserMail.setBounds(150, 330, 100, 30);
+		this.add(labelUserMail);
 		this.userMail = new JTextField(this.adherentCourant.getMail());
-		champsPanel.add(this.userMail, BorderLayout.WEST);
-
-
+		this.userMail.setBounds(200, 330, 100, 30);
+		this.add(this.userMail);
 		JLabel labelUserTelephone = new JLabel("Telephone :");
-		champsPanel.add(labelUserTelephone, BorderLayout.WEST);
+		labelUserTelephone.setBounds(150, 360, 100, 30);
+		this.add(labelUserTelephone);
 		this.userPhone = new JTextField(this.adherentCourant.getTelephone());
-		champsPanel.add(this.userPhone, BorderLayout.WEST);
-
-
+		this.userPhone.setBounds(220, 360, 100, 30);
+		this.add(this.userPhone);
 		JLabel labelUserPseudo = new JLabel("Pseudo :");
-		champsPanel.add(labelUserPseudo, BorderLayout.EAST);
+		labelUserPseudo.setBounds(150, 390, 100, 30);
+		this.add(labelUserPseudo);
 		this.userPseudo = new JTextField(this.adherentCourant.getPseudo());
-		champsPanel.add(this.userPseudo, BorderLayout.EAST);
-
-
+		this.userPseudo.setBounds(210, 390, 100, 30);
+		this.add(this.userPseudo);
 		JLabel labelpassword = new JLabel("Mot de passe :");
-		champsPanel.add(labelpassword, BorderLayout.EAST);
+		labelpassword.setBounds(150, 420, 100, 30);
+		this.add(labelpassword);
 		this.password = new JPasswordField(this.adherentCourant.getMdp());
+		this.password.setBounds(230, 420, 190, 30);
 		this.password.setColumns(10);
-		champsPanel.add(this.password, BorderLayout.EAST);
-
-		JLabel labelUserIsAdmin = new JLabel("Admin :");
-		champsPanel.add(labelUserIsAdmin, BorderLayout.EAST);			
-		JComboBox<Boolean>userIsAdmin = new JComboBox<Boolean>();
-		userIsAdmin.addItem(Boolean.TRUE);
-		userIsAdmin.addItem(Boolean.FALSE);
-		userIsAdmin.setPreferredSize(new Dimension(100, 20));
-		champsPanel.add(userIsAdmin, BorderLayout.EAST);
-
-		JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
-		champsPanel.add(labelUserPeutEmprunter, BorderLayout.EAST);
-		JComboBox<Boolean> userPeutEmprunter = new JComboBox<Boolean>();
-		userPeutEmprunter.addItem(Boolean.TRUE);
-		userPeutEmprunter.addItem(Boolean.FALSE);
-		userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
-		champsPanel.add(userPeutEmprunter, BorderLayout.EAST);
-
-		JLabel labelUserEstAJour = new JLabel("Est a jour :");
-		champsPanel.add(labelUserEstAJour, BorderLayout.EAST);
-		JComboBox<Boolean> userEstAJour = new JComboBox<Boolean>();
-		userEstAJour.addItem(Boolean.TRUE);
-		userEstAJour.addItem(Boolean.FALSE);
-		userEstAJour.setPreferredSize(new Dimension(100, 20));
-		champsPanel.add(userEstAJour, BorderLayout.EAST);
-
+		this.add(this.password);
+		
+		String compteur =  Integer.toString(this.adherentCourant.getCompteurRetard());
 		JLabel labelUserCptRetard = new JLabel("Compteur Retard :");
-		champsPanel.add(labelUserCptRetard, BorderLayout.EAST);
-		this.userCptRetard = new JTextField(this.adherentCourant.getCompteurRetard());
-		champsPanel.add(this.userCptRetard);
-		this.add(champsPanel, BorderLayout.CENTER);
+		labelUserCptRetard.setBounds(150, 450, 150, 30);
+		this.add(labelUserCptRetard);
+		this.userCptRetard = new JTextField(compteur);
+		this.userCptRetard.setBounds(270, 450, 20, 30);
+		this.userCptRetard.setColumns(2);
+		this.add(this.userCptRetard);
+		
+		String pasRecup =  Integer.toString(this.adherentCourant.getNbNonRecup());
+		JLabel labelUserPasRecup = new JLabel("Compteur Retard :");
+		labelUserPasRecup.setBounds(150, 500, 150, 30);
+		this.add(labelUserPasRecup);
+		this.userCptNonRecup = new JTextField(pasRecup);
+		this.userCptNonRecup.setBounds(270, 500, 20, 30);
+		this.userCptNonRecup.setColumns(2);
+		this.add(this.userCptNonRecup);
+		
+		JLabel labelUserIsAdmin = new JLabel("Admin :");
+		labelUserIsAdmin.setBounds(600, 300, 100, 30);
+		this.add(labelUserIsAdmin);
+		this.userIsAdmin = new JComboBox<Boolean>();
+		if (this.adherentCourant.isAdmin()==true){
+			this.userIsAdmin.addItem(Boolean.TRUE);
+			this.userIsAdmin.addItem(Boolean.FALSE);
+		}
+		else
+		{
+			this.userIsAdmin.addItem(Boolean.FALSE);
+			this.userIsAdmin.addItem(Boolean.TRUE);
+		}
+		this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
+		this.userIsAdmin.setBounds(600, 350, 100, 30);
+		this.add(this.userIsAdmin);
+		JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
+		labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
+		this.add(labelUserPeutEmprunter);
+		this.userPeutEmprunter = new JComboBox<Boolean>();
+		this.userPeutEmprunter.addItem(Boolean.TRUE);
+		this.userPeutEmprunter.addItem(Boolean.FALSE);
+		this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
+		this.userPeutEmprunter.setBounds(600, 150, 100, 30);
+		this.add(this.userPeutEmprunter);
+		JLabel labelUserEstAJour = new JLabel("Est a jour :");
+		labelUserEstAJour.setBounds(600, 200, 100, 30);
+		this.add(labelUserEstAJour);
+		this.userEstAJour = new JComboBox<Boolean>();
+		this.userEstAJour.addItem(Boolean.TRUE);
+		this.userEstAJour.addItem(Boolean.FALSE);
+		this.userEstAJour.setPreferredSize(new Dimension(100, 20));
+		this.userEstAJour.setBounds(600, 250, 100, 30);
+		this.add(this.userEstAJour);
 	}
-
 	public void ajouterBoutons(){
-		JPanel boutonPanel = new JPanel();
-		
 		this.boutonValider = new JButton("Valider");
+		this.boutonValider.setBounds(480, 500, 200, 30);
 		this.boutonValider.addActionListener(this);
-		boutonPanel.add(this.boutonValider, BorderLayout.CENTER);
-		
-		this.add(boutonPanel, BorderLayout.CENTER);
+		this.add(this.boutonValider);
 	}
-
+	
+	private void creerPanneauDate() {
+		JLabel labelUserBirthday = new JLabel("Date de naissance :");
+		labelUserBirthday.setBounds(850, 150, 150, 30);
+		this.add(labelUserBirthday);
+		this.dateChooser = new JDateChooser(this.adherentCourant.getDateNaissance());
+		this.dateChooser.setBounds(850, 200, 150, 30);
+		this.add(this.dateChooser);
+	}
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
-
 		if (boutonSelectionne == this.boutonValider)
 		{
+			int cptRetard = Integer.parseInt(this.userCptRetard.getText());
 			String password = new String(this.password.getPassword());
-			Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(),this.adherentCourant.getDateNaissance(), this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.adherentCourant.isAdmin(), this.adherentCourant.estAJour(),this.adherentCourant.peutEmprunter(), this.adherentCourant.getCompteurRetard(), this.adherentCourant.getNbNonRecup());
+			Date dateNaissance = new Date(this.dateChooser.getDate().getTime());
+			Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), cptRetard, 0);
 			this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte !", "Modifications terminÃ©es", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.modifAdherent(adherent);
 			return;
 		}
-
+		
 		return;
 	}
-
-
-
 }
