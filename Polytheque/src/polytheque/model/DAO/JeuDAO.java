@@ -18,8 +18,8 @@ public class JeuDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "JEU(nom, description, annee_parution, statut, nombre_exemplaires, nombre_reserves,"
-					+ "age_mini, nb_joueurs_min, nb_joueurs_max,id_categorie, id_editeur)"
+					+ "JEU(nom, description, annee_parution, statut, nombre_exemplaires, nombre_reserves, "
+					+ "age_mini, nb_joueurs_min, nb_joueurs_max,id_categorie, id_editeur) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, jeu.getNom());
@@ -83,8 +83,8 @@ public class JeuDAO extends DAO {
 
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU "
-					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?,"
-					+ "nombre_reserves = ?, age_mini = ?, nb_joueurs_min = ?, nb_joueurs_max = ?, id_categorie = ?, id_editeur = ?)" 
+					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?, "
+					+ "nombre_reserves = ?, age_mini = ?, nb_joueurs_min = ?, nb_joueurs_max = ?, id_categorie = ?, id_editeur = ? " 
 					+ " WHERE id_jeu = ?");
 			psUpdate.setString(1, jeu.getNom());
 			psUpdate.setString(2, jeu.getDescription());
@@ -120,9 +120,9 @@ public class JeuDAO extends DAO {
 	public Jeu retreive(int id) {
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU"
-					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie"
-					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur"
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU "
+					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
 					+ "WHERE id_jeu = ?");
 			psSelect.setInt(1, id);
 			psSelect.execute();
@@ -182,9 +182,9 @@ public class JeuDAO extends DAO {
 	{
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU"
-					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie"
-					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur"
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU "
+					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
+					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
 					+ "WHERE nom = ?");
 			psSelect.setString(1, nomJeu);
 			psSelect.execute();

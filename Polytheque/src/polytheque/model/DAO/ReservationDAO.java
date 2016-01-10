@@ -16,7 +16,7 @@ public class ReservationDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension)"
+					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension) "
 					+ "VALUES (?, ?, ?, ?)"); 
 
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
