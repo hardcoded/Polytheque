@@ -60,8 +60,6 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	 * Fonction permettant d'afficher tous les champs de la page ainsi que les zones de saisies pour l'utilisateur
 	 */
 	public void ajouterChamps() {
-		this.setLayout(new BorderLayout());
-
 		JLabel titrePrincipal = new JLabel("Mon compte");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		titrePrincipal.setBounds(350, 20, 260, 30);

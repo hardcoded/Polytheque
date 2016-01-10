@@ -45,23 +45,23 @@ public class EcranConnexion extends JPanel implements ActionListener {
 
 		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaît !");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
-		//titrePrincipal.setBounds(450, 20, 260, 30);
+		titrePrincipal.setBounds(450, 20, 260, 30);
 		titrePanel.add(titrePrincipal);		
 		this.add(titrePanel, BorderLayout.NORTH);
 		
 		JLabel labelUserName = new JLabel("Pseudo :");
-		//labelUserName.setBounds(500, 150, 100, 30);
-		champsPanel.add(labelUserName, BorderLayout.CENTER);
+		labelUserName.setBounds(500, 150, 100, 30);
+		champsPanel.add(labelUserName);
 		this.userName = new JTextField();
-		//this.userName.setBounds(450, 200, 190, 30);
+		this.userName.setBounds(450, 200, 190, 30);
 		this.userName.setColumns(10);
-		champsPanel.add(this.userName, BorderLayout.CENTER);
+		champsPanel.add(this.userName);
 
 		JLabel labelPassword = new JLabel("Mot de passe :");
-		//labelPassword.setBounds(500, 300, 100, 30);
-		champsPanel.add(labelPassword, BorderLayout.CENTER);
+		labelPassword.setBounds(500, 300, 100, 30);
+		champsPanel.add(labelPassword);
 		this.password = new JPasswordField();
-		//this.password.setBounds(450, 350, 190, 30);
+		this.password.setBounds(450, 350, 190, 30);
 		this.password.setColumns(10);
 		
 		this.password.addActionListener(new ActionListener() {			
@@ -71,13 +71,13 @@ public class EcranConnexion extends JPanel implements ActionListener {
 			}
 		});
 		
-		champsPanel.add(this.password, BorderLayout.CENTER);
+		champsPanel.add(this.password);
 		this.add(champsPanel, BorderLayout.CENTER);
 
 		this.boutonValider = new JButton("Valider");
-		//this.boutonValider.setBounds(350, 450, 400, 30);
+		this.boutonValider.setBounds(350, 450, 400, 30);
 		this.boutonValider.addActionListener(this);
-		boutonPanel.add(this.boutonValider, BorderLayout.CENTER);
+		boutonPanel.add(this.boutonValider);
 		this.add(boutonValider, BorderLayout.SOUTH);
 	}
 	
