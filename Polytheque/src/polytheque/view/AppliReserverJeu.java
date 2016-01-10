@@ -30,6 +30,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		creerPanneauRecherche();
 		creerPanneauExtension();
 		creerPanneauDate();	
+		creerPanneauDateFin();
 		this.boutonRetourAccueil = new JButton();
 		this.boutonRetourAccueil.setBounds(400, 700, 100, 30);
 		this.boutonRetourAccueil.addActionListener(this);
@@ -82,32 +83,14 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.add(boutonValider);
 	}
 
-	public void rafraichir(Object object) {
-		this.removeAll();
-		this.add(null,object);
-		this.updateUI(); 
-	}
 	
 	
-	public void creerPanneauDateFin()
-	{
-		JPanel DateFinPanel = new JPanel();
-		DateFinPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez rendre le jeux :");
-		labelDate.setBounds(400, 250, 100, 100);
-		DateFinPanel.add(labelDate);
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(450, 300, 100, 100);
-		DateFinPanel.add(dateChooser);
-		this.add(DateFinPanel);
-	}
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20);
-			
+			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20,this.dateChooser.getDate());
 			this.tacheDAffichageDeLApplication.afficherMessage("Reservation confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}		

@@ -116,10 +116,10 @@ public class PolythequeApplication {
 		this.reservationDAO.delete(r.getIdReservation());
 	}
 	
-	public void createReservation(int idAdherent, int idJeu, int idJextension)
+	public void createReservation(int idAdherent, int idJeu, int idJextension,Date datereservation)
 	{
 		Reservation reservation = null; 
 		this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension);
-		
+		reservation.setDate(datereservation);
 	}
 }
