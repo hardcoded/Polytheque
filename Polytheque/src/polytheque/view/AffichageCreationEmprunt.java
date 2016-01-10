@@ -78,7 +78,7 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		//userInfoPanel.add(labelUserName);
 		this.add(labelGameName);
 		this.gameName = new JTextField();
-		this.gameName.setBounds(200, 150, 100, 30);
+		this.gameName.setBounds(250, 150, 100, 30);
 		//userInfoPanel.add(this.userName);
 		//this.add(userInfoPanel,BorderLayout.WEST);
 		this.add(gameName);
@@ -88,7 +88,7 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		//userInfoPanel.add(labelUserFirstName);
 		this.add(labelExtensionName);
 		this.extensionName = new JTextField();
-		this.extensionName.setBounds(210, 200, 100, 30);
+		this.extensionName.setBounds(280, 200, 100, 30);
 		//userInfoPanel.add(this.userFirstName);
 		//this.add(userInfoPanel,BorderLayout.WEST); 
 		//grosPanel.add(userInfoPanel, BorderLayout.WEST);
@@ -98,7 +98,7 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		labelUserPseudo.setBounds(150, 390, 100, 30);
 		this.add(labelUserPseudo);
 		this.userPseudo = new JTextField();
-		this.userPseudo.setBounds(210, 390, 100, 30);
+		this.userPseudo.setBounds(300, 390, 100, 30);
 		this.add(this.userPseudo);
 		//this.add(this.userInfoPanel, BorderLayout.WEST);
 	}

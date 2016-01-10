@@ -141,7 +141,13 @@ public class PolythequeApplication {
 	}
 	
 	public boolean creerEmprunt(Emprunt emprunt){
-		if (this.empruntDAO.create(emprunt)) {
+		Date datedeb=emprunt.getDateDebut();
+		Date datefin = emprunt.getDateFin();
+		Adherent adh=emprunt.getAdherent();
+		Jeu jeu=emprunt.getJeu();
+		Extension ext =emprunt.getExtension();
+		Reservation res= new Reservation(adh,jeu,datedeb);
+		if (this.empruntDAO.create(datedeb,datefin,res,adh,jeu,ext)) {
 			return true;
 		}
 		return false;
