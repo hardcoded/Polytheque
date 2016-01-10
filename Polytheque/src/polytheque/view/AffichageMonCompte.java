@@ -1,6 +1,5 @@
 package polytheque.view;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,7 +16,7 @@ import polytheque.model.pojos.Adherent;
 /**
  * Classe permettant de gerer la modification des informations liees au compte de l'utilisateur.
  * 
- * @author Godefroi Roussel
+ * @author Godefroi Roussel, Johan Brunet
  *
  */
 @SuppressWarnings("serial")
@@ -42,7 +41,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * Creation de la page.
+	 * Creation de la page permettant de changer quelques informations concernant l'utilisateur actuel.
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
@@ -57,7 +56,8 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Fonction permettant d'afficher tous les champs de la page ainsi que les zones de saisies pour l'utilisateur
+	 * Fonction permettant d'afficher tous les champs de la page ainsi que les zones de saisies pour l'utilisateur (avec 
+	 * les informations concernant l'utilisateur directement dans les zones de saisies quand il peut modifier ces informations).
 	 */
 	public void ajouterChamps() {
 		
@@ -159,7 +159,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	@Override
 	/**
 	 * param event
-	 * 		Va se souvenir sur quoi on a clique
+	 * 	Permet de rendre le bouton fonctionnel
 	 * La fonction va verifier si le bouton selectionne correspond au bouton pour valider les modifications. Si oui, on effectue les modifications.
 	 */
 	public void actionPerformed(ActionEvent event) {

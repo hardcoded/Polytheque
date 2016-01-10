@@ -17,7 +17,7 @@ import polytheque.model.pojos.Adherent;
 /**
  * Classe permettant de gerer la modification des informations liï¿½es au compte de l'utilisateur.
  * 
- * @author Godefroi Roussel
+ * @author Godefroi Roussel, Johan Brunet
  *
  */
 @SuppressWarnings("serial")
@@ -40,12 +40,14 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	private JComboBox<Boolean> userEstAJour ;
 	private JComboBox<Boolean> userPeutEmprunter;
 	private JComboBox<Boolean> userIsAdmin;
+	
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
+	
 	/**
-	 * Creation de la page d'accueil.
+	 * Creation de la page permettant de modifier les informations d'un adhérent en particulier.
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
@@ -59,6 +61,11 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		ajouterBoutons();
 		creerPanneauDate();
 	}
+	
+	/**
+	 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
+	 * les zones de textes seulement lisible ainsi que les boutons déroulants.
+	 */
 	public void ajouterChamps() {
 		
 		JLabel titrePrincipal = new JLabel("Modification de l'adhérent");
@@ -187,6 +194,10 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.userEstAJour.setBounds(600, 250, 100, 30);
 		this.add(this.userEstAJour);
 	}
+	
+	/**
+	 * Ajoute le bouton pour valider les informations et le place sur la page.
+	 */
 	public void ajouterBoutons(){
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(480, 500, 200, 30);
@@ -194,6 +205,9 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.add(this.boutonValider);
 	}
 	
+	/**
+	 * Créer le bouton permettant de choisir la date de naissance de l'utilisateur.
+	 */
 	private void creerPanneauDate() {
 		JLabel labelUserBirthday = new JLabel("Date de naissance :");
 		labelUserBirthday.setBounds(850, 150, 150, 30);
@@ -204,6 +218,9 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	}
 
 	@Override
+	/**
+	 * Permet de rendre les boutons fonctionnels et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu. 
+	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 		if (boutonSelectionne == this.boutonValider)

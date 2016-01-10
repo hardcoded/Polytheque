@@ -173,6 +173,10 @@ public class TacheDAffichage extends JFrame {
 		return this.polythequeApplication.getAdherent(pseudo);
 	}
 	
+	public SeDeconnecter afficherDeconnexion() {
+		return new SeDeconnecter(this);
+	}
+	
 	public AffichageCreationAdherent afficherCreationAdherent(){
 		return new AffichageCreationAdherent(this); //a commit
 	}
