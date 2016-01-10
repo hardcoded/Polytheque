@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -54,8 +55,18 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		
 		if (boutonSelectionne == this.boutonValider)
 		{
-			String nom = new String(this.userName.getText());
-			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);
+			if (this.userName.getText() != null) {
+				String nom = new String(this.userName.getText());
+				if (this.tacheDAffichageDeLApplication.supprimerAdherent(nom) ==  false) {
+					this.tacheDAffichageDeLApplication.afficherMessage("Problème lors de la suppression de l'adhérent !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					this.tacheDAffichageDeLApplication.afficherMessage("Adhérent supprimé avec succès !", "Suppression effectuée", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			else {
+				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez remplir le champs texte !", "Champ vide", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 		return;
 	}

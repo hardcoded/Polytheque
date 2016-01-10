@@ -80,9 +80,14 @@ public class PolythequeApplication {
 		return this.adherentDAO.searchByName(nomAdherent);
 	}
 
-	public void enregistrerModifsAdherent(Adherent adherent) {
-		this.adherentDAO.update(adherent);
-		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
+	public boolean enregistrerModifsAdherent(Adherent adherent) {
+		if (this.adherentDAO.update(adherent)) {
+			this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public Adherent getAdherentByNothing() {
@@ -98,12 +103,19 @@ public class PolythequeApplication {
 		if (this.adherentDAO.create(adherent)) {
 			return true;
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 	
-	public void supprimerAdherent(String nom){
-		 this.adherentDAO.deleteAdherent(nom);
-				 	}
+	public boolean supprimerAdherent(String nom){
+		 if (this.adherentDAO.deleteAdherent(nom)) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	}
 	
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();

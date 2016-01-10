@@ -197,7 +197,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	public void rafraichir(ArrayList<Adherent> adherents) {
 		this.mainPanel.removeAll();
 		this.creerTableau(adherents);
-		this.mainPanel.updateUI();
+		this.updateUI();
 	}
 	
 	@Override

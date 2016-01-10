@@ -193,15 +193,25 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		JButton boutonSelectionne = (JButton) event.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			int cptRetard = Integer.parseInt(this.userCptRetard.getText());
-			String password = new String(this.password.getPassword());
-			Date dateNaissance = new Date(this.dateChooser.getDate().getTime());
-			Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), cptRetard, 0);
-			this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ete prises en compte !", "Modifications terminÃ©es", JOptionPane.INFORMATION_MESSAGE);
-			this.tacheDAffichageDeLApplication.modifAdherent(adherent);
-			return;
+			if (this.userName.getText() != null && this.userFirstName.getText() != null && this.dateChooser.getDate() != null && this.userRue.getText() != null &&
+				this.userCP.getText() != null && this.userVille.getText() != null && this.userPseudo.getText() != null && this.password.getPassword() != null &&
+				this.userCptRetard.getText() != null && this.userCptNonRecup.getText() != null) {
+					int cptRetard = Integer.parseInt(this.userCptRetard.getText());
+					String password = new String(this.password.getPassword());
+					Date dateNaissance = new Date(this.dateChooser.getDate().getTime());
+					Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), cptRetard, 0);
+					if (this.tacheDAffichageDeLApplication.modifAdherent(adherent) == false) {
+						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la modification de l'adhérent", "Erreur de modification", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien été prises en compte !", "Modifications terminées", JOptionPane.INFORMATION_MESSAGE);
+					}
+					return;
+			}
 		}
-		
+		else {
+			this.tacheDAffichageDeLApplication.afficherMessage("Veuillez renseigner tous les champs !", "Erreur champ(s) vide(s)", JOptionPane.ERROR_MESSAGE);
+		}		
 		return;
 	}
 }
