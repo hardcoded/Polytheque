@@ -86,17 +86,4 @@ public abstract class DAO {
 			e.printStackTrace();
 		}
 	}
-
-	/*
-	public void readConfig() {
-		try {
-			configReader = new XMLConfiguration(CONFIG_FILE);
-			this.driver = configReader.getString("driver");
-			this.url = configReader.getString("url");
-			this.username = configReader.getString("username");
-			this.password = configReader.getString("password");
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
-		}
-	}*/
 }
