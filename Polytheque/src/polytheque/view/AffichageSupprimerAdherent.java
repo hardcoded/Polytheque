@@ -42,6 +42,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		this.userName.setColumns(10);
 		this.add(userName);
 
+		
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(670, 160, 100, 30);
 		this.boutonValider.addActionListener(this);
