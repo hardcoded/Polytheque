@@ -183,8 +183,8 @@ public class JeuDAO extends DAO {
 		Jeu jeu = null;
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * , CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU "
-					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * , EDITEUR.nom_editeur"
+					+ "FROM JEU "
 					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur "
 					+ "WHERE nom = ?");
 			psSelect.setString(1, nom);
@@ -195,7 +195,7 @@ public class JeuDAO extends DAO {
 			if (resSet.next()) { // On se place sur le 1er résultat
 				jeu = new Jeu(resSet.getInt("id_jeu"), nom, resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
 						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-						resSet.getString("nom_categorie"), resSet.getString("nom_editeur"));
+						"", resSet.getString("nom_editeur"));
 			}
 			super.disconnect();
 		} catch(SQLException e) {
