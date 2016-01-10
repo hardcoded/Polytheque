@@ -92,6 +92,11 @@ public class PolythequeApplication {
 		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
 	
+	public Adherent getAdherentByNothing() {
+		
+		return this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
+	}
+	
 	public Adherent getAdherent(String pseudo) {
 		return this.adherentDAO.getByPseudo(pseudo);
 	}
@@ -99,6 +104,10 @@ public class PolythequeApplication {
 	public void creerAdherent(Adherent adherent){
 		this.adherentDAO.create(adherent);
 	}
+	
+	public void supprimerAdherent(String nom){
+		 this.adherentDAO.deleteAdherent(nom);
+				 	}
 	
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();
@@ -115,5 +124,12 @@ public class PolythequeApplication {
 		//adh = this.adherentDAO.retreive(this.adherentDAO.getIdAdherent());
 		Reservation r = this.reservationDAO.retreive(adh,d);
 		this.reservationDAO.delete(r.getIdReservation());
+	}
+	
+	public void createReservation(int idAdherent, int idJeu, int idJextension)
+	{
+		Reservation reservation = null; 
+		this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension);
+		
 	}
 }

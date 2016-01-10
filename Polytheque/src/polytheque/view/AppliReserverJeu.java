@@ -5,12 +5,13 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.omg.CORBA.Object;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -19,8 +20,6 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	private JButton boutonvalider;
-	private	Date datedebut;
-	private Date datefin;
 	private JButton boutonRetourAccueil;
 	private JButton boutonRecherche;
 	private JButton boutonValider;
@@ -32,16 +31,33 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	//"Veuiller indiquer la date souhaite de l'emprunt"
 	//faire un afficherListe de jeux avec que ces jeux l�
 
+	
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
 	{		
+		
+		this.tacheDAffichageDeLApplication = afficheAppli;
 		creerPanneauRecherche();
 		creerPanneauExtension();
 		creerPanneauDate();	
+		this.boutonRetourAccueil = new JButton();
+		this.boutonRetourAccueil.setBounds(400, 700, 100, 30);
+		this.boutonRetourAccueil.addActionListener(this);
+		this.add(boutonRetourAccueil);
 	}
 
 	private void creerPanneauExtension() 
 	{
-		// TODO Auto-generated method stub
+	
+		JPanel ExtensionPanel = new JPanel();
+		ExtensionPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		JLabel labelSearch = new JLabel("Recherche par nom :");
+		labelSearch.setBounds(300, 400, 100, 30);
+		ExtensionPanel.add(labelSearch);
+		this.ExtensionContent = new JTextField();
+		this.ExtensionContent.setBounds(450,400, 100, 30);
+		this.ExtensionContent.setColumns(10);
+		ExtensionPanel.add(this.searchContent, BorderLayout.NORTH);
+		this.add(ExtensionPanel);
 
 	}
 
@@ -50,15 +66,12 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JPanel searchPanel = new JPanel();
 		searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(300, 0, 100, 30);
+		labelSearch.setBounds(400, 0, 100, 30);
 		searchPanel.add(labelSearch);
 		this.searchContent = new JTextField();
 		this.searchContent.setBounds(450, 0, 100, 30);
 		this.searchContent.setColumns(10);
 		searchPanel.add(this.searchContent, BorderLayout.NORTH);
-		this.boutonRecherche = new JButton("Rechercher");
-		this.boutonRecherche.addActionListener(this);
-		searchPanel.add(boutonRecherche, BorderLayout.NORTH);
 		this.add(searchPanel);		
 	}
 
@@ -67,26 +80,37 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
 		labelDate.setBounds(400, 150, 100, 30);
-		this.add(labelDate);
+		DatePanel.add(labelDate);
 		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(400, 200, 200, 30);
+		dateChooser.setBounds(450, 150, 100, 30);
 		DatePanel.add(dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
-		this.boutonValider.setBounds(400, 300, 200, 30);
+		this.boutonValider.setBounds(400, 500, 100, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(boutonValider);
 	}
 
+	public void rafraichir(Object object) {
+		this.removeAll();
+		this.add(null,object);
+		this.updateUI(); 
+	}
+	
+	
 	public void actionPerformed(ActionEvent e) 
 	{
-		JPanel Afficherep = new JPanel();
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Resertion confirmee", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
-			return;
+			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20);
+			this.tacheDAffichageDeLApplication.afficherMessage("message"," titreFenetre", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}		
+		else if (boutonSelectionne == this.boutonRetourAccueil)
+		{
+			this.tacheDAffichageDeLApplication.afficherAccueil();;
+		}
 	}	
 }
 

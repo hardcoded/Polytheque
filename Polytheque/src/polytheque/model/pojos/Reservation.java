@@ -18,6 +18,21 @@ public class Reservation {
 	private AdherentDAO adherentDAO;
 
 	/**
+	 * constructeur de Reservation utilisé dans une fonction de ReservationDAO
+	 * @param id_reservation
+	 * @param adh
+	 * @param jeu
+	 * @param ext
+	 * @param date
+	 */
+	public Reservation(int id_reservation,Adherent adh,Jeu jeu,Extension ext,Date date){
+		this.setIdReservation(id_reservation);
+		this.setDate(date);
+		this.setAdherent(adh);
+		this.setJeu(jeu);
+		this.setExtension(ext);
+	}
+	/**
 	 * Constructeur de la classe Reservation
 	 * 
 	 * @param adherent

@@ -109,29 +109,26 @@ public class ExtensionDAO extends DAO {
 	/**
 	 * Methode de recherche des informations
 	 * @param id
-	 * 			L'id du jeu à récupérer dans la BDD
-	 * @return Un jeu
+	 * 			L'id de l'extension à récupérer dans la BDD
+	 * @return Une Extension
 	 */
-	public Jeu retreive(int id) {
+	public Extension retreive(int id) {
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, CATEGORIE.nom as nom_categorie, EDITEUR.nom as nom_editeur FROM JEU"
-					+ "JOIN CATEGORIE ON CATEGORIE.id_categorie = JEU.id_categorie"
-					+ "JOIN EDITEUR ON EDITEUR.id_editeur = JEU.id_editeur"
-					+ "WHERE id_jeu = ?");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom as nom_jeu FROM EXTENSION"
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
+					+ "WHERE id_extension = ?");
 			psSelect.setInt(1, id);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
-			Jeu jeu = null;
+			Extension extension = null;
 			if (resSet.next()) { // On se place sur le 1er résultat
-				jeu = new Jeu(id, resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
-						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-						resSet.getString("nom_categorie"), resSet.getString("nom_editeur"));
+				extension = new Extension(id, resSet.getString("nom"), resSet.getString("description"), resSet.getString("statut"),resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getString("nom_jeu"));
 			}
 			super.disconnect();
-			return jeu;
+			return extension;
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;

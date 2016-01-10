@@ -19,8 +19,9 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	public final static int LONGUEUR_COLONNE_0 = 50;
 	public final static int LONGUEUR_COLONNE_1 = 50;
 	public final static int LONGUEUR_COLONNE_2 = 150;
-	public final static int LONGUEUR_COLONNE_3 = 50;
-
+	public final static int LONGUEUR_COLONNE_3 = 150;
+	public final static int LONGUEUR_COLONNE_4 = 50;
+	
 	/**
 	 * Hauteur des lignes.
 	 */
@@ -44,7 +45,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Prenom", "Titre", "Date"};
+	public final static String[] LIBELLES = new String[] {"id_reservation","Pseudo", "Nom_jeu", "Nom_extention", "Date"};
 
 	private JButton boutonAnnulerReservation;
 	
@@ -85,6 +86,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
 		tableau.getColumn(LIBELLES[3]).setPreferredWidth(LONGUEUR_COLONNE_3);
+		tableau.getColumn(LIBELLES[4]).setPreferredWidth(LONGUEUR_COLONNE_4);
 
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 		tableau.getTableHeader().setReorderingAllowed(true);
@@ -109,10 +111,11 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		int index = 0;		
 		for (Reservation reservationCourante : listeReservations)
 		{
-			donnees[index][0] = reservationCourante.getAdherent().getNom();
-			donnees[index][1] = reservationCourante.getAdherent().getPrenom();
-			donnees[index][2] = reservationCourante.getJeu();
-			donnees[index][3] = reservationCourante.getDate();
+			donnees[index][0] = reservationCourante.getIdReservation();
+			donnees[index][1] = reservationCourante.getAdherent().getPseudo();
+			donnees[index][2] = reservationCourante.getJeu().getNom();
+			donnees[index][3] = reservationCourante.getExtension().getNom();
+			donnees[index][4] = reservationCourante.getDate();
 			index++;
 		}		
 		return donnees;
@@ -121,14 +124,32 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.creerTableau(reservations);
 		this.arrayPanel.updateUI();
 	}
+	public void modifierMainPanel(JPanel panel) {
+		this.arrayPanel.removeAll();
+		this.arrayPanel = panel;
+		this.add(this.arrayPanel, BorderLayout.CENTER);
+		this.arrayPanel.updateUI();
+	}
 	
+	public void supprimerButtonPanel (){ //enlever le bouton annuler reservation quand on change de page
+		this.buttonsPanel = new JPanel();
+		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		this.add(this.buttonsPanel, BorderLayout.SOUTH);
+	}
+	
+	public void afficherEcranAnnulationR(JPanel panel){
+		this.arrayPanel.removeAll();
+		this.arrayPanel=panel;
+		this.add(this.arrayPanel,BorderLayout.CENTER);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
 
 		if (boutonSelectionne == this.boutonAnnulerReservation)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.supprimerButtonPanel();
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherEcranAnnulationR());
 			return;
 		}	
 		return;

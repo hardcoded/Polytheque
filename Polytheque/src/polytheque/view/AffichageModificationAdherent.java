@@ -179,11 +179,6 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 			return;
 		}
 
-		if (boutonSelectionne == this.boutonRetourAccueil)
-		{
-			this.tacheDAffichageDeLApplication.afficherAccueil();
-			return;
-		}
 		return;
 	}
 

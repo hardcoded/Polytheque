@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import polytheque.model.pojos.Adherent;
 
 /**
- * Classe permettant de gerer la modification des informations liï¿½es au compte de l'utilisateur.
+ * Classe permettant de gerer la modification des informations liees au compte de l'utilisateur.
  * 
  * @author Godefroi Roussel
  *
@@ -42,7 +42,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * Creation de la page d'accueil.
+	 * Creation de la page.
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
@@ -55,6 +55,9 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 		ajouterBoutons();
 	}
 
+	/**
+	 * Fonction permettant d'afficher tous les champs de la page ainsi que les zones de saisies pour l'utilisateur
+	 */
 	public void ajouterChamps() {
 		this.setLayout(null);
 
@@ -143,19 +146,22 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 		this.add(this.password);
 	}
 
+	/**
+	 * Fonction permettant d'afficher le bouton pour valider les modifications faites par l'utilisateur
+	 */
 	public void ajouterBoutons(){
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(200, 500, 200, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider);
-
-		this.boutonRetourAccueil = new JButton("Accueil");
-		this.boutonRetourAccueil.setBounds(500, 500, 200, 30);
-		this.boutonRetourAccueil.addActionListener(this);
-		this.add(this.boutonRetourAccueil);
 	}
 
 	@Override
+	/**
+	 * param event
+	 * 		Va se souvenir sur quoi on a clique
+	 * La fonction va vérifier si le bouton selectionne correspond au bouton pour valider les modifications. Si oui, on effectue les modifications.
+	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 
@@ -168,11 +174,6 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 			return;
 		}
 
-		if (boutonSelectionne == this.boutonRetourAccueil)
-		{
-			this.tacheDAffichageDeLApplication.afficherAccueil();
-			return;
-		}
 		return;
 	}
 
