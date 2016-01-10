@@ -7,13 +7,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import polytheque.model.pojos.Reservation;
 import polytheque.view.modeles.ModeleTableauListeJeux;
 
+@SuppressWarnings("serial")
 public class AffichageListeReservations extends JPanel implements ActionListener {
 
 	public final static int LONGUEUR_COLONNE_0 = 50;
