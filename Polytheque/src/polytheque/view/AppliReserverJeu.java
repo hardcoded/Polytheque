@@ -32,10 +32,6 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		creerPanneauRecherche();
 		//creerPanneauExtension();
 		creerPanneauDate();	
-		this.boutonRetourAccueil = new JButton();
-		this.boutonRetourAccueil.setBounds(400, 700, 100, 30);
-		this.boutonRetourAccueil.addActionListener(this);
-		this.add(boutonRetourAccueil);
 	}
 
 	/*private void creerPanneauExtension() 
@@ -59,10 +55,10 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JPanel searchPanel = new JPanel();
 		searchPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(400, 0, 100, 30);
+		labelSearch.setBounds(400, 100, 100, 30);
 		searchPanel.add(labelSearch);
 		this.searchContent = new JTextField();
-		this.searchContent.setBounds(450, 0, 100, 30);
+		this.searchContent.setBounds(450, 100, 100, 30);
 		this.searchContent.setColumns(10);
 		searchPanel.add(this.searchContent, BorderLayout.NORTH);
 		this.add(searchPanel);		
@@ -72,14 +68,14 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JPanel DatePanel = new JPanel();
 		DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
-		labelDate.setBounds(400, 150, 100, 30);
+		labelDate.setBounds(400, 200, 100, 30);
 		DatePanel.add(labelDate);
 		this.dateChooser = new JDateChooser();
-		this.dateChooser.setBounds(450, 150, 100, 30);
+		this.dateChooser.setBounds(450, 200, 150, 30);
 		DatePanel.add(this.dateChooser);
 		this.add(DatePanel);
 		this.boutonValider = new JButton("Valider");
-		this.boutonValider.setBounds(400, 500, 100, 30);
+		this.boutonValider.setBounds(400, 300, 100, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(boutonValider);
 	}
