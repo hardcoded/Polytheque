@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import polytheque.model.DAO.AdherentDAO;
+import polytheque.model.DAO.EmpruntDAO;
 import polytheque.model.DAO.ExtensionDAO;
 import polytheque.model.DAO.JeuDAO;
 import polytheque.model.DAO.ReservationDAO;
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Emprunt;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
@@ -21,7 +23,8 @@ public class PolythequeApplication {
 	private JeuDAO jeuDAO;
 	private ReservationDAO reservationDAO;
 	private ExtensionDAO extensionDAO;
-
+	private EmpruntDAO empruntDAO;
+	
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	private Adherent adherentCourant;
@@ -80,14 +83,9 @@ public class PolythequeApplication {
 		return this.adherentDAO.searchByName(nomAdherent);
 	}
 
-	public boolean enregistrerModifsAdherent(Adherent adherent) {
-		if (this.adherentDAO.update(adherent)) {
-			this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
-			return true;
-		}
-		else {
-			return false;
-		}
+	public void enregistrerModifsAdherent(Adherent adherent) {
+		this.adherentDAO.update(adherent);
+		this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
 	
 	public Adherent getAdherentByNothing() {
@@ -103,20 +101,13 @@ public class PolythequeApplication {
 		if (this.adherentDAO.create(adherent)) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
-	public boolean supprimerAdherent(String nom){
-		 if (this.adherentDAO.deleteAdherent(nom)) {
-			 return true;
-		 }
-		 else {
-			 return false;
-		 }
-	}
-
+	public void supprimerAdherent(String nom){
+		 this.adherentDAO.deleteAdherent(nom);
+				 	}
+	
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();
 	}
@@ -137,5 +128,12 @@ public class PolythequeApplication {
 	{
 		Reservation reservation = new Reservation (idAdherent,idJeu,idJextension,date); 
 		this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension);
+	}
+	
+	public boolean creerEmprunt(Emprunt emprunt){
+		if (this.empruntDAO.create(emprunt)) {
+			return true;
+		}
+		return false;
 	}
 }

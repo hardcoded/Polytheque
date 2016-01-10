@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import polytheque.controller.PolythequeApplication;
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Emprunt;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 
@@ -115,9 +116,7 @@ public class TacheDAffichage extends JFrame {
 		if (this.polythequeApplication.checkAdmin()) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 
 	public AffichageListeJeux afficherListeJeux() {
@@ -139,13 +138,9 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant());
 	}
 
-	public boolean modifAdherent(Adherent adherent) {
-		if (this.polythequeApplication.enregistrerModifsAdherent(adherent)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	public AffichageMonCompte modifAdherent(Adherent adherent) {
+		this.polythequeApplication.enregistrerModifsAdherent(adherent);
+		return new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant());
 	}
 
 	public ArrayList<Adherent> rechercherAdherents(String nomAdherent) {
@@ -185,6 +180,17 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageListeReservations(this, this.polythequeApplication.getReservationList());
 	}
 	
+	public AffichageCreationEmprunt afficherCreationEmprunt(){
+		return new AffichageCreationEmprunt(this);
+	}
+	
+	public boolean creerEmprunt(Emprunt emprunt) {
+		if (this.polythequeApplication.creerEmprunt(emprunt)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean creerAdherent(Adherent adherent) {
 		if (this.polythequeApplication.creerAdherent(adherent)) {
 			return true;
@@ -192,13 +198,9 @@ public class TacheDAffichage extends JFrame {
 		return false;
 	}
 
-	public boolean supprimerAdherent(String nom){
-		if (this.polythequeApplication.supprimerAdherent(nom)) {
-			return true;
-		}
-		return false;
+	public void supprimerAdherent(String nom){
+		this.polythequeApplication.supprimerAdherent(nom);
 	}
-
 	/**
 	 * Afficher une fenetre de dialogue.
 	 * 
