@@ -1,11 +1,9 @@
 package polytheque.view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -39,14 +37,11 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		private JTextField userVille;
 		private JTextField userPhone;
 		private JTextField userMail;
-		private JTextField userCptRetard;
 		private JDateChooser dateChooser;
 		
 		private JPasswordField password;
 		
 		private JButton boutonValider;
-		
-		private Adherent adherentCourant;
 		
 		JComboBox<Boolean> userIsAdmin;
 		JComboBox<Boolean> userPeutEmprunter;
