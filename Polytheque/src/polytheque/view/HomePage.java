@@ -35,5 +35,6 @@ public class HomePage extends JTabbedPane {
 			this.addTab("Adh√©rents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
 			//this.addTab("Reservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
 		}
+		this.addTab("DÈconnexion", this.tacheDAffichageDeLApplication.afficherDeconnexion());
 	}
 }
