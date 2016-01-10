@@ -225,9 +225,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userEstAJour.setPreferredSize(new Dimension(20, 20));
 			this.userEstAJour.setBounds(600, 250, 100, 30);
 			this.add(this.userEstAJour);
-			//this.add(userEstAJourPanel, BorderLayout.CENTER);
-			//grosPanel.add(userEstAJourPanel, BorderLayout.CENTER);
-			//this.add(grosPanel, BorderLayout.WEST);
 		}
 		
 		
