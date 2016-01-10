@@ -27,7 +27,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	 *            Une tache d'affichage de l'application.
 	 */
 	public AffichageSupprimerAdherent(TacheDAffichage afficheAppli){
-		this.setLayout(new BorderLayout());
+		this.setLayout(null);
 
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		ajouterChamps();
@@ -35,15 +35,15 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 
 	private void ajouterChamps() {
 		JLabel labelUserName = new JLabel("Nom a supprimer :");
-		labelUserName.setBounds(500, 100, 100, 30);
-		this.add(labelUserName, BorderLayout.NORTH);
+		labelUserName.setBounds(430, 160, 200, 30);
+		this.add(labelUserName);
 		this.userName = new JTextField();
-		this.userName.setBounds(450, 200, 100, 30);
+		this.userName.setBounds(550, 160, 100, 30);
 		this.userName.setColumns(10);
-		this.add(this.userName, BorderLayout.CENTER);
+		this.add(userName);
 
 		this.boutonValider = new JButton("Valider");
-		this.boutonValider.setBounds(350, 450, 100, 30);
+		this.boutonValider.setBounds(670, 160, 100, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider, BorderLayout.CENTER);
 	}
@@ -55,7 +55,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		if (boutonSelectionne == this.boutonValider)
 		{
 			String nom = new String(this.userName.getText());
-			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);	
+			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);
 		}
 		return;
 	}
