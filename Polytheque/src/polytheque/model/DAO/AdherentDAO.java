@@ -61,6 +61,7 @@ public class AdherentDAO extends DAO {
 	 * @param nom
 	 * @return boolean 
 	 */
+	
 	public boolean deleteAdherent(String pseudo) {
 		try {
 			super.connect();

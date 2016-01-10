@@ -101,6 +101,7 @@ public class PolythequeApplication {
 		return false;
 	}
 	
+	
 	public void supprimerAdherent(String pseudo){
 		 this.adherentDAO.deleteAdherent(pseudo);
 				 	}

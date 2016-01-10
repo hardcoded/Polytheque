@@ -186,6 +186,7 @@ public class TacheDAffichage extends JFrame {
 		return false;
 	}
 
+	
 	public void supprimerAdherent(String pseudo){
 		this.polythequeApplication.supprimerAdherent(pseudo);
 	}
