@@ -121,6 +121,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		return donnees;
 	}
 	public void rafraichir(ArrayList<Reservation> reservations) {
+		this.arrayPanel.removeAll();
 		this.creerTableau(reservations);
 		this.arrayPanel.updateUI();
 	}
@@ -130,26 +131,14 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.add(this.arrayPanel, BorderLayout.CENTER);
 		this.arrayPanel.updateUI();
 	}
-	
-	public void supprimerButtonPanel (){ //enlever le bouton annuler reservation quand on change de page
-		this.buttonsPanel = new JPanel();
-		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-		this.add(this.buttonsPanel, BorderLayout.SOUTH);
-	}
-	
-	public void afficherEcranAnnulationR(JPanel panel){
-		this.arrayPanel.removeAll();
-		this.arrayPanel=panel;
-		this.add(this.arrayPanel,BorderLayout.CENTER);
-	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
 
 		if (boutonSelectionne == this.boutonAnnulerReservation)
 		{
-			this.supprimerButtonPanel();
-			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherEcranAnnulationR());
+			this.tacheDAffichageDeLApplication.afficherEcranAnnulationR();
 			return;
 		}	
 		return;
