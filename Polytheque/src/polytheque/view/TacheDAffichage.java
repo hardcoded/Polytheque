@@ -138,9 +138,13 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant());
 	}
 
-	public AffichageMonCompte modifAdherent(Adherent adherent) {
-		this.polythequeApplication.enregistrerModifsAdherent(adherent);
-		return new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant());
+	public boolean modifAdherent(Adherent adherent) {
+		if (this.polythequeApplication.enregistrerModifsAdherent(adherent)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public ArrayList<Adherent> rechercherAdherents(String nomAdherent) {
@@ -198,8 +202,13 @@ public class TacheDAffichage extends JFrame {
 		return false;
 	}
 
-	public void supprimerAdherent(String nom){
-		this.polythequeApplication.supprimerAdherent(nom);
+	public boolean supprimerAdherent(String nom){
+		if (this.polythequeApplication.supprimerAdherent(nom)) {
+			return  true;
+		}
+		else {
+			return false;
+		}
 	}
 	/**
 	 * Afficher une fenetre de dialogue.
