@@ -3,6 +3,8 @@ package polytheque.model.pojos;
 import java.sql.Date;
 
 import polytheque.model.DAO.AdherentDAO;
+import polytheque.model.DAO.ExtensionDAO;
+import polytheque.model.DAO.JeuDAO;
 /**
  * Classe permettant la rï¿½servation d'un jeu
  * 
@@ -16,9 +18,11 @@ public class Reservation {
 	private Jeu jeu;
 	private Extension extention;
 	private AdherentDAO adherentDAO;
+	private JeuDAO jeuDAO;
+	private ExtensionDAO extensionDAO;
 
 	/**
-	 * constructeur de Reservation utilisé dans une fonction de ReservationDAO
+	 * constructeur de Reservation utilisï¿½ dans une fonction de ReservationDAO
 	 * @param id_reservation
 	 * @param adh
 	 * @param jeu
@@ -70,10 +74,14 @@ public class Reservation {
 	 * @param extention
 	 * @param date
 	 */
-	public Reservation(Adherent adherent,Jeu jeu,Extension extention, Date date) {
-		this.setAdherent(adherent);
-		this.setJeu(jeu);
-		this.setExtension(extention);
+	public Reservation(int idAdherent,int idJeu, int idExtention, Date date) {
+		this.adherentDAO = new AdherentDAO();
+		this.jeuDAO = new JeuDAO();
+		this.extensionDAO = new ExtensionDAO();
+		
+		this.setAdherent(this.adherentDAO.retreive(idAdherent));
+		this.setJeu(this.jeuDAO.retreive(idJeu));
+		this.setExtension(this.extensionDAO.retreive(idExtention));
 		this.setDate(date);
 		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
 		this.jeu.setStatus("rï¿½servï¿½");
@@ -112,6 +120,9 @@ public class Reservation {
 		this.setAdherent(adherentDAO.retreive(idAdherent));
 	}
 
+	public Reservation(int int1, String string, String string2, String string3, Date date2) {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * mï¿½thodes
 	 * getter et setter qui permettent de rï¿½cupï¿½rer ou modifier les attributs de cette classe dans d'autres classes

@@ -1,5 +1,6 @@
 package polytheque.view;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -59,7 +60,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	 * Fonction permettant d'afficher tous les champs de la page ainsi que les zones de saisies pour l'utilisateur
 	 */
 	public void ajouterChamps() {
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
 
 		JLabel titrePrincipal = new JLabel("Mon compte");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -160,7 +161,7 @@ public class AffichageMonCompte extends JPanel implements ActionListener {
 	/**
 	 * param event
 	 * 		Va se souvenir sur quoi on a clique
-	 * La fonction va vérifier si le bouton selectionne correspond au bouton pour valider les modifications. Si oui, on effectue les modifications.
+	 * La fonction va vï¿½rifier si le bouton selectionne correspond au bouton pour valider les modifications. Si oui, on effectue les modifications.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();

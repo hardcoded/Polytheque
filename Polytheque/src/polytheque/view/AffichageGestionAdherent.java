@@ -217,11 +217,10 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.mainPanel.removeAll();
 		this.mainPanel=panel;
 		this.add(this.mainPanel,BorderLayout.CENTER);
+		this.updateUI();
 	}
 
 	public void afficherSupprimerAdherent(JPanel panel){
-		this.buttonsPanel.removeAll();
-		this.searchPanel.removeAll();
 		this.mainPanel.removeAll();
 		this.mainPanel=panel;
 		this.add(this.mainPanel,BorderLayout.CENTER);
@@ -245,7 +244,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonSupprimerAdherent)
 		{
-			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerAdherent());
+			this.afficherSupprimerAdherent(this.tacheDAffichageDeLApplication.afficherSupprimerAdherent());
 			return;
 		}
 
