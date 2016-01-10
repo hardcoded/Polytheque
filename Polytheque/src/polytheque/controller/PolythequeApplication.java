@@ -124,12 +124,10 @@ public class PolythequeApplication {
 		this.reservationDAO.delete(r.getIdReservation());
 	}
 	
-	public void createReservationsansextention(int idAdherent, int idJeu,Date date)
+	public void createReservation(int idAdherent, int idJeu, int idJextension,Date date)
 	{
-		@SuppressWarnings("null")
-		int idExtention = (Integer) null;
-		Reservation reservation = new Reservation (idAdherent,idJeu,idExtention,date); 
-		this.reservationDAO.createwithoutextention(reservation, idAdherent, idJeu);
+		Reservation reservation = new Reservation (idAdherent,idJeu,idJextension,date); 
+		this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension);
 	}
 	
 	public boolean creerEmprunt(Emprunt emprunt){

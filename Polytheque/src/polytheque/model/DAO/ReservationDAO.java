@@ -41,35 +41,6 @@ public class ReservationDAO extends DAO {
 		}
 	}
 
-
-	public boolean createwithoutextention(Reservation reservation, int idAdherent, int idJeu) {
-		try {
-			super.connect();
-			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "RESERVATION(date_reservation, id_adherent, id_jeu) "
-					+ "VALUES (?, ?, ?, ?)"); 
-
-			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
-			psInsert.setInt(2, idAdherent);
-			psInsert.setInt(3, idJeu);
-			psInsert.setInt(4,(Integer) null);
-			psInsert.executeUpdate();
-
-			ResultSet idResult = psInsert.getGeneratedKeys();
-			if (idResult != null && idResult.next()) {
-				reservation.setIdReservation(idResult.getInt(1));; 
-			} else {
-				throw new SQLException();
-			}
-
-			super.disconnect();
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
 	public boolean delete(int id) {
 		try {
 			super.connect();
