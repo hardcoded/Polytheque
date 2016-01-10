@@ -10,6 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * @author Sanwei Lee, Johan Brunet, Godefroi Roussel
+ *
+ */
 @SuppressWarnings("serial")
 public class AffichageSupprimerAdherent extends JPanel implements ActionListener {
 
@@ -22,7 +27,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * CrÃ©ation de la page d'accueil.
+	 * CrÃ©ation de la page permettant de supprimer un adhérent (accessible seulement par un admin).
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
@@ -33,7 +38,10 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		ajouterChamps();
 	}
-
+	
+	/**
+	 * Ajoute une zone de texte écrivable et un bouton pour valider l'information écrit dans la zone de texte 
+	 */
 	private void ajouterChamps() {
 		JLabel labelUserName = new JLabel("Nom a supprimer :");
 		labelUserName.setBounds(430, 160, 200, 30);
@@ -46,10 +54,13 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(670, 160, 100, 30);
 		this.boutonValider.addActionListener(this);
-		this.add(this.boutonValider, BorderLayout.CENTER);
+		this.add(this.boutonValider);
 	}
 	
 	@Override
+	/**
+	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 		
