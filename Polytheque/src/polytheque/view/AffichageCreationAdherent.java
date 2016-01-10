@@ -77,24 +77,28 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			//ajouterBoutons();
 		}
 		
-		public void ajouterChamps() {			
+		public void ajouterChamps() {		
+			JPanel grosPanel = new JPanel();
+			grosPanel.setLayout(new BorderLayout());
 			JPanel titrePanel = new JPanel();
 			
 			JLabel titrePrincipal = new JLabel("Création Adhérent");
 			titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 			titrePrincipal.setBounds(350, 20, 260, 30);
 			titrePanel.add(titrePrincipal);
-			this.add(titrePanel, BorderLayout.NORTH);
+			//this.add(titrePanel, BorderLayout.NORTH);
+			grosPanel.add(titrePanel, BorderLayout.NORTH);
 			
 			JPanel userInfoPanel = new JPanel();
 			
 			JLabel labelUserName = new JLabel("Nom :");
+			labelUserName.setBounds(300, 150, 100, 30);
 			userInfoPanel.add(labelUserName);
-			//labelUserName.setBounds(300, 150, 100, 30);
 			this.userName = new JTextField();
-			//this.userName.setBounds(350, 150, 100, 30);
+			this.userName.setBounds(350, 150, 100, 30);
 			userInfoPanel.add(this.userName);
-			//this.add(userInfoPanel, BorderLayout.WEST);
+			//this.add(userInfoPanel,BorderLayout.WEST);
+			
 						
 			JLabel labelUserFirstName = new JLabel("Prenom :");
 			labelUserFirstName.setBounds(300, 180, 100, 30);
@@ -102,9 +106,10 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userFirstName = new JTextField();
 			this.userFirstName.setBounds(360, 180, 100, 30);
 			userInfoPanel.add(this.userFirstName);
-			//this.add(this.userInfoPanel, BorderLayout.WEST); 
+			//this.add(userInfoPanel,BorderLayout.WEST); 
+			grosPanel.add(userInfoPanel, BorderLayout.WEST);
 			
-			JLabel labelUserRue = new JLabel("Rue :");
+			/*JLabel labelUserRue = new JLabel("Rue :");
 			labelUserRue.setBounds(300, 240, 100, 30);
 			userInfoPanel.add(labelUserRue);
 			this.userRue = new JTextField();
@@ -172,9 +177,9 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userCptRetard.setBounds(380, 450, 190, 30);
 			this.userCptRetard.setColumns(2);
 			userInfoPanel.add(this.userCptRetard);
-			this.add(userInfoPanel, BorderLayout.WEST); 
+			this.add(userInfoPanel, BorderLayout.CENTER);  */
 			
-			/*userIsAdminPanel = new JPanel();
+			userIsAdminPanel = new JPanel();
 			userIsAdminPanel.setPreferredSize(new Dimension(100, 20));
 			
 			JLabel labelUserIsAdmin = new JLabel("Admin :");
@@ -186,7 +191,8 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
 			this.userIsAdmin.setBounds(860, 450, 100, 30);
 			userIsAdminPanel.add(this.userIsAdmin);
-			this.add(userIsAdminPanel, BorderLayout.CENTER);
+			//this.add(userIsAdminPanel, BorderLayout.CENTER);
+			grosPanel.add(userIsAdminPanel, BorderLayout.CENTER);
 			
 			userPeutEmprunterPanel = new JPanel();
 			userPeutEmprunterPanel.setPreferredSize(new Dimension(100, 20));
@@ -200,7 +206,8 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
 		    this.userPeutEmprunter.setBounds(600, 150, 100, 30);
 		    userPeutEmprunterPanel.add(this.userPeutEmprunter);
-			this.add(userPeutEmprunterPanel, BorderLayout.CENTER);
+			//this.add(userPeutEmprunterPanel, BorderLayout.CENTER);
+		    grosPanel.add(userPeutEmprunterPanel, BorderLayout.CENTER);
 			
 			userEstAJourPanel = new JPanel();
 			userEstAJourPanel.setPreferredSize(new Dimension(20, 20));
@@ -214,7 +221,9 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userEstAJour.setPreferredSize(new Dimension(20, 20));
 			this.userEstAJour.setBounds(600, 250, 100, 30);
 			userEstAJourPanel.add(this.userEstAJour);
-			this.add(userEstAJourPanel, BorderLayout.CENTER);*/
+			//this.add(userEstAJourPanel, BorderLayout.CENTER);
+			grosPanel.add(userEstAJourPanel, BorderLayout.CENTER);
+			this.add(grosPanel, BorderLayout.WEST);
 		}
 		
 		
