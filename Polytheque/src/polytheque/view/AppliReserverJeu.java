@@ -95,11 +95,13 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20,dateReservation);
 			this.tacheDAffichageDeLApplication.afficherMessage("Reservation confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
-		}		
-		else if (boutonSelectionne == this.boutonRetourAccueil)
-		{
-			this.tacheDAffichageDeLApplication.afficherAccueil();;
 		}
+		
+		else
+		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été entrée"," Erreur", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 	}	
 }
 
