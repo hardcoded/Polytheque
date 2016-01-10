@@ -158,8 +158,15 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
 		this.add(labelUserPeutEmprunter);
 		this.userPeutEmprunter = new JComboBox<Boolean>();
-		this.userPeutEmprunter.addItem(Boolean.TRUE);
-		this.userPeutEmprunter.addItem(Boolean.FALSE);
+		if (this.adherentCourant.peutEmprunter() == true){
+			this.userPeutEmprunter.addItem(Boolean.TRUE);
+			this.userPeutEmprunter.addItem(Boolean.FALSE);
+		}
+		else
+		{
+			this.userPeutEmprunter.addItem(Boolean.FALSE);
+			this.userPeutEmprunter.addItem(Boolean.TRUE);
+		}
 		this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
 		this.userPeutEmprunter.setBounds(600, 150, 100, 30);
 		this.add(this.userPeutEmprunter);
@@ -167,8 +174,15 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		labelUserEstAJour.setBounds(600, 200, 100, 30);
 		this.add(labelUserEstAJour);
 		this.userEstAJour = new JComboBox<Boolean>();
-		this.userEstAJour.addItem(Boolean.TRUE);
-		this.userEstAJour.addItem(Boolean.FALSE);
+		if (this.adherentCourant.estAJour() == true){
+			this.userEstAJour.addItem(Boolean.TRUE);
+			this.userEstAJour.addItem(Boolean.FALSE);
+		}
+		else
+		{
+			this.userEstAJour.addItem(Boolean.FALSE);
+			this.userEstAJour.addItem(Boolean.TRUE);
+		}
 		this.userEstAJour.setPreferredSize(new Dimension(100, 20));
 		this.userEstAJour.setBounds(600, 250, 100, 30);
 		this.add(this.userEstAJour);
@@ -188,6 +202,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.dateChooser.setBounds(850, 200, 150, 30);
 		this.add(this.dateChooser);
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -199,7 +214,10 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 					int cptRetard = Integer.parseInt(this.userCptRetard.getText());
 					String password = new String(this.password.getPassword());
 					Date dateNaissance = new Date(this.dateChooser.getDate().getTime());
-					Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), cptRetard, 0);
+					boolean admin = (boolean) this.userIsAdmin.getSelectedItem();
+					boolean peutEmprunter = (boolean) this.userPeutEmprunter.getSelectedItem();
+					boolean AJour = (boolean) this.userEstAJour.getSelectedItem();
+					Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password,(boolean) admin, AJour, peutEmprunter, cptRetard, 0);
 					if (this.tacheDAffichageDeLApplication.modifAdherent(adherent) == false) {
 						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la modification de l'adhérent", "Erreur de modification", JOptionPane.ERROR_MESSAGE);
 					}
