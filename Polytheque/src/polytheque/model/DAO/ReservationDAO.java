@@ -117,7 +117,7 @@ public class ReservationDAO extends DAO {
 	public ArrayList<Reservation> getAll() {
 		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
 		try {
-			super.connect(); //requete fausse � voir
+			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION");
 			psSelect.execute();
 			psSelect.closeOnCompletion();

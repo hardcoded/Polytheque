@@ -160,6 +160,7 @@ public class TacheDAffichage extends JFrame {
 	}
 	
 	public AppliAnnulerReservation afficherEcranAnnulationR() {
+		//this.viderFenetre();
 		return new AppliAnnulerReservation(this);
 	}
 	public Adherent getAdherent(String pseudo) {
@@ -209,7 +210,6 @@ public Adherent getAdherentByNothing() {
 }
 	public void createReservation(int idAdherent, int idJeu, int idJextension,Date date)
 	{
-		
 		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension,date);	
 	}
 	
