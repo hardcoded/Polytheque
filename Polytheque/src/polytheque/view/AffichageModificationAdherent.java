@@ -130,11 +130,11 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.add(this.userCptRetard);
 		
 		String pasRecup =  Integer.toString(this.adherentCourant.getNbNonRecup());
-		JLabel labelUserPasRecup = new JLabel("Compteur Retard :");
+		JLabel labelUserPasRecup = new JLabel("Compteur non récupéré :");
 		labelUserPasRecup.setBounds(150, 500, 150, 30);
 		this.add(labelUserPasRecup);
 		this.userCptNonRecup = new JTextField(pasRecup);
-		this.userCptNonRecup.setBounds(270, 500, 20, 30);
+		this.userCptNonRecup.setBounds(300, 500, 20, 30);
 		this.userCptNonRecup.setColumns(2);
 		this.add(this.userCptNonRecup);
 		
@@ -142,7 +142,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		labelUserIsAdmin.setBounds(600, 300, 100, 30);
 		this.add(labelUserIsAdmin);
 		this.userIsAdmin = new JComboBox<Boolean>();
-		if (this.adherentCourant.isAdmin()==true){
+		if (this.adherentCourant.isAdmin() == true){
 			this.userIsAdmin.addItem(Boolean.TRUE);
 			this.userIsAdmin.addItem(Boolean.FALSE);
 		}
