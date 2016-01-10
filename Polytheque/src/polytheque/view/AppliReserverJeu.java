@@ -89,13 +89,26 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	}
 	
 	
+	public void creerPanneauDateFin()
+	{
+		JPanel DateFinPanel = new JPanel();
+		DateFinPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
+		JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez rendre le jeux :");
+		labelDate.setBounds(400, 250, 100, 100);
+		DateFinPanel.add(labelDate);
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(450, 300, 100, 100);
+		DateFinPanel.add(dateChooser);
+		this.add(DateFinPanel);
+	}
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider)
 		{
 			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),20);
-			this.tacheDAffichageDeLApplication.afficherMessage("message"," titreFenetre", JOptionPane.INFORMATION_MESSAGE);
+			
+			this.tacheDAffichageDeLApplication.afficherMessage("Reservation confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}		
 		else if (boutonSelectionne == this.boutonRetourAccueil)
