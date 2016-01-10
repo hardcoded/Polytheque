@@ -74,6 +74,22 @@ public class Reservation {
 	 * @param extention
 	 * @param date
 	 */
+	
+	public Reservation(int idAdherent,int idJeu, Date date) {
+		this.adherentDAO = new AdherentDAO();
+		this.jeuDAO = new JeuDAO();
+	
+		
+		this.setAdherent(this.adherentDAO.retreive(idAdherent));
+		this.setJeu(this.jeuDAO.retreive(idJeu));
+		this.setExtension(null);
+		this.setDate(date);
+		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
+		this.jeu.setNbExemplaires(this.jeu.getNbExemplaires()-1);
+		this.jeu.setStatus("réserver");
+
+	}
+	
 	public Reservation(int idAdherent,int idJeu, int idExtention, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();

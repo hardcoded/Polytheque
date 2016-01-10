@@ -11,6 +11,7 @@ import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Emprunt;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
+import polytheque.model.pojos.Reservation;
 
 /**
  * Classe permettant de gérer l'affichage de l'appication.
@@ -232,9 +233,20 @@ public Adherent getAdherentByNothing() {
 	public Jeu getJeu(String nom) {
 		return this.polythequeApplication.getByName(nom);
 }
-	public void createReservation(int idAdherent, int idJeu, int idJextension,Date date)
+	public boolean createReservation(Reservation reservation, int idAdherent, int idJeu, int idJextension,Date date)
 	{
-		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension,date);	
+		if(this.polythequeApplication.createReservation(reservation,idAdherent, idJeu, idJextension,date))
+				{return true;}
+		else
+			{return false;}	
+	}
+	
+	public boolean createReservation2(Reservation reservation, int idAdherent, int idJeu, Date date)
+	{
+		if(this.polythequeApplication.createReservation2(reservation,idAdherent, idJeu,date))
+				{return true;}
+		else
+			{return false;}	
 	}
 	
 	public void deleteReservation(){

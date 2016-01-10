@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.Statement;
+
 import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Reservation;
 
@@ -41,6 +43,42 @@ public class ReservationDAO extends DAO {
 		}
 	}
 
+	/**
+	 * Creation de reservation sans extention
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idJeu
+	 * @return
+	 */
+	public boolean create2(Reservation reservation, int idAdherent, int idJeu) {
+		try {
+			super.connect();
+			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
+					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension) "
+					+ "VALUES (?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS); 
+
+			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
+			psInsert.setInt(2, idAdherent);
+			psInsert.setInt(3, idJeu);
+			psInsert.setInt(4, 87);
+			psInsert.executeUpdate();
+
+			ResultSet idResult = psInsert.getGeneratedKeys();
+			;
+			if (idResult != null && idResult.next()) {
+				reservation.setIdReservation(idResult.getInt(1));; 
+			} else {
+				throw new SQLException();
+			}
+
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public boolean delete(int id) {
 		try {
 			super.connect();

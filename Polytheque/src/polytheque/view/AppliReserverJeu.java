@@ -14,6 +14,8 @@ import org.omg.CORBA.Object;
 import java.sql.Date;
 import com.toedter.calendar.JDateChooser;
 
+import polytheque.model.pojos.Reservation;
+
 @SuppressWarnings("serial")
 public class AppliReserverJeu extends JPanel implements ActionListener
 {
@@ -32,6 +34,8 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		creerPanneauRecherche();
 		//creerPanneauExtension();
 		creerPanneauDate();	
+		
+
 	}
 
 	/*private void creerPanneauExtension() 
@@ -87,17 +91,33 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JButton boutonSelectionne = (JButton) e.getSource();
 		if (boutonSelectionne == this.boutonValider && this.dateChooser.getDate() != null && this.searchContent.getText() != null)
 		{
-			Date dateReservation = new Date(this.dateChooser.getDate().getTime());
-			this.tacheDAffichageDeLApplication.createReservation(this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent(),this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu(),7,dateReservation);
-			this.tacheDAffichageDeLApplication.afficherMessage("Reservation confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
-			this.tacheDAffichageDeLApplication.afficherAccueil();
+			int NbExemplaires = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getNbExemplaires();
+			int NbReserves = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getNbExemplaires();
+			if (NbExemplaires > NbReserves )
+			{
+				Date dateReservation = new Date(this.dateChooser.getDate().getTime());
+				int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
+				int IdJeu = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu();
+				Reservation reservation = new Reservation(IdAdherent,IdJeu,dateReservation);
+			
+				if(this.tacheDAffichageDeLApplication.createReservation2(reservation,IdAdherent,IdJeu,dateReservation))
+					{
+						this.tacheDAffichageDeLApplication.afficherMessage("Reservation confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherAccueil();
+					}
+				
+			}
+			
+			else
+			{
+				this.tacheDAffichageDeLApplication.afficherMessage("Ce jeu n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
+			else
+			{
+				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été entrée"," Erreur", JOptionPane.INFORMATION_MESSAGE);
+			}
 		
-		else
-		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été entrée"," Erreur", JOptionPane.INFORMATION_MESSAGE);
-		}
-		
-	}	
+		}	
 }
 
