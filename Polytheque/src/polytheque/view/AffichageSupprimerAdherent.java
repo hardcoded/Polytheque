@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -56,6 +57,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		{
 			String nom = new String(this.userName.getText());
 			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);
+			this.tacheDAffichageDeLApplication.afficherMessage("Le compte a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return;
 	}
