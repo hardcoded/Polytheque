@@ -61,11 +61,11 @@ public class AdherentDAO extends DAO {
 	 * @param nom
 	 * @return boolean 
 	 */
-	public boolean deleteAdherent(String nom) {
+	public boolean deleteAdherent(String pseudo) {
 		try {
 			super.connect();
-			PreparedStatement psDelete = connection.prepareStatement("DELETE FROM ADHERENT WHERE nom = ?"); 
-			psDelete.setString(1, nom);
+			PreparedStatement psDelete = connection.prepareStatement("DELETE FROM ADHERENT WHERE pseudo = ?"); 
+			psDelete.setString(1, pseudo);
 			psDelete.execute();
 			psDelete.closeOnCompletion();
 

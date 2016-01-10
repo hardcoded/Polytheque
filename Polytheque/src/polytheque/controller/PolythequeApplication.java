@@ -101,8 +101,8 @@ public class PolythequeApplication {
 		return false;
 	}
 	
-	public void supprimerAdherent(String nom){
-		 this.adherentDAO.deleteAdherent(nom);
+	public void supprimerAdherent(String pseudo){
+		 this.adherentDAO.deleteAdherent(pseudo);
 				 	}
 	
 	public ArrayList<Reservation> getReservationList() {
