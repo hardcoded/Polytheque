@@ -223,9 +223,9 @@ public Adherent getAdherentByNothing() {
 	public Jeu getJeu(String nom) {
 		return this.polythequeApplication.getByName(nom);
 }
-	public void createReservation(int idAdherent, int idJeu, int idJextension,Date date)
+	public void createReservation(int idAdherent, int idJeu,Date date)
 	{
-		this.polythequeApplication.createReservation(idAdherent, idJeu, idJextension,date);	
+		this.polythequeApplication.createReservationsansextention(idAdherent, idJeu,date);	
 	}
 	
 	public void deleteReservation(){
