@@ -30,7 +30,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		creerPanneauRecherche();
-		creerPanneauExtension();
+		//creerPanneauExtension();
 		creerPanneauDate();	
 		this.boutonRetourAccueil = new JButton();
 		this.boutonRetourAccueil.setBounds(400, 700, 100, 30);
@@ -38,7 +38,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.add(boutonRetourAccueil);
 	}
 
-	private void creerPanneauExtension() 
+	/*private void creerPanneauExtension() 
 	{
 	
 		JPanel ExtensionPanel = new JPanel();
@@ -53,7 +53,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.add(ExtensionPanel);
 
 	}
-
+*/
 	private void creerPanneauRecherche() 
 	{
 		JPanel searchPanel = new JPanel();
