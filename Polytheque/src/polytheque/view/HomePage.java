@@ -1,6 +1,5 @@
 package polytheque.view;
 
-import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 /**

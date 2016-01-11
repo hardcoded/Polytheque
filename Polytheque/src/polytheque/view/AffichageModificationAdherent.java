@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
+
 import polytheque.model.pojos.Adherent;
 /**
  * Classe permettant de gerer la modification des informations li�es au compte de l'utilisateur.

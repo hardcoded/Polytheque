@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import polytheque.model.pojos.Jeu;
 /**
  * Classe permettant de gerer la modification des informations li�es au compte de l'utilisateur.

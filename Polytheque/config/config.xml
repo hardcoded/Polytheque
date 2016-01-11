@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<root>
-	<driver>com.mysql.jdbc.Driver</driver>
-	<url>jdbc:mysql://localhost:3306/polytheque</url>
-	<user>root</user>
-	<password></password>
-</root>

@@ -16,8 +16,6 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 
-
-
 import polytheque.model.pojos.Adherent;
 
 /**

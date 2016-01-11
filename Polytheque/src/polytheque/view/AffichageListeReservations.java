@@ -14,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Reservation;
-import polytheque.view.modeles.ModeleTableauJeux;
 import polytheque.view.modeles.ModeleTableauReservations;
 
 @SuppressWarnings("serial")

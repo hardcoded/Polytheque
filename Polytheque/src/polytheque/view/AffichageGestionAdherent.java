@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 
 import polytheque.model.pojos.Adherent;
 import polytheque.view.modeles.ModeleTableauAdherents;
-import polytheque.view.modeles.ModeleTableauJeux;
 
 /**
  * Classe permettant de gerer la modification des informations li�es au compte de l'utilisateur.

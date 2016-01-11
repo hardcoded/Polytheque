@@ -1,8 +1,7 @@
 package polytheque.view;
 
-import java.util.ArrayList;
-import java.awt.Component;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -41,8 +40,6 @@ public class TacheDAffichage extends JFrame {
 	 * Application de gestion de la ludothèque
 	 */
 	private PolythequeApplication polythequeApplication;
-	private Emprunt emprunt;
-
 	/**
 	 * Création d'une tache d'affichage de l'application.
 	 * 

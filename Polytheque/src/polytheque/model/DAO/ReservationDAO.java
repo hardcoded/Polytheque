@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import com.mysql.jdbc.Statement;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {

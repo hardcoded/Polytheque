@@ -3,8 +3,6 @@ package polytheque.controller;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import polytheque.model.DAO.AdherentDAO;
 import polytheque.model.DAO.EmpruntDAO;
 import polytheque.model.DAO.ExtensionDAO;
