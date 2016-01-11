@@ -159,12 +159,17 @@ public class PolythequeApplication {
 			{return false;}
 	}
 	
-	public boolean creerEmprunt(Reservation res, Date date){
-		Date datedeb=res.getDate();
-		Adherent adh=res.getAdherent();
-		Jeu jeu=res.getJeu();
-		Extension ext =res.getExtension();
-		if (this.empruntDAO.create(datedeb,date,res,adh,jeu,ext)) {
+	public boolean creerEmprunt(Emprunt emprunt){
+		Date datedeb=emprunt.getDateDebut();
+		Adherent adh=emprunt.getAdherent();
+		int idAdh=adh.getIdAdherent();
+		Jeu jeu=emprunt.getJeu();
+		int idJeu = jeu.getIdJeu();
+		Extension ext =emprunt.getExtension();
+		int idExt=ext.getIdExtension();
+		Reservation res = new Reservation(idAdh,idJeu,idExt,datedeb);
+		Date datefin=res.modifDate(datedeb,21);
+		if (this.empruntDAO.create(datedeb,datefin,res,adh,jeu,ext)) {
 			return true;
 		}
 		return false;

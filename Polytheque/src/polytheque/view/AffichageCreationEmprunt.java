@@ -138,9 +138,8 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 					Jeu jeu = this.tacheDAffichageDeLApplication.getJeu(gameName.getText());
 					Extension extention = this.tacheDAffichageDeLApplication.getExt(extensionName.getText());
 					Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
-					Date dateFin = reservation.modifDate(dateEmprunt,21);
-					Emprunt emprunt = new Emprunt(adherent,jeu,extention,dateEmprunt,dateFin);
-					if (this.tacheDAffichageDeLApplication.creerEmprunt(reservation,dateFin) == false){
+					Emprunt emprunt = reservation.validerReservation();
+					if (this.tacheDAffichageDeLApplication.creerEmprunt(emprunt) == false){
 						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de l'emprunt", "Erreur de création", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
