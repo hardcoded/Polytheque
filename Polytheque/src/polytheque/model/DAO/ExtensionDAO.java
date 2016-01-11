@@ -135,6 +135,28 @@ public class ExtensionDAO extends DAO {
 		}
 	}
 
+	public Extension getExtByName(String nom) {
+		Extension extension = null;
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM EXTENSION"
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
+					+ "WHERE nom = ?");
+			psSelect.setString(1, nom);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			if (resSet.next()) { // On se place sur le 1er résultat
+				extension = new Extension(resSet.getInt("id_extension"), nom, resSet.getString("description"), resSet.getString("statut"),resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),"");
+			}
+			super.disconnect();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return extension;
+	}
+
 	/**
 	 * Methode de recuperation des jeux
 	 * @return La liste de tous les jeux

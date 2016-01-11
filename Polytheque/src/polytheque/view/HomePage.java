@@ -28,7 +28,8 @@ public class HomePage extends JTabbedPane {
 		
 		this.addTab("Jeux", this.tacheDAffichageDeLApplication.afficherListeJeux());
 		this.addTab("Extensions", this.tacheDAffichageDeLApplication.afficherListeExtensions());
-		this.addTab("Réserver", this.tacheDAffichageDeLApplication.afficherEcranReservation());
+		this.addTab("Réserver Jeu", this.tacheDAffichageDeLApplication.afficherEcranReservationJeux());
+		this.addTab("Réserver Extension", this.tacheDAffichageDeLApplication.afficherEcranReservationExtension());
 		this.addTab("Profil", this.tacheDAffichageDeLApplication.afficherMonCompte());
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			this.addTab("Emprunt", this.tacheDAffichageDeLApplication.afficherCreationEmprunt());

@@ -90,6 +90,7 @@ public class Reservation {
 
 	}
 	
+	
 	public Reservation(int idAdherent,int idJeu, int idExtention, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
@@ -129,12 +130,20 @@ public class Reservation {
 	 * @param idAdherent
 	 * @param date
 	 */
-	public Reservation(int id, Date date, int idAdherent) {
+	public Reservation(int idExtension, Date date, int idAdherent) {
 		this.adherentDAO = new AdherentDAO();
-		this.setIdReservation(id);
+		this.extensionDAO = new ExtensionDAO();
+		
+		this.setExtension(this.extensionDAO.retreive(idExtension));
+		this.setAdherent(this.adherentDAO.retreive(idAdherent));
+		this.setJeu(null);
 		this.setDate(date);
-		this.setAdherent(adherentDAO.retreive(idAdherent));
+		this.extention.setNbReserves(this.extention.getNbReserves()+1);
+		this.extention.setNbExemplaires(this.extention.getNbExemplaires()-1);
+		this.extention.setStatut("réserver");
+
 	}
+	
 
 	public Reservation(int int1, String string, String string2, String string3, Date date2) {
 		// TODO Auto-generated constructor stub
