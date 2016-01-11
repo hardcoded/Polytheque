@@ -15,6 +15,12 @@ import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 import polytheque.view.TacheDAffichage;
 
+/**
+ * Classe reprÃ©sentant le controller, permettant de faire le lien entre l'affichage et les classes mÃ©tier (DAO, POJOS)
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class PolythequeApplication {
 
 	private AdherentDAO adherentDAO;
@@ -22,12 +28,16 @@ public class PolythequeApplication {
 	private ReservationDAO reservationDAO;
 	private ExtensionDAO extensionDAO;
 	private EmpruntDAO empruntDAO;
-	
+
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	private Adherent adherentCourant;
 	private Jeu jeuCourant;
 
+	/**
+	 * Constructeur de la classe PolythequeApplication (controller).
+	 * Initialisation des DAO.
+	 */
 	public PolythequeApplication(){
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
@@ -39,35 +49,25 @@ public class PolythequeApplication {
 		this.tacheDAffichageDeLApplication = affichageAppli;
 	}
 
+	// Partie permettant la gestion des adhÃ©rents
+
 	public boolean checkConnexion(String userName, String password) {
 		if(this.adherentDAO.connectionAuthorized(userName, password) != null) {
 			this.adherentCourant = this.adherentDAO.retreive(this.adherentDAO.connectionAuthorized(userName, password).getIdAdherent());
 			return true;
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 
 	public boolean checkAdmin() {
 		if(this.adherentDAO.isAdmin(this.adherentCourant.getPseudo())) {
 			return true;
 		}
-		return false;
-	}
-
-	public ArrayList<Jeu> getGamesList() {
-		return this.jeuDAO.getAll();
-	}
-
-	public ArrayList<Jeu> searchGames(String nomJeu) {
-		return this.jeuDAO.searchByName(nomJeu);
-	}
-
-	public ArrayList<Extension> getExtensionsList() {
-		return this.extensionDAO.getAll();
-	}
-
-	public ArrayList<Extension> searchExtensions(String nomExtension) {
-		return this.extensionDAO.searchByName(nomExtension);
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class PolythequeApplication {
 
 	/**
 	 * 
-	 * @return la liste de tous les adhérents dans un tableau.
+	 * @return la liste de tous les adhÃ©rents dans un tableau.
 	 */
 	public ArrayList<Adherent> getAdherentsList() {
 		return this.adherentDAO.getAll();
@@ -93,8 +93,8 @@ public class PolythequeApplication {
 	/**
 	 * 
 	 * @param adherent
-	 * @return un booléen disant si l'enregistrement des modifications des informations de l'adhérent a été effectué.
-	 * Et l'adhérent courant prend la valeur de l'adhérent après modification. False sinon.
+	 * @return un boolï¿½en disant si l'enregistrement des modifications des informations de l'adhï¿½rent a ï¿½tï¿½ effectuï¿½.
+	 * Et l'adhï¿½rent courant prend la valeur de l'adhï¿½rent aprï¿½s modification. False sinon.
 	 */
 	public boolean enregistrerModifsAdherent(Adherent adherent) {
 		if (this.adherentDAO.update(adherent)) {
@@ -105,59 +105,59 @@ public class PolythequeApplication {
 			return false;
 		}
 	}
-	
+
 	public Adherent getAdherentByNothing() {
-		
+
 		return this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
-	
+
 	/**
 	 * 
 	 * @param pseudo
-	 * @return un adhérent en fonction de son pseudo (qui est unique afin qu'il n'y ait pas de confusion lors de la récupération de l'adhérent).
+	 * @return un adhï¿½rent en fonction de son pseudo (qui est unique afin qu'il n'y ait pas de confusion lors de la rï¿½cupï¿½ration de l'adhï¿½rent).
 	 */
 	public Adherent getAdherent(String pseudo) {
 		return this.adherentDAO.getByPseudo(pseudo);
 	}
-	
+
 	/**
 	 * 
 	 * @param adherent
-	 * @return true si l'adhérent a été créé. False sinon.
+	 * @return true si l'adhï¿½rent a ï¿½tï¿½ crï¿½ï¿½. False sinon.
 	 */
 	public boolean creerAdherent(Adherent adherent){
 		if (this.adherentDAO.create(adherent)) {
 			return true;
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
-	
+
 	/**
 	 * 
 	 * @param nom
-	 * @return true si l'adhérent a bien été supprimé. False sinon.
+	 * @return true si l'adhï¿½rent a bien ï¿½tï¿½ supprimï¿½. False sinon.
 	 */
 	public boolean supprimerAdherent(String pseudo) {
-		 if (this.adherentDAO.deleteAdherent(pseudo)) {
-			 return true;
-		 }
-		 else {
-			 return false;
-		 }
+		if (this.adherentDAO.deleteAdherent(pseudo)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	/**
-	 * 
-	 * @return un tableau de toute les réservations
-	 */
-	public ArrayList<Reservation> getReservationList() {
-		return this.reservationDAO.getAll();
+
+	// Partie permettant la gestion des jeux
+
+	public ArrayList<Jeu> getGamesList() {
+		return this.jeuDAO.getAll();
 	}
-	
-	public ArrayList<Reservation> searchReservations(String nomAdherent) {
-		return this.reservationDAO.searchByPseudo(nomAdherent);
+
+	public ArrayList<Jeu> searchGames(String nomJeu) {
+		return this.jeuDAO.searchByName(nomJeu);
 	}
-	
+
 	/**
 	 * 
 	 * @param nom
@@ -166,7 +166,61 @@ public class PolythequeApplication {
 	public Jeu getByName(String nom) {
 		return this.jeuDAO.getByName(nom);
 	}
-	
+
+	/**
+	 * 
+	 * @param jeu
+	 * @return un boolï¿½en disant si l'enregistrement des modifications des informations du jeu a ï¿½tï¿½ effectuï¿½.
+	 * Et le jeu courant prend la valeur du jeu aprï¿½s modification. False sinon.
+	 */
+	public boolean enregistrerModifsJeu(Jeu jeu) {
+		if (this.jeuDAO.update(jeu, 0, 0)) { 
+			this.jeuCourant = this.jeuDAO.retreive(this.jeuCourant.getIdJeu());
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param jeu
+	 * @return un boolï¿½an disant si le jeu a bien ï¿½tï¿½ crï¿½ï¿½. False sinon.
+	 */
+	public boolean creerJeu(Jeu jeu){
+		if (this.jeuDAO.create(jeu)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param idJeu
+	 * @return un boolï¿½an disant si le jeu a bien ï¿½tï¿½ supprimï¿½. False sinon.
+	 */
+	public boolean supprimerJeu(int idJeu) {
+		if (this.jeuDAO.delete(idJeu)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	// Partie permettant la gestion des extensions
+
+	public ArrayList<Extension> getExtensionsList() {
+		return this.extensionDAO.getAll();
+	}
+
+	public ArrayList<Extension> searchExtensions(String nomExtension) {
+		return this.extensionDAO.searchByName(nomExtension);
+	}
+
 	/**
 	 * 
 	 * @param nom
@@ -175,36 +229,64 @@ public class PolythequeApplication {
 	public Extension getExtByName(String nom) {
 		return this.extensionDAO.getExtByName(nom);
 	}
-	
-	public void annulerReservation(Reservation res){
+
+	/**
+	 * 
+	 * @param id
+	 * @return une rï¿½servation. Pour retrouver l'extension on utilise son id.
+	 */
+	public Reservation getById(int id) {
+		return this.reservationDAO.getById(id);
+	}
+
+	// Partie permettant la gestion des rÃ©servations
+
+	/**
+	 * 
+	 * @return un tableau de toute les rï¿½servations
+	 */
+	public ArrayList<Reservation> getReservationList() {
+		return this.reservationDAO.getAll();
+	}
+
+	public ArrayList<Reservation> searchReservations(String nomAdherent) {
+		return this.reservationDAO.searchByPseudo(nomAdherent);
+	}
+
+	public void annulerReservation(Reservation res) {
 		this.reservationDAO.delete(res.getIdReservation());
 	}
-	
-	public boolean createReservation(Reservation reservation,int idAdherent, int idJeu, int idJextension,Date date)
-	{
-		if(this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension))
-			{return true;}
-		else
-			{return false;}
+
+	public boolean createReservation(Reservation reservation,int idAdherent, int idJeu, int idJextension,Date date) {
+		if(this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	public boolean createReservation2(Reservation reservation,int idAdherent, int idJeu,Date date)
-	{
-		if(this.reservationDAO.create2(reservation, idAdherent, idJeu))
-			{return true;}
-		else
-			{return false;}
+
+	public boolean createReservation2(Reservation reservation,int idAdherent, int idJeu,Date date) {
+		if(this.reservationDAO.create2(reservation, idAdherent, idJeu)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	public boolean createReservation3(Reservation reservation,int idAdherent, int idExtention,Date date)
-	{
-		if(this.reservationDAO.create3(reservation, idAdherent, idExtention))
-			{return true;}
-		else
-			{return false;}
+
+	public boolean createReservation3(Reservation reservation,int idAdherent, int idExtention,Date date) {
+		if(this.reservationDAO.create3(reservation, idAdherent, idExtention)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	public boolean creerEmprunt(Emprunt emprunt){
+
+	// Partie permettant la gestion des emprunts
+
+	public boolean creerEmprunt(Emprunt emprunt) {
 		Date datedeb=emprunt.getDateDebut();
 		Adherent adh=emprunt.getAdherent();
 		int idAdh=adh.getIdAdherent();
@@ -219,64 +301,8 @@ public class PolythequeApplication {
 		}
 		return false;
 	}
-	
-	/**
-	 * 
-	 * @param jeu
-	 * @return un booléen disant si l'enregistrement des modifications des informations du jeu a été effectué.
-	 * Et le jeu courant prend la valeur du jeu après modification. False sinon.
-	 */
-	public boolean enregistrerModifsJeu(Jeu jeu) {
-		if (this.jeuDAO.update(jeu, 0, 0)) { 
-			this.jeuCourant = this.jeuDAO.retreive(this.jeuCourant.getIdJeu());
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	/**
-	 * 
-	 * @param id
-	 * @return une réservation. Pour retrouver l'extension on utilise son id.
-	 */
-	public Reservation getById(int id){
-		return this.reservationDAO.getById(id);
-	}
-	
-	/**
-	 * 
-	 * @param jeu
-	 * @return un booléan disant si le jeu a bien été créé. False sinon.
-	 */
-	public boolean creerJeu(Jeu jeu){
-		if (this.jeuDAO.create(jeu)) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param idJeu
-	 * @return un booléan disant si le jeu a bien été supprimé. False sinon.
-	 */
-	public boolean supprimerJeu(int idJeu) {
-		 if (this.jeuDAO.delete(idJeu)) {
-			 return true;
-		 }
-		 else {
-			 return false;
-		 }
-	}
-	
-	
-	public void updateRetard()
-    {
-    this.adherentDAO.updateRetard(this.adherentCourant.getCompteurRetard(),this.adherentCourant.getIdAdherent());
-    }
 
-	
-	
+	public void updateRetard() {
+		this.adherentDAO.updateRetard(this.adherentCourant.getCompteurRetard(),this.adherentCourant.getIdAdherent());
+	}
 }
