@@ -134,9 +134,9 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		{
 			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null) {
 					Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
-					Adherent adherent =null;
-					Jeu jeu = null;
-					Extension extention = null;
+					Adherent adherent = this.tacheDAffichageDeLApplication.getAdherent(userPseudo.getText());
+					Jeu jeu = this.tacheDAffichageDeLApplication.getJeu(gameName.getText());
+					Extension extention = this.tacheDAffichageDeLApplication.getExt(extensionName.getText());
 					Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
 					Date dateFin = reservation.modifDate(dateEmprunt,21);
 					if (this.tacheDAffichageDeLApplication.creerEmprunt(reservation,dateFin) == false){
