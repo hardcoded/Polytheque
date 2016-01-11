@@ -48,6 +48,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	public final static String[] LIBELLES = new String[] {"id_reservation","Pseudo", "Nom_jeu", "Nom_extention", "Date"};
 
 	private JButton boutonAnnulerReservation;
+	private JButton boutonValiderReservation;
 	
 	private JPanel buttonsPanel;
 	private JPanel arrayPanel;
@@ -71,9 +72,12 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 
 		this.boutonAnnulerReservation = new JButton("Annuler une réservation");
 		this.boutonAnnulerReservation.addActionListener(this);
-
+		this.boutonValiderReservation = new JButton("Valider une réservation");
+		this.boutonValiderReservation.addActionListener(this);
+		
 		this.buttonsPanel.add(boutonAnnulerReservation, BorderLayout.SOUTH);
-
+		this.buttonsPanel.add(boutonValiderReservation, BorderLayout.SOUTH);
+		
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 	
@@ -144,7 +148,11 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		{
 			this.tacheDAffichageDeLApplication.afficherEcranAnnulationR();
 			return;
-		}	
+		}
+		if (boutonSelectionne == this.boutonValiderReservation)
+		{
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalites non disponible", "Erreur",0);
+		}
 		return;
 	}
 
