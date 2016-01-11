@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Johan Brunet
  */
 @SuppressWarnings({ "serial", "unchecked", "rawtypes" })
-public class ModeleTableau extends AbstractTableModel {
+public class ModeleTableauExtensions extends AbstractTableModel {
 	/**
 	 * Les données des cellules.
 	 */
@@ -27,7 +27,7 @@ public class ModeleTableau extends AbstractTableModel {
 	 * @param libelles
 	 *            Des libellés.
 	 */
-	public ModeleTableau(Object[][] donnees, String[] libelles) {
+	public ModeleTableauExtensions(Object[][] donnees, String[] libelles) {
 		this.donnees = donnees;
 		this.libelles = libelles;
 	}
@@ -53,11 +53,19 @@ public class ModeleTableau extends AbstractTableModel {
 	}
 
 	@Override
-	public Class getColumnClass(int col) {
-		if (this.donnees[0][col] != null) {
-			return this.donnees[0][col].getClass();
+	public Class<?> getColumnClass(int col) {
+		switch (col) {
+		case 0 : 
+			return String.class;
+		case 1 : 
+			return String.class;
+		case 2 : 
+			return String.class;
+		case 3 : 
+			return String.class;
+		default : 
+			return Object.class;
 		}
-		return Object.class;
 	}
 
 	@Override

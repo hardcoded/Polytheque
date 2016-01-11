@@ -103,9 +103,6 @@ public class TacheDAffichage extends JFrame {
 	
 	public void afficherAccueil() {
 		this.viderFenetre();
-		if(this.emprunt.estEnRetard()){
-            this.polythequeApplication.updateRetard();
-        }
 		this.getContentPane().add(new HomePage(this));
 		this.rafraichirFenetre();
 	}

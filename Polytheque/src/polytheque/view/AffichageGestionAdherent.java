@@ -13,7 +13,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.view.modeles.ModeleTableau;
+import polytheque.view.modeles.ModeleTableauAdherents;
+import polytheque.view.modeles.ModeleTableauJeux;
 
 /**
  * Classe permettant de gerer la modification des informations li�es au compte de l'utilisateur.
@@ -120,7 +121,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.mainPanel = new JPanel();
 		this.mainPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableau(initialiserDonnees(listeAdherents), LIBELLES));
+		JTable tableau = new JTable(new ModeleTableauAdherents(initialiserDonnees(listeAdherents), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
@@ -129,10 +130,10 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_5);
 		tableau.getColumn(LIBELLES[6]).setPreferredWidth(LONGUEUR_COLONNE_6);
 		tableau.getColumn(LIBELLES[7]).setPreferredWidth(LONGUEUR_COLONNE_7);
-		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_8);
-		tableau.getColumn(LIBELLES[6]).setPreferredWidth(LONGUEUR_COLONNE_9);
-		tableau.getColumn(LIBELLES[7]).setPreferredWidth(LONGUEUR_COLONNE_10);
-		tableau.getColumn(LIBELLES[5]).setPreferredWidth(LONGUEUR_COLONNE_11);
+		tableau.getColumn(LIBELLES[8]).setPreferredWidth(LONGUEUR_COLONNE_8);
+		tableau.getColumn(LIBELLES[9]).setPreferredWidth(LONGUEUR_COLONNE_9);
+		tableau.getColumn(LIBELLES[10]).setPreferredWidth(LONGUEUR_COLONNE_10);
+		tableau.getColumn(LIBELLES[11]).setPreferredWidth(LONGUEUR_COLONNE_11);
 
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 		tableau.getTableHeader().setReorderingAllowed(true);

@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import polytheque.model.pojos.Reservation;
-import polytheque.view.modeles.ModeleTableau;
+import polytheque.view.modeles.ModeleTableauJeux;
+import polytheque.view.modeles.ModeleTableauReservations;
 
 @SuppressWarnings("serial")
 public class AffichageListeReservations extends JPanel implements ActionListener {
@@ -58,7 +59,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.tacheDAffichageDeLApplication = afficheAppli;
 
 		this.setLayout(new BorderLayout());
-		rafraichir(listeReservations);
+		creerTableau(listeReservations);
 		ajouterBoutonAdmin();
 	}
 	
@@ -84,7 +85,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.arrayPanel = new JPanel();
 		this.arrayPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableau(initialiserDonnees(listeReservations), LIBELLES));
+		JTable tableau = new JTable(new ModeleTableauReservations(initialiserDonnees(listeReservations), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
