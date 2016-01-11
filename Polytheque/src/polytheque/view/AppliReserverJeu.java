@@ -86,7 +86,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 				
 					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdJeu,dateReservationJeu))
 						{
-							this.tacheDAffichageDeLApplication.afficherMessage("Reservation d'extention confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+							this.tacheDAffichageDeLApplication.afficherMessage("Reservation de jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 							this.tacheDAffichageDeLApplication.afficherAccueil();
 						}
 					
