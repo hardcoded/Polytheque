@@ -209,7 +209,7 @@ public class ReservationDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION "
-					+ "WHERE id_adherent = (SELECT id_adherent FROM ADHERENT WHERE pseudo = ?");
+					+ "WHERE id_adherent = (SELECT id_adherent FROM ADHERENT WHERE pseudo = ?)");
 			psSelect.setString(1, pseudo);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
