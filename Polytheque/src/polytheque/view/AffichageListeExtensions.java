@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Extension;
-import polytheque.view.modeles.ModeleTableauListeJeux;
+import polytheque.view.modeles.ModeleTableau;
 
 @SuppressWarnings("serial")
 public class AffichageListeExtensions extends JPanel implements ActionListener {
@@ -95,7 +95,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.arrayPanel = new JPanel();
 		this.arrayPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeExtensions), LIBELLES));
+		JTable tableau = new JTable(new ModeleTableau(initialiserDonnees(listeExtensions), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
