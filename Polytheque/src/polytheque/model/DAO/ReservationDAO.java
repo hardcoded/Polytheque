@@ -191,9 +191,9 @@ public class ReservationDAO extends DAO {
 			ResultSet resSet = psSelect.getResultSet();
 			
 			if (resSet.next()) {
-				while (resSet.next()) { // On se place sur le 1er résultat				
+				//while (resSet.next()) { // On se place sur le 1er résultat				
 					toutesLesReservations.add(new Reservation(resSet.getInt("id_adherent"), resSet.getInt("id_jeu"), resSet.getInt("id_extension"), resSet.getDate("date_reservation")));
-				}
+				//}
 			}
 			super.disconnect();
 

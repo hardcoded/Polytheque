@@ -143,7 +143,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		{
 			donnees[index][0] = reservationCourante.getAdherent().getPseudo();
 			donnees[index][1] = reservationCourante.getJeu().getNom();
-			donnees[index][2] = reservationCourante.getExtension().getNom();
+			//donnees[index][2] = reservationCourante.getExtension().getNom();
 			donnees[index][3] = reservationCourante.getDate();
 			index++;
 		}		
