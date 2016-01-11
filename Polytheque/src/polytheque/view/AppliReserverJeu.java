@@ -78,32 +78,62 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton boutonSelectionne = (JButton) e.getSource();
-		if (boutonSelectionne == this.boutonValider && this.dateChooser.getDate() != null && this.searchContent.getText() != null)
+		if (boutonSelectionne == this.boutonValider && this.dateChooser.getDate() != null )
 		{
-			int NbExemplaires = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getNbExemplaires();
-			int NbReserves = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getNbExemplaires();
-			if (NbExemplaires > NbReserves )
+			if (this.searchContent.getText() != null && this.searchExtension.getText() == null)
 			{
-				Date dateReservation = new Date(this.dateChooser.getDate().getTime());
-				int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
-				int IdJeu = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu();
-				Reservation reservation = new Reservation(IdAdherent,IdJeu,dateReservation);
+				int NbExemplaires = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getNbExemplaires();
+				int NbReserves = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getNbExemplaires();
+				if (NbExemplaires > NbReserves )
+				{
+					Date dateReservation = new Date(this.dateChooser.getDate().getTime());
+					int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
+					int IdJeu = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu();
+					Reservation reservation = new Reservation(IdAdherent,IdJeu,dateReservation);
 			
-				if(this.tacheDAffichageDeLApplication.createReservation2(reservation,IdAdherent,IdJeu,dateReservation))
-					{
-						this.tacheDAffichageDeLApplication.afficherMessage("Reservation de Jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
-						this.tacheDAffichageDeLApplication.afficherAccueil();
-					}
+					if(this.tacheDAffichageDeLApplication.createReservation2(reservation,IdAdherent,IdJeu,dateReservation)) {
+							this.tacheDAffichageDeLApplication.afficherMessage("Reservation de Jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+							this.tacheDAffichageDeLApplication.afficherAccueil();
+						}
+				
+				}
+			
+				else {
+					this.tacheDAffichageDeLApplication.afficherMessage("Ce jeu n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			else if(this.searchContent.getText() == null && this.searchExtension.getText() != null){
+				int NbExemplaires = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbExemplaires();
+				int NbReserves = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbReserves();
+				if (NbExemplaires > NbReserves )
+				{
+					Date dateReservationExt = new Date(this.dateChooser.getDate().getTime());
+					int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
+					int IdExtention = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getIdExtension();
+					Reservation reservation = new Reservation(IdExtention,dateReservationExt,IdAdherent);
+				
+					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdExtention,dateReservationExt))
+						{
+							this.tacheDAffichageDeLApplication.afficherMessage("Reservation d'extention confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+							this.tacheDAffichageDeLApplication.afficherAccueil();
+						}
+					
+				}
+				
+				else
+				{
+					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherAccueil();
+				}
 				
 			}
-			
-			else
-			{
-				this.tacheDAffichageDeLApplication.afficherMessage("Ce jeu n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+				
+			else if(this.searchContent.getText() == null && this.searchExtension.getText() != null){
+				else
+				{
+					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
-		}
-			else
-			{
 				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été entrée"," Erreur", JOptionPane.INFORMATION_MESSAGE);
 			}
 		
