@@ -26,7 +26,7 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 		private JTextField gameAnnee;
 		private JTextField gameAge;
 		private JTextField gameJouMin;
-		private JTextField gameJouMax;
+		private JTextField gameEditeur;
 		private JTextField gameNBEx;
 		
 		private JButton boutonValider;
@@ -95,6 +95,12 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 			this.gameJouMin.setBounds(330, 310, 60, 30);
 			this.add(this.gameJouMin);
 			
+			JLabel labelGameEditeur = new JLabel("Editeur :");
+			labelGameEditeur.setBounds(600, 180, 100, 30);
+			this.add(labelGameEditeur);
+			this.gameEditeur = new JTextField();
+			this.gameEditeur.setBounds(670, 180, 100, 30);
+			this.add(this.gameEditeur);
 			
 			JLabel labelGameStatut = new JLabel("Le jeu est disponible? :");
 			labelGameStatut.setBounds(600, 100, 200, 30);
@@ -121,7 +127,7 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 
 			if (boutonSelectionne == this.boutonValider)
 			{
-				if (this.gameNom.getText() != null && this.gameNBEx.getText() != null &&
+				if (this.gameNom.getText() != null && this.gameNBEx.getText() != null && this.gameEditeur.getText() != null &&
 					this.gameAnnee.getText() != null && this.gameAge.getText() != null && this.gameJouMin.getText() != null) {
 					String statut;
 					int age = Integer.parseInt(this.gameAge.getText());

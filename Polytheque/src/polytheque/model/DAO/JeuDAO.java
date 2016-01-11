@@ -113,27 +113,6 @@ public class JeuDAO extends DAO {
 			return false;
 		}
 	}
-	
-	/**
-	 * Methode pour effacer
-	 * @param Jeu
-	 * @return boolean 
-	 */
-	public boolean deleteJeu(String nom) {
-		try {
-			super.connect();
-			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE nom = ?"); 
-			psDelete.setString(2, nom);
-			psDelete.execute();
-			psDelete.closeOnCompletion();
-
-			super.disconnect();
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
 
 	/**
 	 * Methode de mise a jour
