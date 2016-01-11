@@ -140,11 +140,11 @@ public class Emprunt {
 	 * Cette fonction permet d'ajouter 1 au nombre de retard deja effectue par l'adherent et modifie la variable disant que l'adherent est en retard pour ne pas compter plusieurs retard concernant un meme jeu
 	 */
 	public void ajoutRetard(){
-		if(estEnRetard() && !(dejaEnRetard())){ // On verifie que l'adherent est en retard pour rendre son jeu et si le jeu est deja en retard
-			this.adherent.ajoutCompteurRetard();
-			this.setRetard(true);
-		}
-	}
+        if(!(dejaEnRetard())){ // On verifie que l'adherent est en retard pour rendre son jeu et si le jeu est deja en retard
+            this.adherent.ajoutCompteurRetard();
+            this.setRetard(true);
+        }
+    }
 
 	/**
 	 * 
@@ -152,14 +152,15 @@ public class Emprunt {
 	 * @return true si la date de fin de l'emprunt est inferieur � la date du jour, false sinon
 	 */
 	public boolean estEnRetard(){
-		//Par defaut, date d'aujourd'hui
-		Date currentDate = new Date(new java.util.Date().getTime());
-		if(this.getDateFin().before(currentDate)){ 
-			return true;
-		}
-		else 
-			return false; 
-	}
+        //Par defaut, date d'aujourd'hui
+        Date currentDate = new Date(new java.util.Date().getTime());
+        if(this.getDateFin().before(currentDate)){ 
+            this.ajoutRetard();
+            return true;
+        }
+        else 
+            return false; 
+    }
 
 	/**
 	 * 

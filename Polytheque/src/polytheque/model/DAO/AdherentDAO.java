@@ -118,6 +118,25 @@ public class AdherentDAO extends DAO {
 		}
 	}
 
+	 public boolean updateRetard(int CompteurRetard,int id) {
+	        try {
+	        super.connect();
+	        PreparedStatement psUpdate = connection.prepareStatement("UPDATE ADHERENT "
+	        + "SET nb_retards = ? "
+	        + "WHERE id_adherent = ?"); 
+	        psUpdate.setInt(1, CompteurRetard);
+	        psUpdate.setInt(2, id);
+	        psUpdate.executeUpdate();
+	        psUpdate.closeOnCompletion();
+
+	        super.disconnect();
+	        return true;
+	        } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	        }
+	        } 
+	 
 	/**
 	 * Methode de recherche des informations
 	 * @param id
