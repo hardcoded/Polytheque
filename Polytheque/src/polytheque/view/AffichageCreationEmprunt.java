@@ -132,26 +132,27 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 
 		if (boutonSelectionne == this.boutonValider)
 		{
-			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null) {
-					Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
-					Adherent adherent = this.tacheDAffichageDeLApplication.getAdherent(userPseudo.getText());
-					Jeu jeu = this.tacheDAffichageDeLApplication.getJeu(gameName.getText());
-					Extension extention = this.tacheDAffichageDeLApplication.getExt(extensionName.getText());
-					Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
-					Emprunt emprunt = reservation.validerReservation();
-					if (this.tacheDAffichageDeLApplication.creerEmprunt(emprunt) == false){
-						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de l'emprunt", "Erreur de création", JOptionPane.ERROR_MESSAGE);
-					}
-					else {
-						this.tacheDAffichageDeLApplication.afficherMessage("Un emprunt a été effectué !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
-						return;
-					}
+			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null)
+			{
+				Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
+				Adherent adherent = this.tacheDAffichageDeLApplication.getAdherent(userPseudo.getText());
+				Jeu jeu = this.tacheDAffichageDeLApplication.getJeu(gameName.getText());
+				Extension extention = this.tacheDAffichageDeLApplication.getExt(extensionName.getText());
+				Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
+				Emprunt emprunt = reservation.validerReservation();
+				if (this.tacheDAffichageDeLApplication.creerEmprunt(emprunt) == false){
+					this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de l'emprunt", "Erreur de création", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					this.tacheDAffichageDeLApplication.afficherMessage("Veuillez renseigner tous les champs !", "Erreur champ(s) vide(s)", JOptionPane.ERROR_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Un emprunt a été effectué !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
+					return;
 				}
 			}
-			return;
+			else {
+				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez renseigner tous les champs !", "Erreur champ(s) vide(s)", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		return;
 	}
 
 }
