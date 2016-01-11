@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -59,6 +58,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	private JPanel buttonsPanel;
 	private JPanel arrayPanel;
 	private JPanel searchPanel;
+	
+	private ModeleTableauJeux tableauJeux;
 
 	/**
 	 * Une tache d'affichage de l'application.
@@ -99,7 +100,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.arrayPanel = new JPanel();
 		this.arrayPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableauJeux(initialiserDonnees(listeJeux), LIBELLES));
+		this.tableauJeux = new ModeleTableauJeux(initialiserDonnees(listeJeux), LIBELLES);
+		JTable tableau = new JTable(tableauJeux);
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
@@ -175,9 +177,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Jeu> jeux) {
-		this.arrayPanel.removeAll();
-		this.creerTableau(jeux);
-		this.arrayPanel.updateUI();
+		this.tableauJeux.refresh(initialiserDonnees(jeux));
 	}
 	
 	public void modifierMainPanel(JPanel panel) {
@@ -193,25 +193,26 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonAjouterJeu)
 		{
-			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationJeu());
+			modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationJeu());
+			rafraichir(this.tacheDAffichageDeLApplication.tousLesJeux());
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonModifierJeu)
 		{
-			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationJeu(this.tacheDAffichageDeLApplication.getJeu(this.modifJeu.getText())));
+			modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationJeu(this.tacheDAffichageDeLApplication.getJeu(this.modifJeu.getText())));
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerJeu)
 		{
-			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerJeu());
+			modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerJeu());
 			return;
 		}
 		
 		if (boutonSelectionne == this.boutonRecherche)
 		{
-			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText()));;
+			rafraichir(this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText()));;
 			return;
 		}		
 		return;

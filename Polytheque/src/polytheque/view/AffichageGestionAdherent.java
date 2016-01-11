@@ -71,6 +71,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	 * Une tache d'affichage de l'application.
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
+	private ModeleTableauAdherents tableauAdherents;
 
 	/**
 	 * Creation de la page d'accueil.
@@ -121,7 +122,8 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.mainPanel = new JPanel();
 		this.mainPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableauAdherents(initialiserDonnees(listeAdherents), LIBELLES));
+		this.tableauAdherents = new ModeleTableauAdherents(initialiserDonnees(listeAdherents), LIBELLES);
+		JTable tableau = new JTable(tableauAdherents);
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
@@ -196,9 +198,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Adherent> adherents) {
-		this.mainPanel.removeAll();
-		this.creerTableau(adherents);
-		this.updateUI();
+		this.tableauAdherents.refresh(initialiserDonnees(adherents));
 	}
 	
 	@Override
@@ -214,18 +214,21 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		if (boutonSelectionne == this.boutonCreerAdherent)
 		{
 			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationAdherent()); 
+			this.rafraichir(this.tacheDAffichageDeLApplication.tousLesAdherents());
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerAdherent)
 		{
 			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerAdherent());
+			this.rafraichir(this.tacheDAffichageDeLApplication.tousLesAdherents());
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonModifierAdherent)
 		{
 			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.modifContent.getText())));
+			this.rafraichir(this.tacheDAffichageDeLApplication.tousLesAdherents());
 			return;
 		}
 		return;

@@ -54,6 +54,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	private JPanel arrayPanel;
 	
 	private TacheDAffichage tacheDAffichageDeLApplication;
+	private ModeleTableauReservations tableauReservations;
 	
 	public AffichageListeReservations(TacheDAffichage afficheAppli, ArrayList<Reservation> listeReservations) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -85,7 +86,8 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.arrayPanel = new JPanel();
 		this.arrayPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableauReservations(initialiserDonnees(listeReservations), LIBELLES));
+		this.tableauReservations = new ModeleTableauReservations(initialiserDonnees(listeReservations), LIBELLES);
+		JTable tableau = new JTable(tableauReservations);
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
@@ -124,11 +126,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	}
 	
 	public void rafraichir(ArrayList<Reservation> reservations) {
-		if (this.arrayPanel != null) {
-			this.arrayPanel.removeAll();
-		}
-		this.creerTableau(reservations);
-		this.arrayPanel.updateUI();
+		this.tableauReservations.refresh(initialiserDonnees(reservations));
 	}
 	
 	public void modifierMainPanel(JPanel panel) {

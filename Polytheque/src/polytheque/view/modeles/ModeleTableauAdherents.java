@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
  * 
  * @author Johan Brunet
  */
-@SuppressWarnings({ "serial", "unchecked", "rawtypes" })
+@SuppressWarnings({ "serial"})
 public class ModeleTableauAdherents extends AbstractTableModel {
 	/**
 	 * Les données des cellules.
@@ -95,5 +95,10 @@ public class ModeleTableauAdherents extends AbstractTableModel {
 			}
 		}
 		return true;
+	}
+	
+	public void refresh(Object[][] donnees) {
+		this.donnees = donnees;
+		this.fireTableDataChanged();
 	}
 }

@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
  * 
  * @author Johan Brunet
  */
-@SuppressWarnings({ "serial", "unchecked", "rawtypes" })
+@SuppressWarnings({ "serial"})
 public class ModeleTableauExtensions extends AbstractTableModel {
 	/**
 	 * Les données des cellules.
@@ -77,5 +77,10 @@ public class ModeleTableauExtensions extends AbstractTableModel {
 			}
 		}
 		return true;
+	}
+	
+	public void refresh(Object[][] donnees) {
+		this.donnees = donnees;
+		this.fireTableDataChanged();
 	}
 }

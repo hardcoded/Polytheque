@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 
 import polytheque.model.pojos.Extension;
 import polytheque.view.modeles.ModeleTableauExtensions;
-import polytheque.view.modeles.ModeleTableauJeux;
 
 @SuppressWarnings("serial")
 public class AffichageListeExtensions extends JPanel implements ActionListener {
@@ -59,6 +58,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 * Une tache d'affichage de l'application.
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
+	private ModeleTableauExtensions tableauExtensions;
 
 	public AffichageListeExtensions(TacheDAffichage afficheAppli, ArrayList<Extension> listeExtensions) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -96,7 +96,8 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.arrayPanel = new JPanel();
 		this.arrayPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableauExtensions(initialiserDonnees(listeExtensions), LIBELLES));
+		this.tableauExtensions = new ModeleTableauExtensions(initialiserDonnees(listeExtensions), LIBELLES);
+		JTable tableau = new JTable(tableauExtensions);
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
@@ -157,10 +158,8 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 	
-	public void rafraichir(ArrayList<Extension> affichageListeExtensions) {
-		this.arrayPanel.removeAll();
-		this.creerTableau(affichageListeExtensions);
-		this.arrayPanel.updateUI();
+	public void rafraichir(ArrayList<Extension> extensions) {
+		this.tableauExtensions.refresh(initialiserDonnees(extensions));
 	}
 
 	@Override
@@ -169,25 +168,25 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonAjouterExtension)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonModifierExtension)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerExtension)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonRecherche)
 		{
-			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherExtensions(this.searchContent.getText()));
+			rafraichir(this.tacheDAffichageDeLApplication.rechercherExtensions(this.searchContent.getText()));
 			return;
 		}
 

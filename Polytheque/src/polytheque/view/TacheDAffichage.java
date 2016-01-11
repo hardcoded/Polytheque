@@ -130,6 +130,18 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageListeExtensions(this, this.polythequeApplication.getExtensionsList());
 	}
 
+	public ArrayList<Jeu> tousLesJeux() {
+		return this.polythequeApplication.getGamesList();
+	}
+	
+	public ArrayList<Adherent> tousLesAdherents() {
+		return this.polythequeApplication.getAdherentsList();
+	}
+	
+	public ArrayList<Extension> toutesLesExtensions() {
+		return this.polythequeApplication.getExtensionsList();
+	}
+	
 	public ArrayList<Jeu> rechercherJeux(String nomJeu) {
 		return this.polythequeApplication.searchGames(nomJeu);
 	}
