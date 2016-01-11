@@ -178,7 +178,7 @@ public class PolythequeApplication {
 	}
 	
 	public boolean enregistrerModifsJeu(Jeu jeu) {
-		if (this.jeuDAO.update(jeu)) { //J'ai pas compris les id concernant les jeux
+		if (this.jeuDAO.update(jeu, 0, 0)) { //J'ai pas compris les id concernant les jeux
 			this.jeuCourant = this.jeuDAO.retreive(this.jeuCourant.getIdJeu());
 			return true;
 		}

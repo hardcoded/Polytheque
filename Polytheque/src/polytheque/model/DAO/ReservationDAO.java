@@ -226,4 +226,9 @@ public class ReservationDAO extends DAO {
 		}
 		return reserv;
 	}
+
+	public Reservation getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
