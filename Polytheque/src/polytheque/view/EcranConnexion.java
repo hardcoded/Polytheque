@@ -42,7 +42,7 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		JPanel champsPanel = new JPanel();
 		JPanel boutonPanel = new JPanel();
 
-		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaÃ®t !");
+		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaît !");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		titrePrincipal.setBounds(450, 20, 260, 30);
 		titrePanel.add(titrePrincipal);		

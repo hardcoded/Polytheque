@@ -54,7 +54,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		private void creerPanneauDate() {
 			JPanel DatePanel = new JPanel();
 			DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-			JLabel labelDate = new JLabel("Cliquez sur la date a laquelle vous voudriez emprunter le jeux :");
+			JLabel labelDate = new JLabel("Cliquez sur la date à laquelle vous voudriez emprunter le jeux :");
 			labelDate.setBounds(400, 200, 100, 30);
 			DatePanel.add(labelDate);
 			this.dateChooser = new JDateChooser();
@@ -86,7 +86,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 				
 					if(this.tacheDAffichageDeLApplication.createReservation2(reservation,IdAdherent,IdJeu,dateReservationJeu))
 						{
-							this.tacheDAffichageDeLApplication.afficherMessage("Reservation de jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+							this.tacheDAffichageDeLApplication.afficherMessage("Réservation de jeu confirmée !"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 							this.tacheDAffichageDeLApplication.afficherAccueil();
 						}
 					
@@ -94,7 +94,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 				
 				else
 				{
-					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible, veuillez en choisir un autre !"," Problème ", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 				else

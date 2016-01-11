@@ -42,7 +42,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Année de parution", "Statut", "Age mini", "Joueurs mini", "Joueurs maxi", "Catégorie", "Editeur"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Ann�e de parution", "Statut", "Age mini", "Joueurs mini", "Joueurs maxi", "Cat�gorie", "Editeur"};
 
 	/**
 	 * Boutons.

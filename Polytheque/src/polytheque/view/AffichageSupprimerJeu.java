@@ -69,7 +69,9 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 		{
 			if (this.gameNom.getText() != null) {
 				String nom = new String(this.gameNom.getText());
-				if (this.tacheDAffichageDeLApplication.supprimerAdherent(nom) ==  false) {
+				Jeu jeuCourant = this.tacheDAffichageDeLApplication.getJeu(nom);
+				int idJeu = jeuCourant.getIdJeu();
+				if (this.tacheDAffichageDeLApplication.supprimerJeu(idJeu) ==  false) {
 					this.tacheDAffichageDeLApplication.afficherMessage("Problème lors de la suppression du jeu !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
@@ -79,11 +81,6 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 			else {
 				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez remplir le champs texte !", "Champ vide", JOptionPane.ERROR_MESSAGE);
 			}
-			String nom = new String(this.gameNom.getText());
-			Jeu jeuCourant = this.tacheDAffichageDeLApplication.getJeu(nom);
-			int idJeu = jeuCourant.getIdJeu();
-			this.tacheDAffichageDeLApplication.supprimerJeu(idJeu);
-			this.tacheDAffichageDeLApplication.afficherMessage("Le jeu a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return;
 	}

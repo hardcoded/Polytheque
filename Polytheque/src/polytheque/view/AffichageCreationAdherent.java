@@ -257,7 +257,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 					}
 					else {
 						this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adhérent a été créé !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
-						//rafrachir pour enlever les infos après la création de l'adhérent
 						return;
 					}
 				}

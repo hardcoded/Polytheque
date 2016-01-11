@@ -168,7 +168,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		}
 		if (boutonSelectionne == this.boutonValiderReservation)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalites non disponible", "Erreur",0);
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité non disponible", "Erreur",0);
 		}
 		if (boutonSelectionne == this.boutonRecherche)
 		{

@@ -51,9 +51,9 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	/**
 	 * Les libellÃ©s des entÃªtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "PrÃ©nom", "Date de naissance", "Rue", 
-			"Code postal", "Ville", "Mail", "TÃ©lÃ©phone", "Pseudo", 
-			"Sur liste noire", "Est Ã  jour", "Nombre de retards"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Prénom", "Date de naissance", "Rue", 
+			"Code postal", "Ville", "Mail", "Téléphone", "Pseudo", 
+			"Sur liste noire", "Est à  jour", "Nombre de retards"};
 
 	private JTextField searchContent;
 	private JTextField modifContent;	

@@ -87,7 +87,7 @@ public class AppliReserverExtension extends JPanel implements ActionListener
 				
 					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdExtention,dateReservationExt))
 						{
-							this.tacheDAffichageDeLApplication.afficherMessage("Reservation d'extension confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+							this.tacheDAffichageDeLApplication.afficherMessage("Réservation d'extension confirmée"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 							this.tacheDAffichageDeLApplication.afficherAccueil();
 						}
 					
@@ -95,12 +95,12 @@ public class AppliReserverExtension extends JPanel implements ActionListener
 				
 				else
 				{
-					this.tacheDAffichageDeLApplication.afficherMessage("Cette extension n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Cette extension n'est plus disponible, veuillez en choisir un autre !"," Problème ", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 				else
 				{
-					this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été entrée"," Erreur", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été saisies"," Erreur", JOptionPane.INFORMATION_MESSAGE);
 				}
 			
 			}	

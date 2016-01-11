@@ -25,7 +25,7 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * Le titre de l'application.
 	 */
-	public final static String TITRE = "PolythÃ¨que";
+	public final static String TITRE = "Polythèque";
 
 	/**
 	 * La largeur.

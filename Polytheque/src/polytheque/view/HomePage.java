@@ -28,13 +28,13 @@ public class HomePage extends JTabbedPane {
 		
 		this.addTab("Jeux", this.tacheDAffichageDeLApplication.afficherListeJeux());
 		this.addTab("Extensions", this.tacheDAffichageDeLApplication.afficherListeExtensions());
-		this.addTab("RÃ©server Jeu", this.tacheDAffichageDeLApplication.afficherEcranReservationJeux());
-		this.addTab("RÃ©server Extension", this.tacheDAffichageDeLApplication.afficherEcranReservationExtension());
+		this.addTab("Réserver Jeu", this.tacheDAffichageDeLApplication.afficherEcranReservationJeux());
+		this.addTab("Réserver Extension", this.tacheDAffichageDeLApplication.afficherEcranReservationExtension());
 		this.addTab("Profil", this.tacheDAffichageDeLApplication.afficherMonCompte());
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			this.addTab("Emprunt", this.tacheDAffichageDeLApplication.afficherCreationEmprunt());
-			this.addTab("AdhÃ©rents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
-			this.addTab("Reservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
+			this.addTab("Adhérents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
+			this.addTab("Réservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
 		}
 		this.addTab("Déconnexion", this.tacheDAffichageDeLApplication.afficherDeconnexion());
 	}

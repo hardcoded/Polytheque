@@ -51,7 +51,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		JPanel champsPanel = new JPanel();
 		JPanel boutonPanel = new JPanel();
 
-		JLabel titrePrincipal = new JLabel("Veuillez entrez l'id de la réservation que vous souhaitez annuler :");
+		JLabel titrePrincipal = new JLabel("Veuillez entrer l'id de la réservation que vous souhaitez annuler :");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		//titrePrincipal.setBounds(450, 20, 260, 30);
 		titrePanel.add(titrePrincipal);		
@@ -88,7 +88,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		{
 			Reservation res =this.tacheDAffichageDeLApplication.getReservation(idReservation.getText());
 			this.tacheDAffichageDeLApplication.deleteReservation(res);
-			this.tacheDAffichageDeLApplication.afficherMessage("message"," titreFenetre", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas encore implémententée"," Pas dispo ", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}	
 	}
