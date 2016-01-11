@@ -34,7 +34,7 @@ public class HomePage extends JTabbedPane {
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			this.addTab("Emprunt", this.tacheDAffichageDeLApplication.afficherCreationEmprunt());
 			this.addTab("Adh√©rents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
-			//this.addTab("Reservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
+			this.addTab("Reservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
 		}
 		this.addTab("DÈconnexion", this.tacheDAffichageDeLApplication.afficherDeconnexion());
 	}
