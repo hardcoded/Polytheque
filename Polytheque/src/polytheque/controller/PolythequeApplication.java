@@ -45,12 +45,27 @@ public class PolythequeApplication {
 		this.extensionDAO = new ExtensionDAO();
 	}
 
+	/**
+	 * Méthode permettant d'associer la vue au controller
+	 * 
+	 * @param affichageAppli
+	 * 			La vue de l'application.
+	 */
 	public void associerTacheDAffichage(TacheDAffichage affichageAppli) {
 		this.tacheDAffichageDeLApplication = affichageAppli;
 	}
 
 	// Partie permettant la gestion des adhérents
 
+	/**
+	 * Méthode permettant de vérifier si la connexion demandée est valide.
+	 * 
+	 * @param userName
+	 * 			Le pseudo de l'adhérent qui tente de se connecter.
+	 * @param password
+	 * 			Le mot de passe de l'adhérent qui tente de se connecter.
+	 * @return true si la connexion est valide (identifiants existants + bonne combinaison pseudo/mdp), false sinon.
+	 */
 	public boolean checkConnexion(String userName, String password) {
 		if(this.adherentDAO.connectionAuthorized(userName, password) != null) {
 			this.adherentCourant = this.adherentDAO.retreive(this.adherentDAO.connectionAuthorized(userName, password).getIdAdherent());
@@ -61,6 +76,11 @@ public class PolythequeApplication {
 		}
 	}
 
+	/**
+	 * Méthode permettant de vérifier si l'adhérent qui vient de se connecter à l'application est un administrateur.
+	 * 
+	 * @return true si l'adhérent est un administrateur, false sinon.
+	 */
 	public boolean checkAdmin() {
 		if(this.adherentDAO.isAdmin(this.adherentCourant.getPseudo())) {
 			return true;
@@ -71,6 +91,7 @@ public class PolythequeApplication {
 	}
 
 	/**
+	 * Méthode permettant de récupérer l'adhérent courant (celui qui est connecté)
 	 * 
 	 * @return l'adherent courant.
 	 */
@@ -79,13 +100,21 @@ public class PolythequeApplication {
 	}
 
 	/**
+	 * 	Méthode permettant de récupérer la liste de tous les adhérents présents dans la BDD.
 	 * 
-	 * @return la liste de tous les adhérents dans un tableau.
+	 * @return La liste de tous les adhérents dans un tableau.
 	 */
 	public ArrayList<Adherent> getAdherentsList() {
 		return this.adherentDAO.getAll();
 	}
 
+	/**
+	 * Méthode permettant de récupérer les adhérents par leur nom ou un bout de leur nom.
+	 * 
+	 * @param nomAdherent
+	 * 			Le nom ou bout de nom de l'adhérent/des adhérents à récupérer
+	 * @return La liste des adhérents correspondants
+	 */
 	public ArrayList<Adherent> searchAdherents(String nomAdherent) {
 		return this.adherentDAO.searchByName(nomAdherent);
 	}
