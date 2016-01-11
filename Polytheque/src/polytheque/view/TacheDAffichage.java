@@ -149,6 +149,10 @@ public class TacheDAffichage extends JFrame {
 	public ArrayList<Extension> rechercherExtensions(String nomExtension) {
 		return this.polythequeApplication.searchExtensions(nomExtension);
 	}
+	
+	public ArrayList<Reservation> rechercherReservations(String nomAdherent) {
+		return this.polythequeApplication.searchReservations(nomAdherent);
+	}
 
 	public AffichageMonCompte afficherMonCompte() {
 		return new AffichageMonCompte(this, this.polythequeApplication.getAdherentCourant());

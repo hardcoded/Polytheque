@@ -177,6 +177,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Jeu> jeux) {
+		creerTableau(jeux);
+		this.arrayPanel.updateUI();
 		this.tableauJeux.refresh(initialiserDonnees(jeux));
 	}
 	

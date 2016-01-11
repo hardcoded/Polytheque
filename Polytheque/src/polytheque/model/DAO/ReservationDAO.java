@@ -203,20 +203,23 @@ public class ReservationDAO extends DAO {
 		}
 		return toutesLesReservations;
 	}
-	public Reservation getById(int id)
+	
+	public ArrayList<Reservation> searchByPseudo(String pseudo)
 	{
-		Reservation reserv = null;
+		ArrayList<Reservation> reserv = new ArrayList<>();
 		try {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION "
-					+ "WHERE id = ?");
-			psSelect.setInt(1, id);
+					+ "WHERE id_adherent = (SELECT id_adherent FROM ADHERENT WHERE pseudo = ?");
+			psSelect.setString(1, pseudo);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
 			if (resSet.next()) { // On se place sur le 1er résultat
-				reserv = new Reservation(id,resSet.getInt("id_adherent"), resSet.getInt("id_jeu"), resSet.getInt("id_extension"), resSet.getDate("date_reservation"));
+				while (resSet.next()) {
+					reserv.add(new Reservation(resSet.getInt("id_reservation"), resSet.getInt("id_adherent"), resSet.getInt("id_jeu"), resSet.getInt("id_extension"), resSet.getDate("date_reservation")));
+				}
 			}
 			super.disconnect();
 		} catch(SQLException e) {

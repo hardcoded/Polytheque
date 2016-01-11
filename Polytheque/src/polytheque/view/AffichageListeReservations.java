@@ -7,9 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+
 import polytheque.model.pojos.Reservation;
 import polytheque.view.modeles.ModeleTableauJeux;
 import polytheque.view.modeles.ModeleTableauReservations;
@@ -55,13 +58,36 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	private ModeleTableauReservations tableauReservations;
+	private JPanel searchPanel;
+	private JTextField searchContent;
+	private JButton boutonRecherche;
 	
 	public AffichageListeReservations(TacheDAffichage afficheAppli, ArrayList<Reservation> listeReservations) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 
 		this.setLayout(new BorderLayout());
+		creerPanneauRecherche();
 		creerTableau(listeReservations);
 		ajouterBoutonAdmin();
+	}
+	
+	/**
+	 * Panneau de recherche
+	 */
+	private void creerPanneauRecherche() {
+		this.searchPanel = new JPanel();
+
+		JLabel labelSearch = new JLabel("Recherche par nom :");
+		this.searchPanel.add(labelSearch, BorderLayout.CENTER);
+		this.searchContent = new JTextField();
+		this.searchContent.setColumns(10);
+		this.searchPanel.add(this.searchContent, BorderLayout.CENTER);
+
+		this.boutonRecherche = new JButton("Rechercher");
+		this.boutonRecherche.addActionListener(this);
+		this.searchPanel.add(boutonRecherche, BorderLayout.CENTER);
+
+		this.add(searchPanel, BorderLayout.NORTH);
 	}
 	
 	/**
@@ -126,14 +152,9 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	}
 	
 	public void rafraichir(ArrayList<Reservation> reservations) {
-		this.tableauReservations.refresh(initialiserDonnees(reservations));
-	}
-	
-	public void modifierMainPanel(JPanel panel) {
-		this.arrayPanel.removeAll();
-		this.arrayPanel = panel;
-		this.add(this.arrayPanel, BorderLayout.CENTER);
+		creerTableau(reservations);
 		this.arrayPanel.updateUI();
+		this.tableauReservations.refresh(initialiserDonnees(reservations));
 	}
 
 	@Override
@@ -148,6 +169,10 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		if (boutonSelectionne == this.boutonValiderReservation)
 		{
 			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalites non disponible", "Erreur",0);
+		}
+		if (boutonSelectionne == this.boutonRecherche)
+		{
+			this.tacheDAffichageDeLApplication.rechercherReservations(this.searchContent.getText());
 		}
 		return;
 	}

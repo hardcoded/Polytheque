@@ -198,6 +198,8 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Adherent> adherents) {
+		creerTableau(adherents);
+		this.mainPanel.updateUI();
 		this.tableauAdherents.refresh(initialiserDonnees(adherents));
 	}
 	

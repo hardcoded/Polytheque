@@ -123,6 +123,10 @@ public class PolythequeApplication {
 		return this.reservationDAO.getAll();
 	}
 	
+	public ArrayList<Reservation> searchReservations(String nomAdherent) {
+		return this.reservationDAO.searchByPseudo(nomAdherent);
+	}
+	
 	public Jeu getByName(String nom) {
 		return this.jeuDAO.getByName(nom);
 	}

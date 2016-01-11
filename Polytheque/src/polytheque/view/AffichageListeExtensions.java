@@ -159,6 +159,8 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	}
 	
 	public void rafraichir(ArrayList<Extension> extensions) {
+		creerTableau(extensions);
+		this.arrayPanel.updateUI();
 		this.tableauExtensions.refresh(initialiserDonnees(extensions));
 	}
 
