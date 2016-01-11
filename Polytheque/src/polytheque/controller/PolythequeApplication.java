@@ -204,6 +204,7 @@ public class PolythequeApplication {
 		 }
 	}
 	
+	
 	public void updateRetard()
     {
     this.adherentDAO.updateRetard(this.adherentCourant.getCompteurRetard(),this.adherentCourant.getIdAdherent());

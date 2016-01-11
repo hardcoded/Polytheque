@@ -11,6 +11,7 @@ import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
+
 public class EmpruntDAO extends DAO 
 {
 	/**

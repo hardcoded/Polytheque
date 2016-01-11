@@ -100,6 +100,7 @@ public class TacheDAffichage extends JFrame {
 		this.rafraichirFenetre();
 	}
 
+	
 	public void afficherAccueil() {
 		this.viderFenetre();
 		if(this.emprunt.estEnRetard()){
