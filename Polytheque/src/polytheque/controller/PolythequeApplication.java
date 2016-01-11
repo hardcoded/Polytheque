@@ -70,10 +70,18 @@ public class PolythequeApplication {
 		return this.extensionDAO.searchByName(nomExtension);
 	}
 
+	/**
+	 * 
+	 * @return l'adherent courant.
+	 */
 	public Adherent getAdherentCourant() {
 		return this.adherentCourant;
 	}
 
+	/**
+	 * 
+	 * @return la liste de tous les adhérents dans un tableau.
+	 */
 	public ArrayList<Adherent> getAdherentsList() {
 		return this.adherentDAO.getAll();
 	}
@@ -82,6 +90,12 @@ public class PolythequeApplication {
 		return this.adherentDAO.searchByName(nomAdherent);
 	}
 
+	/**
+	 * 
+	 * @param adherent
+	 * @return un booléen disant si l'enregistrement des modifications des informations de l'adhérent a été effectué.
+	 * Et l'adhérent courant prend la valeur de l'adhérent après modification. False sinon.
+	 */
 	public boolean enregistrerModifsAdherent(Adherent adherent) {
 		if (this.adherentDAO.update(adherent)) {
 			this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
@@ -97,10 +111,20 @@ public class PolythequeApplication {
 		return this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
 	
+	/**
+	 * 
+	 * @param pseudo
+	 * @return un adhérent en fonction de son pseudo (qui est unique afin qu'il n'y ait pas de confusion lors de la récupération de l'adhérent).
+	 */
 	public Adherent getAdherent(String pseudo) {
 		return this.adherentDAO.getByPseudo(pseudo);
 	}
 	
+	/**
+	 * 
+	 * @param adherent
+	 * @return true si l'adhérent a été créé. False sinon.
+	 */
 	public boolean creerAdherent(Adherent adherent){
 		if (this.adherentDAO.create(adherent)) {
 			return true;
@@ -108,8 +132,13 @@ public class PolythequeApplication {
 		return false;
 	}
 	
-	public boolean supprimerAdherent(String nom) {
-		 if (this.adherentDAO.deleteAdherent(nom)) {
+	/**
+	 * 
+	 * @param nom
+	 * @return true si l'adhérent a bien été supprimé. False sinon.
+	 */
+	public boolean supprimerAdherent(String pseudo) {
+		 if (this.adherentDAO.deleteAdherent(pseudo)) {
 			 return true;
 		 }
 		 else {
@@ -117,6 +146,10 @@ public class PolythequeApplication {
 		 }
 	}
 	
+	/**
+	 * 
+	 * @return un tableau de toute les réservations
+	 */
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();
 	}
@@ -125,10 +158,20 @@ public class PolythequeApplication {
 		return this.reservationDAO.searchByPseudo(nomAdherent);
 	}
 	
+	/**
+	 * 
+	 * @param nom
+	 * @return un jeu. On retrouve le jeu on utilise son nom.
+	 */
 	public Jeu getByName(String nom) {
 		return this.jeuDAO.getByName(nom);
 	}
 	
+	/**
+	 * 
+	 * @param nom
+	 * @return une extension. Pour retrouver l'extension on utilise son nom.
+	 */
 	public Extension getExtByName(String nom) {
 		return this.extensionDAO.getExtByName(nom);
 	}
@@ -177,8 +220,14 @@ public class PolythequeApplication {
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @param jeu
+	 * @return un booléen disant si l'enregistrement des modifications des informations du jeu a été effectué.
+	 * Et le jeu courant prend la valeur du jeu après modification. False sinon.
+	 */
 	public boolean enregistrerModifsJeu(Jeu jeu) {
-		if (this.jeuDAO.update(jeu, 0, 0)) { //J'ai pas compris les id concernant les jeux
+		if (this.jeuDAO.update(jeu, 0, 0)) { 
 			this.jeuCourant = this.jeuDAO.retreive(this.jeuCourant.getIdJeu());
 			return true;
 		}
@@ -187,14 +236,20 @@ public class PolythequeApplication {
 		}
 	}
 	
-	public Jeu getJeu(String nom) {
-		return this.jeuDAO.getByName(nom);
-	}
-	
+	/**
+	 * 
+	 * @param id
+	 * @return une réservation. Pour retrouver l'extension on utilise son id.
+	 */
 	public Reservation getById(int id){
 		return this.reservationDAO.getById(id);
 	}
 	
+	/**
+	 * 
+	 * @param jeu
+	 * @return un booléan disant si le jeu a bien été créé. False sinon.
+	 */
 	public boolean creerJeu(Jeu jeu){
 		if (this.jeuDAO.create(jeu)) {
 			return true;
@@ -202,6 +257,11 @@ public class PolythequeApplication {
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @param idJeu
+	 * @return un booléan disant si le jeu a bien été supprimé. False sinon.
+	 */
 	public boolean supprimerJeu(int idJeu) {
 		 if (this.jeuDAO.delete(idJeu)) {
 			 return true;
