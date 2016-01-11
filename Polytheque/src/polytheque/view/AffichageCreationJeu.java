@@ -53,6 +53,10 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 			ajouterBoutons();
 		}
 		
+		/**
+		 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
+		 * les zones de textes seulement lisible ainsi que le bouton déroulant.
+		 */
 		public void ajouterChamps() {		
 			JLabel titrePrincipal = new JLabel("Création d'un Jeu");
 			titrePrincipal.setBounds(480, 20, 260, 30);
@@ -113,7 +117,9 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 			this.add(gameStatut);
 		}
 		
-		
+		/**
+		 * Ajoute les boutons sur la page.
+		 */
 		public void ajouterBoutons(){
 			this.boutonValider = new JButton("Valider");
 			this.boutonValider.setBounds(480, 500, 200, 30);
@@ -122,6 +128,9 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 		}
 
 		@Override
+		/**
+		 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+		 */
 		public void actionPerformed(ActionEvent event) {
 			JButton boutonSelectionne = (JButton) event.getSource();
 

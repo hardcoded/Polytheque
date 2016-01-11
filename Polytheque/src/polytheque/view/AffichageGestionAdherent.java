@@ -176,6 +176,9 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		return donnees;
 	}
 
+	/**
+	 * Ajoute les boutons dans la page.
+	 */
 	public void ajouterBoutons(){
 		this.buttonsPanel = new JPanel();
 		this.boutonCreerAdherent = new JButton("CrÃ©er Adherent");
@@ -203,6 +206,9 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	}
 	
 	@Override
+	/**
+	 * Permet de rendre les boutons fonctionnels et de créer de nouvelles pages.
+	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 

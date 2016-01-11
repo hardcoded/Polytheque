@@ -51,7 +51,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		private TacheDAffichage tacheDAffichageDeLApplication;
 
 		/**
-		 * Creation de la page d'accueil.
+		 * Creation de la page permettant de créer un nouvel adhérent.
 		 * 
 		 * @param tacheDAffichageDeLApplication
 		 *            Une tache d'affichage de l'application.
@@ -66,40 +66,28 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			ajouterBoutons();
 		}
 		
+		/**
+		 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
+		 * les zones de textes seulement lisible ainsi que les boutons déroulants.
+		 */
 		public void ajouterChamps() {		
-			/*JPanel grosPanel = new JPanel();
-			grosPanel.setLayout(new BorderLayout());
-			JPanel titrePanel = new JPanel();*/
-			
 			JLabel titrePrincipal = new JLabel("Création Adhérent");
 			titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 			titrePrincipal.setBounds(480, 20, 260, 30);
-			//titrePanel.add(titrePrincipal);
-			//this.add(titrePanel, BorderLayout.NORTH);
 			this.add(titrePrincipal);
-			//grosPanel.add(titrePanel, BorderLayout.NORTH);
-			
-			//JPanel userInfoPanel = new JPanel();
 			
 			JLabel labelUserName = new JLabel("Nom :");
 			labelUserName.setBounds(150, 150, 100, 30);
-			//userInfoPanel.add(labelUserName);
 			this.add(labelUserName);
 			this.userName = new JTextField();
 			this.userName.setBounds(200, 150, 100, 30);
-			//userInfoPanel.add(this.userName);
-			//this.add(userInfoPanel,BorderLayout.WEST);
 			this.add(userName);
 						
 			JLabel labelUserFirstName = new JLabel("Prenom :");
 			labelUserFirstName.setBounds(150, 200, 100, 30);
-			//userInfoPanel.add(labelUserFirstName);
 			this.add(labelUserFirstName);
 			this.userFirstName = new JTextField();
 			this.userFirstName.setBounds(210, 200, 100, 30);
-			//userInfoPanel.add(this.userFirstName);
-			//this.add(userInfoPanel,BorderLayout.WEST); 
-			//grosPanel.add(userInfoPanel, BorderLayout.WEST);
 			this.add(userFirstName);
 			
 			JLabel labelUserRue = new JLabel("Rue :");
@@ -108,7 +96,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userRue = new JTextField();
 			this.userRue.setBounds(200, 240, 130, 30);
 			this.add(this.userRue);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
 			
 			JLabel labelUserCP = new JLabel("Code Postal:");
 			labelUserCP.setBounds(150, 270, 100, 30);
@@ -116,7 +103,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userCP = new JTextField();
 			this.userCP.setBounds(240, 270, 100, 30);
 			this.add(this.userCP);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
 	
 			
 			JLabel labelUserVille = new JLabel("Ville :");
@@ -125,7 +111,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userVille = new JTextField();
 			this.userVille.setBounds(200, 300, 100, 30);
 			this.add(this.userVille);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
 			
 			JLabel labelUserMail = new JLabel("Mail :");
 			labelUserMail.setBounds(150, 330, 100, 30);
@@ -133,7 +118,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userMail = new JTextField();
 			this.userMail.setBounds(200, 330, 100, 30);
 			this.add(this.userMail);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
 			
 			
 			JLabel labelUserTelephone = new JLabel("Telephone :");
@@ -142,7 +126,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userPhone = new JTextField();
 			this.userPhone.setBounds(220, 360, 100, 30);
 			this.add(this.userPhone);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
 			
 			
 			JLabel labelUserPseudo = new JLabel("Pseudo :");
@@ -151,7 +134,6 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.userPseudo = new JTextField();
 			this.userPseudo.setBounds(210, 390, 100, 30);
 			this.add(this.userPseudo);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
 			
 
 			JLabel labelpassword = new JLabel("Mot de passe :");
@@ -161,49 +143,30 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.password.setBounds(230, 420, 190, 30);
 			this.password.setColumns(10);
 			this.add(this.password);
-			//this.add(this.userInfoPanel, BorderLayout.WEST);
-			
-			//userIsAdminPanel = new JPanel();
-			//userIsAdminPanel.setPreferredSize(new Dimension(100, 20));
 			
 			JLabel labelUserIsAdmin = new JLabel("Admin :");
 			labelUserIsAdmin.setBounds(600, 300, 100, 30);
-			this.add(labelUserIsAdmin);
-			//this.userIsAdminPanel.add(labelUserIsAdmin);			
+			this.add(labelUserIsAdmin);		
 			this.userIsAdmin = new JComboBox<Boolean>();
 			this.userIsAdmin.addItem(Boolean.TRUE);
 			this.userIsAdmin.addItem(Boolean.FALSE);
 			this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
 			this.userIsAdmin.setBounds(600, 350, 100, 30);
 			this.add(userIsAdmin);
-			//userIsAdminPanel.add(this.userIsAdmin);
-			//this.add(userIsAdminPanel, BorderLayout.CENTER);
-			//grosPanel.add(userIsAdminPanel, BorderLayout.CENTER);
-			
-			//userPeutEmprunterPanel = new JPanel();
-			//userPeutEmprunterPanel.setPreferredSize(new Dimension(100, 20));
 			
 			JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
 			labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
 			this.add(labelUserPeutEmprunter);
-			//this.userPeutEmprunterPanel.add(labelUserPeutEmprunter);
 			this.userPeutEmprunter = new JComboBox<Boolean>();
 			this.userPeutEmprunter.addItem(Boolean.TRUE);
 			this.userPeutEmprunter.addItem(Boolean.FALSE);
 			this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
 		    this.userPeutEmprunter.setBounds(600, 150, 100, 30);
-		   // userPeutEmprunterPanel.add(this.userPeutEmprunter);
 		    this.add(userPeutEmprunter);
-			//this.add(userPeutEmprunterPanel, BorderLayout.CENTER);
-		  //  grosPanel.add(userPeutEmprunterPanel, BorderLayout.CENTER);
-			
-			//userEstAJourPanel = new JPanel();
-			//userEstAJourPanel.setPreferredSize(new Dimension(20, 20));
 			
 			JLabel labelUserEstAJour = new JLabel("Est a jour :");
 			labelUserEstAJour.setBounds(600, 200, 100, 30);
 			this.add(labelUserEstAJour);
-			//userEstAJourPanel.add(labelUserEstAJour);
 			this.userEstAJour = new JComboBox<Boolean>();
 			this.userEstAJour.addItem(Boolean.TRUE);
 			this.userEstAJour.addItem(Boolean.FALSE);
@@ -212,30 +175,32 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 			this.add(this.userEstAJour);
 		}
 		
-		
+		/**
+		 * Créer le champ Date et le bouton permettant de sélectionner une date
+		 */
 		private void creerPanneauDate() {
-			//JPanel DatePanel = new JPanel();
-			//DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 			JLabel labelUserBirthday = new JLabel("Date de naissance :");
 			labelUserBirthday.setBounds(850, 150, 150, 30);
 			this.add(labelUserBirthday);
 			this.dateChooser = new JDateChooser();
 			this.dateChooser.setBounds(850, 200, 150, 30);
 			this.add(this.dateChooser);
-			//this.add(DatePanel, BorderLayout.EAST);
 		}
 		
-		
+		/**
+		 * Ajoute le bouton 
+		 */
 		public void ajouterBoutons(){
-			//JPanel panelButton = new JPanel();
 			this.boutonValider = new JButton("Valider");
 			this.boutonValider.setBounds(480, 500, 200, 30);
 			this.boutonValider.addActionListener(this);
 			this.add(this.boutonValider);
-			//this.add(panelButton, BorderLayout.SOUTH);
 		}
 
 		@Override
+		/**
+		 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+		 */
 		public void actionPerformed(ActionEvent event) {
 			JButton boutonSelectionne = (JButton) event.getSource();
 

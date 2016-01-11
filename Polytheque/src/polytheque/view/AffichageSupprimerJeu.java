@@ -28,7 +28,7 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * CrÃ©ation de la page permettant de supprimer un jeu (accessible seulement par un admin).
+	 * Création de la page permettant de supprimer un jeu (accessible seulement par un admin).
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
