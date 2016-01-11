@@ -23,16 +23,16 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 	private JTextField searchContent;
 	private JTextField searchExtension;
 	private JDateChooser dateChooser;
-	
-	
+
+
 	public AppliReserverJeu(TacheDAffichage afficheAppli)
 	{		
-		
+
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		this.setLayout(null);
 		creerPanneauRecherche();
 		creerPanneauDate();	
-		
+
 
 	}
 
@@ -42,7 +42,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		JLabel titrePrincipal = new JLabel("Création de la Réservation");
 		titrePrincipal.setBounds(480, 20, 260, 30);
 		this.add(titrePrincipal);
-		
+
 		JLabel labelSearch = new JLabel("Recherche par nom du jeu :");
 		labelSearch.setBounds(400, 100, 200, 30);
 		this.add(labelSearch);
@@ -50,7 +50,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.searchContent.setBounds(570, 100, 100, 30);
 		this.searchContent.setColumns(10);
 		this.add(searchContent);		
-		
+
 		JLabel labelExtension = new JLabel("Recherche par de l'extension :");
 		labelExtension.setBounds(400, 150, 200, 30);
 		this.add(labelExtension);
@@ -73,8 +73,8 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		this.add(boutonValider);
 	}
 
-	
-	
+
+
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton boutonSelectionne = (JButton) e.getSource();
@@ -90,14 +90,14 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 					int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
 					int IdJeu = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu();
 					Reservation reservation = new Reservation(IdAdherent,IdJeu,dateReservation);
-			
+
 					if(this.tacheDAffichageDeLApplication.createReservation2(reservation,IdAdherent,IdJeu,dateReservation)) {
-							this.tacheDAffichageDeLApplication.afficherMessage("Reservation de Jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
-							this.tacheDAffichageDeLApplication.afficherAccueil();
-						}
-				
+						this.tacheDAffichageDeLApplication.afficherMessage("Reservation de Jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherAccueil();
+					}
+
 				}
-			
+
 				else {
 					this.tacheDAffichageDeLApplication.afficherMessage("Ce jeu n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -111,32 +111,29 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 					int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
 					int IdExtention = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getIdExtension();
 					Reservation reservation = new Reservation(IdExtention,dateReservationExt,IdAdherent);
-				
+
 					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdExtention,dateReservationExt))
-						{
-							this.tacheDAffichageDeLApplication.afficherMessage("Reservation d'extention confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
-							this.tacheDAffichageDeLApplication.afficherAccueil();
-						}
-					
+					{
+						this.tacheDAffichageDeLApplication.afficherMessage("Reservation d'extention confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherAccueil();
+					}
+
 				}
-				
+
 				else
 				{
 					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
 					this.tacheDAffichageDeLApplication.afficherAccueil();
 				}
-				
+
 			}
-				
-			else if(this.searchContent.getText() == null && this.searchExtension.getText() != null){
-				else
-				{
-					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
-				}
+			else if (this.searchContent.getText() == null && this.searchExtension.getText() != null) {
+				this.tacheDAffichageDeLApplication.afficherMessage("Veuiller renseigner tous les champs !","Champ(s) vide(s)", JOptionPane.ERROR_MESSAGE);
 			}
+			else {
 				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez verifier que toute les informations requises on été entrée"," Erreur", JOptionPane.INFORMATION_MESSAGE);
 			}
-		
-		}	
+		}
+	}	
 }
 
