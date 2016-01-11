@@ -273,4 +273,42 @@ public Adherent getAdherentByNothing() {
 	public void deleteReservation(){
 		this.polythequeApplication.annulerReservation();
 	}
+	
+	public boolean modifJeu(Jeu jeu) {
+		if (this.polythequeApplication.enregistrerModifsJeu(jeu)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public AffichageModificationJeu afficherModificationJeu(Jeu jeu) {
+		return new AffichageModificationJeu(this, this.polythequeApplication.getJeu(jeu.getNom()));
+	}
+	
+	public AffichageCreationJeu afficherCreationJeu(){
+		return new AffichageCreationJeu(this); 
+	}
+	
+	public AffichageSupprimerJeu afficherSupprimerJeu(){
+		return new AffichageSupprimerJeu(this);
+	}
+	
+	public boolean creerJeu(Jeu jeu) {
+		if (this.polythequeApplication.creerJeu(jeu)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean supprimerJeu(String nom){
+		if (this.polythequeApplication.supprimerJeu(nom)) {
+			return  true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 }

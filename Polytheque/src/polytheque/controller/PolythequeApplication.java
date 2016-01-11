@@ -28,6 +28,7 @@ public class PolythequeApplication {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	private Adherent adherentCourant;
+	private Jeu jeuCourant;
 
 	public PolythequeApplication(){
 		this.adherentDAO = new AdherentDAO();
@@ -174,4 +175,37 @@ public class PolythequeApplication {
 		}
 		return false;
 	}
+	
+	public boolean enregistrerModifsJeu(Jeu jeu) {
+		if (this.jeuDAO.update(jeu)) { //J'ai pas compris les id concernant les jeux
+			this.jeuCourant = this.jeuDAO.retreive(this.jeuCourant.getIdJeu());
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public Jeu getJeu(String nom) {
+		return this.jeuDAO.getByName(nom);
+	}
+	
+	public boolean creerJeu(Jeu jeu){
+		if (this.jeuDAO.create(jeu)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean supprimerJeu(String nom) {
+		 if (this.jeuDAO.deleteJeu(nom)) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	}
+	
+	
+	
 }
