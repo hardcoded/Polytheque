@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.mysql.jdbc.Statement;
 
 import polytheque.model.pojos.Adherent;
+import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {
@@ -198,5 +199,26 @@ public class ReservationDAO extends DAO {
 			e.printStackTrace();
 		}
 		return toutesLesReservations;
+	}
+	public Reservation getById(int id)
+	{
+		Reservation reserv = null;
+		try {
+			super.connect();
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM RESERVATION "
+					+ "WHERE id = ?");
+			psSelect.setInt(1, id);
+			psSelect.execute();
+			psSelect.closeOnCompletion();
+
+			ResultSet resSet = psSelect.getResultSet();
+			if (resSet.next()) { // On se place sur le 1er résultat
+				reserv = new Reservation(id,resSet.getInt("id_adherent"), resSet.getInt("id_jeu"), resSet.getInt("id_extension"), resSet.getDate("date_reservation"));
+			}
+			super.disconnect();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return reserv;
 	}
 }

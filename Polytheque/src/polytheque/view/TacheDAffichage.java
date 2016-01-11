@@ -270,8 +270,12 @@ public Adherent getAdherentByNothing() {
 			{return false;}	
 	}
 	
-	public void deleteReservation(){
-		this.polythequeApplication.annulerReservation();
+	public Reservation getReservation(String id){
+		int idR =Integer.parseInt(id);
+		return this.polythequeApplication.getById(idR);
+	}
+	public void deleteReservation(Reservation r){
+		this.polythequeApplication.annulerReservation(r);
 	}
 	
 	public boolean modifJeu(Jeu jeu) {
