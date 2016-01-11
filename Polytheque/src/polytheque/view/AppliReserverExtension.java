@@ -76,13 +76,13 @@ public class AppliReserverExtension extends JPanel implements ActionListener
 			if (boutonSelectionne == this.boutonValider && this.dateChooser.getDate() != null && this.searchContent.getText() != null)
 			{
 				int NbExemplaires = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbExemplaires();
-				int NbReserves = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbExemplaires();
+				int NbReserves = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbReserves();
 				if (NbExemplaires > NbReserves )
 				{
 					Date dateReservationExt = new Date(this.dateChooser.getDate().getTime());
 					int IdAdherent = this.tacheDAffichageDeLApplication.getAdherentByNothing().getIdAdherent();
 					int IdExtention = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getIdExtension();
-					Reservation reservation = new Reservation(IdExtention,IdAdherent,dateReservationExt);
+					Reservation reservation = new Reservation(IdExtention,dateReservationExt,IdAdherent);
 				
 					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdExtention,dateReservationExt))
 						{

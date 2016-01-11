@@ -139,9 +139,9 @@ public class ExtensionDAO extends DAO {
 		Extension extension = null;
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM EXTENSION"
-					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
-					+ "WHERE nom = ?");
+			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM EXTENSION "
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu "
+					+ "WHERE EXTENSION.nom = ? ");
 			psSelect.setString(1, nom);
 			psSelect.execute();
 			psSelect.closeOnCompletion();

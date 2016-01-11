@@ -32,27 +32,11 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 		
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		creerPanneauRecherche();
-		creerPanneauExtension();
 		creerPanneauDate();	
 		
 
 	}
 
-	private void creerPanneauExtension() 
-	{
-	
-		JPanel ExtensionPanel = new JPanel();
-		ExtensionPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
-		JLabel labelSearch = new JLabel("Recherche par nom :");
-		labelSearch.setBounds(300, 400, 100, 30);
-		ExtensionPanel.add(labelSearch);
-		this.ExtensionContent = new JTextField();
-		this.ExtensionContent.setBounds(450,400, 100, 30);
-		this.ExtensionContent.setColumns(10);
-		ExtensionPanel.add(this.searchContent, BorderLayout.NORTH);
-		this.add(ExtensionPanel);
-
-	}
 
 	private void creerPanneauRecherche() 
 	{

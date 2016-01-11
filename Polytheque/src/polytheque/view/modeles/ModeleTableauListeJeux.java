@@ -8,8 +8,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Johan Brunet
  */
 @SuppressWarnings({ "serial", "unchecked", "rawtypes" })
-public class ModeleTableauListeJeux extends AbstractTableModel
-{
+public class ModeleTableauListeJeux extends AbstractTableModel {
 	/**
 	 * Les données des cellules.
 	 */
@@ -28,39 +27,33 @@ public class ModeleTableauListeJeux extends AbstractTableModel
 	 * @param libelles
 	 *            Des libellés.
 	 */
-	public ModeleTableauListeJeux(Object[][] donnees, String[] libelles)
-	{
+	public ModeleTableauListeJeux(Object[][] donnees, String[] libelles) {
 		this.donnees = donnees;
 		this.libelles = libelles;
 	}
 
 	@Override
-	public int getColumnCount()
-	{
+	public int getColumnCount() {
 		return this.libelles.length;
 	}
 
 	@Override
-	public int getRowCount()
-	{
+	public int getRowCount() {
 		return this.donnees.length;
 	}
 
 	@Override
-	public Object getValueAt(int row, int col)
-	{
+	public Object getValueAt(int row, int col) {
 		return this.donnees[row][col];
 	}
 
 	@Override
-	public String getColumnName(int col)
-	{
+	public String getColumnName(int col) {
 		return this.libelles[col];
 	}
 
 	@Override
-	public Class getColumnClass(int col)
-	{
+	public Class getColumnClass(int col) {
 		if (this.donnees[0][col] != null) {
 			return this.donnees[0][col].getClass();
 		}
@@ -68,10 +61,9 @@ public class ModeleTableauListeJeux extends AbstractTableModel
 	}
 
 	@Override
-	public boolean isCellEditable(int row, int col)
-	{
+	public boolean isCellEditable(int row, int col) {
 		int index;
-		for (index = 0; index < this.libelles.length; index++){
+		for (index = 0; index < this.libelles.length; index++) {
 			if (this.getColumnName(col).equals(this.libelles[index])) {
 				return false;
 			}

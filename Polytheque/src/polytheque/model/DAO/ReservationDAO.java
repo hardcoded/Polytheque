@@ -50,6 +50,7 @@ public class ReservationDAO extends DAO {
 	 * @param idJeu
 	 * @return
 	 */
+	@SuppressWarnings("null")
 	public boolean create2(Reservation reservation, int idAdherent, int idJeu) {
 		try {
 			super.connect();
@@ -60,7 +61,7 @@ public class ReservationDAO extends DAO {
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
 			psInsert.setInt(3, idJeu);
-			psInsert.setInt(4, 87);
+			psInsert.setInt(4, (Integer) null);
 			psInsert.executeUpdate();
 
 			ResultSet idResult = psInsert.getGeneratedKeys();
