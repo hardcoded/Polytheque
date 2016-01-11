@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import polytheque.model.pojos.Adherent;
-import polytheque.view.modeles.ModeleTableauListeJeux;
+import polytheque.view.modeles.ModeleTableau;
 
 /**
  * Classe permettant de gerer la modification des informations li�es au compte de l'utilisateur.
@@ -120,7 +120,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.mainPanel = new JPanel();
 		this.mainPanel.setLayout(new BorderLayout());
 
-		JTable tableau = new JTable(new ModeleTableauListeJeux(initialiserDonnees(listeAdherents), LIBELLES));
+		JTable tableau = new JTable(new ModeleTableau(initialiserDonnees(listeAdherents), LIBELLES));
 		tableau.getColumn(LIBELLES[0]).setPreferredWidth(LONGUEUR_COLONNE_0);
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);

@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Johan Brunet
  */
 @SuppressWarnings({ "serial", "unchecked", "rawtypes" })
-public class ModeleTableauListeJeux extends AbstractTableModel {
+public class ModeleTableau extends AbstractTableModel {
 	/**
 	 * Les données des cellules.
 	 */
@@ -27,7 +27,7 @@ public class ModeleTableauListeJeux extends AbstractTableModel {
 	 * @param libelles
 	 *            Des libellés.
 	 */
-	public ModeleTableauListeJeux(Object[][] donnees, String[] libelles) {
+	public ModeleTableau(Object[][] donnees, String[] libelles) {
 		this.donnees = donnees;
 		this.libelles = libelles;
 	}
