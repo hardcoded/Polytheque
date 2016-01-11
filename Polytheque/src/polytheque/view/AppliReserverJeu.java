@@ -84,7 +84,7 @@ public class AppliReserverJeu extends JPanel implements ActionListener
 					int IdJeu = this.tacheDAffichageDeLApplication.getJeu(this.searchContent.getText()).getIdJeu();
 					Reservation reservation = new Reservation(IdAdherent,IdJeu,dateReservationJeu);
 				
-					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdJeu,dateReservationJeu))
+					if(this.tacheDAffichageDeLApplication.createReservation2(reservation,IdAdherent,IdJeu,dateReservationJeu))
 						{
 							this.tacheDAffichageDeLApplication.afficherMessage("Reservation de jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 							this.tacheDAffichageDeLApplication.afficherAccueil();
