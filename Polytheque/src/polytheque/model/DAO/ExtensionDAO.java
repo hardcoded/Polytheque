@@ -141,21 +141,20 @@ public class ExtensionDAO extends DAO {
 			super.connect();
 			PreparedStatement psSelect = connection.prepareStatement("SELECT * FROM EXTENSION"
 					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
-					+ "WHERE nom_extension = ?");
+					+ "WHERE nom = ?");
 			psSelect.setString(1, nom);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
 			if (resSet.next()) { // On se place sur le 1er résultat
-				extension = new Extension(resSet.getInt("id"), nom, resSet.getString("description"), resSet.getString("statut"),resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),resSet.getString("nom_jeu"));
+				extension = new Extension(resSet.getInt("id_extension"), nom, resSet.getString("description"), resSet.getString("statut"),resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"),"");
 			}
 			super.disconnect();
-			return extension;
 		} catch(SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
+		return extension;
 	}
 
 	/**
