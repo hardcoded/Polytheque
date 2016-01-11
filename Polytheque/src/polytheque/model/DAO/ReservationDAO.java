@@ -50,18 +50,17 @@ public class ReservationDAO extends DAO {
 	 * @param idJeu
 	 * @return
 	 */
-	@SuppressWarnings("null")
+
 	public boolean create2(Reservation reservation, int idAdherent, int idJeu) {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension) "
-					+ "VALUES (?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS); 
+					+ "RESERVATION(date_reservation, id_adherent, id_jeu ) "
+					+ "VALUES (?, ?, ? )",Statement.RETURN_GENERATED_KEYS); 
 
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
 			psInsert.setInt(3, idJeu);
-			psInsert.setInt(4, (Integer) null);
 			psInsert.executeUpdate();
 
 			ResultSet idResult = psInsert.getGeneratedKeys();
@@ -84,13 +83,12 @@ public class ReservationDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "RESERVATION(date_reservation, id_adherent, id_jeu, id_extension) "
-					+ "VALUES (?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS); 
+					+ "RESERVATION(date_reservation, id_adherent, id_extension) "
+					+ "VALUES (?, ?, ?)",Statement.RETURN_GENERATED_KEYS); 
 
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
-			psInsert.setInt(3, 1000);
-			psInsert.setInt(4, idExtention);
+			psInsert.setInt(3, idExtention);
 			psInsert.executeUpdate();
 
 			ResultSet idResult = psInsert.getGeneratedKeys();

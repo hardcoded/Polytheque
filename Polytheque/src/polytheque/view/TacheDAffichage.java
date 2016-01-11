@@ -264,7 +264,7 @@ public Adherent getAdherentByNothing() {
 	
 	public boolean createReservation3(Reservation reservation, int idAdherent, int idExtention, Date date)
 	{
-		if(this.polythequeApplication.createReservation2(reservation,idAdherent, idExtention,date))
+		if(this.polythequeApplication.createReservation3(reservation,idAdherent, idExtention,date))
 				{return true;}
 		else
 			{return false;}	

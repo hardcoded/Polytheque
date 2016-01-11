@@ -19,7 +19,7 @@ public class ExtensionDAO extends DAO {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
-					+ "Extension(nom, description, statut, nombre_exemplaires, nombre_reserves, id_jeu)"
+					+ "Extension(nom, description, statut, nombre_exemplaires, nombre_reserves, id_jeu) "
 					+ "VALUES (?, ?, ?, ?, ?, ?)"); 
 			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
 			psInsert.setString(1, extension.getNom());
@@ -55,7 +55,7 @@ public class ExtensionDAO extends DAO {
 	public boolean delete(int id) {
 		try {
 			super.connect();
-			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM EXTENSION WHERE id_extension = ?"); 
+			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM EXTENSION WHERE id_extension = ? "); 
 			psDelete.setInt(1, id);
 			psDelete.execute();
 			psDelete.closeOnCompletion();
@@ -78,9 +78,9 @@ public class ExtensionDAO extends DAO {
 
 			super.connect();
 			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU "
-					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?,"
-					+ "nombre_reserves = ?, age_mini = ?, nb_joueurs_min = ?, nb_joueurs_max = ?, id_categorie = ?, id_editeur = ?)" 
-					+ " WHERE id_jeu = ?");
+					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?, "
+					+ "nombre_reserves = ?, age_mini = ?, nb_joueurs_min = ?, nb_joueurs_max = ?, id_categorie = ?, id_editeur = ? " 
+					+ " WHERE id_jeu = ? ");
 			psUpdate.setString(1, jeu.getNom());
 			psUpdate.setString(2, jeu.getDescription());
 			psUpdate.setString(3, jeu.getAnneeParution());
@@ -116,8 +116,8 @@ public class ExtensionDAO extends DAO {
 		Extension extension = null;
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom_jeu FROM EXTENSION"
-					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu"
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom AS nom_jeu FROM EXTENSION "
+					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu "
 					+ "WHERE id_extension = ?");
 			psSelect.setInt(1, id);
 			psSelect.execute();
@@ -165,9 +165,9 @@ public class ExtensionDAO extends DAO {
 		ArrayList<Extension> tousLesJeux = new ArrayList<>();
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom as nom_jeu FROM EXTENSION "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom AS nom_jeu FROM EXTENSION "
 					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu "
-					+ "ORDER BY EXTENSION.nom ASC");
+					+ "ORDER BY EXTENSION.nom ASC ");
 			psSelect.execute();
 			psSelect.closeOnCompletion();
 
@@ -195,10 +195,10 @@ public class ExtensionDAO extends DAO {
 		String filtre = "%" + nomExtension.toLowerCase() + "%";
 		try {
 			super.connect();
-			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom as nom_jeu FROM EXTENSION "
+			PreparedStatement psSelect = connection.prepareStatement("SELECT *, JEU.nom AS nom_jeu FROM EXTENSION "
 					+ "JOIN JEU ON JEU.id_jeu = EXTENSION.id_jeu "
 					+ "WHERE EXTENSION.nom LIKE ? "
-					+ "ORDER BY EXTENSION.nom ASC");
+					+ "ORDER BY EXTENSION.nom ASC ");
 			psSelect.setString(1, filtre);
 			psSelect.execute();
 			psSelect.closeOnCompletion();
