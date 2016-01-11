@@ -306,8 +306,8 @@ public Adherent getAdherentByNothing() {
 		return false;
 	}
 	
-	public boolean supprimerJeu(String nom){
-		if (this.polythequeApplication.supprimerJeu(nom)) {
+	public boolean supprimerJeu(int idJeu){
+		if (this.polythequeApplication.supprimerJeu(idJeu)) {
 			return  true;
 		}
 		else {

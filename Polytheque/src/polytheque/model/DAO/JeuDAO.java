@@ -101,7 +101,7 @@ public class JeuDAO extends DAO {
 	public boolean delete(int id) {
 		try {
 			super.connect();
-			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE id_jeu = ?"); 
+			PreparedStatement psDelete = connection.prepareStatement("DELETE FROM JEU WHERE id_jeu = ?"); 
 			psDelete.setInt(1, id);
 			psDelete.execute();
 			psDelete.closeOnCompletion();

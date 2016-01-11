@@ -195,8 +195,8 @@ public class PolythequeApplication {
 		return false;
 	}
 	
-	public boolean supprimerJeu(String nom) {
-		 if (this.jeuDAO.deleteJeu(nom)) {
+	public boolean supprimerJeu(int idJeu) {
+		 if (this.jeuDAO.delete(idJeu)) {
 			 return true;
 		 }
 		 else {

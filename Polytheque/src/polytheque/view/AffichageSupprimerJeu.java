@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import polytheque.model.pojos.Jeu;
+
 /**
  * 
  * @author Sanwei Lee, Johan Brunet, Godefroi Roussel
@@ -78,7 +80,9 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez remplir le champs texte !", "Champ vide", JOptionPane.ERROR_MESSAGE);
 			}
 			String nom = new String(this.gameNom.getText());
-			this.tacheDAffichageDeLApplication.supprimerJeu(nom);
+			Jeu jeuCourant = this.tacheDAffichageDeLApplication.getJeu(nom);
+			int idJeu = jeuCourant.getIdJeu();
+			this.tacheDAffichageDeLApplication.supprimerJeu(idJeu);
 			this.tacheDAffichageDeLApplication.afficherMessage("Le jeu a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return;
