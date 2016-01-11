@@ -1,6 +1,7 @@
 package polytheque.view;
 
 import java.util.ArrayList;
+import java.awt.Component;
 import java.sql.Date;
 
 import javax.swing.JFrame;
@@ -161,8 +162,13 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageModificationAdherent(this, this.polythequeApplication.getAdherent(adherent.getPseudo()));//Surement un probleme
 	}
 
-	public AppliReserverJeu afficherEcranReservation() {
+	public AppliReserverJeu afficherEcranReservationJeux() {
 		return new AppliReserverJeu(this);
+	}
+	
+	public AppliReserverExtension afficherEcranReservationExtension()
+	{
+		return new AppliReserverExtension(this);
 	}
 	
 	public AppliAnnulerReservation afficherEcranAnnulationR() {
@@ -237,6 +243,9 @@ public Adherent getAdherentByNothing() {
 	public Jeu getJeu(String nom) {
 		return this.polythequeApplication.getByName(nom);
 }
+	public Extension getExt(String nom) {
+		return this.polythequeApplication.getExtByName(nom);
+}
 	public boolean createReservation(Reservation reservation, int idAdherent, int idJeu, int idJextension,Date date)
 	{
 		if(this.polythequeApplication.createReservation(reservation,idAdherent, idJeu, idJextension,date))
@@ -248,6 +257,14 @@ public Adherent getAdherentByNothing() {
 	public boolean createReservation2(Reservation reservation, int idAdherent, int idJeu, Date date)
 	{
 		if(this.polythequeApplication.createReservation2(reservation,idAdherent, idJeu,date))
+				{return true;}
+		else
+			{return false;}	
+	}
+	
+	public boolean createReservation3(Reservation reservation, int idAdherent, int idExtention, Date date)
+	{
+		if(this.polythequeApplication.createReservation2(reservation,idAdherent, idExtention,date))
 				{return true;}
 		else
 			{return false;}	

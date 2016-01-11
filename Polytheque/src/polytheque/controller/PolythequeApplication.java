@@ -126,6 +126,10 @@ public class PolythequeApplication {
 		return this.jeuDAO.getByName(nom);
 	}
 	
+	public Extension getExtByName(String nom) {
+		return this.extensionDAO.getExtByName(nom);
+	}
+	
 	public void annulerReservation(){
 		Date d = null;
 		Adherent adh=null;
@@ -145,6 +149,14 @@ public class PolythequeApplication {
 	public boolean createReservation2(Reservation reservation,int idAdherent, int idJeu,Date date)
 	{
 		if(this.reservationDAO.create2(reservation, idAdherent, idJeu))
+			{return true;}
+		else
+			{return false;}
+	}
+	
+	public boolean createReservation3(Reservation reservation,int idAdherent, int idExtention,Date date)
+	{
+		if(this.reservationDAO.create3(reservation, idAdherent, idExtention))
 			{return true;}
 		else
 			{return false;}
