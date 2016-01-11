@@ -73,7 +73,8 @@ public class AppliReserverExtension extends JPanel implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			JButton boutonSelectionne = (JButton) e.getSource();
-			if (boutonSelectionne == this.boutonValider && this.dateChooser.getDate() != null && this.searchContent.getText() != null)
+			 Date currentDate = new Date(new java.util.Date().getTime());
+			if (boutonSelectionne == this.boutonValider && this.dateChooser.getDate() != null && this.searchContent.getText() != null && this.dateChooser.getDate().after(currentDate))
 			{
 				int NbExemplaires = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbExemplaires();
 				int NbReserves = this.tacheDAffichageDeLApplication.getExt(this.searchContent.getText()).getNbReserves();
@@ -86,7 +87,7 @@ public class AppliReserverExtension extends JPanel implements ActionListener
 				
 					if(this.tacheDAffichageDeLApplication.createReservation3(reservation,IdAdherent,IdExtention,dateReservationExt))
 						{
-							this.tacheDAffichageDeLApplication.afficherMessage("Reservation d'extention confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
+							this.tacheDAffichageDeLApplication.afficherMessage("Reservation de jeu confirmee"," Confirmation", JOptionPane.INFORMATION_MESSAGE);
 							this.tacheDAffichageDeLApplication.afficherAccueil();
 						}
 					
@@ -94,7 +95,7 @@ public class AppliReserverExtension extends JPanel implements ActionListener
 				
 				else
 				{
-					this.tacheDAffichageDeLApplication.afficherMessage("Cette extention n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Ce jeu n'est plus disponible veuiller en choisir un autre svp!!"," Oups :( ", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 				else
