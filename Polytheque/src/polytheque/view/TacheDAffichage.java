@@ -303,7 +303,7 @@ public Adherent getAdherentByNothing() {
 	}
 	
 	public AffichageModificationJeu afficherModificationJeu(Jeu jeu) {
-		return new AffichageModificationJeu(this, this.polythequeApplication.getJeu(jeu.getNom()));
+		return new AffichageModificationJeu(this, this.polythequeApplication.getByName(jeu.getNom()));
 	}
 	
 	public AffichageCreationJeu afficherCreationJeu(){
