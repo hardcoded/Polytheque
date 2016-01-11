@@ -127,6 +127,23 @@ public class Adherent {
 		this.nbNonRecup = nbNonRecup;
 	}
 	
+	/**
+	 * Constructeur de la classe Adherent, permet de créer un Adhérent à  partir des données existantes
+	 * @param nom
+	 * @param prenom
+	 * @param dateNaissance
+	 * @param adresse
+	 * @param cp
+	 * @param ville
+	 * @param mail
+	 * @param tel
+	 * @param pseudo
+	 * @param mdp
+	 * @param isAdmin
+	 * @param peutEmprunter
+	 * @param estAJour
+	 * @param nbRetards
+	 */
 	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
 			boolean estAJour, int nbRetards){

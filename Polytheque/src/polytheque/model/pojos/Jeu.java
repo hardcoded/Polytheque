@@ -101,6 +101,16 @@ public class Jeu {
 		this.setEditeur(editeur);
 	}
 
+	/**
+	 * Constructeur de la classe Jeu, permet de créer un jeu à  partir des données existantes
+	 * @param nom
+	 * @param annee
+	 * @param statut
+	 * @param nbExemplaires
+	 * @param nbReserves
+	 * @param age
+	 * @param nbJouMin
+	 */
 	public Jeu(String nom, String annee, String statut, int nbExemplaires, int nbReserves, int age, int nbJouMin) {
 		this.setNom(nom);
 		this.setAnneeParution(annee);
@@ -111,6 +121,9 @@ public class Jeu {
 		this.setNbJoueursMin(nbJouMin);
 	}
 
+	/**
+	 * getter et setter
+	 */
 	public String getNom() {
 		return nom;
 	}

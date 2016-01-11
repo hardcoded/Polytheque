@@ -16,6 +16,15 @@ public class Extension {
 	private int nbReserves;
 	private String nomJeu;
 
+	/**
+	 * Constructeur de la classe Extension, permet de créer une Extension à  partir des données existantes
+	 * @param nom
+	 * @param desc
+	 * @param statut
+	 * @param nbExemplaires
+	 * @param nbReserves
+	 * @param nomJeu
+	 */
 	public Extension(String nom, String desc, String statut, int nbExemplaires, int nbReserves, String nomJeu) {
 		this.setNom(nom);
 		this.setDescription(desc);
@@ -25,6 +34,16 @@ public class Extension {
 		this.setNomJeu(nomJeu);
 	}
 
+/**
+ * Constructeur de la classe Extension, permet de créer une Extension à  partir des données existantes
+ * @param id
+ * @param nom
+ * @param desc
+ * @param statut
+ * @param nbExemplaires
+ * @param nbReserves
+ * @param nomJeu
+ */
 	public Extension(int id, String nom, String desc, String statut, int nbExemplaires, int nbReserves, String nomJeu) {
 		this.setIdExtension(id);
 		this.setNom(nom);
@@ -35,6 +54,10 @@ public class Extension {
 		this.setNomJeu(nomJeu);
 	}
 
+	/**
+	 * Tous les getter et setter
+	 */
+	
 	public int getIdExtension() {
 		return idExtension;
 	}

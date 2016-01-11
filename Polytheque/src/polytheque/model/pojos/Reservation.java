@@ -74,36 +74,50 @@ public class Reservation {
 	 * @param extention
 	 * @param date
 	 */
-	
+
 	public Reservation(int idAdherent,int idJeu, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
-	
-		
+
+
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(null);
 		this.setDate(date);
 
 	}
-	
-	
+
+	/**
+	 * Constructeur de la classe Reservation, permet de créer une Réservation à  partir des données existantes
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param idExtention
+	 * @param date
+	 */
 	public Reservation(int idAdherent,int idJeu, int idExtention, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
 		this.extensionDAO = new ExtensionDAO();
-		
+
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(this.extensionDAO.retreive(idExtention));
 		this.setDate(date);
 	}
-	
+
+	/**
+	 *  Constructeur de la classe Reservation, permet de créer une Réservation à  partir des données existantes
+	 * @param idReserv
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param idExtention
+	 * @param date
+	 */
 	public Reservation(int idReserv,int idAdherent,int idJeu, int idExtention, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
 		this.extensionDAO = new ExtensionDAO();
-		
+
 		this.setIdReservation(idReserv);
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(this.jeuDAO.retreive(idJeu));
@@ -135,21 +149,17 @@ public class Reservation {
 	public Reservation(int idExtension, Date date, int idAdherent) {
 		this.adherentDAO = new AdherentDAO();
 		this.extensionDAO = new ExtensionDAO();
-		
+
 		this.setExtension(this.extensionDAO.retreive(idExtension));
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(null);
 		this.setDate(date);
 
 	}
-	
 
-	public Reservation(int int1, String string, String string2, String string3, Date date2) {
-		// TODO Auto-generated constructor stub
-	}
 	/**
-	 * mï¿½thodes
-	 * getter et setter qui permettent de rï¿½cupï¿½rer ou modifier les attributs de cette classe dans d'autres classes
+	 * méthodes
+	 * getter et setter qui permettent de récupérer ou modifier les attributs de cette classe dans d'autres classes
 	 */
 	public Adherent getAdherent() {
 		return adherent;
@@ -193,8 +203,8 @@ public class Reservation {
 		this.date = date;
 	}
 
-	/**mï¿½thodes
-	 * modifDate(date, int); elle ajoute un entier (nb jours) ï¿½ la date donnï¿½e en prenant en compte les mois et l'annï¿½e.
+	/**méthodes
+	 * modifDate(date, int); elle ajoute un entier (nb jours) à la date donnée en prenant en compte les mois et l'année.
 	 * emprunter()
 	 * annuler_reservation()
 	 * */
@@ -245,7 +255,27 @@ public class Reservation {
 		Date date= new Date(annee,mois,jour);
 		return date;
 	}
+	
+	public void annulerReservation(){
+		if (this.extention == null){
+			this.jeu.setStatus("libre");
+			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);}
+		else{
+			if (this.jeu == null){
+				this.extention.setStatut("libre");
+				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
+			else{
+				this.jeu.setStatus("libre");
+				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
+				this.extention.setStatut("libre");
+				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
+		}
+	}
 
+	/**
+	 * Fonction permettant de valider une réservation en faisant les modifications et vérifications nécessaires
+	 * @return
+	 */
 	public Emprunt validerReservation(){
 		Date datefin = modifDate(this.getDate(),21); //appel ï¿½ une fonction qui s'occupe d'ajouter les jours
 		if (this.extention == null){
@@ -267,20 +297,6 @@ public class Reservation {
 	}
 
 
-	public void annulerReservation(){
-		if (this.extention == null){
-			this.jeu.setStatus("libre");
-			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);}
-		else{
-			if (this.jeu == null){
-				this.extention.setStatut("libre");
-				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
-			else{
-				this.jeu.setStatus("libre");
-				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
-				this.extention.setStatut("libre");
-				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
-		}
-	}
+	
 
 }
