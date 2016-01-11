@@ -101,6 +101,16 @@ public class Jeu {
 		this.setEditeur(editeur);
 	}
 
+	public Jeu(String nom, String annee, String statut, int nbExemplaires, int nbReserves, int age, int nbJouMin) {
+		this.setNom(nom);
+		this.setAnneeParution(annee);
+		this.setStatus(statut);
+		this.setAgeMini(age);
+		this.setNbExemplaires(nbExemplaires);
+		this.setNbReserves(nbReserves);
+		this.setNbJoueursMin(nbJouMin);
+	}
+
 	public String getNom() {
 		return nom;
 	}

@@ -54,6 +54,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	private JButton boutonRecherche;
 
 	private JTextField searchContent;
+	private JTextField modifJeu;
 	
 	private JPanel buttonsPanel;
 	private JPanel arrayPanel;
@@ -154,6 +155,10 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonAjouterJeu = new JButton("Ajouter un jeu");
 		this.boutonAjouterJeu.addActionListener(this);
 
+		JLabel labelSearch = new JLabel("Modifier par nom :");
+		this.modifJeu = new JTextField();
+		this.modifJeu.setColumns(10);
+
 		this.boutonModifierJeu = new JButton("Modifier un jeu");
 		this.boutonModifierJeu.addActionListener(this);
 
@@ -161,6 +166,8 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.boutonSupprimerJeu.addActionListener(this);
 		
 		this.buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
+		this.buttonsPanel.add(labelSearch, BorderLayout.SOUTH);
+		this.buttonsPanel.add(this.modifJeu, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonModifierJeu, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonSupprimerJeu, BorderLayout.SOUTH);
 
@@ -172,6 +179,13 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 		this.creerTableau(jeux);
 		this.arrayPanel.updateUI();
 	}
+	
+	public void modifierMainPanel(JPanel panel) {
+		this.arrayPanel.removeAll();
+		this.arrayPanel.add(panel);
+		this.add(this.arrayPanel, BorderLayout.CENTER);
+		this.updateUI();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -179,19 +193,19 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonAjouterJeu)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationJeu());
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonModifierJeu)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationJeu(this.tacheDAffichageDeLApplication.getJeu(this.modifJeu.getText())));
 			return;
 		}
 
 		if (boutonSelectionne == this.boutonSupprimerJeu)
 		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerJeu());
 			return;
 		}
 		

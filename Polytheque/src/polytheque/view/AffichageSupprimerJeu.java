@@ -15,9 +15,9 @@ import javax.swing.JTextField;
  *
  */
 @SuppressWarnings("serial")
-public class AffichageSupprimerAdherent extends JPanel implements ActionListener {
+public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 
-	private JTextField userPseudo;
+	private JTextField gameNom;
 	private JButton boutonValider;
 	
 	/**
@@ -26,12 +26,12 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * CrÃ©ation de la page permettant de supprimer un adhérent (accessible seulement par un admin).
+	 * CrÃ©ation de la page permettant de supprimer un jeu (accessible seulement par un admin).
 	 * 
 	 * @param tacheDAffichageDeLApplication
 	 *            Une tache d'affichage de l'application.
 	 */
-	public AffichageSupprimerAdherent(TacheDAffichage afficheAppli){
+	public AffichageSupprimerJeu(TacheDAffichage afficheAppli){
 		this.setLayout(null);
 
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -42,13 +42,13 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	 * Ajoute une zone de texte écrivable et un bouton pour valider l'information écrit dans la zone de texte 
 	 */
 	private void ajouterChamps() {
-		JLabel labelUserName = new JLabel("Pseudo à supprimer :");
+		JLabel labelUserName = new JLabel("Nom a supprimer :");
 		labelUserName.setBounds(430, 160, 200, 30);
 		this.add(labelUserName);
-		this.userPseudo = new JTextField();
-		this.userPseudo.setBounds(560, 160, 100, 30);
-		this.userPseudo.setColumns(10);
-		this.add(userPseudo);
+		this.gameNom = new JTextField();
+		this.gameNom.setBounds(550, 160, 100, 30);
+		this.gameNom.setColumns(10);
+		this.add(gameNom);
 		
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(670, 160, 100, 30);
@@ -65,21 +65,21 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		
 		if (boutonSelectionne == this.boutonValider)
 		{
-			if (this.userPseudo.getText() != null) {
-				String nom = new String(this.userPseudo.getText());
+			if (this.gameNom.getText() != null) {
+				String nom = new String(this.gameNom.getText());
 				if (this.tacheDAffichageDeLApplication.supprimerAdherent(nom) ==  false) {
-					this.tacheDAffichageDeLApplication.afficherMessage("Problème lors de la suppression de l'adhérent !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Problème lors de la suppression du jeu !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					this.tacheDAffichageDeLApplication.afficherMessage("Adhérent supprimé avec succès !", "Suppression effectuée", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Jeu supprimé avec succès !", "Suppression effectuée", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			else {
 				this.tacheDAffichageDeLApplication.afficherMessage("Veuillez remplir le champs texte !", "Champ vide", JOptionPane.ERROR_MESSAGE);
 			}
-			String nom = new String(this.userPseudo.getText());
-			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);
-			this.tacheDAffichageDeLApplication.afficherMessage("Le compte a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
+			String nom = new String(this.gameNom.getText());
+			this.tacheDAffichageDeLApplication.supprimerJeu(nom);
+			this.tacheDAffichageDeLApplication.afficherMessage("Le jeu a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return;
 	}

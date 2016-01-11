@@ -51,6 +51,47 @@ public class JeuDAO extends DAO {
 			return false;
 		}
 	}
+	
+	/**
+	 * Methode de creation
+	 * @param Jeu
+	 * @return boolean 
+	 */
+	public boolean create(Jeu jeu) {
+		try {
+			super.connect();
+			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
+					+ "JEU(nom, description, annee_parution, statut, nombre_exemplaires, nombre_reserves, "
+					+ "age_mini, nb_joueurs_min, nb_joueurs_max) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
+			// On n'ajoute pas l'ID du jeu car il s'incrémente automatiquement dans la base de données
+			psInsert.setString(1, jeu.getNom());
+			psInsert.setString(2, jeu.getDescription());
+			psInsert.setString(3, jeu.getAnneeParution());
+			psInsert.setString(4, jeu.getStatut());
+			psInsert.setInt(5, jeu.getNbExemplaires());
+			psInsert.setInt(6, jeu.getNbReserves());
+			psInsert.setInt(7, jeu.getAgeMini());
+			psInsert.setInt(8, jeu.getNbJoueursMin());
+			psInsert.setInt(9, jeu.getNbJoueursMax());
+			
+			psInsert.executeUpdate();
+			psInsert.closeOnCompletion();
+
+			ResultSet idResult = psInsert.getGeneratedKeys();
+			if (idResult != null && idResult.next()) {
+				jeu.setIdJeu(idResult.getInt(1));;
+			} else {
+				throw new SQLException();
+			}
+
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	/**
 	 * Methode pour effacer
@@ -62,6 +103,27 @@ public class JeuDAO extends DAO {
 			super.connect();
 			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE id_jeu = ?"); 
 			psDelete.setInt(1, id);
+			psDelete.execute();
+			psDelete.closeOnCompletion();
+
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * Methode pour effacer
+	 * @param Jeu
+	 * @return boolean 
+	 */
+	public boolean deleteJeu(String nom) {
+		try {
+			super.connect();
+			PreparedStatement psDelete = connection.prepareStatement("DELETE * FROM JEU WHERE nom = ?"); 
+			psDelete.setString(2, nom);
 			psDelete.execute();
 			psDelete.closeOnCompletion();
 

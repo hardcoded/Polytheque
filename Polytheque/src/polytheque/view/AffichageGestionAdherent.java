@@ -212,7 +212,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonCreerAdherent)
 		{
-			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationAdherent()); //A VOIR SUR LES AUTRES
+			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationAdherent()); 
 			return;
 		}
 

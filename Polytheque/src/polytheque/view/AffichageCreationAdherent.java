@@ -247,8 +247,11 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 					this.userCP.getText() != null && this.userVille.getText() != null && this.userPseudo.getText() != null && this.password.getPassword() != null) {
 					String password = new String(this.password.getPassword());
 					Date dateNaissance = new Date(this.dateChooser.getDate().getTime());
+					boolean admin = (boolean) this.userIsAdmin.getSelectedItem();
+					boolean peutEmprunter = (boolean) this.userPeutEmprunter.getSelectedItem();
+					boolean AJour = (boolean) this.userEstAJour.getSelectedItem();
 					
-					Adherent adherent = new Adherent(this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, this.userIsAdmin.getAutoscrolls(), this.userEstAJour.getAutoscrolls(),this.userPeutEmprunter.getAutoscrolls(), 0);
+					Adherent adherent = new Adherent(this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, admin, AJour, peutEmprunter, 0);
 					if (this.tacheDAffichageDeLApplication.creerAdherent(adherent) == false) {
 						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la création d'un nouvel adhérent", "Erreur de création", JOptionPane.ERROR_MESSAGE);
 					}
