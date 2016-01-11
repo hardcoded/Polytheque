@@ -84,9 +84,6 @@ public class Reservation {
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(null);
 		this.setDate(date);
-		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setNbExemplaires(this.jeu.getNbExemplaires()-1);
-		this.jeu.setStatus("réserver");
 
 	}
 	
@@ -100,10 +97,6 @@ public class Reservation {
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(this.extensionDAO.retreive(idExtention));
 		this.setDate(date);
-		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("réserver");
-		this.extention.setNbReserves(this.extention.getNbReserves()+1);
-		this.extention.setStatut("réservé");
 	}
 	
 	public Reservation(int idReserv,int idAdherent,int idJeu, int idExtention, Date date) {
@@ -116,10 +109,6 @@ public class Reservation {
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(this.extensionDAO.retreive(idExtention));
 		this.setDate(date);
-		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("réserver");
-		this.extention.setNbReserves(this.extention.getNbReserves()+1);
-		this.extention.setStatut("réservé");
 	}
 	/**
 	 * Constructeur de la classe Reservation
@@ -134,8 +123,6 @@ public class Reservation {
 		this.setAdherent(adherent);
 		this.setJeu(jeu);
 		this.setDate(date);
-		this.jeu.setNbReserves(this.jeu.getNbReserves()+1);
-		this.jeu.setStatus("rï¿½servï¿½");
 	}
 
 	/**
@@ -153,9 +140,6 @@ public class Reservation {
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(null);
 		this.setDate(date);
-		this.extention.setNbReserves(this.extention.getNbReserves()+1);
-		this.extention.setNbExemplaires(this.extention.getNbExemplaires()-1);
-		this.extention.setStatut("réserver");
 
 	}
 	

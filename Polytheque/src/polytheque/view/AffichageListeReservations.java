@@ -20,7 +20,6 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	public final static int LONGUEUR_COLONNE_1 = 50;
 	public final static int LONGUEUR_COLONNE_2 = 150;
 	public final static int LONGUEUR_COLONNE_3 = 150;
-	public final static int LONGUEUR_COLONNE_4 = 50;
 	
 	/**
 	 * Hauteur des lignes.
@@ -45,7 +44,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"id_reservation","Pseudo", "Nom_jeu", "Nom_extention", "Date"};
+	public final static String[] LIBELLES = new String[] {"Pseudo", "Nom jeu", "Nom extention", "Date de r�servation"};
 
 	private JButton boutonAnnulerReservation;
 	private JButton boutonValiderReservation;
@@ -90,7 +89,6 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		tableau.getColumn(LIBELLES[1]).setPreferredWidth(LONGUEUR_COLONNE_1);
 		tableau.getColumn(LIBELLES[2]).setPreferredWidth(LONGUEUR_COLONNE_2);
 		tableau.getColumn(LIBELLES[3]).setPreferredWidth(LONGUEUR_COLONNE_3);
-		tableau.getColumn(LIBELLES[4]).setPreferredWidth(LONGUEUR_COLONNE_4);
 
 		tableau.setRowHeight(HAUTEUR_DES_LIGNES);
 		tableau.getTableHeader().setReorderingAllowed(true);
@@ -115,11 +113,10 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		int index = 0;		
 		for (Reservation reservationCourante : listeReservations)
 		{
-			donnees[index][0] = reservationCourante.getIdReservation();
-			donnees[index][1] = reservationCourante.getAdherent().getPseudo();
-			donnees[index][2] = reservationCourante.getJeu().getNom();
-			donnees[index][3] = reservationCourante.getExtension().getNom();
-			donnees[index][4] = reservationCourante.getDate();
+			donnees[index][0] = reservationCourante.getAdherent().getPseudo();
+			donnees[index][1] = reservationCourante.getJeu().getNom();
+			donnees[index][2] = reservationCourante.getExtension().getNom();
+			donnees[index][3] = reservationCourante.getDate();
 			index++;
 		}		
 		return donnees;
