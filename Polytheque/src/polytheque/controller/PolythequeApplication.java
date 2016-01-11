@@ -131,12 +131,8 @@ public class PolythequeApplication {
 		return this.extensionDAO.getExtByName(nom);
 	}
 	
-	public void annulerReservation(){
-		Date d = null;
-		Adherent adh=null;
-		//adh = this.adherentDAO.retreive(this.adherentDAO.getIdAdherent());
-		Reservation r = this.reservationDAO.retreive(adh,d);
-		this.reservationDAO.delete(r.getIdReservation());
+	public void annulerReservation(Reservation res){
+		this.reservationDAO.delete(res.getIdReservation());
 	}
 	
 	public boolean createReservation(Reservation reservation,int idAdherent, int idJeu, int idJextension,Date date)
@@ -186,6 +182,10 @@ public class PolythequeApplication {
 	
 	public Jeu getJeu(String nom) {
 		return this.jeuDAO.getByName(nom);
+	}
+	
+	public Reservation getById(int id){
+		return this.reservationDAO.getById(id);
 	}
 	
 	public boolean creerJeu(Jeu jeu){

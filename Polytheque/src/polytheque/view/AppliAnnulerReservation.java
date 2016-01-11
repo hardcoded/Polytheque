@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 
 import org.omg.CORBA.Object;
 
+import polytheque.model.pojos.Reservation;
+
 /**
  * Classe permettant à un administrateur d'annuler une réservation grâce à son id
  * 
@@ -84,7 +86,8 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 
 		if (boutonSelectionne == this.boutonValider)
 		{
-			this.tacheDAffichageDeLApplication.deleteReservation();
+			Reservation res =this.tacheDAffichageDeLApplication.getReservation(idReservation.getText());
+			this.tacheDAffichageDeLApplication.deleteReservation(res);
 			this.tacheDAffichageDeLApplication.afficherMessage("message"," titreFenetre", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}	
