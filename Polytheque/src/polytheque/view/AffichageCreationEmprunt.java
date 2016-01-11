@@ -22,6 +22,7 @@ import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Emprunt;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
+import polytheque.model.pojos.Reservation;
 
 /**
  * Classe permettant à l'administrateur de créer un emprunt
@@ -78,27 +79,27 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		//userInfoPanel.add(labelUserName);
 		this.add(labelGameName);
 		this.gameName = new JTextField();
-		this.gameName.setBounds(250, 150, 100, 30);
+		this.gameName.setBounds(300, 150, 100, 30);
 		//userInfoPanel.add(this.userName);
 		//this.add(userInfoPanel,BorderLayout.WEST);
 		this.add(gameName);
 					
 		JLabel labelExtensionName = new JLabel("Nom de l'extension :");
-		labelExtensionName.setBounds(150, 200, 100, 30);
+		labelExtensionName.setBounds(150, 200, 150, 30);
 		//userInfoPanel.add(labelUserFirstName);
 		this.add(labelExtensionName);
 		this.extensionName = new JTextField();
-		this.extensionName.setBounds(280, 200, 100, 30);
+		this.extensionName.setBounds(300, 200, 100, 30);
 		//userInfoPanel.add(this.userFirstName);
 		//this.add(userInfoPanel,BorderLayout.WEST); 
 		//grosPanel.add(userInfoPanel, BorderLayout.WEST);
 		this.add(extensionName);
 		
 		JLabel labelUserPseudo = new JLabel("Pseudo de l'adherent :");
-		labelUserPseudo.setBounds(150, 390, 100, 30);
+		labelUserPseudo.setBounds(150, 250, 150, 30);
 		this.add(labelUserPseudo);
 		this.userPseudo = new JTextField();
-		this.userPseudo.setBounds(300, 390, 100, 30);
+		this.userPseudo.setBounds(300, 250, 100, 30);
 		this.add(this.userPseudo);
 		//this.add(this.userInfoPanel, BorderLayout.WEST);
 	}
@@ -133,12 +134,12 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		{
 			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null) {
 					Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
-					Date dateFin = null;
 					Adherent adherent =null;
 					Jeu jeu = null;
 					Extension extention = null;
-					Emprunt emprunt = new Emprunt(adherent,jeu,extention, dateEmprunt,dateFin);
-					if (this.tacheDAffichageDeLApplication.creerEmprunt(emprunt) == false){
+					Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
+					Date dateFin = reservation.modifDate(dateEmprunt,21);
+					if (this.tacheDAffichageDeLApplication.creerEmprunt(reservation,dateFin) == false){
 						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de l'emprunt", "Erreur de création", JOptionPane.ERROR_MESSAGE);
 					}
 					else {

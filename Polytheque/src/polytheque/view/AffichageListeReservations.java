@@ -120,6 +120,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		}		
 		return donnees;
 	}
+	
 	public void rafraichir(ArrayList<Reservation> reservations) {
 		if (this.arrayPanel != null) {
 			this.arrayPanel.removeAll();
@@ -127,6 +128,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.creerTableau(reservations);
 		this.arrayPanel.updateUI();
 	}
+	
 	public void modifierMainPanel(JPanel panel) {
 		this.arrayPanel.removeAll();
 		this.arrayPanel = panel;

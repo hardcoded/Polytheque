@@ -199,8 +199,8 @@ public class TacheDAffichage extends JFrame {
 		return new AffichageCreationEmprunt(this);
 	}
 	
-	public boolean creerEmprunt(Emprunt emprunt) {
-		if (this.polythequeApplication.creerEmprunt(emprunt)) {
+	public boolean creerEmprunt(Reservation res,Date date) {
+		if (this.polythequeApplication.creerEmprunt(res,date)) {
 			return true;
 		}
 		return false;
