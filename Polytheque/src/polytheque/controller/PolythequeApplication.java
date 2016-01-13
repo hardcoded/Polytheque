@@ -18,11 +18,14 @@ import polytheque.view.TacheDAffichage;
 /**
  * Classe reprÃ©sentant le controller, permettant de faire le lien entre l'affichage et les classes mÃ©tier (DAO, POJOS)
  * 
- * @author Johan Brunet
+ * @author Johan Brunet,Yves-alain Agbodjogbe,Laure MArchal,San wei lee, Godefroi roussel
  *
  */
 public class PolythequeApplication {
 
+	/**
+	 * attributs de la classe
+	 */
 	private AdherentDAO adherentDAO;
 	private JeuDAO jeuDAO;
 	private ReservationDAO reservationDAO;
@@ -259,6 +262,8 @@ public class PolythequeApplication {
 		return this.extensionDAO.getExtByName(nom);
 	}
 
+	// Partie permettant la gestion des rÃ©servations
+	
 	/**
 	 * 
 	 * @param id
@@ -268,8 +273,6 @@ public class PolythequeApplication {
 		return this.reservationDAO.getById(id);
 	}
 
-	// Partie permettant la gestion des rÃ©servations
-
 	/**
 	 * 
 	 * @return un tableau de toute les rï¿½servations
@@ -278,14 +281,31 @@ public class PolythequeApplication {
 		return this.reservationDAO.getAll();
 	}
 
+	/**
+	 * 
+	 * @param nomAdherent
+	 * @return tableau de toutes les reservations d'un adherent
+	 */
 	public ArrayList<Reservation> searchReservations(String nomAdherent) {
 		return this.reservationDAO.searchByPseudo(nomAdherent);
 	}
-
+	
+	/**
+	 * appel à suppression dans la base de données
+	 * @param reservation
+	 */
 	public void annulerReservation(Reservation res) {
 		this.reservationDAO.delete(res.getIdReservation());
 	}
-
+	/**
+	 * creation reservation dans la base de données
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param idJextension
+	 * @param date
+	 * @return
+	 */
 	public boolean createReservation(Reservation reservation,int idAdherent, int idJeu, int idJextension,Date date) {
 		if(this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension)) {
 			return true;
@@ -294,7 +314,14 @@ public class PolythequeApplication {
 			return false;
 		}
 	}
-
+	/**
+	 * creation reservation dans la base de données
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param date
+	 * @return
+	 */
 	public boolean createReservation2(Reservation reservation,int idAdherent, int idJeu,Date date) {
 		if(this.reservationDAO.create2(reservation, idAdherent, idJeu)) {
 			return true;
@@ -303,7 +330,14 @@ public class PolythequeApplication {
 			return false;
 		}
 	}
-
+	/**
+	 * creation reservation dans la base de données
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idExtention
+	 * @param date
+	 * @return
+	 */
 	public boolean createReservation3(Reservation reservation,int idAdherent, int idExtention,Date date) {
 		if(this.reservationDAO.create3(reservation, idAdherent, idExtention)) {
 			return true;
@@ -314,7 +348,11 @@ public class PolythequeApplication {
 	}
 
 	// Partie permettant la gestion des emprunts
-
+	/**
+	 * creation d'un emprunt
+	 * @param emprunt
+	 * @return
+	 */
 	public boolean creerEmprunt(Emprunt emprunt) {
 		Date datedeb=emprunt.getDateDebut();
 		Adherent adh=emprunt.getAdherent();
@@ -330,7 +368,9 @@ public class PolythequeApplication {
 		}
 		return false;
 	}
-
+	/**
+	 * met à jour le compteur de retard d'un adherent si un emprunt est rendu en retard
+	 */
 	public void updateRetard() {
 		this.adherentDAO.updateRetard(this.adherentCourant.getCompteurRetard(),this.adherentCourant.getIdAdherent());
 	}
