@@ -24,8 +24,8 @@ import polytheque.model.pojos.Reservation;
 @SuppressWarnings("serial")
 public class AppliAnnulerReservation extends JPanel implements ActionListener {
 
-	private JTextField idReservation;
-	private JButton boutonValider;
+	private JTextField idReservation; //champ pour écrire l'idReservation
+	private JButton boutonValider; //bouton
 	
 	/**
 	 * Une tache d'affichage de l'application.
@@ -45,6 +45,10 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		ajouterChamps();
 	}
 
+	/**
+	 * méthode qui permet d'ajouter les champs à la fenetre d'affichage
+	 * exemples : titre, questions pour l'utilisateur, boutons
+	 */
 	public void ajouterChamps() {
 		JPanel titrePanel = new JPanel();
 		JPanel champsPanel = new JPanel();
@@ -73,12 +77,19 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		this.add(boutonValider, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * remise à jour de la fenetre
+	 * @param object
+	 */
 	public void rafraichir(Object object) {
 		this.removeAll();
 		this.add(null,object);
 		this.updateUI(); 
 	}
 	
+	/**
+	 * traitement des évènements (click sur valider)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
