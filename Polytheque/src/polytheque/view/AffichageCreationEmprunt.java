@@ -20,7 +20,7 @@ import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
 /**
- * Classe permettant à l'administrateur de créer un emprunt
+ * Classe permettant ï¿½ l'administrateur de crï¿½er un emprunt
  * @author laure
  *
  */
@@ -28,7 +28,7 @@ import polytheque.model.pojos.Reservation;
 @SuppressWarnings("serial")
 public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	/**
-	 * champs utiles pour que l'utilisateur écrive
+	 * champs utiles pour que l'utilisateur ï¿½crive
 	 */
 	private JTextField gameName;
 	private JTextField extensionName;
@@ -43,11 +43,9 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	/**
-	 * Creation de la page d'accueil.
-	 * 
-	 * @param tacheDAffichageDeLApplication
-	 *            Une tache d'affichage de l'application.
-	 * @return 
+	 * CrÃ©ation de la page de crÃ©ation d'emprunt.
+	 * @param afficheAppli
+	 * 		La vue de l'application.
 	 */
 	public AffichageCreationEmprunt(TacheDAffichage afficheAppli) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -59,7 +57,7 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	}
 	
 	/**
-	 * méthode qui ajoutes les champs de l'affichage (titre,boutons..)
+	 * mï¿½thode qui ajoutes les champs de l'affichage (titre,boutons..)
 	 */
 	public void ajouterChamps() {		
 		
@@ -105,7 +103,7 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	}
 	
 	/**
-	 * ajoute les boutons à la fenetre
+	 * ajoute les boutons ï¿½ la fenetre
 	 */
 	public void ajouterBoutons(){
 		this.boutonValider = new JButton("Valider");
@@ -115,29 +113,29 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	}
 	
 	/**
-	 * traitement des évènements (click sur bouton)
+	 * traitement des ï¿½vï¿½nements (click sur bouton)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 
 		if (boutonSelectionne == this.boutonValider)
-		{	//on vérifie que les champs importants sont remplis
+		{	//on vï¿½rifie que les champs importants sont remplis
 			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null)
 			{
-				// on récupère les paramètres pour créer notre emprunt
+				// on rï¿½cupï¿½re les paramï¿½tres pour crï¿½er notre emprunt
 				Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
 				Adherent adherent = this.tacheDAffichageDeLApplication.getAdherent(userPseudo.getText());
 				Jeu jeu = this.tacheDAffichageDeLApplication.getJeu(gameName.getText());
 				Extension extention = this.tacheDAffichageDeLApplication.getExt(extensionName.getText());
 				Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
 				Emprunt emprunt = reservation.validerReservation();
-				//affichage des messages à l'utilisateur
+				//affichage des messages ï¿½ l'utilisateur
 				if (this.tacheDAffichageDeLApplication.creerEmprunt(emprunt)){
-					this.tacheDAffichageDeLApplication.afficherMessage("Un emprunt a été effectué !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Un emprunt a ï¿½tï¿½ effectuï¿½ !", "Crï¿½ation terminï¿½e", JOptionPane.INFORMATION_MESSAGE);
 				}
 				else {
-					this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de l'emprunt", "Erreur de création", JOptionPane.ERROR_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de l'emprunt", "Erreur de crï¿½ation", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}

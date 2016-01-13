@@ -27,7 +27,7 @@ public class EcranConnexion extends JPanel implements ActionListener {
 	/**
 	 * CrÃ©ation de la page d'accueil.
 	 * 
-	 * @param tacheDAffichageDeLApplication
+	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
 	public EcranConnexion(TacheDAffichage afficheAppli){
@@ -42,7 +42,7 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		JPanel champsPanel = new JPanel();
 		JPanel boutonPanel = new JPanel();
 
-		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaît !");
+		JLabel titrePrincipal = new JLabel("Veuillez vous identifier s'il vous plaï¿½t !");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		titrePrincipal.setBounds(450, 20, 260, 30);
 		titrePanel.add(titrePrincipal);		

@@ -64,10 +64,10 @@ public class AdherentDAO extends DAO {
 
 	/**
 	 * Methode pour effacer
-	 * @param nom
-	 * @return boolean 
+	 * @param pseudo
+	 * 		Le pseudo de l'adhérent à supprimer.
+	 * @return true si la suppression a été effectuée, false sinon.
 	 */
-	
 	public boolean deleteAdherent(String pseudo) {
 		try {
 			super.connect();
@@ -85,9 +85,10 @@ public class AdherentDAO extends DAO {
 	}
 
 	/**
-	 * Methode de mise a jour
-	 * @param obj
-	 * @return boolean
+	 * Methode de mise a jour.
+	 * @param adherent
+	 * 		L'adhérent à mettre à jour
+	 * @return true si la modification a été effectuée,false sinon.
 	 */
 	public boolean update(Adherent adherent) {
 		try {
@@ -123,30 +124,38 @@ public class AdherentDAO extends DAO {
 			return false;
 		}
 	}
-	
 
-	 public boolean updateRetard(int CompteurRetard,int id) {
-	        try {
-	        super.connect();
-	        PreparedStatement psUpdate = connection.prepareStatement("UPDATE ADHERENT "
-	        + "SET nb_retards = ? "
-	        + "WHERE id_adherent = ?"); 
-	        psUpdate.setInt(1, CompteurRetard);
-	        psUpdate.setInt(2, id);
-	        psUpdate.executeUpdate();
-	        psUpdate.closeOnCompletion();
-
-	        super.disconnect();
-	        return true;
-	        } catch (SQLException e) {
-	        e.printStackTrace();
-	        return false;
-	        }
-	        } 
-	 
 	/**
-	 * Methode de recherche des informations
+	 * Mise à jour du nombre de retards de l'adhérent;
+	 * @param compteurRetard
+	 * 		Le nombre de retards à enregistrer.
 	 * @param id
+	 * 		L'ID de l'adhérent à qui ajouter les retards.
+	 * @return
+	 */
+	public boolean updateRetard(int compteurRetard, int id) {
+		try {
+			super.connect();
+			PreparedStatement psUpdate = connection.prepareStatement("UPDATE ADHERENT "
+					+ "SET nb_retards = ? "
+					+ "WHERE id_adherent = ?"); 
+			psUpdate.setInt(1, compteurRetard);
+			psUpdate.setInt(2, id);
+			psUpdate.executeUpdate();
+			psUpdate.closeOnCompletion();
+
+			super.disconnect();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	} 
+
+	/**
+	 * Methode de recherche des informations.
+	 * @param id
+	 *		L'ID de l'adhérent à retrouver.
 	 * @return adherent
 	 */
 	public Adherent retreive(int id) {
@@ -172,6 +181,12 @@ public class AdherentDAO extends DAO {
 		return adherent;
 	}
 
+	/**
+	 * Retrouver un adhérent grâce à son pseudo.
+	 * @param pseudo
+	 * 		Le pseudo de l'adhérent à retrouver.
+	 * @return L'adhérent récupéré.
+	 */
 	public Adherent getByPseudo(String pseudo) {
 		Adherent adherent = null;
 		try {
@@ -281,8 +296,8 @@ public class AdherentDAO extends DAO {
 	 * Obtient la colonne définissant si un adhérent est ou non un
 	 * administrateur
 	 * 
-	 * @param memberID
-	 *            L'identifiant d'un adhérent existant
+	 * @param pseudo
+	 * 		Le pseudo de 'adhérent dont on veut connaitre les droits admin.
 	 * @return La valeur de la colonne définissant si l'adhérent est administrateur
 	 */
 	public boolean isAdmin(String pseudo) {

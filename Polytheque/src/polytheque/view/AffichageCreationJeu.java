@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import polytheque.model.pojos.Jeu;
 
 /**
- * Classe permettant de créer un nouveau jeu.
+ * Classe permettant de crï¿½er un nouveau jeu.
  * 
  * @author Godefroi Roussel
  *
@@ -39,11 +39,10 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 		private TacheDAffichage tacheDAffichageDeLApplication;
 
 		/**
-		 * Creation de la page permettant de créer un nouveau jeu.
+		 * Creation de la page permettant de crï¿½er un nouveau jeu.
 		 * 
-		 * @param tacheDAffichageDeLApplication
+		 * @param afficheAppli
 		 *            Une tache d'affichage de l'application.
-		 * @return 
 		 */
 		public AffichageCreationJeu(TacheDAffichage afficheAppli) {
 			this.tacheDAffichageDeLApplication = afficheAppli;
@@ -54,11 +53,11 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 		}
 		
 		/**
-		 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
-		 * les zones de textes seulement lisible ainsi que le bouton déroulant.
+		 * Ajoute et place tous les champs sur la page. C'est-ï¿½-dire les zones de textes ï¿½crivables (avec directement les informations de l'utilisateur), 
+		 * les zones de textes seulement lisible ainsi que le bouton dï¿½roulant.
 		 */
 		public void ajouterChamps() {		
-			JLabel titrePrincipal = new JLabel("Création d'un Jeu");
+			JLabel titrePrincipal = new JLabel("Crï¿½ation d'un Jeu");
 			titrePrincipal.setBounds(480, 20, 260, 30);
 			this.add(titrePrincipal);
 			
@@ -70,7 +69,7 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 			this.add(gameNom);
 
 			
-			JLabel labelGameAnnee = new JLabel("Année :");
+			JLabel labelGameAnnee = new JLabel("Annï¿½e :");
 			labelGameAnnee.setBounds(150, 190, 100, 30);
 			this.add(labelGameAnnee);
 			this.gameAnnee = new JTextField();
@@ -129,7 +128,7 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 
 		@Override
 		/**
-		 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+		 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est dï¿½roulï¿½ comme prï¿½vu.
 		 */
 		public void actionPerformed(ActionEvent event) {
 			JButton boutonSelectionne = (JButton) event.getSource();
@@ -151,10 +150,10 @@ public class AffichageCreationJeu extends JPanel implements ActionListener {
 					}
 					Jeu jeu = new Jeu(this.gameNom.getText(), this.gameAnnee.getText(), statut, nbExemplaire, 0, age, nbJouMin);
 					if (this.tacheDAffichageDeLApplication.creerJeu(jeu) == false) {
-						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la création d'un nouveau jeu", "Erreur de création", JOptionPane.ERROR_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la crï¿½ation d'un nouveau jeu", "Erreur de crï¿½ation", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						this.tacheDAffichageDeLApplication.afficherMessage("Un nouveau jeu a été créé !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Un nouveau jeu a ï¿½tï¿½ crï¿½ï¿½ !", "Crï¿½ation terminï¿½e", JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
 				}

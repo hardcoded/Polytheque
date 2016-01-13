@@ -22,17 +22,17 @@ public class Emprunt {
 	private boolean retardCompte;
 
 	/**
-	 * Constructeur de la classe Emprunt
-	 * Pour un jeu uniquement
+	 * Constructeur de la classe Emprunt.
+	 * Pour un jeu uniquement.
 	 * 
 	 * @param adherent
-	 * 				l'adhérent qui emprunte
-	 * @param extention
-	 * 				l'extention à emprunter
+	 * 		L'adhérent qui emprunte.
 	 * @param dateDebut
-	 * 				la date du début de l'emprunt
+	 * 		La date du début de l'emprunt.
 	 * @param dateFin
-	 * 				la date de fin de l'emprunt
+	 * 		La date de fin de l'emprunt.
+	 * @param dateRendu
+	 * 		La date à laquelle le jeu doit être rendu.
 	 */	
 	public Emprunt(Adherent adherent,Jeu jeu, Date dateDebut, Date dateFin, Date dateRendu) {
 		this.setAdherent(adherent);
@@ -183,7 +183,6 @@ public class Emprunt {
 
 	/**
 	 * 
-	 * @param emprunt
 	 * @return true si la date de fin de l'emprunt est inferieur � la date du jour, false sinon
 	 */
 	public boolean estEnRetard(){
@@ -199,7 +198,6 @@ public class Emprunt {
 
 	/**
 	 * 
-	 * @param emprunt
 	 * @return vrai si l'emprunt est en retard, faux sinon
 	 */
 	public boolean dejaEnRetard(){
@@ -207,8 +205,6 @@ public class Emprunt {
 	}
 
 	/**
-	 * 
-	 * @param e
 	 * Permet de dire qu'un emprunt est ramen� et donc de remettre les valeurs de l'emprunt � leurs �tats initiaux
 	 */
 	public void annulerEmprunt(){

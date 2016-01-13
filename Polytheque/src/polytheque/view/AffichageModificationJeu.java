@@ -45,9 +45,10 @@ public class AffichageModificationJeu extends JPanel implements ActionListener {
 	/**
 	 * Creation de la page permettant de modifier les informations d'un jeu en particulier.
 	 * 
-	 * @param tacheDAffichageDeLApplication
-	 *            Une tache d'affichage de l'application.
-	 * @return 
+	 * @param afficheAppli
+	 *      Une tache d'affichage de l'application.
+	 * @param jeu
+	 * 		Le jeu Ã  modifier.
 	 */
 	public AffichageModificationJeu(TacheDAffichage afficheAppli, Jeu jeu) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -58,12 +59,12 @@ public class AffichageModificationJeu extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
-	 * les zones de textes seulement lisible ainsi que les boutons déroulants.
+	 * Ajoute et place tous les champs sur la page. C'est-ï¿½-dire les zones de textes ï¿½crivables (avec directement les informations de l'utilisateur), 
+	 * les zones de textes seulement lisible ainsi que les boutons dï¿½roulants.
 	 */
 	public void ajouterChamps() {
 		
-		JLabel titrePrincipal = new JLabel("Modification de l'adhérent");
+		JLabel titrePrincipal = new JLabel("Modification de l'adhï¿½rent");
 		titrePrincipal.setBounds(480, 20, 260, 30);
 		this.add(titrePrincipal);
 		
@@ -81,7 +82,7 @@ public class AffichageModificationJeu extends JPanel implements ActionListener {
 		this.gameDescription.setBounds(240, 200, 100, 30);
 		this.add(gameDescription);
 		
-		JLabel labelGameAnnee = new JLabel("Année :");
+		JLabel labelGameAnnee = new JLabel("Annï¿½e :");
 		labelGameAnnee.setBounds(150, 240, 100, 30);
 		this.add(labelGameAnnee);
 		this.gameAnnee = new JTextField(this.jeuCourant.getAnneeParution());
@@ -102,7 +103,7 @@ public class AffichageModificationJeu extends JPanel implements ActionListener {
 		this.gameNBEx.setBounds(280, 300, 30, 30);
 		this.add(this.gameNBEx);
 		
-		JLabel labelGameReserve = new JLabel("Nombre emprunté:");
+		JLabel labelGameReserve = new JLabel("Nombre empruntï¿½:");
 		labelGameReserve.setBounds(150, 330, 200, 30);
 		this.add(labelGameReserve);
 		this.gameNBRes = new JTextField(this.jeuCourant.getNbReserves());
@@ -171,7 +172,7 @@ public class AffichageModificationJeu extends JPanel implements ActionListener {
 	
 	@Override
 	/**
-	 * Permet de rendre les boutons fonctionnels et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu. 
+	 * Permet de rendre les boutons fonctionnels et affiche des messages en fonction de si il y a des erreurs ou si tout s'est dï¿½roulï¿½ comme prï¿½vu. 
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -199,7 +200,7 @@ public class AffichageModificationJeu extends JPanel implements ActionListener {
 						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la modification du jeu", "Erreur de modification", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien été prises en compte !", "Modifications terminées", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ï¿½tï¿½ prises en compte !", "Modifications terminï¿½es", JOptionPane.INFORMATION_MESSAGE);
 					}
 					return;
 			}

@@ -43,8 +43,8 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * Création d'une tache d'affichage de l'application.
 	 * 
-	 * @param suiviDuJardin
-	 *            Une application de suivi du jardin.
+	 * @param polytechApplication
+	 *            Une application de de gestion de Ludothèque.
 	 */
 	public TacheDAffichage(PolythequeApplication polytechApplication) {
 		this.polythequeApplication = polytechApplication;
@@ -52,8 +52,7 @@ public class TacheDAffichage extends JFrame {
 
 	/**
 	 * Démarrer l'affichage de l'application.
-	 */
-	
+	 */	
 	public void run()
 	{
 		initialiserFenetre();
@@ -91,19 +90,30 @@ public class TacheDAffichage extends JFrame {
 		this.repaint();
 	}
 
+	/**
+	 * Afficher l'écran de connexion.
+	 */
 	public void afficherEcranConnexion() {
 		this.viderFenetre();
 		this.add(new EcranConnexion(this));
 		this.rafraichirFenetre();
 	}
 
-	
+	/**
+	 * Afficher la page d'accueil.
+	 */
 	public void afficherAccueil() {
 		this.viderFenetre();
 		this.getContentPane().add(new HomePage(this));
 		this.rafraichirFenetre();
 	}
 
+	/**
+	 * Vérifier que la demande de connexion est valide.
+	 * @param userName
+	 * @param password
+	 * @return true si la connexion est autorisée, false sinon.
+	 */
 	public boolean testerValiditeConnexion(String userName, String password) {
 		if (this.polythequeApplication.checkConnexion(userName, password)) {
 			return true;
@@ -113,6 +123,10 @@ public class TacheDAffichage extends JFrame {
 		}
 	}
 
+	/**
+	 * Vérifier si l'adhérent qui s'est connecté est un administrateur.
+	 * @return true si l'adhérent est admin, false sinon.
+	 */
 	public boolean adherentAdmin() {
 		if (this.polythequeApplication.checkAdmin()) {
 			return true;
@@ -194,8 +208,8 @@ public class TacheDAffichage extends JFrame {
 		return this.polythequeApplication.getAdherent(pseudo);
 	}
 	
-	public SeDeconnecter afficherDeconnexion() {
-		return new SeDeconnecter(this);
+	public Deconnexion afficherDeconnexion() {
+		return new Deconnexion(this);
 	}
 	
 	public AffichageCreationAdherent afficherCreationAdherent(){

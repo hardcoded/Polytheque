@@ -16,9 +16,11 @@ import polytheque.model.pojos.Jeu;
 public class JeuDAO extends DAO {
 
 	/**
-	 * Methode de creation
-	 * @param Jeu
-	 * @return boolean 
+	 * Méthode de création.
+	 * @param jeu
+	 * @param idCategorie
+	 * @param idEditeur
+	 * @return true si la création aeu lieu, false sinon.
 	 */
 	public boolean create(Jeu jeu, int idCategorie, int idEditeur) {
 		try {
@@ -60,7 +62,7 @@ public class JeuDAO extends DAO {
 	
 	/**
 	 * Methode de creation
-	 * @param Jeu
+	 * @param jeu
 	 * @return boolean 
 	 */
 	public boolean create(Jeu jeu) {
@@ -101,7 +103,7 @@ public class JeuDAO extends DAO {
 
 	/**
 	 * Methode pour effacer
-	 * @param Jeu
+	 * @param id
 	 * @return boolean 
 	 */
 	public boolean delete(int id) {
@@ -121,9 +123,11 @@ public class JeuDAO extends DAO {
 	}
 
 	/**
-	 * Methode de mise a jour
-	 * @param obj
-	 * @return boolean
+	 * Méthode de mise à jour
+	 * @param jeu
+	 * @param idCategorie
+	 * @param idEditeur
+	 * @return
 	 */
 	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {
 		try {
@@ -220,7 +224,7 @@ public class JeuDAO extends DAO {
 
 	/**
 	 * Methode de recherche de jeu(x)
-	 * @param nomJeu
+	 * @param nom
 	 * 			Le nom du jeu à récupérer dans la BDD
 	 * @return Un jeu
 	 */

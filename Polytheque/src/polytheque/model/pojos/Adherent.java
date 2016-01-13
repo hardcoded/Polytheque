@@ -77,34 +77,39 @@ public class Adherent {
 	}
 
 	/**
-	 * Constructeur de la classe Adherent, permet de créer un Adhérent à partir des données existantes
-	 * 
+	 * Constructeur de la classe Adherent, permet de créer un Adhérent à partir des données existantes.
+	 * @param id
+	 * 		L'ID de l'adhérent.
 	 * @param nom
-	 * 			nom de l'adhérent
+	 * 		Le nom de l'adhérent.
 	 * @param prenom
-	 * 			prénom de l'adhérent
-	 * @param age
-	 * 			age de l'adhérent
+	 * 		Le prénom de l'adhérent.
+	 * @param dateNaissance
+	 * 		La date de naissance de l'adhérent.
 	 * @param rue
-	 * 			rue de l'adhérent
+	 * 		La rue de l'adhérent.
 	 * @param cp
-	 * 			code postal de l'adhérent
+	 * 		Le code postal de l'adhérent.
 	 * @param ville
-	 * 			ville de l'adhérent
+	 * 		La ville de l'adhérent.
 	 * @param mail
-	 * 			adresse mail de l'adhérent
+	 * 		L'adresse mail de l'adhérent.
 	 * @param tel
-	 * 			numéro de téléphone de l'adhérent
+	 * 		Le numéro de téléphone de l'adhérent.
 	 * @param pseudo
-	 * 			pseudo de l'adhérent
+	 * 		Le pseudo de l'adhérent.
 	 * @param mdp
-	 * 			mot de passe de l'adhérent
+	 * 		Le mot de passe de l'adhérent.
+	 * @param isAdmin
+	 * 		L'adhérent possède ou non les droits d'administrateurs.
 	 * @param estAJour
-	 * 			l'adhérent est à jour ou non dans le paiement de ses droits
+	 * 		L'adhérent est à jour ou non dans le paiement de ses droits.
 	 * @param peutEmprunter
-	 * 			l'adhérent a le droit d'emprunter un jeu ou une extension
+	 * 		L'adhérent a le droit d'emprunter un jeu ou une extension.
 	 * @param nbRetards
-	 * 			nombre de retards comptabilisés par l'adhérent
+	 * 		Le nombre de retards comptabilisés par l'adhérent.
+	 * @param nbNonRecup
+	 * 		Le nombre de réservations non récupérées.
 	 */	
 	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
@@ -128,21 +133,35 @@ public class Adherent {
 	}
 	
 	/**
-	 * Constructeur de la classe Adherent, permet de cr�er un Adh�rent � partir des donn�es existantes
+	 * Constructeur de la classe Adherent, permet de cr�er un Adh�rent � partir des donn�es existantes
 	 * @param nom
+	 * 		Le nom de l'adhérent.
 	 * @param prenom
+	 * 		Le prénom de l'adhérent.
 	 * @param dateNaissance
-	 * @param adresse
+	 * 		La date de naissance de l'adhérent.
+	 * @param rue
+	 * 		La rue de l'adhérent.
 	 * @param cp
+	 * 		Le code postal de l'adhérent.
 	 * @param ville
+	 * 		La ville de l'adhérent.
 	 * @param mail
+	 * 		L'adresse mail de l'adhérent.
 	 * @param tel
+	 * 		Le numéro de téléphone de l'adhérent.
 	 * @param pseudo
+	 * 		Le pseudo de l'adhérent.
 	 * @param mdp
+	 * 		Le mot de passe de l'adhérent.
 	 * @param isAdmin
-	 * @param peutEmprunter
+	 * 		L'adhérent possède ou non les droits d'administrateurs.
 	 * @param estAJour
+	 * 		L'adhérent est à jour ou non dans le paiement de ses droits.
+	 * @param peutEmprunter
+	 * 		L'adhérent a le droit d'emprunter un jeu ou une extension.
 	 * @param nbRetards
+	 * 		Le nombre de retards comptabilisés par l'adhérent.
 	 */
 	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 

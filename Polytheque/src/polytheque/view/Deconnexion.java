@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  */
 @SuppressWarnings("serial")
-public class SeDeconnecter extends JPanel implements ActionListener {
+public class Deconnexion extends JPanel implements ActionListener {
 	
 	private JPanel buttonsPanel;
 	private JButton boutonDeconnexion;
@@ -27,13 +27,12 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	/**
-	 * Creation de la page pour se déconnecter.
+	 * Creation de la page pour se dï¿½connecter.
 	 * 
-	 * @param tacheDAffichageDeLApplication
+	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
-	 * @return 
 	 */
-	public SeDeconnecter(TacheDAffichage afficheAppli){
+	public Deconnexion(TacheDAffichage afficheAppli){
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		this.setLayout(new BorderLayout());
 
@@ -46,7 +45,7 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 	public void ajouterBoutons(){
 		this.buttonsPanel = new JPanel();
 
-		this.boutonDeconnexion = new JButton("Déconnexion");
+		this.boutonDeconnexion = new JButton("Dï¿½connexion");
 		this.boutonDeconnexion.addActionListener(this);
 		this.buttonsPanel.add(this.boutonDeconnexion);
 
@@ -55,8 +54,8 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 	
 	@Override
 	/**
-	 * Permet de rendre le bouton fonctionnel. D'abord on invalide les différentes informations de l'utilisateur puis on affiche le message
-	 * disant que l'utilisateur a bien été déconnecté pour enfin le ramener à l'écran de connexion.
+	 * Permet de rendre le bouton fonctionnel. D'abord on invalide les diffï¿½rentes informations de l'utilisateur puis on affiche le message
+	 * disant que l'utilisateur a bien ï¿½tï¿½ dï¿½connectï¿½ pour enfin le ramener ï¿½ l'ï¿½cran de connexion.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -64,7 +63,7 @@ public class SeDeconnecter extends JPanel implements ActionListener {
 		if (boutonSelectionne == this.boutonDeconnexion)
 		{
 			invalidate();
-			this.tacheDAffichageDeLApplication.afficherMessage("Vous avez été déconnecté avec succès !", "Déconnexion effectuée", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherMessage("Vous avez ï¿½tï¿½ dï¿½connectï¿½ avec succï¿½s !", "Dï¿½connexion effectuï¿½e", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherEcranConnexion();
 			return;
 		}

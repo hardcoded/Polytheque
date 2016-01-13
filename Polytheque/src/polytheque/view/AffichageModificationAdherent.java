@@ -49,11 +49,12 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	private TacheDAffichage tacheDAffichageDeLApplication;
 	
 	/**
-	 * Creation de la page permettant de modifier les informations d'un adhérent en particulier.
+	 * Creation de la page permettant de modifier les informations d'un adhï¿½rent en particulier.
 	 * 
-	 * @param tacheDAffichageDeLApplication
-	 *            Une tache d'affichage de l'application.
-	 * @return 
+	 * @param afficheAppli
+	 *      Une tache d'affichage de l'application.
+	 * @param adherent
+	 * 		L'adhÃ©rent Ã  modifier.
 	 */
 	public AffichageModificationAdherent(TacheDAffichage afficheAppli, Adherent adherent) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -65,62 +66,71 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	}
 	
 	/**
-	 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
-	 * les zones de textes seulement lisible ainsi que les boutons déroulants.
+	 * Ajoute et place tous les champs sur la page. C'est-ï¿½-dire les zones de textes ï¿½crivables (avec directement les informations de l'utilisateur), 
+	 * les zones de textes seulement lisible ainsi que les boutons dï¿½roulants.
 	 */
 	public void ajouterChamps() {
 		
-		JLabel titrePrincipal = new JLabel("Modification de l'adhérent");
+		JLabel titrePrincipal = new JLabel("Modification de l'adhï¿½rent");
 		titrePrincipal.setBounds(480, 20, 260, 30);
 		this.add(titrePrincipal);
+		
 		JLabel labelUserName = new JLabel("Nom :");
 		labelUserName.setBounds(150, 150, 100, 30);
 		this.add(labelUserName);
 		this.userName = new JTextField(this.adherentCourant.getNom());
 		this.userName.setBounds(200, 150, 100, 30);
 		this.add(userName);
+		
 		JLabel labelUserFirstName = new JLabel("Prenom :");
 		labelUserFirstName.setBounds(150, 200, 100, 30);
 		this.add(labelUserFirstName);
 		this.userFirstName = new JTextField(this.adherentCourant.getPrenom());
 		this.userFirstName.setBounds(210, 200, 100, 30);
 		this.add(userFirstName);
+		
 		JLabel labelUserRue = new JLabel("Rue :");
 		labelUserRue.setBounds(150, 240, 100, 30);
 		this.add(labelUserRue);
 		this.userRue = new JTextField(this.adherentCourant.getRue());
 		this.userRue.setBounds(200, 240, 130, 30);
 		this.add(this.userRue);
+		
 		JLabel labelUserCP = new JLabel("Code Postal:");
 		labelUserCP.setBounds(150, 270, 100, 30);
 		this.add(labelUserCP);
 		this.userCP = new JTextField(this.adherentCourant.getCP());
 		this.userCP.setBounds(240, 270, 100, 30);
 		this.add(this.userCP);
+		
 		JLabel labelUserVille = new JLabel("Ville :");
 		labelUserVille.setBounds(150, 300, 100, 30);
 		this.add(labelUserVille);
 		this.userVille = new JTextField(this.adherentCourant.getVille());
 		this.userVille.setBounds(200, 300, 100, 30);
 		this.add(this.userVille);
+		
 		JLabel labelUserMail = new JLabel("Mail :");
 		labelUserMail.setBounds(150, 330, 100, 30);
 		this.add(labelUserMail);
 		this.userMail = new JTextField(this.adherentCourant.getMail());
 		this.userMail.setBounds(200, 330, 100, 30);
 		this.add(this.userMail);
+		
 		JLabel labelUserTelephone = new JLabel("Telephone :");
 		labelUserTelephone.setBounds(150, 360, 100, 30);
 		this.add(labelUserTelephone);
 		this.userPhone = new JTextField(this.adherentCourant.getTelephone());
 		this.userPhone.setBounds(220, 360, 100, 30);
 		this.add(this.userPhone);
+		
 		JLabel labelUserPseudo = new JLabel("Pseudo :");
 		labelUserPseudo.setBounds(150, 390, 100, 30);
 		this.add(labelUserPseudo);
 		this.userPseudo = new JTextField(this.adherentCourant.getPseudo());
 		this.userPseudo.setBounds(210, 390, 100, 30);
 		this.add(this.userPseudo);
+		
 		JLabel labelpassword = new JLabel("Mot de passe :");
 		labelpassword.setBounds(150, 420, 100, 30);
 		this.add(labelpassword);
@@ -139,7 +149,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.add(this.userCptRetard);
 		
 		String pasRecup =  Integer.toString(this.adherentCourant.getNbNonRecup());
-		JLabel labelUserPasRecup = new JLabel("Compteur non récupéré :");
+		JLabel labelUserPasRecup = new JLabel("Compteur non rï¿½cupï¿½rï¿½ :");
 		labelUserPasRecup.setBounds(150, 500, 150, 30);
 		this.add(labelUserPasRecup);
 		this.userCptNonRecup = new JTextField(pasRecup);
@@ -163,6 +173,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.userIsAdmin.setPreferredSize(new Dimension(100, 20));
 		this.userIsAdmin.setBounds(600, 350, 100, 30);
 		this.add(this.userIsAdmin);
+		
 		JLabel labelUserPeutEmprunter = new JLabel("Peut Emprunter :");
 		labelUserPeutEmprunter.setBounds(600, 100, 100, 30);
 		this.add(labelUserPeutEmprunter);
@@ -179,6 +190,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 		this.userPeutEmprunter.setPreferredSize(new Dimension(100, 20));
 		this.userPeutEmprunter.setBounds(600, 150, 100, 30);
 		this.add(this.userPeutEmprunter);
+		
 		JLabel labelUserEstAJour = new JLabel("Est a jour :");
 		labelUserEstAJour.setBounds(600, 200, 100, 30);
 		this.add(labelUserEstAJour);
@@ -208,7 +220,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 	}
 	
 	/**
-	 * Créer le bouton permettant de choisir la date de naissance de l'utilisateur.
+	 * Crï¿½er le bouton permettant de choisir la date de naissance de l'utilisateur.
 	 */
 	private void creerPanneauDate() {
 		JLabel labelUserBirthday = new JLabel("Date de naissance :");
@@ -221,7 +233,7 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 
 	@Override
 	/**
-	 * Permet de rendre les boutons fonctionnels et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu. 
+	 * Permet de rendre les boutons fonctionnels et affiche des messages en fonction de si il y a des erreurs ou si tout s'est dï¿½roulï¿½ comme prï¿½vu. 
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -238,10 +250,10 @@ public class AffichageModificationAdherent extends JPanel implements ActionListe
 					boolean AJour = (boolean) this.userEstAJour.getSelectedItem();
 					Adherent adherent = new Adherent(this.adherentCourant.getIdAdherent(), this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password,(boolean) admin, AJour, peutEmprunter, cptRetard, 0);
 					if (this.tacheDAffichageDeLApplication.modifAdherent(adherent) == false) {
-						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la modification de l'adhérent", "Erreur de modification", JOptionPane.ERROR_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la modification de l'adhï¿½rent", "Erreur de modification", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien été prises en compte !", "Modifications terminées", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Vos modifications ont bien ï¿½tï¿½ prises en compte !", "Modifications terminï¿½es", JOptionPane.INFORMATION_MESSAGE);
 					}
 					return;
 			}

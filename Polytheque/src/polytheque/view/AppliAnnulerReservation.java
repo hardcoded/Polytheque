@@ -16,7 +16,7 @@ import org.omg.CORBA.Object;
 import polytheque.model.pojos.Reservation;
 
 /**
- * Classe permettant à un administrateur d'annuler une réservation grâce à son id
+ * Classe permettant ï¿½ un administrateur d'annuler une rï¿½servation grï¿½ce ï¿½ son id
  * 
  * @author Laure
  *
@@ -24,7 +24,7 @@ import polytheque.model.pojos.Reservation;
 @SuppressWarnings("serial")
 public class AppliAnnulerReservation extends JPanel implements ActionListener {
 
-	private JTextField idReservation; //champ pour écrire l'idReservation
+	private JTextField idReservation; //champ pour ï¿½crire l'idReservation
 	private JButton boutonValider; //bouton
 	
 	/**
@@ -35,7 +35,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 	/**
 	 * CrÃ©ation de la page d'accueil.
 	 * 
-	 * @param tacheDAffichageDeLApplication
+	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
 	public AppliAnnulerReservation(TacheDAffichage afficheAppli){
@@ -46,7 +46,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * méthode qui permet d'ajouter les champs à la fenetre d'affichage
+	 * mï¿½thode qui permet d'ajouter les champs ï¿½ la fenetre d'affichage
 	 * exemples : titre, questions pour l'utilisateur, boutons
 	 */
 	public void ajouterChamps() {
@@ -54,7 +54,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		JPanel champsPanel = new JPanel();
 		JPanel boutonPanel = new JPanel();
 
-		JLabel titrePrincipal = new JLabel("Veuillez entrer l'id de la réservation que vous souhaitez annuler :");
+		JLabel titrePrincipal = new JLabel("Veuillez entrer l'id de la rï¿½servation que vous souhaitez annuler :");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		//titrePrincipal.setBounds(450, 20, 260, 30);
 		titrePanel.add(titrePrincipal);		
@@ -78,7 +78,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * remise à jour de la fenetre
+	 * remise ï¿½ jour de la fenetre
 	 * @param object
 	 */
 	public void rafraichir(Object object) {
@@ -88,7 +88,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * traitement des évènements (click sur valider)
+	 * traitement des ï¿½vï¿½nements (click sur valider)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -98,7 +98,7 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		{
 			Reservation res =this.tacheDAffichageDeLApplication.getReservation(idReservation.getText());
 			this.tacheDAffichageDeLApplication.deleteReservation(res);
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas encore implémententée"," Pas dispo ", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalitï¿½ pas encore implï¿½mententï¿½e"," Pas dispo ", JOptionPane.INFORMATION_MESSAGE);
 			this.tacheDAffichageDeLApplication.afficherAccueil();
 		}	
 	}

@@ -21,32 +21,32 @@ public class Jeu {
 	 * Construire un nouveau jeu dont on connait l'identifiant
 	 * 
 	 * @param id
-	 * 		L'identifiant du jeu
+	 * 		L'identifiant du jeu.
 	 * @param nom
-	 * 		Le nom du jeu
+	 * 		Le nom du jeu.
 	 * @param description
-	 * 		La description du jeu
+	 * 		La description du jeu.
 	 * @param anneeParution
-	 * 		L'année de parution du jeu
+	 * 		L'année de parution du jeu.
 	 * @param statut
-	 * 		Le statut du jeu
+	 * 		Le statut du jeu.
 	 * @param nbExemplaires
-	 * 		Le nombre d'exemplaires total du jeu
+	 * 		Le nombre d'exemplaires total du jeu.
 	 * @param nbReserves
-	 * 		Le nombre d'exemplaires réservés
-	 * @param nbEmpruntes
-	 * 		Le nombre d'exemplaires emprunt�s
+	 * 		Le nombre d'exemplaires réservés.
 	 * @param ageMini
-	 * 		L'age minimal auquel on peut jouer au jeu
-	 * @param nbJoueurs
-	 * 		Le nombre de joueurs requis (au minimum)
+	 * 		L'age minimal auquel on peut jouer au jeu.
+	 * @param nbJoueursMin
+	 * 		Le nombre de joueurs minimum requis.
+	 * @param nbJoueursMax
+	 * 		Le nombre de joueurs maximum.
 	 * @param categorie
-	 * 		La catégorie du jeu
+	 * 		La catégorie du jeu.
 	 * @param editeur
-	 * 		L'éditeur du jeu
+	 * 		L'éditeur du jeu.
 	 */
 	public Jeu(int id, String nom, String description, String anneeParution, String statut, int nbExemplaires, 
-			int nbEmpruntes,int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
+			int nbReserves,int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
 		this.setIdJeu(id);
 		this.setNom(nom);
 		this.setDescription(description);
@@ -64,27 +64,29 @@ public class Jeu {
 	 * Construire un nouveau jeu dont on ne connait pas l'identifiant
 	 * 
 	 * @param nom
-	 * 		Le nom du jeu
+	 * 		Le nom du jeu.
 	 * @param description
-	 * 		La description du jeu
+	 * 		La description du jeu.
 	 * @param anneeParution
-	 * 		L'année de parution du jeu
+	 * 		L'année de parution du jeu.
 	 * @param statut
-	 * 		Le statut du jeu
+	 * 		Le statut du jeu.
 	 * @param nbExemplaires
-	 * 		Le nombre d'exemplaires total du jeu
+	 * 		Le nombre d'exemplaires total du jeu.
 	 * @param nbReserves
-	 * 		Le nombre d'exemplaires réservés
+	 * 		Le nombre d'exemplaires réservés.
 	 * @param nbEmpruntes
-	 * 		Le nombre d'exemplaires emprunt�s
+	 * 		Le nombre d'exemplaires emprunt�s.
 	 * @param ageMini
-	 * 		L'age minimal auquel on peut jouer au jeu
-	 * @param nbJoueurs
-	 * 		Le nombre de joueurs requis (au minimum)
+	 * 		L'age minimal auquel on peut jouer au jeu.
+	 * @param nbJoueursMin
+	 * 		Le nombre de joueurs minimum requis.
+	 * @param nbJoueursMax
+	 * 		Le nombre de joueurs maximum.
 	 * @param categorie
-	 * 		La catégorie du jeu
+	 * 		La catégorie du jeu.
 	 * @param editeur
-	 * 		L'éditeur du jeu
+	 * 		L'éditeur du jeu.
 	 */
 	public Jeu(String nom, String description, String anneeParution, String statut, int nbExemplaires, int nbReserves, 
 			int ageMini, int nbJoueursMin, int nbJoueursMax, String categorie, String editeur) {
@@ -102,7 +104,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Constructeur de la classe Jeu, permet de cr�er un jeu � partir des donn�es existantes
+	 * Constructeur de la classe Jeu, permet de cr�er un jeu � partir des donn�es existantes
 	 * @param nom
 	 * @param annee
 	 * @param statut

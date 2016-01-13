@@ -331,7 +331,7 @@ public class PolythequeApplication {
 	
 	/**
 	 * Supprimer une réservation de la BDD.
-	 * @param reservation
+	 * @param res
 	 */
 	public void annulerReservation(Reservation res) {
 		this.reservationDAO.delete(res.getIdReservation());

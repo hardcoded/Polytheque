@@ -19,7 +19,7 @@ public class HomePage extends JTabbedPane {
 	/**
 	 * CrÃ©ation de la page d'accueil.
 	 * 
-	 * @param tacheDAffichageDeLApplication
+	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
 	public HomePage(TacheDAffichage afficheAppli){
@@ -27,14 +27,14 @@ public class HomePage extends JTabbedPane {
 		
 		this.addTab("Jeux", this.tacheDAffichageDeLApplication.afficherListeJeux());
 		this.addTab("Extensions", this.tacheDAffichageDeLApplication.afficherListeExtensions());
-		this.addTab("Réserver Jeu", this.tacheDAffichageDeLApplication.afficherEcranReservationJeux());
-		this.addTab("Réserver Extension", this.tacheDAffichageDeLApplication.afficherEcranReservationExtension());
+		this.addTab("Rï¿½server Jeu", this.tacheDAffichageDeLApplication.afficherEcranReservationJeux());
+		this.addTab("Rï¿½server Extension", this.tacheDAffichageDeLApplication.afficherEcranReservationExtension());
 		this.addTab("Profil", this.tacheDAffichageDeLApplication.afficherMonCompte());
 		if (this.tacheDAffichageDeLApplication.adherentAdmin()) {
 			this.addTab("Emprunt", this.tacheDAffichageDeLApplication.afficherCreationEmprunt());
-			this.addTab("Adhérents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
-			this.addTab("Réservations", this.tacheDAffichageDeLApplication.afficherListeReservations());
+			this.addTab("Adhï¿½rents", this.tacheDAffichageDeLApplication.afficherGestionAdherent());
+			this.addTab("Rï¿½servations", this.tacheDAffichageDeLApplication.afficherListeReservations());
 		}
-		this.addTab("Déconnexion", this.tacheDAffichageDeLApplication.afficherDeconnexion());
+		this.addTab("Dï¿½connexion", this.tacheDAffichageDeLApplication.afficherDeconnexion());
 	}
 }

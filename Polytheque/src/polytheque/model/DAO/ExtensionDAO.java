@@ -17,9 +17,10 @@ import polytheque.model.pojos.Jeu;
 public class ExtensionDAO extends DAO {
 
 	/**
-	 * Methode de creation
-	 * @param Jeu
-	 * @return boolean 
+	 * Méthode de création
+	 * @param extension
+	 * @param idJeu
+	 * @return
 	 */
 	public boolean create(Extension extension, int idJeu) {
 		try {
@@ -55,7 +56,7 @@ public class ExtensionDAO extends DAO {
 
 	/**
 	 * Methode pour effacer
-	 * @param Jeu
+	 * @param id
 	 * @return boolean 
 	 */
 	public boolean delete(int id) {
@@ -75,9 +76,11 @@ public class ExtensionDAO extends DAO {
 	}
 
 	/**
-	 * Methode de mise a jour
-	 * @param obj
-	 * @return boolean
+	 * Méthode de mise à jour.
+	 * @param jeu
+	 * @param idCategorie
+	 * @param idEditeur
+	 * @return
 	 */
 	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {
 		try {

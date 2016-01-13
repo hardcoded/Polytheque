@@ -50,9 +50,9 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	/**
 	 * Les libellÃ©s des entÃªtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Prénom", "Date de naissance", "Rue", 
-			"Code postal", "Ville", "Mail", "Téléphone", "Pseudo", 
-			"Sur liste noire", "Est à  jour", "Nombre de retards"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Prï¿½nom", "Date de naissance", "Rue", 
+			"Code postal", "Ville", "Mail", "Tï¿½lï¿½phone", "Pseudo", 
+			"Sur liste noire", "Est ï¿½ jour", "Nombre de retards"};
 
 	private JTextField searchContent;
 	private JTextField modifContent;	
@@ -75,9 +75,10 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	/**
 	 * Creation de la page d'accueil.
 	 * 
-	 * @param tacheDAffichageDeLApplication
-	 *            Une tache d'affichage de l'application.
-	 * @return 
+	 * @param afficheAppli
+	 *      Une tache d'affichage de l'application.
+	 * @param listeAdherents
+	 * 		La liste des adhÃ©rents Ã  afficher.      
 	 */
 	public AffichageGestionAdherent(TacheDAffichage afficheAppli, ArrayList<Adherent> listeAdherents){
 		this.tacheDAffichageDeLApplication = afficheAppli;
@@ -207,7 +208,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	
 	@Override
 	/**
-	 * Permet de rendre les boutons fonctionnels et de créer de nouvelles pages.
+	 * Permet de rendre les boutons fonctionnels et de crï¿½er de nouvelles pages.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
