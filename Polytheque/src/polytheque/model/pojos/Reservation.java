@@ -78,8 +78,7 @@ public class Reservation {
 	public Reservation(int idAdherent,int idJeu, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
-
-
+		
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(null);
@@ -216,37 +215,37 @@ public class Reservation {
 		int mois = d.getMonth();
 		@SuppressWarnings("deprecation")
 		int annee = d.getYear();
-		if (mois==1 || mois==3 || mois==5 || mois==7 || mois==8 || mois==10 || mois==12){
-			if (jour+nbjours >31 && mois==12){
+		if (mois==1 || mois==3 || mois==5 || mois==7 || mois==8 || mois==10 || mois==12){ //cas des mois de 31 jours
+			if (jour+nbjours >31 && mois==12){ // cas de fin d'année et de changement de mois
 				jour=(jour+nbjours)%31;
 				mois=1;
 				annee=annee+1;}
 			else{
-				if (jour+nbjours >31){
+				if (jour+nbjours >31){ // cas de changement de mois
 					jour=(jour+nbjours)%31;
 					mois=mois+1;
 				}
-				else{
+				else{ // cas ou seul le jour change
 					jour=jour+nbjours;
 				}
 			}
 		}
-		else{
-			if (mois==2){
-				if (jour+nbjours >28){
+		else{ //cas des mois de 30 jours
+			if (mois==2){ // cas du mois de fevrier
+				if (jour+nbjours >28){ // cas de changement de mois
 					jour=(jour+nbjours)%28;
 					mois=mois+1;
 				}
-				else{
+				else{ // cas simple, seul le jour change
 					jour=jour+nbjours;
 				}	
 			}
-			else{
-				if (jour+nbjours >30){
+			else{//cas des autres mois de 30 jours
+				if (jour+nbjours >30){ // cas de changement de mois
 					jour=(jour+nbjours)%30;
 					mois=mois+1;
 				}
-				else{
+				else{ // cas simple, seul le jour change
 					jour=jour+nbjours;
 				}
 			}	
@@ -257,14 +256,14 @@ public class Reservation {
 	}
 	
 	public void annulerReservation(){
-		if (this.extention == null){
-			this.jeu.setStatus("libre");
-			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);}
+		if (this.extention == null){ // cas ou la reservation ne concerne qu'un jeu
+			this.jeu.setStatus("libre"); //on change son statut
+			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);} // on soustrait 1 au nombre de réservation d'exemplaires du jeu
 		else{
-			if (this.jeu == null){
+			if (this.jeu == null){ // cas ou la reservation ne concerne qu'une extension
 				this.extention.setStatut("libre");
 				this.extention.setNbReserves(this.extention.getNbReserves()-1);}
-			else{
+			else{ // cas ou la reservation concerne un jeu et une extension
 				this.jeu.setStatus("libre");
 				this.jeu.setNbReserves(this.jeu.getNbReserves()-1);
 				this.extention.setStatut("libre");
@@ -277,17 +276,17 @@ public class Reservation {
 	 * @return
 	 */
 	public Emprunt validerReservation(){
-		Date datefin = modifDate(this.getDate(),21); //appel ï¿½ une fonction qui s'occupe d'ajouter les jours
-		if (this.extention == null){
+		Date datefin = modifDate(this.getDate(),21); //appel à une fonction qui s'occupe d'ajouter les jours
+		if (this.extention == null){ // cas d'un seul jeu emprunté
 			this.jeu.setStatus("empruntï¿½");
 			if (this.jeu.getNbReserves()==this.jeu.getNbExemplaires()){
 				this.jeu.setDisponibilite(false);}
 			return new Emprunt(this.adherent,this.jeu,this.date,datefin,null);}
 		else{
-			if (this.jeu == null){
+			if (this.jeu == null){ // cas d'une extension empruntée
 				this.extention.setStatut("empruntï¿½");
 				return new Emprunt(this.adherent,this.extention,this.date,datefin,null);}
-			else{
+			else{ // cas d'un jeu et d'une extension empruntés
 				this.jeu.setStatus("empruntï¿½");
 				this.extention.setStatut("empruntï¿½");
 				if (this.jeu.getNbReserves()==this.jeu.getNbExemplaires()){
