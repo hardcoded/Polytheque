@@ -8,7 +8,10 @@ import java.sql.Date;
  * @author Laure Marchal
  */
 public class Emprunt {
-
+	
+	/**
+	 * attributs de la classe
+	 */
 	private int idEmprunt;
 	private Adherent adherent;
 	private Jeu jeu;
@@ -83,11 +86,24 @@ public class Emprunt {
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
 	}
-
+	 
+	/**
+	 * constructeur d'un emprunt avec son id
+	 * @param id
+	 * @param dateDebut
+	 * @param dateFin
+	 * @param dateRendu
+	 * @param idAdherent
+	 */
 	public Emprunt(int id, Date dateDebut, Date dateFin, Date dateRendu, int idAdherent) {
 		this.setIdEmprunt(id);
 	}
 
+	/**
+	 * getter et setter de chaque attribut de la classe
+	 * getter => recuperation , setter => modification
+	 * @return
+	 */
 	public Adherent getAdherent() {
 		return this.adherent;
 	}
@@ -134,6 +150,25 @@ public class Emprunt {
 
 	public void setRetard(boolean retard) {
 		this.retardCompte = retard;
+	}
+
+	public Date getDateRendu() {
+		return dateRendu;
+	}
+
+
+	public void setDateRendu(Date dateRendu) {
+		this.dateRendu = dateRendu;
+	}
+
+
+	public int getIdEmprunt() {
+		return idEmprunt;
+	}
+
+
+	public void setIdEmprunt(int id_emprunt) {
+		this.idEmprunt = id_emprunt;
 	}
 
 	/**
@@ -195,25 +230,5 @@ public class Emprunt {
 				this.extention.setStatut("libre");}
 		}
 		ajoutRetard();
-	}
-
-
-	public Date getDateRendu() {
-		return dateRendu;
-	}
-
-
-	public void setDateRendu(Date dateRendu) {
-		this.dateRendu = dateRendu;
-	}
-
-
-	public int getIdEmprunt() {
-		return idEmprunt;
-	}
-
-
-	public void setIdEmprunt(int id_emprunt) {
-		this.idEmprunt = id_emprunt;
 	}
 }
