@@ -6,7 +6,7 @@ import javax.swing.JTabbedPane;
  * Classe permettant d'afficher la page d'accueil de l'application pour un administrateur.
  * Vient après l'écran de connexion.
  * 
- * @author Johan Brunet
+ * @author Johan Brunet,Godefroi Roussel,Yves-Alain Agbodjogbe,Laure Marchal,San wei lee
  */
 @SuppressWarnings("serial")
 public class HomePage extends JTabbedPane {
