@@ -4,6 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Classe permettant de manipuler des objets de type CategorieJeu dans la BDD.
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class CategorieJeuDAO extends DAO {
 
 	public String retreiveCategorie(int idCategorie) {

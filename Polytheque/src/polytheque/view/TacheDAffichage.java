@@ -24,7 +24,7 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * Le titre de l'application.
 	 */
-	public final static String TITRE = "Polythèque";
+	public final static String TITRE = "Polythï¿½que";
 
 	/**
 	 * La largeur.
@@ -252,7 +252,7 @@ public class TacheDAffichage extends JFrame {
 	
 public Adherent getAdherentByNothing() {
 		
-		return this.polythequeApplication.getAdherentByNothing();
+		return this.polythequeApplication.getCurrentAdherent();
 	}
 	
 	public Jeu getJeu(String nom) {

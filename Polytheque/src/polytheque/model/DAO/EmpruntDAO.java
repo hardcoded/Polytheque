@@ -12,8 +12,9 @@ import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
 /**
+ * Classe permettant de manipuler des objets de type Emprunt dans la BDD.
  * 
- * @author San wei lee
+ * @author Johan Brunet, San Wei Lee
  *
  */
 public class EmpruntDAO extends DAO 
@@ -61,7 +62,7 @@ public class EmpruntDAO extends DAO
 	}
 
 	/**
-	 * suppression de la reservation par son id dans la base de données
+	 * suppression de la reservation par son id dans la base de donnï¿½es
 	 * @param id
 	 * @return
 	 */
@@ -120,7 +121,7 @@ public class EmpruntDAO extends DAO
 	}
 
 	/**
-	 * resupere un emprunt avec son id à partir de la base de données
+	 * resupere un emprunt avec son id ï¿½ partir de la base de donnï¿½es
 	 * @param idEmprunt
 	 * @return
 	 */

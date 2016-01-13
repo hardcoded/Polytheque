@@ -4,6 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Classe permettant de manipuler des objets de type EditeurJeu dans la BDD.
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class EditeurJeuDAO extends DAO {
 
 	public String retreiveEditeur(int idEditeur) {

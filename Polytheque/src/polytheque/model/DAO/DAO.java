@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Classe abstraite permettant de gérer la connexion à la base de données (BDD)
+ * Classe abstraite permettant de gérer la connexion à la base de données (BDD).
  * 
  * @author Johan Brunet
  */

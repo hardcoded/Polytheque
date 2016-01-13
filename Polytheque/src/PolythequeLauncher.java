@@ -2,12 +2,16 @@ import polytheque.controller.PolythequeApplication;
 import polytheque.view.TacheDAffichage;
 
 /**
- * Classe permettant l'Èxecution du programme
+ * Classe permettant de lancer l'application
  * @author Johan Brunet
  *
  */
 public class PolythequeLauncher {
 
+	/**
+	 * Cr√©ation du controller et de la view
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		PolythequeApplication polythequeApplication = new PolythequeApplication();
 		TacheDAffichage tacheDAffichageDeLApplication = new TacheDAffichage(polythequeApplication);

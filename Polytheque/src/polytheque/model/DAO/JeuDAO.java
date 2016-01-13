@@ -7,6 +7,12 @@ import java.util.ArrayList;
 
 import polytheque.model.pojos.Jeu;
 
+/**
+ * Classe permettant de manipuler des objets de type Jeu dans la BDD.
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class JeuDAO extends DAO {
 
 	/**

@@ -8,10 +8,16 @@ import java.util.ArrayList;
 
 import polytheque.model.pojos.Adherent;
 
+/**
+ * Classe permettant de manipuler des objets de type Adherent dans la BDD.
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class AdherentDAO extends DAO {
 
 	/**
-	 * Methode de creation
+	 * Méthode de création d'un nouvel adhérent.
 	 * @param adherent
 	 * @return boolean 
 	 */

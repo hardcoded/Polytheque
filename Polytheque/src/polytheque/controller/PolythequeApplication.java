@@ -18,13 +18,13 @@ import polytheque.view.TacheDAffichage;
 /**
  * Classe représentant le controller, permettant de faire le lien entre l'affichage et les classes métier (DAO, POJOS)
  * 
- * @author Johan Brunet,Yves-alain Agbodjogbe,Laure MArchal,San wei lee, Godefroi roussel
+ * @author Johan Brunet, Yves-alain Agbodjogbe, Laure Marchal, San Wei Lee, Godefroi roussel
  *
  */
 public class PolythequeApplication {
 
 	/**
-	 * attributs de la classe
+	 * DAOs permettant l'interraction avec la base de données.
 	 */
 	private AdherentDAO adherentDAO;
 	private JeuDAO jeuDAO;
@@ -32,8 +32,14 @@ public class PolythequeApplication {
 	private ExtensionDAO extensionDAO;
 	private EmpruntDAO empruntDAO;
 
+	/**
+	 * Gestion de la vue de l'application.
+	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
+	/**
+	 * L'adhérent connecté à l'application.
+	 */
 	private Adherent adherentCourant;
 	private Jeu jeuCourant;
 
@@ -123,10 +129,11 @@ public class PolythequeApplication {
 	}
 
 	/**
-	 * 
+	 * Méthode pour la modification des informations d'un adhérent, charge les nouvelles données 
+	 * concernant l'adhérent après modification.
 	 * @param adherent
-	 * @return un bool�en disant si l'enregistrement des modifications des informations de l'adh�rent a �t� effectu�.
-	 * Et l'adh�rent courant prend la valeur de l'adh�rent apr�s modification. False sinon.
+	 * 		L'adhérent à modifier
+	 * @return true si les modifications ont été enregistrées, false sinon.
 	 */
 	public boolean enregistrerModifsAdherent(Adherent adherent) {
 		if (this.adherentDAO.update(adherent)) {
@@ -138,24 +145,29 @@ public class PolythequeApplication {
 		}
 	}
 
-	public Adherent getAdherentByNothing() {
-
+	/**
+	 * Obtenir les informations concernant l'adhérent connecté à l'application grâce à son ID.
+	 * @return L'adhérent correspondant à l'ID.
+	 */
+	public Adherent getCurrentAdherent() {
 		return this.adherentCourant = this.adherentDAO.retreive(this.adherentCourant.getIdAdherent());
 	}
 
 	/**
-	 * 
+	 * Obtenir un adhérent par son pseudo (qui est unique).
 	 * @param pseudo
-	 * @return un adh�rent en fonction de son pseudo (qui est unique afin qu'il n'y ait pas de confusion lors de la r�cup�ration de l'adh�rent).
+	 * 		Le pseudo de l'adhérent à rechercher.
+	 * @return L'adhérent correspondant au pseudo.
 	 */
 	public Adherent getAdherent(String pseudo) {
 		return this.adherentDAO.getByPseudo(pseudo);
 	}
 
 	/**
-	 * 
+	 * Créer un nouvel adhérent dans la base de données.
 	 * @param adherent
-	 * @return true si l'adh�rent a �t� cr��. False sinon.
+	 * 		Le nouvel adhérent à créer.
+	 * @return true si l'adhérent a bien été créé, false sinon.
 	 */
 	public boolean creerAdherent(Adherent adherent){
 		if (this.adherentDAO.create(adherent)) {
@@ -167,9 +179,10 @@ public class PolythequeApplication {
 	}
 
 	/**
-	 * 
-	 * @param nom
-	 * @return true si l'adh�rent a bien �t� supprim�. False sinon.
+	 * Supprimer un adhérent par son pseudo (unique).
+	 * @param pseudo
+	 * 		Le pseudo de l'adhérent à supprimer de la BDD.
+	 * @return true si l'adhérent a bien été supprimé, false sinon.
 	 */
 	public boolean supprimerAdherent(String pseudo) {
 		if (this.adherentDAO.deleteAdherent(pseudo)) {
@@ -182,28 +195,39 @@ public class PolythequeApplication {
 
 	// Partie permettant la gestion des jeux
 
+	/**
+	 * Obtenir la liste de tous les jeux enregistrés dans la BDD.
+	 * @return La liste des jeux.
+	 */
 	public ArrayList<Jeu> getGamesList() {
 		return this.jeuDAO.getAll();
 	}
 
+	/**
+	 * Obtenir une liste de jeux par leur nom ou une partie de leur nom.
+	 * @param nomJeu
+	 * 		Le nom ou partie de nom du jeu.
+	 * @return Une liste de jeux.
+	 */
 	public ArrayList<Jeu> searchGames(String nomJeu) {
 		return this.jeuDAO.searchByName(nomJeu);
 	}
 
 	/**
-	 * 
+	 * Obtenir un jeu par son nom exact.
 	 * @param nom
-	 * @return un jeu. On retrouve le jeu on utilise son nom.
+	 * 		Le nom du jeu à rechercher.
+	 * @return Le jeu correspondant au nom.
 	 */
 	public Jeu getByName(String nom) {
 		return this.jeuDAO.getByName(nom);
 	}
 
 	/**
-	 * 
+	 * Modifier un jeu dans la BDD.
 	 * @param jeu
-	 * @return un bool�en disant si l'enregistrement des modifications des informations du jeu a �t� effectu�.
-	 * Et le jeu courant prend la valeur du jeu apr�s modification. False sinon.
+	 * 		Le jeu à modifier.
+	 * @return true si les modifications ont été enregistrées, false sinon.
 	 */
 	public boolean enregistrerModifsJeu(Jeu jeu) {
 		if (this.jeuDAO.update(jeu, 0, 0)) { 
@@ -216,9 +240,10 @@ public class PolythequeApplication {
 	}
 
 	/**
-	 * 
+	 * Créer une nouvelle entrée de jeu dans la base de données.
 	 * @param jeu
-	 * @return un bool�an disant si le jeu a bien �t� cr��. False sinon.
+	 * 		Le jeu à créer.
+	 * @return true si le jeu a bien été créé, false sinon.
 	 */
 	public boolean creerJeu(Jeu jeu){
 		if (this.jeuDAO.create(jeu)) {
@@ -230,9 +255,10 @@ public class PolythequeApplication {
 	}
 
 	/**
-	 * 
+	 * Supprimer un jeu de la BDD par son ID.
 	 * @param idJeu
-	 * @return un bool�an disant si le jeu a bien �t� supprim�. False sinon.
+	 * 		L'ID du jeu à supprimer.
+	 * @return true si le jeu a bien été supprimé, false sinon.
 	 */
 	public boolean supprimerJeu(int idJeu) {
 		if (this.jeuDAO.delete(idJeu)) {
@@ -245,18 +271,29 @@ public class PolythequeApplication {
 
 	// Partie permettant la gestion des extensions
 
+	/**
+	 * Obtenir la liste de toutes les extensions enregistrés dans la BDD.
+	 * @return La liste des extensions.
+	 */
 	public ArrayList<Extension> getExtensionsList() {
 		return this.extensionDAO.getAll();
 	}
 
+	/**
+	 * Obtenir une liste des extensions par leur nom ou une partie de leur nom.
+	 * @param nomExtension
+	 * 		Le nom ou partie de nom d'extensions.
+	 * @return Une liste d'extensions.
+	 */
 	public ArrayList<Extension> searchExtensions(String nomExtension) {
 		return this.extensionDAO.searchByName(nomExtension);
 	}
 
 	/**
-	 * 
+	 * Obtenir une extension par son nom exact.
 	 * @param nom
-	 * @return une extension. Pour retrouver l'extension on utilise son nom.
+	 * 		Le nom de l'extension à retrouver.
+	 * @return L'extension correspondant au nom.
 	 */
 	public Extension getExtByName(String nom) {
 		return this.extensionDAO.getExtByName(nom);
@@ -265,40 +302,42 @@ public class PolythequeApplication {
 	// Partie permettant la gestion des réservations
 	
 	/**
-	 * 
+	 * Obtenir une réservation par son ID.
 	 * @param id
-	 * @return une r�servation. Pour retrouver l'extension on utilise son id.
+	 * 		L'ID de la réservation à récupérer.
+	 * @return La réservation correspondant à l'ID.
 	 */
 	public Reservation getById(int id) {
 		return this.reservationDAO.getById(id);
 	}
 
 	/**
-	 * 
-	 * @return un tableau de toute les r�servations
+	 * Obtenir la liste de toutes les réservations.
+	 * @return La liste des réservations.
 	 */
 	public ArrayList<Reservation> getReservationList() {
 		return this.reservationDAO.getAll();
 	}
 
 	/**
-	 * 
+	 * Obtenir les réservations concernant un adhérent.
 	 * @param nomAdherent
-	 * @return tableau de toutes les reservations d'un adherent
+	 * 		Le pseudo de l'adhérent dont on recherche les réservations.
+	 * @return La liste des réservations effectuées par l'adhérent.
 	 */
 	public ArrayList<Reservation> searchReservations(String nomAdherent) {
 		return this.reservationDAO.searchByPseudo(nomAdherent);
 	}
 	
 	/**
-	 * appel � suppression dans la base de donn�es
+	 * Supprimer une réservation de la BDD.
 	 * @param reservation
 	 */
 	public void annulerReservation(Reservation res) {
 		this.reservationDAO.delete(res.getIdReservation());
 	}
 	/**
-	 * creation reservation dans la base de donn�es
+	 * creation reservation dans la base de donn�es
 	 * @param reservation
 	 * @param idAdherent
 	 * @param idJeu
@@ -315,7 +354,7 @@ public class PolythequeApplication {
 		}
 	}
 	/**
-	 * creation reservation dans la base de donn�es
+	 * creation reservation dans la base de donn�es
 	 * @param reservation
 	 * @param idAdherent
 	 * @param idJeu
@@ -331,7 +370,7 @@ public class PolythequeApplication {
 		}
 	}
 	/**
-	 * creation reservation dans la base de donn�es
+	 * creation reservation dans la base de donn�es
 	 * @param reservation
 	 * @param idAdherent
 	 * @param idExtention
@@ -369,7 +408,7 @@ public class PolythequeApplication {
 		return false;
 	}
 	/**
-	 * met � jour le compteur de retard d'un adherent si un emprunt est rendu en retard
+	 * met � jour le compteur de retard d'un adherent si un emprunt est rendu en retard
 	 */
 	public void updateRetard() {
 		this.adherentDAO.updateRetard(this.adherentCourant.getCompteurRetard(),this.adherentCourant.getIdAdherent());

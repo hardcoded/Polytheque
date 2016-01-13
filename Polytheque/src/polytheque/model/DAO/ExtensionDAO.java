@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 
+/**
+ * Classe permettant de manipuler des objets de type Extension dans la BDD.
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class ExtensionDAO extends DAO {
 
 	/**

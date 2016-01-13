@@ -11,10 +11,16 @@ import com.mysql.jdbc.Statement;
 import polytheque.model.pojos.Adherent;
 import polytheque.model.pojos.Reservation;
 
+/**
+ * Classe permettant de manipuler des objets de type Reservation dans la BDD.
+ * 
+ * @author Johan Brunet
+ *
+ */
 public class ReservationDAO extends DAO {
 
 	/**
-	 * méthode permettant de créer une réservation dans la base de données
+	 * mï¿½thode permettant de crï¿½er une rï¿½servation dans la base de donnï¿½es
 	 * @param reservation
 	 * @param idAdherent
 	 * @param idJeu
@@ -86,7 +92,7 @@ public class ReservationDAO extends DAO {
 		}
 	}
 	/**
-	 * Créeation de reservation sans jeu
+	 * Crï¿½eation de reservation sans jeu
 	 * @param reservation
 	 * @param idAdherent
 	 * @param idExtention
@@ -121,7 +127,7 @@ public class ReservationDAO extends DAO {
 	}
 	
 	/**
-	 * suppression d'une réservation dans la base de données par son id
+	 * suppression d'une rï¿½servation dans la base de donnï¿½es par son id
 	 * @param id
 	 * @return
 	 */
@@ -177,7 +183,7 @@ public class ReservationDAO extends DAO {
 	}
 
 	/**
-	 * permet de récupérer une reservation depuis la base de données à partir d'un adherent et de la date
+	 * permet de rï¿½cupï¿½rer une reservation depuis la base de donnï¿½es ï¿½ partir d'un adherent et de la date
 	 * @param adherent
 	 * @param date
 	 * @return
@@ -234,7 +240,7 @@ public class ReservationDAO extends DAO {
 	}
 	
 	/**
-	 * permet de récupérer toutes les réeservations d'un adherent en particulier
+	 * permet de rï¿½cupï¿½rer toutes les rï¿½eservations d'un adherent en particulier
 	 * @param pseudo
 	 * @return
 	 */
