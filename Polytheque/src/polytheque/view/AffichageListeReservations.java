@@ -15,10 +15,16 @@ import javax.swing.JTextField;
 
 import polytheque.model.pojos.Reservation;
 import polytheque.view.modeles.ModeleTableauReservations;
-
+/**
+ * classe d'affichage de toutes les reservations pour l'administrateur uniquement
+ * @author Laure
+ *
+ */
 @SuppressWarnings("serial")
 public class AffichageListeReservations extends JPanel implements ActionListener {
-
+	/**
+	 * initialisation des colonnes utiles au tableau d'affichage
+	 */
 	public final static int LONGUEUR_COLONNE_0 = 50;
 	public final static int LONGUEUR_COLONNE_1 = 50;
 	public final static int LONGUEUR_COLONNE_2 = 150;
@@ -49,18 +55,26 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	 */
 	public final static String[] LIBELLES = new String[] {"Pseudo", "Nom jeu", "Nom extention", "Date de réservation"};
 
+	//boutons
 	private JButton boutonAnnulerReservation;
 	private JButton boutonValiderReservation;
-	
-	private JPanel buttonsPanel;
-	private JPanel arrayPanel;
-	
-	private TacheDAffichage tacheDAffichageDeLApplication;
-	private ModeleTableauReservations tableauReservations;
-	private JPanel searchPanel;
-	private JTextField searchContent;
 	private JButton boutonRecherche;
 	
+	//Panel permettant d'afficher le tableau et les boutons ou la barre de recherche sur une fenetre
+	private JPanel buttonsPanel;
+	private JPanel arrayPanel;
+	private JPanel searchPanel;
+	
+	private TacheDAffichage tacheDAffichageDeLApplication; //classe ou toutes les fonctions utiles à l'affichage sont écrites
+	private ModeleTableauReservations tableauReservations; //donne le modele à suivre pour le tableau
+
+	private JTextField searchContent; //champ permettant d'écrire
+	
+	/**
+	 * constructeur de l'affichage des reservations
+	 * @param afficheAppli
+	 * @param listeReservations
+	 */
 	public AffichageListeReservations(TacheDAffichage afficheAppli, ArrayList<Reservation> listeReservations) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 
@@ -107,6 +121,10 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * création du tableau
+	 * @param listeReservations
+	 */
 	public void creerTableau(ArrayList<Reservation> listeReservations) {
 		this.arrayPanel = new JPanel();
 		this.arrayPanel.setLayout(new BorderLayout());
@@ -150,12 +168,19 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		return donnees;
 	}
 	
+	/**
+	 * remise à jour du tableau 
+	 * @param reservations
+	 */
 	public void rafraichir(ArrayList<Reservation> reservations) {
 		creerTableau(reservations);
 		this.arrayPanel.updateUI();
 		this.tableauReservations.refresh(initialiserDonnees(reservations));
 	}
 
+	/**
+	 * méthode qui permet de traiter les évènements (les cliques sur boutons)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
