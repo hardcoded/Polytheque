@@ -11,7 +11,11 @@ import polytheque.model.pojos.Extension;
 import polytheque.model.pojos.Jeu;
 import polytheque.model.pojos.Reservation;
 
-
+/**
+ * 
+ * @author San wei lee
+ *
+ */
 public class EmpruntDAO extends DAO 
 {
 	/**
@@ -56,6 +60,11 @@ public class EmpruntDAO extends DAO
 
 	}
 
+	/**
+	 * suppression de la reservation par son id dans la base de données
+	 * @param id
+	 * @return
+	 */
 	public boolean delete(int id) {
 		try {
 			super.connect();
@@ -72,7 +81,16 @@ public class EmpruntDAO extends DAO
 		}
 	}
 
-
+	/**
+	 * 
+	 * @param emprunt
+	 * @param idReservation
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param idExtension
+	 * @param idEmprunt
+	 * @return
+	 */
 	public boolean update(Emprunt emprunt, int idReservation, int idAdherent, int idJeu, int idExtension, int idEmprunt) {
 		try {
 
@@ -101,7 +119,11 @@ public class EmpruntDAO extends DAO
 
 	}
 
-
+	/**
+	 * resupere un emprunt avec son id à partir de la base de données
+	 * @param idEmprunt
+	 * @return
+	 */
 	public Emprunt retreive(int idEmprunt) {
 		try {
 			super.connect();
