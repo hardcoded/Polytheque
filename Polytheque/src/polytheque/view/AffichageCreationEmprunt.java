@@ -27,12 +27,15 @@ import polytheque.model.pojos.Reservation;
 
 @SuppressWarnings("serial")
 public class AffichageCreationEmprunt extends JPanel implements ActionListener{
-
+	/**
+	 * champs utiles pour que l'utilisateur écrive
+	 */
 	private JTextField gameName;
 	private JTextField extensionName;
 	private JTextField userPseudo;
-	private JDateChooser dateChooser;
-	private JButton boutonValider;
+	
+	private JDateChooser dateChooser; //calendrier
+	private JButton boutonValider; //bouton
 	
 	/**
 	 * Une tache d'affichage de l'application.
@@ -54,40 +57,31 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		creerPanneauDate();
 		ajouterBoutons();
 	}
+	
+	/**
+	 * méthode qui ajoutes les champs de l'affichage (titre,boutons..)
+	 */
 	public void ajouterChamps() {		
-		/*JPanel grosPanel = new JPanel();
-		grosPanel.setLayout(new BorderLayout());
-		JPanel titrePanel = new JPanel();*/
 		
 		JLabel titrePrincipal = new JLabel("Emprunter un jeu et/ou une extension");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		titrePrincipal.setBounds(480, 20, 260, 30);
-		//titrePanel.add(titrePrincipal);
-		//this.add(titrePanel, BorderLayout.NORTH);
 		this.add(titrePrincipal);
-		//grosPanel.add(titrePanel, BorderLayout.NORTH);
-		
-		//JPanel userInfoPanel = new JPanel();
 		
 		JLabel labelGameName = new JLabel("Nom du jeu :");
 		labelGameName.setBounds(150, 150, 100, 30);
-		//userInfoPanel.add(labelUserName);
 		this.add(labelGameName);
+		
 		this.gameName = new JTextField();
 		this.gameName.setBounds(300, 150, 100, 30);
-		//userInfoPanel.add(this.userName);
-		//this.add(userInfoPanel,BorderLayout.WEST);
 		this.add(gameName);
 					
 		JLabel labelExtensionName = new JLabel("Nom de l'extension :");
 		labelExtensionName.setBounds(150, 200, 150, 30);
-		//userInfoPanel.add(labelUserFirstName);
 		this.add(labelExtensionName);
+		
 		this.extensionName = new JTextField();
 		this.extensionName.setBounds(300, 200, 100, 30);
-		//userInfoPanel.add(this.userFirstName);
-		//this.add(userInfoPanel,BorderLayout.WEST); 
-		//grosPanel.add(userInfoPanel, BorderLayout.WEST);
 		this.add(extensionName);
 		
 		JLabel labelUserPseudo = new JLabel("Pseudo de l'adherent :");
@@ -96,45 +90,49 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		this.userPseudo = new JTextField();
 		this.userPseudo.setBounds(300, 250, 100, 30);
 		this.add(this.userPseudo);
-		//this.add(this.userInfoPanel, BorderLayout.WEST);
 	}
 	
+	/**
+	 * creer le calendrier permettant de choisir la date voulue
+	 */
 	private void creerPanneauDate() {
-		//JPanel DatePanel = new JPanel();
-		//DatePanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 		JLabel labelDateEmprunt = new JLabel("Date de l'emprunt :");
 		labelDateEmprunt.setBounds(850, 150, 150, 30);
 		this.add(labelDateEmprunt);
 		this.dateChooser = new JDateChooser();
 		this.dateChooser.setBounds(850, 200, 150, 30);
 		this.add(this.dateChooser);
-		//this.add(DatePanel, BorderLayout.EAST);
 	}
 	
-	
+	/**
+	 * ajoute les boutons à la fenetre
+	 */
 	public void ajouterBoutons(){
-		//JPanel panelButton = new JPanel();
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(480, 500, 200, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider);
-		//this.add(panelButton, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * traitement des évènements (click sur bouton)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 
 		if (boutonSelectionne == this.boutonValider)
-		{
+		{	//on vérifie que les champs importants sont remplis
 			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null)
 			{
+				// on récupère les paramètres pour créer notre emprunt
 				Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
 				Adherent adherent = this.tacheDAffichageDeLApplication.getAdherent(userPseudo.getText());
 				Jeu jeu = this.tacheDAffichageDeLApplication.getJeu(gameName.getText());
 				Extension extention = this.tacheDAffichageDeLApplication.getExt(extensionName.getText());
 				Reservation reservation = new Reservation(adherent.getIdAdherent(),jeu.getIdJeu(),extention.getIdExtension(),dateEmprunt);
 				Emprunt emprunt = reservation.validerReservation();
+				//affichage des messages à l'utilisateur
 				if (this.tacheDAffichageDeLApplication.creerEmprunt(emprunt)){
 					this.tacheDAffichageDeLApplication.afficherMessage("Un emprunt a été effectué !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
 				}
