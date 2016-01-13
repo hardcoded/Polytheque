@@ -13,7 +13,14 @@ import polytheque.model.pojos.Reservation;
 
 public class ReservationDAO extends DAO {
 
-
+	/**
+	 * méthode permettant de créer une réservation dans la base de données
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param idJextension
+	 * @return
+	 */
 	public boolean create(Reservation reservation, int idAdherent, int idJeu, int idJextension) {
 		try {
 			super.connect();
@@ -78,7 +85,13 @@ public class ReservationDAO extends DAO {
 			return false;
 		}
 	}
-	
+	/**
+	 * Créeation de reservation sans jeu
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idExtention
+	 * @return
+	 */
 	public boolean create3(Reservation reservation, int idAdherent, int idExtention) {
 		try {
 			super.connect();
@@ -107,7 +120,11 @@ public class ReservationDAO extends DAO {
 		}
 	}
 	
-	
+	/**
+	 * suppression d'une réservation dans la base de données par son id
+	 * @param id
+	 * @return
+	 */
 	public boolean delete(int id) {
 		try {
 			super.connect();
@@ -124,7 +141,15 @@ public class ReservationDAO extends DAO {
 		}
 	}
 
-
+	/**
+	 * 
+	 * @param reservation
+	 * @param idAdherent
+	 * @param idJeu
+	 * @param idJextension
+	 * @param idReservation
+	 * @return
+	 */
 	public boolean update(Reservation reservation, int idAdherent, int idJeu, int idJextension, int idReservation) {
 		try {
 
@@ -151,7 +176,12 @@ public class ReservationDAO extends DAO {
 
 	}
 
-
+	/**
+	 * permet de récupérer une reservation depuis la base de données à partir d'un adherent et de la date
+	 * @param adherent
+	 * @param date
+	 * @return
+	 */
 	public Reservation retreive(Adherent adherent, Date date) { 
 		try {
 			super.connect();
@@ -203,6 +233,11 @@ public class ReservationDAO extends DAO {
 		return toutesLesReservations;
 	}
 	
+	/**
+	 * permet de récupérer toutes les réeservations d'un adherent en particulier
+	 * @param pseudo
+	 * @return
+	 */
 	public ArrayList<Reservation> searchByPseudo(String pseudo)
 	{
 		ArrayList<Reservation> reserv = new ArrayList<>();
