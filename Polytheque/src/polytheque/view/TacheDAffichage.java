@@ -111,7 +111,9 @@ public class TacheDAffichage extends JFrame {
 	/**
 	 * Vérifier que la demande de connexion est valide.
 	 * @param userName
+	 * 		Le pseudo utilisé pour la connexion.
 	 * @param password
+	 * 		Le mot de passe utilisé pour la connexion.
 	 * @return true si la connexion est autorisée, false sinon.
 	 */
 	public boolean testerValiditeConnexion(String userName, String password) {

@@ -332,36 +332,47 @@ public class PolythequeApplication {
 	/**
 	 * Supprimer une réservation de la BDD.
 	 * @param res
+	 * 		La réservation à annuler.
 	 */
 	public void annulerReservation(Reservation res) {
 		this.reservationDAO.delete(res.getIdReservation());
 	}
 	/**
-	 * creation reservation dans la base de donn�es
+	 * Création reservation dans la base de données
 	 * @param reservation
+	 * 		La réservation à créer.
 	 * @param idAdherent
+	 * 		L'ID de l'adhérent associé à la réservation.
 	 * @param idJeu
-	 * @param idJextension
+	 * 		L'ID du jeu à réserver.
+	 * @param idExtension
+	 * 		L'ID de l'extension à réserver.
 	 * @param date
-	 * @return
+	 * 		La date à laquelle les réserver.
+	 * @return true si la création a réussi, false sinon.
 	 */
-	public boolean createReservation(Reservation reservation,int idAdherent, int idJeu, int idJextension,Date date) {
-		if(this.reservationDAO.create(reservation, idAdherent, idJeu, idJextension)) {
+	public boolean createReservation(Reservation reservation, int idAdherent, int idJeu, int idExtension, Date date) {
+		if(this.reservationDAO.create(reservation, idAdherent, idJeu, idExtension)) {
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
+
 	/**
-	 * creation reservation dans la base de donn�es
+	 * Création reservation dans la base de données
 	 * @param reservation
+	 * 		La réservation à créer.
 	 * @param idAdherent
+	 * 		L'ID de l'adhérent associé à la réservation.
 	 * @param idJeu
+	 * 		L'ID du jeu à réserver.
 	 * @param date
-	 * @return
+	 * 		La date à laquelle les réserver.
+	 * @return true si la création a réussi, false sinon.
 	 */
-	public boolean createReservation2(Reservation reservation,int idAdherent, int idJeu,Date date) {
+	public boolean createReservation2(Reservation reservation, int idAdherent, int idJeu, Date date) {
 		if(this.reservationDAO.create2(reservation, idAdherent, idJeu)) {
 			return true;
 		}
@@ -369,16 +380,21 @@ public class PolythequeApplication {
 			return false;
 		}
 	}
+	
 	/**
-	 * creation reservation dans la base de donn�es
+	 * Création reservation dans la base de données
 	 * @param reservation
+	 * 		La réservation à créer.
 	 * @param idAdherent
-	 * @param idExtention
+	 * 		L'ID de l'adhérent associé à la réservation.
+	 * @param idExtension
+	 * 		L'ID de l'extension à réserver.
 	 * @param date
-	 * @return
+	 * 		La date à laquelle les réserver.
+	 * @return true si la création a réussi, false sinon.
 	 */
-	public boolean createReservation3(Reservation reservation,int idAdherent, int idExtention,Date date) {
-		if(this.reservationDAO.create3(reservation, idAdherent, idExtention)) {
+	public boolean createReservation3(Reservation reservation, int idAdherent, int idExtension, Date date) {
+		if(this.reservationDAO.create3(reservation, idAdherent, idExtension)) {
 			return true;
 		}
 		else {
@@ -387,10 +403,12 @@ public class PolythequeApplication {
 	}
 
 	// Partie permettant la gestion des emprunts
+	
 	/**
-	 * creation d'un emprunt
+	 * Création d'un emprunt
 	 * @param emprunt
-	 * @return
+	 * 		L'emprunt à créer.
+	 * @return true si l'emprunt a été créé avec succès, false sinon.
 	 */
 	public boolean creerEmprunt(Emprunt emprunt) {
 		Date datedeb=emprunt.getDateDebut();

@@ -17,10 +17,12 @@ import polytheque.model.pojos.Jeu;
 public class ExtensionDAO extends DAO {
 
 	/**
-	 * Méthode de création
+	 * Méthode de création d'un extension.
 	 * @param extension
+	 * 		L'extension à créer.
 	 * @param idJeu
-	 * @return
+	 * 		L'ID du jeu associé.
+	 * @return true si l'extension abien été créée, false sinon.
 	 */
 	public boolean create(Extension extension, int idJeu) {
 		try {
@@ -55,9 +57,10 @@ public class ExtensionDAO extends DAO {
 	}
 
 	/**
-	 * Methode pour effacer
+	 * Methode pour effacer.
 	 * @param id
-	 * @return boolean 
+	 * 		L'ID de l'extension à supprimer.
+	 * @return true si l'extension a été supprimée, false sinon. 
 	 */
 	public boolean delete(int id) {
 		try {
@@ -77,31 +80,26 @@ public class ExtensionDAO extends DAO {
 
 	/**
 	 * Méthode de mise à jour.
-	 * @param jeu
-	 * @param idCategorie
-	 * @param idEditeur
-	 * @return
+	 * @param extension
+	 * 		L'extension à mettre à jour.
+	 * @param idJeu
+	 * 		L'ID du jeu associé à l'extension.
+	 * @return true si la modification a été effectuée, false sinon.
 	 */
-	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {
+	public boolean update(Extension extension, int idJeu) {
 		try {
 
 			super.connect();
-			PreparedStatement psUpdate = connection.prepareStatement("UPDATE JEU "
-					+ "SET nom = ?, description = ?, annee_parution = ?, statut = ?, nombre_exemplaires = ?, "
-					+ "nombre_reserves = ?, age_mini = ?, nb_joueurs_min = ?, nb_joueurs_max = ?, id_categorie = ?, id_editeur = ? " 
-					+ " WHERE id_jeu = ? ");
-			psUpdate.setString(1, jeu.getNom());
-			psUpdate.setString(2, jeu.getDescription());
-			psUpdate.setString(3, jeu.getAnneeParution());
-			psUpdate.setString(4, jeu.getStatut());
-			psUpdate.setInt(5, jeu.getNbExemplaires());
-			psUpdate.setInt(6, jeu.getNbReserves());
-			psUpdate.setInt(7, jeu.getAgeMini());
-			psUpdate.setInt(8, jeu.getNbJoueursMin());
-			psUpdate.setInt(9, jeu.getNbJoueursMax());
-			psUpdate.setInt(10, idCategorie);
-			psUpdate.setInt(11, idEditeur);
-			psUpdate.setInt(12, jeu.getIdJeu());
+			PreparedStatement psUpdate = connection.prepareStatement("UPDATE EXTENSION "
+					+ "SET nom = ?, description = ?, statut = ?, nombre_exemplaires = ?, nombre_reserves = ?, id_jeu = ? " 
+					+ " WHERE id_extension = ? ");
+			psUpdate.setString(1, extension.getNom());
+			psUpdate.setString(2, extension.getDescription());
+			psUpdate.setString(3, extension.getStatut());
+			psUpdate.setInt(4, extension.getNbExemplaires());
+			psUpdate.setInt(5, extension.getNbReserves());
+			psUpdate.setInt(6, idJeu);
+			psUpdate.setInt(7, extension.getIdExtension());
 
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();

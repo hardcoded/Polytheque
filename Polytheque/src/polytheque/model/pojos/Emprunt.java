@@ -27,6 +27,8 @@ public class Emprunt {
 	 * 
 	 * @param adherent
 	 * 		L'adhérent qui emprunte.
+	 * @param jeu
+	 * 		Le jeu à emprunter.
 	 * @param dateDebut
 	 * 		La date du début de l'emprunt.
 	 * @param dateFin
@@ -48,13 +50,15 @@ public class Emprunt {
 	 * Pour une extension uniquement
 	 * 
 	 * @param adherent
-	 * 				l'adhérent qui emprunte
+	 * 		L'adhérent qui emprunte.
 	 * @param extention
-	 * 				l'extention à emprunter
+	 * 		L'extention à emprunter.
 	 * @param dateDebut
-	 * 				la date du début de l'emprunt
+	 * 		La date du début de l'emprunt.
 	 * @param dateFin
-	 * 				la date de fin de l'emprunt
+	 * 		La date de fin de l'emprunt.
+	 * @param dateRendu
+	 * 		La date à laquelle l'emprunt a été rendu.
 	 */
 	public Emprunt(Adherent adherent, Extension extention, Date dateDebut,Date dateFin, Date dateRendu) {
 		this.setAdherent(adherent);
@@ -69,15 +73,15 @@ public class Emprunt {
 	 * Pour un jeu et une extension
 	 * 
 	 * @param adherent
-	 * 				l'adhérent qui emprunte
+	 * 		L'adhérent qui emprunte.
 	 * @param jeu
-	 * 				le jeu à emprunter
+	 * 		Le jeu à emprunter.
 	 * @param extention
-	 * 				l'extention à emprunter
+	 * 		L'extention à emprunter.
 	 * @param dateDebut
-	 * 				la date du début de l'emprunt
+	 * 		La date du début de l'emprunt.
 	 * @param dateFin
-	 * 				la date de fin de l'emprunt
+	 * 		La date de fin de l'emprunt.
 	 */
 	public Emprunt(Adherent adherent,Jeu jeu, Extension extention, Date dateDebut,Date dateFin) {
 		this.setAdherent(adherent);
@@ -90,20 +94,22 @@ public class Emprunt {
 	/**
 	 * constructeur d'un emprunt avec son id
 	 * @param id
+	 * 		L'ID de l'emprunt.
 	 * @param dateDebut
+	 * 		La date du début de l'emprunt.
 	 * @param dateFin
+	 * 		La date de fin de l'emprunt.
 	 * @param dateRendu
+	 * 		La date à laquelle l'emprunt a été rendu.
 	 * @param idAdherent
+	 * 		L'ID de l'adhérent qui emprunte.
 	 */
 	public Emprunt(int id, Date dateDebut, Date dateFin, Date dateRendu, int idAdherent) {
 		this.setIdEmprunt(id);
 	}
 
-	/**
-	 * getter et setter de chaque attribut de la classe
-	 * getter => recuperation , setter => modification
-	 * @return
-	 */
+	// getters et setters
+	
 	public Adherent getAdherent() {
 		return this.adherent;
 	}

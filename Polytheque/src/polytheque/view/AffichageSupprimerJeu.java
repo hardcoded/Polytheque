@@ -28,9 +28,9 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * Création de la page permettant de supprimer un jeu (accessible seulement par un admin).
+	 * CrÃ©ation de la page permettant de supprimer un jeu (accessible seulement par un admin).
 	 * 
-	 * @param tacheDAffichageDeLApplication
+	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
 	public AffichageSupprimerJeu(TacheDAffichage afficheAppli){
@@ -41,7 +41,7 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * Ajoute une zone de texte écrivable et un bouton pour valider l'information écrit dans la zone de texte 
+	 * Ajoute une zone de texte ï¿½crivable et un bouton pour valider l'information ï¿½crit dans la zone de texte 
 	 */
 	private void ajouterChamps() {
 		JLabel labelUserName = new JLabel("Nom a supprimer :");
@@ -60,7 +60,7 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 	
 	@Override
 	/**
-	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est dï¿½roulï¿½ comme prï¿½vu.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -72,10 +72,10 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 				Jeu jeuCourant = this.tacheDAffichageDeLApplication.getJeu(nom);
 				int idJeu = jeuCourant.getIdJeu();
 				if (this.tacheDAffichageDeLApplication.supprimerJeu(idJeu) ==  false) {
-					this.tacheDAffichageDeLApplication.afficherMessage("Problème lors de la suppression du jeu !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Problï¿½me lors de la suppression du jeu !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					this.tacheDAffichageDeLApplication.afficherMessage("Jeu supprimé avec succès !", "Suppression effectuée", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Jeu supprimï¿½ avec succï¿½s !", "Suppression effectuï¿½e", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			else {

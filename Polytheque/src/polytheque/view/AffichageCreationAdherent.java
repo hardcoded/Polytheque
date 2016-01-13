@@ -51,11 +51,10 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		private TacheDAffichage tacheDAffichageDeLApplication;
 
 		/**
-		 * Creation de la page permettant de créer un nouvel adhérent.
+		 * Creation de la page permettant de crï¿½er un nouvel adhï¿½rent.
 		 * 
-		 * @param tacheDAffichageDeLApplication
+		 * @param afficheAppli
 		 *            Une tache d'affichage de l'application.
-		 * @return 
 		 */
 		public AffichageCreationAdherent(TacheDAffichage afficheAppli) {
 			this.tacheDAffichageDeLApplication = afficheAppli;
@@ -67,11 +66,11 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		}
 		
 		/**
-		 * Ajoute et place tous les champs sur la page. C'est-à-dire les zones de textes écrivables (avec directement les informations de l'utilisateur), 
-		 * les zones de textes seulement lisible ainsi que les boutons déroulants.
+		 * Ajoute et place tous les champs sur la page. C'est-ï¿½-dire les zones de textes ï¿½crivables (avec directement les informations de l'utilisateur), 
+		 * les zones de textes seulement lisible ainsi que les boutons dï¿½roulants.
 		 */
 		public void ajouterChamps() {		
-			JLabel titrePrincipal = new JLabel("Création Adhérent");
+			JLabel titrePrincipal = new JLabel("Crï¿½ation Adhï¿½rent");
 			titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 			titrePrincipal.setBounds(480, 20, 260, 30);
 			this.add(titrePrincipal);
@@ -176,7 +175,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 		}
 		
 		/**
-		 * Créer le champ Date et le bouton permettant de sélectionner une date
+		 * Crï¿½er le champ Date et le bouton permettant de sï¿½lectionner une date
 		 */
 		private void creerPanneauDate() {
 			JLabel labelUserBirthday = new JLabel("Date de naissance :");
@@ -199,7 +198,7 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 
 		@Override
 		/**
-		 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+		 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est dï¿½roulï¿½ comme prï¿½vu.
 		 */
 		public void actionPerformed(ActionEvent event) {
 			JButton boutonSelectionne = (JButton) event.getSource();
@@ -216,10 +215,10 @@ public class AffichageCreationAdherent extends JPanel implements ActionListener 
 					
 					Adherent adherent = new Adherent(this.userName.getText(), this.userFirstName.getText(), dateNaissance, this.userRue.getText(), this.userCP.getText(), this.userVille.getText(), this.userMail.getText(), this.userPhone.getText(), this.userPseudo.getText(), password, admin, AJour, peutEmprunter, 0);
 					if (this.tacheDAffichageDeLApplication.creerAdherent(adherent) == false) {
-						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la création d'un nouvel adhérent", "Erreur de création", JOptionPane.ERROR_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Erreur lors de la crï¿½ation d'un nouvel adhï¿½rent", "Erreur de crï¿½ation", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adhérent a été créé !", "Création terminée", JOptionPane.INFORMATION_MESSAGE);
+						this.tacheDAffichageDeLApplication.afficherMessage("Un nouvel adhï¿½rent a ï¿½tï¿½ crï¿½ï¿½ !", "Crï¿½ation terminï¿½e", JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
 				}

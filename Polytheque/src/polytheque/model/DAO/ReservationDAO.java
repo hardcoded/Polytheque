@@ -20,14 +20,18 @@ import polytheque.model.pojos.Reservation;
 public class ReservationDAO extends DAO {
 
 	/**
-	 * m�thode permettant de cr�er une r�servation dans la base de donn�es
+	 * Méthode permettant de créer une réservation dans la base de données.
 	 * @param reservation
+	 * 		La réservation à créer.
 	 * @param idAdherent
+	 * 		L'ID de l'adhérent associé.
 	 * @param idJeu
-	 * @param idJextension
-	 * @return
+	 * 		L'ID du jeu réservé.
+	 * @param idExtension
+	 * 		L'ID de l'extension réservée.
+	 * @return true si la création a été effectuée, false sinon.
 	 */
-	public boolean create(Reservation reservation, int idAdherent, int idJeu, int idJextension) {
+	public boolean create(Reservation reservation, int idAdherent, int idJeu, int idExtension) {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
@@ -37,7 +41,7 @@ public class ReservationDAO extends DAO {
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
 			psInsert.setInt(3, idJeu);
-			psInsert.setInt(4, idJextension);
+			psInsert.setInt(4, idExtension);
 
 			psInsert.executeUpdate();
 
@@ -57,13 +61,15 @@ public class ReservationDAO extends DAO {
 	}
 
 	/**
-	 * Creation de reservation sans extention
+	 * Creation de reservation sans extension.
 	 * @param reservation
+	 * 		La réservation à créer.
 	 * @param idAdherent
+	 * 		L'ID de l'adhérent associé.
 	 * @param idJeu
-	 * @return
+	 * 		L'ID du jeu réservé.
+	 * @return true si la création a été effectuée, false sinon.
 	 */
-
 	public boolean create2(Reservation reservation, int idAdherent, int idJeu) {
 		try {
 			super.connect();
@@ -91,14 +97,18 @@ public class ReservationDAO extends DAO {
 			return false;
 		}
 	}
+
 	/**
-	 * Cr�eation de reservation sans jeu
+	 * Creation de reservation sans jeu.
 	 * @param reservation
+	 * 		La réservation à créer.
 	 * @param idAdherent
-	 * @param idExtention
-	 * @return
+	 * 		L'ID de l'adhérent associé.
+	 * @param idExtension
+	 * 		L'ID de l'extension réservée.
+	 * @return true si la création a été effectuée, false sinon.
 	 */
-	public boolean create3(Reservation reservation, int idAdherent, int idExtention) {
+	public boolean create3(Reservation reservation, int idAdherent, int idExtension) {
 		try {
 			super.connect();
 			PreparedStatement psInsert = connection.prepareStatement("INSERT INTO "
@@ -107,11 +117,11 @@ public class ReservationDAO extends DAO {
 
 			psInsert.setDate(1, reservation.getDate()); //A voir pcq return type"date"
 			psInsert.setInt(2, idAdherent);
-			psInsert.setInt(3, idExtention);
+			psInsert.setInt(3, idExtension);
 			psInsert.executeUpdate();
 
 			ResultSet idResult = psInsert.getGeneratedKeys();
-			
+
 			if (idResult != null && idResult.next()) {
 				reservation.setIdReservation(idResult.getInt(1));; 
 			} else {
@@ -125,11 +135,12 @@ public class ReservationDAO extends DAO {
 			return false;
 		}
 	}
-	
+
 	/**
-	 * suppression d'une r�servation dans la base de donn�es par son id
+	 * Suppression d'une réservation dans la base de données par son id.
 	 * @param id
-	 * @return
+	 * 		L'ID de la réservation à supprimer.
+	 * @return true si la suppression a été effectuée, false sinon.
 	 */
 	public boolean delete(int id) {
 		try {
@@ -148,15 +159,18 @@ public class ReservationDAO extends DAO {
 	}
 
 	/**
-	 * 
+	 * Méthode permettant de créer une réservation dans la base de données.
 	 * @param reservation
+	 * 		La réservation à modifier.
 	 * @param idAdherent
+	 * 		L'ID de l'adhérent associé.
 	 * @param idJeu
-	 * @param idJextension
-	 * @param idReservation
-	 * @return
+	 * 		L'ID du jeu réservé.
+	 * @param idExtension
+	 * 		L'ID de l'extension réservée.
+	 * @return true si la modification a été effectuée, false sinon.
 	 */
-	public boolean update(Reservation reservation, int idAdherent, int idJeu, int idJextension, int idReservation) {
+	public boolean update(Reservation reservation, int idAdherent, int idJeu, int idExtension) {
 		try {
 
 			super.connect();
@@ -166,9 +180,8 @@ public class ReservationDAO extends DAO {
 			psUpdate.setDate(1, reservation.getDate());
 			psUpdate.setInt(2, idAdherent);
 			psUpdate.setInt(3, idJeu);
-			psUpdate.setInt(4, idJextension);
-			psUpdate.setInt(5, idReservation);
-
+			psUpdate.setInt(4, idExtension);
+			psUpdate.setInt(5, reservation.getIdReservation());
 
 			psUpdate.executeUpdate();
 			psUpdate.closeOnCompletion();
@@ -211,7 +224,7 @@ public class ReservationDAO extends DAO {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Methode de recuperation des reservations
 	 * @return La liste de toutes les reservations
@@ -225,10 +238,10 @@ public class ReservationDAO extends DAO {
 			psSelect.closeOnCompletion();
 
 			ResultSet resSet = psSelect.getResultSet();
-			
+
 			if (resSet.next()) {
 				//while (resSet.next()) { // On se place sur le 1er résultat				
-					toutesLesReservations.add(new Reservation(resSet.getInt("id_adherent"), resSet.getInt("id_jeu"), resSet.getInt("id_extension"), resSet.getDate("date_reservation")));
+				toutesLesReservations.add(new Reservation(resSet.getInt("id_adherent"), resSet.getInt("id_jeu"), resSet.getInt("id_extension"), resSet.getDate("date_reservation")));
 				//}
 			}
 			super.disconnect();
@@ -238,7 +251,7 @@ public class ReservationDAO extends DAO {
 		}
 		return toutesLesReservations;
 	}
-	
+
 	/**
 	 * permet de r�cup�rer toutes les r�eservations d'un adherent en particulier
 	 * @param pseudo

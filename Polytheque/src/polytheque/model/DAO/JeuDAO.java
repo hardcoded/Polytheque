@@ -104,7 +104,8 @@ public class JeuDAO extends DAO {
 	/**
 	 * Methode pour effacer
 	 * @param id
-	 * @return boolean 
+	 * 		L'ID du jeu à supprimer.
+	 * @return true si la suppression a bien été réalisée, false sinon.
 	 */
 	public boolean delete(int id) {
 		try {
@@ -123,10 +124,13 @@ public class JeuDAO extends DAO {
 	}
 
 	/**
-	 * Méthode de mise à jour
+	 * Méthode de mise à jour.
 	 * @param jeu
+	 * 		Le jeu à mettre à jour.
 	 * @param idCategorie
+	 * 		L'ID d ela catégorie associée.
 	 * @param idEditeur
+	 * 		L'ID de l'éditeur associé.
 	 * @return
 	 */
 	public boolean update(Jeu jeu, int idCategorie, int idEditeur) {

@@ -69,12 +69,10 @@ public class Reservation {
 	/**
 	 * Constructeur de la classe Reservation
 	 * 
-	 * @param adherent
-	 * @param jeu
-	 * @param extention
+	 * @param idAdherent
+	 * @param idJeu
 	 * @param date
 	 */
-
 	public Reservation(int idAdherent,int idJeu, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
@@ -87,7 +85,7 @@ public class Reservation {
 	}
 
 	/**
-	 * Constructeur de la classe Reservation, permet de créer une Réservation à  partir des données existantes
+	 * Constructeur de la classe Reservation, permet de crï¿½er une Rï¿½servation ï¿½ partir des donnï¿½es existantes
 	 * @param idAdherent
 	 * @param idJeu
 	 * @param idExtention
@@ -105,7 +103,7 @@ public class Reservation {
 	}
 
 	/**
-	 *  Constructeur de la classe Reservation, permet de créer une Réservation à  partir des données existantes
+	 *  Constructeur de la classe Reservation, permet de crï¿½er une Rï¿½servation ï¿½ partir des donnï¿½es existantes
 	 * @param idReserv
 	 * @param idAdherent
 	 * @param idJeu
@@ -126,7 +124,7 @@ public class Reservation {
 	/**
 	 * Constructeur de la classe Reservation
 	 *  
-	 * @param idReservation
+	 * @param id
 	 * @param adherent
 	 * @param jeu
 	 * @param date
@@ -141,7 +139,7 @@ public class Reservation {
 	/**
 	 * Constructeur de la classe Reservation
 	 * 
-	 * @param idReservation
+	 * @param idExtension
 	 * @param idAdherent
 	 * @param date
 	 */
@@ -157,8 +155,8 @@ public class Reservation {
 	}
 
 	/**
-	 * méthodes
-	 * getter et setter qui permettent de récupérer ou modifier les attributs de cette classe dans d'autres classes
+	 * mï¿½thodes
+	 * getter et setter qui permettent de rï¿½cupï¿½rer ou modifier les attributs de cette classe dans d'autres classes
 	 */
 	public Adherent getAdherent() {
 		return adherent;
@@ -202,12 +200,6 @@ public class Reservation {
 		this.date = date;
 	}
 
-	/**méthodes
-	 * modifDate(date, int); elle ajoute un entier (nb jours) à la date donnée en prenant en compte les mois et l'année.
-	 * emprunter()
-	 * annuler_reservation()
-	 * */
-
 	public Date modifDate(Date d,int nbjours){
 		@SuppressWarnings("deprecation")
 		int jour = d.getDay();
@@ -216,7 +208,7 @@ public class Reservation {
 		@SuppressWarnings("deprecation")
 		int annee = d.getYear();
 		if (mois==1 || mois==3 || mois==5 || mois==7 || mois==8 || mois==10 || mois==12){ //cas des mois de 31 jours
-			if (jour+nbjours >31 && mois==12){ // cas de fin d'année et de changement de mois
+			if (jour+nbjours >31 && mois==12){ // cas de fin d'annï¿½e et de changement de mois
 				jour=(jour+nbjours)%31;
 				mois=1;
 				annee=annee+1;}
@@ -258,7 +250,7 @@ public class Reservation {
 	public void annulerReservation(){
 		if (this.extention == null){ // cas ou la reservation ne concerne qu'un jeu
 			this.jeu.setStatus("libre"); //on change son statut
-			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);} // on soustrait 1 au nombre de réservation d'exemplaires du jeu
+			this.jeu.setNbReserves(this.jeu.getNbReserves()-1);} // on soustrait 1 au nombre de rï¿½servation d'exemplaires du jeu
 		else{
 			if (this.jeu == null){ // cas ou la reservation ne concerne qu'une extension
 				this.extention.setStatut("libre");
@@ -272,21 +264,21 @@ public class Reservation {
 	}
 
 	/**
-	 * Fonction permettant de valider une réservation en faisant les modifications et vérifications nécessaires
+	 * Fonction permettant de valider une rï¿½servation en faisant les modifications et vï¿½rifications nï¿½cessaires
 	 * @return
 	 */
 	public Emprunt validerReservation(){
-		Date datefin = modifDate(this.getDate(),21); //appel à une fonction qui s'occupe d'ajouter les jours
-		if (this.extention == null){ // cas d'un seul jeu emprunté
+		Date datefin = modifDate(this.getDate(),21); //appel ï¿½ une fonction qui s'occupe d'ajouter les jours
+		if (this.extention == null){ // cas d'un seul jeu empruntï¿½
 			this.jeu.setStatus("empruntï¿½");
 			if (this.jeu.getNbReserves()==this.jeu.getNbExemplaires()){
 				this.jeu.setDisponibilite(false);}
 			return new Emprunt(this.adherent,this.jeu,this.date,datefin,null);}
 		else{
-			if (this.jeu == null){ // cas d'une extension empruntée
+			if (this.jeu == null){ // cas d'une extension empruntï¿½e
 				this.extention.setStatut("empruntï¿½");
 				return new Emprunt(this.adherent,this.extention,this.date,datefin,null);}
-			else{ // cas d'un jeu et d'une extension empruntés
+			else{ // cas d'un jeu et d'une extension empruntï¿½s
 				this.jeu.setStatus("empruntï¿½");
 				this.extention.setStatut("empruntï¿½");
 				if (this.jeu.getNbReserves()==this.jeu.getNbExemplaires()){

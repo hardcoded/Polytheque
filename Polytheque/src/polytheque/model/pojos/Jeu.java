@@ -75,7 +75,7 @@ public class Jeu {
 	 * 		Le nombre d'exemplaires total du jeu.
 	 * @param nbReserves
 	 * 		Le nombre d'exemplaires réservés.
-	 * @param nbEmpruntes
+	 * @param nbReserves
 	 * 		Le nombre d'exemplaires emprunt�s.
 	 * @param ageMini
 	 * 		L'age minimal auquel on peut jouer au jeu.
@@ -123,9 +123,8 @@ public class Jeu {
 		this.setNbJoueursMin(nbJouMin);
 	}
 
-	/**
-	 * getter et setter
-	 */
+	// getters and setters
+	
 	public String getNom() {
 		return nom;
 	}

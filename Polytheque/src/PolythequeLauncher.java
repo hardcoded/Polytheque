@@ -11,6 +11,7 @@ public class PolythequeLauncher {
 	/**
 	 * Création du controller et de la view
 	 * @param args
+	 * 		Les arguments du main.
 	 */
 	public static void main(String[] args) {
 		PolythequeApplication polythequeApplication = new PolythequeApplication();

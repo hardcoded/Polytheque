@@ -32,38 +32,32 @@ public class Adherent {
 	 * Le compteur de retards est donc à 0 de base
 	 * 
 	 * @param nom
-	 * 			nom de l'adhérent
+	 * 		Le nom de l'adhérent.
 	 * @param prenom
-	 * 			prénom de l'adhérent
+	 * 		Le prénom de l'adhérent.
 	 * @param dateNaissance
-	 * 			la date de naissance de l'adherent
+	 * 		La date de naissance de l'adherent.
 	 * @param rue
-	 * 			rue de l'adhérent
+	 * 		La rue de l'adhérent.
 	 * @param cp
-	 * 			code postal de l'adhérent
+	 * 		Le code postal de l'adhérent.
 	 * @param ville
-	 * 			ville de l'adhérent
+	 * 		La ville de l'adhérent.
 	 * @param mail
-	 * 			adresse mail de l'adhérent
+	 * 		L'adresse mail de l'adhérent.
 	 * @param tel
-	 * 			numéro de téléphone de l'adhérent
+	 * 		Le numéro de téléphone de l'adhérent.
 	 * @param pseudo
-	 * 			pseudo de l'adhérent
+	 * 		Le pseudo de l'adhérent.
 	 * @param mdp
-	 * 			mot de passe de l'adhérent
-	 * @param estAJour
-	 * 			l'adhérent est à jour ou non dans le paiement de ses droits
-	 * @param peutEmprunter
-	 * 			l'adhérent a le droit d'emprunter un jeu ou une extension
-	 * @param cptRetard
-	 * 			nombre de retards comptabilisés par l'adhérent
+	 * 		Le mot de passe de l'adhérent.
 	 */	
-	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
+	public Adherent(String nom, String prenom, Date dateNaissance, String rue, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
-		this.rue = adresse;
+		this.rue = rue;
 		this.cp = cp;
 		this.ville = ville;
 		this.mail = mail;
@@ -111,14 +105,14 @@ public class Adherent {
 	 * @param nbNonRecup
 	 * 		Le nombre de réservations non récupérées.
 	 */	
-	public Adherent(int id, String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
+	public Adherent(int id, String nom, String prenom, Date dateNaissance, String rue, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
 			boolean estAJour, int nbRetards, int nbNonRecup){
 		this.idAdherent = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
-		this.rue = adresse;
+		this.rue = rue;
 		this.cp = cp;
 		this.ville = ville;
 		this.mail = mail;
@@ -163,13 +157,13 @@ public class Adherent {
 	 * @param nbRetards
 	 * 		Le nombre de retards comptabilisés par l'adhérent.
 	 */
-	public Adherent(String nom, String prenom, Date dateNaissance, String adresse, String cp, String ville, 
+	public Adherent(String nom, String prenom, Date dateNaissance, String rue, String cp, String ville, 
 			String mail, String tel, String pseudo, String mdp, boolean isAdmin, boolean peutEmprunter, 
 			boolean estAJour, int nbRetards){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
-		this.rue = adresse;
+		this.rue = rue;
 		this.cp = cp;
 		this.ville = ville;
 		this.mail = mail;

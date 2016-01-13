@@ -11,20 +11,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import org.omg.CORBA.Object;
-
 import polytheque.model.pojos.Reservation;
 
 /**
- * Classe permettant � un administrateur d'annuler une r�servation gr�ce � son id
+ * Classe permettant un administrateur d'annuler une réservation grâce à son id
  * 
- * @author Laure
+ * @author Laure Marchal
  *
  */
 @SuppressWarnings("serial")
 public class AppliAnnulerReservation extends JPanel implements ActionListener {
 
-	private JTextField idReservation; //champ pour �crire l'idReservation
+	private JTextField idReservation; //champ pour écrire l'idReservation
 	private JButton boutonValider; //bouton
 	
 	/**
@@ -75,16 +73,6 @@ public class AppliAnnulerReservation extends JPanel implements ActionListener {
 		this.boutonValider.addActionListener(this);
 		boutonPanel.add(this.boutonValider, BorderLayout.CENTER);
 		this.add(boutonValider, BorderLayout.SOUTH);
-	}
-	
-	/**
-	 * remise � jour de la fenetre
-	 * @param object
-	 */
-	public void rafraichir(Object object) {
-		this.removeAll();
-		this.add(null,object);
-		this.updateUI(); 
 	}
 	
 	/**

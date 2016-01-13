@@ -20,14 +20,20 @@ import polytheque.model.pojos.Reservation;
 public class EmpruntDAO extends DAO 
 {
 	/**
-	 * Méthode de création
+	 * Méthode de création d'un emprunt.
 	 * @param dateDebut
+	 * 		La date de début de l'emprunt.
 	 * @param dateFin
+	 * 		La date de fin de l'emprunt.
 	 * @param reservation
+	 * 		La réservation qui génère l'emprunt.
 	 * @param adherent
+	 * 		L'adhérent associé à l'emprunt.
 	 * @param jeu
+	 * 		Le jeu emprunté.
 	 * @param extension
-	 * @return
+	 * 		L'extension empruntée.
+	 * @return true si l'emprunt a été créé, false sinon.
 	 */
 	public boolean create(Date dateDebut, Date dateFin, Reservation reservation, Adherent adherent, Jeu jeu, Extension extension) 
 	{

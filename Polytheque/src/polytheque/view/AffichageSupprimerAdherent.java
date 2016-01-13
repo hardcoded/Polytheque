@@ -26,9 +26,9 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	private TacheDAffichage tacheDAffichageDeLApplication;
 
 	/**
-	 * CrÃ©ation de la page permettant de supprimer un adhérent (accessible seulement par un admin).
+	 * CrÃ©ation de la page permettant de supprimer un adhï¿½rent (accessible seulement par un admin).
 	 * 
-	 * @param tacheDAffichageDeLApplication
+	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
 	public AffichageSupprimerAdherent(TacheDAffichage afficheAppli){
@@ -39,10 +39,10 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	}
 	
 	/**
-	 * Ajoute une zone de texte écrivable et un bouton pour valider l'information écrit dans la zone de texte 
+	 * Ajoute une zone de texte ï¿½crivable et un bouton pour valider l'information ï¿½crit dans la zone de texte 
 	 */
 	private void ajouterChamps() {
-		JLabel labelUserName = new JLabel("Pseudo à supprimer :");
+		JLabel labelUserName = new JLabel("Pseudo ï¿½ supprimer :");
 		labelUserName.setBounds(430, 160, 200, 30);
 		this.add(labelUserName);
 		this.userPseudo = new JTextField();
@@ -58,7 +58,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	
 	@Override
 	/**
-	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est déroulé comme prévu.
+	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est dï¿½roulï¿½ comme prï¿½vu.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
@@ -68,10 +68,10 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 			if (this.userPseudo.getText() != null) {
 				String nom = new String(this.userPseudo.getText());
 				if (this.tacheDAffichageDeLApplication.supprimerAdherent(nom) ==  false) {
-					this.tacheDAffichageDeLApplication.afficherMessage("Problème lors de la suppression de l'adhérent !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Problï¿½me lors de la suppression de l'adhï¿½rent !", "Erreur suppression", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					this.tacheDAffichageDeLApplication.afficherMessage("Adhérent supprimé avec succès !", "Suppression effectuée", JOptionPane.INFORMATION_MESSAGE);
+					this.tacheDAffichageDeLApplication.afficherMessage("Adhï¿½rent supprimï¿½ avec succï¿½s !", "Suppression effectuï¿½e", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			else {
@@ -79,7 +79,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 			}
 			String nom = new String(this.userPseudo.getText());
 			this.tacheDAffichageDeLApplication.supprimerAdherent(nom);
-			this.tacheDAffichageDeLApplication.afficherMessage("Le compte a bien été supprimé !", "Suppression terminée", JOptionPane.INFORMATION_MESSAGE);
+			this.tacheDAffichageDeLApplication.afficherMessage("Le compte a bien ï¿½tï¿½ supprimï¿½ !", "Suppression terminï¿½e", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return;
 	}
