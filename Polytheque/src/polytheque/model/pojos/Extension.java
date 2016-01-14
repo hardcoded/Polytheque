@@ -55,7 +55,7 @@ public class Extension {
 	}
 
 	// getters and setters
-	
+
 	public int getIdExtension() {
 		return idExtension;
 	}

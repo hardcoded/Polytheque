@@ -42,7 +42,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	/**
 	 * Les libellés des entêtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Ann�e de parution", "Statut", "Age mini", "Joueurs mini", "Joueurs maxi", "Cat�gorie", "Editeur"};
+	public final static String[] LIBELLES = new String[] {"Nom", "Descritpion", "Ann�e de parution", "Statut", "Age mini", "Joueurs mini", "Joueurs maxi", "Cat�gorie", "Editeur"};
 
 	/**
 	 * Boutons.
@@ -54,11 +54,11 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 	private JTextField searchContent;
 	private JTextField modifJeu;
-	
+
 	private JPanel buttonsPanel;
 	private JPanel arrayPanel;
 	private JPanel searchPanel;
-	
+
 	private ModeleTableauJeux tableauJeux;
 
 	/**
@@ -127,13 +127,11 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	 *            Une collection de taches à réaliser.
 	 * @return Un tableau d'objets.
 	 */
-	private static Object[][] initialiserDonnees(ArrayList<Jeu> listeJeux)
-	{
+	private static Object[][] initialiserDonnees(ArrayList<Jeu> listeJeux) {
 		Object[][] donnees = new Object[listeJeux.size()][NOMBRE_COLONNES];
 
 		int index = 0;		
-		for (Jeu jeuCourant : listeJeux)
-		{
+		for (Jeu jeuCourant : listeJeux) {
 			donnees[index][0] = jeuCourant.getNom();
 			donnees[index][1] = jeuCourant.getDescription();
 			donnees[index][2] = jeuCourant.getAnneeParution();
@@ -166,7 +164,7 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.boutonSupprimerJeu = new JButton("Supprimer un jeu");
 		this.boutonSupprimerJeu.addActionListener(this);
-		
+
 		this.buttonsPanel.add(boutonAjouterJeu, BorderLayout.SOUTH);
 		this.buttonsPanel.add(labelSearch, BorderLayout.SOUTH);
 		this.buttonsPanel.add(this.modifJeu, BorderLayout.SOUTH);
@@ -175,13 +173,13 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
-	
+
 	public void rafraichir(ArrayList<Jeu> jeux) {
 		creerTableau(jeux);
 		this.arrayPanel.updateUI();
 		this.tableauJeux.refresh(initialiserDonnees(jeux));
 	}
-	
+
 	public void modifierMainPanel(JPanel panel) {
 		this.arrayPanel.removeAll();
 		this.arrayPanel.add(panel);
@@ -193,32 +191,23 @@ public class AffichageListeJeux extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
 
-		if (boutonSelectionne == this.boutonAjouterJeu)
-		{
+		if (boutonSelectionne == this.boutonAjouterJeu) {
 			modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationJeu());
 			rafraichir(this.tacheDAffichageDeLApplication.tousLesJeux());
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonModifierJeu)
-		{
+		if (boutonSelectionne == this.boutonModifierJeu) {
 			modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationJeu(this.tacheDAffichageDeLApplication.getJeu(this.modifJeu.getText())));
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonSupprimerJeu)
-		{
+		if (boutonSelectionne == this.boutonSupprimerJeu) {
 			modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerJeu());
 			return;
 		}
-		
-		if (boutonSelectionne == this.boutonRecherche)
-		{
+		if (boutonSelectionne == this.boutonRecherche) {
 			rafraichir(this.tacheDAffichageDeLApplication.rechercherJeux(this.searchContent.getText()));;
 			return;
 		}		
 		return;
 	}		
 }
-
-

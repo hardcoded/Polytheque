@@ -19,7 +19,7 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 
 	private JTextField userPseudo;
 	private JButton boutonValider;
-	
+
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
@@ -31,13 +31,13 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
-	public AffichageSupprimerAdherent(TacheDAffichage afficheAppli){
+	public AffichageSupprimerAdherent(TacheDAffichage afficheAppli) {
 		this.setLayout(null);
 
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		ajouterChamps();
 	}
-	
+
 	/**
 	 * Ajoute une zone de texte �crivable et un bouton pour valider l'information �crit dans la zone de texte 
 	 */
@@ -49,22 +49,21 @@ public class AffichageSupprimerAdherent extends JPanel implements ActionListener
 		this.userPseudo.setBounds(560, 160, 100, 30);
 		this.userPseudo.setColumns(10);
 		this.add(userPseudo);
-		
+
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(670, 160, 100, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider);
 	}
-	
+
 	@Override
 	/**
 	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est d�roul� comme pr�vu.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
-		
-		if (boutonSelectionne == this.boutonValider)
-		{
+
+		if (boutonSelectionne == this.boutonValider) {
 			if (this.userPseudo.getText() != null) {
 				String nom = new String(this.userPseudo.getText());
 				if (this.tacheDAffichageDeLApplication.supprimerAdherent(nom) ==  false) {

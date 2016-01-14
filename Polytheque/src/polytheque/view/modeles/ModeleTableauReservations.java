@@ -5,7 +5,7 @@ import java.sql.Date;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Classe permettant de modéliser la liste des r�eservations.
+ * Classe permettant de modéliser la liste des r�eservations.
  * 
  * @author Johan Brunet
  */
@@ -80,7 +80,7 @@ public class ModeleTableauReservations extends AbstractTableModel {
 		}
 		return true;
 	}
-	
+
 	public void refresh(Object[][] donnees) {
 		this.donnees = donnees;
 		this.fireTableDataChanged();

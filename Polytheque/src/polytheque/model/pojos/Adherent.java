@@ -125,7 +125,7 @@ public class Adherent {
 		this.cptRetard = nbRetards;
 		this.nbNonRecup = nbNonRecup;
 	}
-	
+
 	/**
 	 * Constructeur de la classe Adherent, permet de cr�er un Adh�rent � partir des donn�es existantes
 	 * @param nom

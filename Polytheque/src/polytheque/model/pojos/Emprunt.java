@@ -8,7 +8,7 @@ import java.sql.Date;
  * @author Laure Marchal
  */
 public class Emprunt {
-	
+
 	/**
 	 * attributs de la classe
 	 */
@@ -90,7 +90,7 @@ public class Emprunt {
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
 	}
-	 
+
 	/**
 	 * constructeur d'un emprunt avec son id
 	 * @param id
@@ -109,7 +109,7 @@ public class Emprunt {
 	}
 
 	// getters et setters
-	
+
 	public Adherent getAdherent() {
 		return this.adherent;
 	}
@@ -181,26 +181,26 @@ public class Emprunt {
 	 * Cette fonction permet d'ajouter 1 au nombre de retard deja effectue par l'adherent et modifie la variable disant que l'adherent est en retard pour ne pas compter plusieurs retard concernant un meme jeu
 	 */
 	public void ajoutRetard(){
-        if(!(dejaEnRetard())){ // On verifie que l'adherent est en retard pour rendre son jeu et si le jeu est deja en retard
-            this.adherent.ajoutCompteurRetard();
-            this.setRetard(true);
-        }
-    }
+		if(!(dejaEnRetard())){ // On verifie que l'adherent est en retard pour rendre son jeu et si le jeu est deja en retard
+			this.adherent.ajoutCompteurRetard();
+			this.setRetard(true);
+		}
+	}
 
 	/**
 	 * 
 	 * @return true si la date de fin de l'emprunt est inferieur � la date du jour, false sinon
 	 */
 	public boolean estEnRetard(){
-        //Par defaut, date d'aujourd'hui
-        Date currentDate = new Date(new java.util.Date().getTime());
-        if(this.getDateFin().before(currentDate)){ 
-            this.ajoutRetard();
-            return true;
-        }
-        else 
-            return false; 
-    }
+		//Par defaut, date d'aujourd'hui
+		Date currentDate = new Date(new java.util.Date().getTime());
+		if(this.getDateFin().before(currentDate)){ 
+			this.ajoutRetard();
+			return true;
+		}
+		else 
+			return false; 
+	}
 
 	/**
 	 * 

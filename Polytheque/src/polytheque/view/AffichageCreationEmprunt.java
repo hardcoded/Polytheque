@@ -24,24 +24,24 @@ import polytheque.model.pojos.Reservation;
  * @author laure
  *
  */
-
 @SuppressWarnings("serial")
-public class AffichageCreationEmprunt extends JPanel implements ActionListener{
+public class AffichageCreationEmprunt extends JPanel implements ActionListener {
+	
 	/**
 	 * champs utiles pour que l'utilisateur �crive
 	 */
 	private JTextField gameName;
 	private JTextField extensionName;
 	private JTextField userPseudo;
-	
+
 	private JDateChooser dateChooser; //calendrier
 	private JButton boutonValider; //bouton
-	
+
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
-	
+
 	/**
 	 * Création de la page de création d'emprunt.
 	 * @param afficheAppli
@@ -50,38 +50,37 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	public AffichageCreationEmprunt(TacheDAffichage afficheAppli) {
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		this.setLayout(null);
-		
+
 		ajouterChamps();
 		creerPanneauDate();
 		ajouterBoutons();
 	}
-	
+
 	/**
 	 * m�thode qui ajoutes les champs de l'affichage (titre,boutons..)
 	 */
 	public void ajouterChamps() {		
-		
 		JLabel titrePrincipal = new JLabel("Emprunter un jeu et/ou une extension");
 		titrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
 		titrePrincipal.setBounds(480, 20, 260, 30);
 		this.add(titrePrincipal);
-		
+
 		JLabel labelGameName = new JLabel("Nom du jeu :");
 		labelGameName.setBounds(150, 150, 100, 30);
 		this.add(labelGameName);
-		
+
 		this.gameName = new JTextField();
 		this.gameName.setBounds(300, 150, 100, 30);
 		this.add(gameName);
-					
+
 		JLabel labelExtensionName = new JLabel("Nom de l'extension :");
 		labelExtensionName.setBounds(150, 200, 150, 30);
 		this.add(labelExtensionName);
-		
+
 		this.extensionName = new JTextField();
 		this.extensionName.setBounds(300, 200, 100, 30);
 		this.add(extensionName);
-		
+
 		JLabel labelUserPseudo = new JLabel("Pseudo de l'adherent :");
 		labelUserPseudo.setBounds(150, 250, 150, 30);
 		this.add(labelUserPseudo);
@@ -89,7 +88,7 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		this.userPseudo.setBounds(300, 250, 100, 30);
 		this.add(this.userPseudo);
 	}
-	
+
 	/**
 	 * creer le calendrier permettant de choisir la date voulue
 	 */
@@ -101,17 +100,17 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		this.dateChooser.setBounds(850, 200, 150, 30);
 		this.add(this.dateChooser);
 	}
-	
+
 	/**
 	 * ajoute les boutons � la fenetre
 	 */
-	public void ajouterBoutons(){
+	public void ajouterBoutons() {
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(480, 500, 200, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider);
 	}
-	
+
 	/**
 	 * traitement des �v�nements (click sur bouton)
 	 */
@@ -119,10 +118,8 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 
-		if (boutonSelectionne == this.boutonValider)
-		{	//on v�rifie que les champs importants sont remplis
-			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null)
-			{
+		if (boutonSelectionne == this.boutonValider) {	//on v�rifie que les champs importants sont remplis
+			if (this.gameName.getText() != null && this.userPseudo.getText() != null && this.dateChooser.getDate() != null) {
 				// on r�cup�re les param�tres pour cr�er notre emprunt
 				Date dateEmprunt = new Date(this.dateChooser.getDate().getTime());
 				Adherent adherent = this.tacheDAffichageDeLApplication.getAdherent(userPseudo.getText());
@@ -145,5 +142,4 @@ public class AffichageCreationEmprunt extends JPanel implements ActionListener{
 		}
 		return;
 	}
-
 }

@@ -51,8 +51,8 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	 * Les libellés des entêtes.
 	 */
 	public final static String[] LIBELLES = new String[] {"Nom", "Pr�nom", "Date de naissance", "Rue", 
-			"Code postal", "Ville", "Mail", "T�l�phone", "Pseudo", 
-			"Sur liste noire", "Est � jour", "Nombre de retards"};
+			"Code postal", "Ville", "Mail", "Téléphone", "Pseudo", 
+			"Sur liste noire", "Est à jour", "Nombre de retards"};
 
 	private JTextField searchContent;
 	private JTextField modifContent;	
@@ -61,7 +61,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	private JButton boutonModifierAdherent;
 	private JButton boutonSupprimerAdherent;
 	private JButton boutonRecherche;
-	
+
 	private JPanel buttonsPanel;
 	private JPanel mainPanel;
 	private JPanel searchPanel;
@@ -104,7 +104,7 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 		this.boutonRecherche = new JButton("Rechercher");
 		this.boutonRecherche.addActionListener(this);
 		this.searchPanel.add(boutonRecherche, BorderLayout.NORTH);
-		
+
 		JLabel pseudoSearch = new JLabel("Modifier par pseudo :");
 		this.searchPanel.add(pseudoSearch);
 		this.modifContent = new JTextField();
@@ -153,13 +153,11 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	 *            Une collection de taches à réaliser.
 	 * @return Un tableau d'objets.
 	 */
-	private static Object[][] initialiserDonnees(ArrayList<Adherent> listeAdherents)
-	{
+	private static Object[][] initialiserDonnees(ArrayList<Adherent> listeAdherents) {
 		Object[][] donnees = new Object[listeAdherents.size()][NOMBRE_COLONNES];
 
 		int index = 0;		
-		for (Adherent adherentCourant : listeAdherents)
-		{
+		for (Adherent adherentCourant : listeAdherents) {
 			donnees[index][0] = adherentCourant.getNom();
 			donnees[index][1] = adherentCourant.getPrenom();
 			donnees[index][2] = adherentCourant.getDateNaissance();
@@ -192,20 +190,20 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
-	
+
 	public void modifierMainPanel(JPanel panel) {
 		this.mainPanel.removeAll();
 		this.mainPanel.add(panel);
 		this.add(this.mainPanel, BorderLayout.CENTER);
 		this.updateUI();
 	}
-	
+
 	public void rafraichir(ArrayList<Adherent> adherents) {
 		creerTableau(adherents);
 		this.mainPanel.updateUI();
 		this.tableauAdherents.refresh(initialiserDonnees(adherents));
 	}
-	
+
 	@Override
 	/**
 	 * Permet de rendre les boutons fonctionnels et de cr�er de nouvelles pages.
@@ -213,36 +211,25 @@ public class AffichageGestionAdherent extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
 
-		if (boutonSelectionne == this.boutonRecherche)
-		{
+		if (boutonSelectionne == this.boutonRecherche) {
 			this.rafraichir(this.tacheDAffichageDeLApplication.rechercherAdherents(this.searchContent.getText()));
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonCreerAdherent)
-		{
+		if (boutonSelectionne == this.boutonCreerAdherent) {
 			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherCreationAdherent()); 
 			this.rafraichir(this.tacheDAffichageDeLApplication.tousLesAdherents());
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonSupprimerAdherent)
-		{
+		if (boutonSelectionne == this.boutonSupprimerAdherent) {
 			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherSupprimerAdherent());
 			this.rafraichir(this.tacheDAffichageDeLApplication.tousLesAdherents());
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonModifierAdherent)
-		{
+		if (boutonSelectionne == this.boutonModifierAdherent) {
 			this.modifierMainPanel(this.tacheDAffichageDeLApplication.afficherModificationAdherent(this.tacheDAffichageDeLApplication.getAdherent(this.modifContent.getText())));
 			this.rafraichir(this.tacheDAffichageDeLApplication.tousLesAdherents());
 			return;
 		}
 		return;
 	}
-
-
-
-
 }

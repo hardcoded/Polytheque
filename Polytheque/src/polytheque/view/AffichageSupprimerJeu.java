@@ -21,7 +21,7 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 
 	private JTextField gameNom;
 	private JButton boutonValider;
-	
+
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
@@ -33,13 +33,13 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 	 * @param afficheAppli
 	 *            Une tache d'affichage de l'application.
 	 */
-	public AffichageSupprimerJeu(TacheDAffichage afficheAppli){
+	public AffichageSupprimerJeu(TacheDAffichage afficheAppli) {
 		this.setLayout(null);
 
 		this.tacheDAffichageDeLApplication = afficheAppli;
 		ajouterChamps();
 	}
-	
+
 	/**
 	 * Ajoute une zone de texte �crivable et un bouton pour valider l'information �crit dans la zone de texte 
 	 */
@@ -51,22 +51,21 @@ public class AffichageSupprimerJeu extends JPanel implements ActionListener {
 		this.gameNom.setBounds(550, 160, 100, 30);
 		this.gameNom.setColumns(10);
 		this.add(gameNom);
-		
+
 		this.boutonValider = new JButton("Valider");
 		this.boutonValider.setBounds(670, 160, 100, 30);
 		this.boutonValider.addActionListener(this);
 		this.add(this.boutonValider);
 	}
-	
+
 	@Override
 	/**
 	 * Permet de rendre le bouton fonctionnel et affiche des messages en fonction de si il y a des erreurs ou si tout s'est d�roul� comme pr�vu.
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton boutonSelectionne = (JButton) event.getSource();
-		
-		if (boutonSelectionne == this.boutonValider)
-		{
+
+		if (boutonSelectionne == this.boutonValider) {
 			if (this.gameNom.getText() != null) {
 				String nom = new String(this.gameNom.getText());
 				Jeu jeuCourant = this.tacheDAffichageDeLApplication.getJeu(nom);

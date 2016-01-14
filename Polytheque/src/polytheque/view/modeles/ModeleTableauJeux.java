@@ -88,7 +88,7 @@ public class ModeleTableauJeux extends AbstractTableModel {
 		}
 		return true;
 	}
-	
+
 	public void refresh(Object[][] donnees) {
 		this.donnees = donnees;
 		this.fireTableDataChanged();

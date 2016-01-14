@@ -76,7 +76,7 @@ public class Reservation {
 	public Reservation(int idAdherent,int idJeu, Date date) {
 		this.adherentDAO = new AdherentDAO();
 		this.jeuDAO = new JeuDAO();
-		
+
 		this.setAdherent(this.adherentDAO.retreive(idAdherent));
 		this.setJeu(this.jeuDAO.retreive(idJeu));
 		this.setExtension(null);
@@ -246,7 +246,7 @@ public class Reservation {
 		Date date= new Date(annee,mois,jour);
 		return date;
 	}
-	
+
 	public void annulerReservation(){
 		if (this.extention == null){ // cas ou la reservation ne concerne qu'un jeu
 			this.jeu.setStatus("libre"); //on change son statut
@@ -288,6 +288,6 @@ public class Reservation {
 	}
 
 
-	
+
 
 }

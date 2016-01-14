@@ -17,15 +17,15 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class Deconnexion extends JPanel implements ActionListener {
-	
+
 	private JPanel buttonsPanel;
 	private JButton boutonDeconnexion;
-	
+
 	/**
 	 * Une tache d'affichage de l'application.
 	 */
 	private TacheDAffichage tacheDAffichageDeLApplication;
-	
+
 	/**
 	 * Creation de la page pour se d�connecter.
 	 * 
@@ -51,7 +51,7 @@ public class Deconnexion extends JPanel implements ActionListener {
 
 		this.add(this.buttonsPanel, BorderLayout.CENTER);
 	}
-	
+
 	@Override
 	/**
 	 * Permet de rendre le bouton fonctionnel. D'abord on invalide les diff�rentes informations de l'utilisateur puis on affiche le message
@@ -69,5 +69,5 @@ public class Deconnexion extends JPanel implements ActionListener {
 		}
 		return;
 	}
-	
+
 }

@@ -12,6 +12,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+/**
+ * Classe permettant de créer l'écran de connexion de l'application.
+ * @author Johan Brunet
+ *
+ */
 @SuppressWarnings("serial")
 public class EcranConnexion extends JPanel implements ActionListener {
 
@@ -47,7 +52,7 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		titrePrincipal.setBounds(450, 20, 260, 30);
 		titrePanel.add(titrePrincipal);		
 		this.add(titrePanel, BorderLayout.NORTH);
-		
+
 		JLabel labelUserName = new JLabel("Pseudo :");
 		labelUserName.setBounds(500, 150, 100, 30);
 		champsPanel.add(labelUserName);
@@ -62,14 +67,14 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		this.password = new JPasswordField();
 		this.password.setBounds(450, 350, 190, 30);
 		this.password.setColumns(10);
-		
+
 		this.password.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				loginRequest();				
 			}
 		});
-		
+
 		champsPanel.add(this.password);
 		this.add(champsPanel, BorderLayout.CENTER);
 
@@ -79,7 +84,7 @@ public class EcranConnexion extends JPanel implements ActionListener {
 		boutonPanel.add(this.boutonValider);
 		this.add(boutonValider, BorderLayout.SOUTH);
 	}
-	
+
 	public void loginRequest() {
 		String pwd = new String(this.password.getPassword());
 		if (this.tacheDAffichageDeLApplication.testerValiditeConnexion(this.userName.getText(), pwd) == false) {

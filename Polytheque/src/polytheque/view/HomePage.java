@@ -24,7 +24,7 @@ public class HomePage extends JTabbedPane {
 	 */
 	public HomePage(TacheDAffichage afficheAppli){
 		this.tacheDAffichageDeLApplication = afficheAppli;
-		
+
 		this.addTab("Jeux", this.tacheDAffichageDeLApplication.afficherListeJeux());
 		this.addTab("Extensions", this.tacheDAffichageDeLApplication.afficherListeExtensions());
 		this.addTab("R�server Jeu", this.tacheDAffichageDeLApplication.afficherEcranReservationJeux());

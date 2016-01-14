@@ -1,6 +1,7 @@
 package polytheque.view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
 
 import polytheque.model.pojos.Reservation;
 import polytheque.view.modeles.ModeleTableauReservations;
+
 /**
  * classe d'affichage de toutes les reservations pour l'administrateur uniquement
  * @author Laure
@@ -22,6 +24,7 @@ import polytheque.view.modeles.ModeleTableauReservations;
  */
 @SuppressWarnings("serial")
 public class AffichageListeReservations extends JPanel implements ActionListener {
+
 	/**
 	 * initialisation des colonnes utiles au tableau d'affichage
 	 */
@@ -29,7 +32,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	public final static int LONGUEUR_COLONNE_1 = 50;
 	public final static int LONGUEUR_COLONNE_2 = 150;
 	public final static int LONGUEUR_COLONNE_3 = 150;
-	
+
 	/**
 	 * Hauteur des lignes.
 	 */
@@ -53,23 +56,23 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	/**
 	 * Les libellÃ©s des entÃªtes.
 	 */
-	public final static String[] LIBELLES = new String[] {"Pseudo", "Nom jeu", "Nom extention", "Date de réservation"};
+	public final static String[] LIBELLES = new String[] {"Pseudo", "Nom jeu", "Nom extention", "Date de rï¿½servation"};
 
 	//boutons
 	private JButton boutonAnnulerReservation;
 	private JButton boutonValiderReservation;
 	private JButton boutonRecherche;
-	
+
 	//Panel permettant d'afficher le tableau et les boutons ou la barre de recherche sur une fenetre
 	private JPanel buttonsPanel;
 	private JPanel arrayPanel;
 	private JPanel searchPanel;
-	
-	private TacheDAffichage tacheDAffichageDeLApplication; //classe ou toutes les fonctions utiles à l'affichage sont écrites
-	private ModeleTableauReservations tableauReservations; //donne le modele à suivre pour le tableau
 
-	private JTextField searchContent; //champ permettant d'écrire
-	
+	private TacheDAffichage tacheDAffichageDeLApplication; //classe ou toutes les fonctions utiles ï¿½ l'affichage sont ï¿½crites
+	private ModeleTableauReservations tableauReservations; //donne le modele ï¿½ suivre pour le tableau
+
+	private JTextField searchContent; //champ permettant d'ï¿½crire
+
 	/**
 	 * constructeur de l'affichage des reservations
 	 * @param afficheAppli
@@ -83,7 +86,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		creerTableau(listeReservations);
 		ajouterBoutonAdmin();
 	}
-	
+
 	/**
 	 * Panneau de recherche
 	 */
@@ -102,7 +105,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 
 		this.add(searchPanel, BorderLayout.NORTH);
 	}
-	
+
 	/**
 	 * Ajouter les boutons de l'administrateur.
 	 */
@@ -110,19 +113,18 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.buttonsPanel = new JPanel();
 		this.buttonsPanel.setPreferredSize(new Dimension(TacheDAffichage.LARGEUR, 50));
 
-		this.boutonAnnulerReservation = new JButton("Annuler une réservation");
+		this.boutonAnnulerReservation = new JButton("Annuler une rï¿½servation");
 		this.boutonAnnulerReservation.addActionListener(this);
-		this.boutonValiderReservation = new JButton("Valider une réservation");
+		this.boutonValiderReservation = new JButton("Valider une rï¿½servation");
 		this.boutonValiderReservation.addActionListener(this);
-		
+
 		this.buttonsPanel.add(boutonAnnulerReservation, BorderLayout.SOUTH);
 		this.buttonsPanel.add(boutonValiderReservation, BorderLayout.SOUTH);
-		
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
-	
+
 	/**
-	 * création du tableau
+	 * crï¿½ation du tableau
 	 * @param listeReservations
 	 */
 	public void creerTableau(ArrayList<Reservation> listeReservations) {
@@ -144,7 +146,7 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		this.arrayPanel.add(new JScrollPane(tableau), BorderLayout.CENTER);
 		this.add(this.arrayPanel, BorderLayout.CENTER);
 	}
-	
+
 	/**
 	 * Initialiser les donnÃ©es du tableau.
 	 * 
@@ -152,13 +154,11 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	 *            Une collection de taches Ã  rÃ©aliser.
 	 * @return Un tableau d'objets.
 	 */
-	private static Object[][] initialiserDonnees(ArrayList<Reservation> listeReservations)
-	{
+	private static Object[][] initialiserDonnees(ArrayList<Reservation> listeReservations) {
 		Object[][] donnees = new Object[listeReservations.size()][NOMBRE_COLONNES];
 
 		int index = 0;		
-		for (Reservation reservationCourante : listeReservations)
-		{
+		for (Reservation reservationCourante : listeReservations) {
 			donnees[index][0] = reservationCourante.getAdherent().getPseudo();
 			donnees[index][1] = reservationCourante.getJeu().getNom();
 			//donnees[index][2] = reservationCourante.getExtension().getNom();
@@ -167,9 +167,9 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 		}		
 		return donnees;
 	}
-	
+
 	/**
-	 * remise à jour du tableau 
+	 * remise ï¿½ jour du tableau 
 	 * @param reservations
 	 */
 	public void rafraichir(ArrayList<Reservation> reservations) {
@@ -179,26 +179,22 @@ public class AffichageListeReservations extends JPanel implements ActionListener
 	}
 
 	/**
-	 * méthode qui permet de traiter les évènements (les cliques sur boutons)
+	 * mï¿½thode qui permet de traiter les ï¿½vï¿½nements (les cliques sur boutons)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
 
-		if (boutonSelectionne == this.boutonAnnulerReservation)
-		{
+		if (boutonSelectionne == this.boutonAnnulerReservation) {
 			this.tacheDAffichageDeLApplication.afficherEcranAnnulationR();
 			return;
 		}
-		if (boutonSelectionne == this.boutonValiderReservation)
-		{
-			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité non disponible", "Erreur",0);
+		if (boutonSelectionne == this.boutonValiderReservation) {
+			this.tacheDAffichageDeLApplication.afficherMessage("Fonctionnalitï¿½ non disponible", "Erreur",0);
 		}
-		if (boutonSelectionne == this.boutonRecherche)
-		{
+		if (boutonSelectionne == this.boutonRecherche) {
 			this.tacheDAffichageDeLApplication.rechercherReservations(this.searchContent.getText());
 		}
 		return;
 	}
-
 }

@@ -124,7 +124,7 @@ public class Jeu {
 	}
 
 	// getters and setters
-	
+
 	public String getNom() {
 		return nom;
 	}

@@ -59,7 +59,7 @@ public class JeuDAO extends DAO {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Methode de creation
 	 * @param jeu
@@ -82,7 +82,7 @@ public class JeuDAO extends DAO {
 			psInsert.setInt(7, jeu.getAgeMini());
 			psInsert.setInt(8, jeu.getNbJoueursMin());
 			psInsert.setInt(9, jeu.getNbJoueursMax());
-			
+
 			psInsert.executeUpdate();
 			psInsert.closeOnCompletion();
 
@@ -187,7 +187,7 @@ public class JeuDAO extends DAO {
 			if (resSet.next()) { // On se place sur le 1er résultat
 				jeu = new Jeu(id, resSet.getString("nom"), resSet.getString("description"), resSet.getString("annee_parution"), resSet.getString("statut"),
 						resSet.getInt("nb_exemplaires"), resSet.getInt("nb_reserves"), resSet.getInt("age_mini"), resSet.getInt("nb_joueurs_min"), resSet.getInt("nb_joueurs_max"), 
-					"", resSet.getString("nom_editeur"));
+						"", resSet.getString("nom_editeur"));
 			}
 			super.disconnect();
 			return jeu;
@@ -256,7 +256,7 @@ public class JeuDAO extends DAO {
 		}
 		return jeu;
 	}
-	
+
 	public ArrayList<Jeu> searchByName(String nomJeu) {
 		ArrayList<Jeu> jeuxFiltres = new ArrayList<>();
 		String filtre = "%" + nomJeu.toLowerCase() + "%";
@@ -283,7 +283,7 @@ public class JeuDAO extends DAO {
 			e.printStackTrace();
 		}
 		return jeuxFiltres;
-		
+
 	}
 }
 

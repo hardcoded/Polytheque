@@ -300,7 +300,7 @@ public class PolythequeApplication {
 	}
 
 	// Partie permettant la gestion des réservations
-	
+
 	/**
 	 * Obtenir une réservation par son ID.
 	 * @param id
@@ -328,7 +328,7 @@ public class PolythequeApplication {
 	public ArrayList<Reservation> searchReservations(String nomAdherent) {
 		return this.reservationDAO.searchByPseudo(nomAdherent);
 	}
-	
+
 	/**
 	 * Supprimer une réservation de la BDD.
 	 * @param res
@@ -380,7 +380,7 @@ public class PolythequeApplication {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Création reservation dans la base de données
 	 * @param reservation
@@ -403,7 +403,7 @@ public class PolythequeApplication {
 	}
 
 	// Partie permettant la gestion des emprunts
-	
+
 	/**
 	 * Création d'un emprunt
 	 * @param emprunt

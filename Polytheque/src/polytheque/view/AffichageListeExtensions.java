@@ -49,7 +49,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	private JButton boutonRecherche;
 
 	private JTextField searchContent;
-	
+
 	private JPanel buttonsPanel;
 	private JPanel arrayPanel;
 	private JPanel searchPanel;
@@ -120,13 +120,11 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	 *            Une collection de taches à réaliser.
 	 * @return Un tableau d'objets.
 	 */
-	private static Object[][] initialiserDonnees(ArrayList<Extension> listeExtensions)
-	{
+	private static Object[][] initialiserDonnees(ArrayList<Extension> listeExtensions) {
 		Object[][] donnees = new Object[listeExtensions.size()][NOMBRE_COLONNES];
 
 		int index = 0;		
-		for (Extension extensionCourante : listeExtensions)
-		{
+		for (Extension extensionCourante : listeExtensions) {
 			donnees[index][0] = extensionCourante.getNom();
 			donnees[index][1] = extensionCourante.getDescription();
 			donnees[index][2] = extensionCourante.getStatut();
@@ -157,7 +155,7 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 
 		this.add(this.buttonsPanel, BorderLayout.SOUTH);
 	}
-	
+
 	public void rafraichir(ArrayList<Extension> extensions) {
 		creerTableau(extensions);
 		this.arrayPanel.updateUI();
@@ -168,30 +166,22 @@ public class AffichageListeExtensions extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonSelectionne = (JButton) e.getSource();
 
-		if (boutonSelectionne == this.boutonAjouterExtension)
-		{
+		if (boutonSelectionne == this.boutonAjouterExtension) {
 			tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonModifierExtension)
-		{
+		if (boutonSelectionne == this.boutonModifierExtension) {
 			tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonSupprimerExtension)
-		{
+		if (boutonSelectionne == this.boutonSupprimerExtension) {
 			tacheDAffichageDeLApplication.afficherMessage("Fonctionnalité pas disponible", "Non disponible !", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
-		if (boutonSelectionne == this.boutonRecherche)
-		{
+		if (boutonSelectionne == this.boutonRecherche) {
 			rafraichir(this.tacheDAffichageDeLApplication.rechercherExtensions(this.searchContent.getText()));
 			return;
 		}
-
 		return;
 	}		
 }

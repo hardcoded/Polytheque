@@ -17,22 +17,22 @@ import polytheque.model.pojos.Reservation;
  * Classe permettant de gérer l'affichage de l'appication.
  * 
  * @author Johan Brunet
-
  */
 @SuppressWarnings("serial")
 public class TacheDAffichage extends JFrame {
+	
 	/**
 	 * Le titre de l'application.
 	 */
 	public final static String TITRE = "Polyth�que";
 
 	/**
-	 * La largeur.
+	 * La largeur de la fenêtre.
 	 */
 	public final static int LARGEUR = 1200;
 
 	/**
-	 * La hauteur.
+	 * La hauteur de la fenêtre.
 	 */
 	public final static int HAUTEUR = 800;
 
@@ -146,15 +146,15 @@ public class TacheDAffichage extends JFrame {
 	public ArrayList<Jeu> tousLesJeux() {
 		return this.polythequeApplication.getGamesList();
 	}
-	
+
 	public ArrayList<Adherent> tousLesAdherents() {
 		return this.polythequeApplication.getAdherentsList();
 	}
-	
+
 	public ArrayList<Extension> toutesLesExtensions() {
 		return this.polythequeApplication.getExtensionsList();
 	}
-	
+
 	public ArrayList<Jeu> rechercherJeux(String nomJeu) {
 		return this.polythequeApplication.searchGames(nomJeu);
 	}
@@ -162,7 +162,7 @@ public class TacheDAffichage extends JFrame {
 	public ArrayList<Extension> rechercherExtensions(String nomExtension) {
 		return this.polythequeApplication.searchExtensions(nomExtension);
 	}
-	
+
 	public ArrayList<Reservation> rechercherReservations(String nomAdherent) {
 		return this.polythequeApplication.searchReservations(nomAdherent);
 	}
@@ -196,12 +196,12 @@ public class TacheDAffichage extends JFrame {
 	public AppliReserverJeu afficherEcranReservationJeux() {
 		return new AppliReserverJeu(this);
 	}
-	
+
 	public AppliReserverExtension afficherEcranReservationExtension()
 	{
 		return new AppliReserverExtension(this);
 	}
-	
+
 	public AppliAnnulerReservation afficherEcranAnnulationR() {
 		//this.viderFenetre();
 		return new AppliAnnulerReservation(this);
@@ -209,34 +209,34 @@ public class TacheDAffichage extends JFrame {
 	public Adherent getAdherent(String pseudo) {
 		return this.polythequeApplication.getAdherent(pseudo);
 	}
-	
+
 	public Deconnexion afficherDeconnexion() {
 		return new Deconnexion(this);
 	}
-	
+
 	public AffichageCreationAdherent afficherCreationAdherent(){
 		return new AffichageCreationAdherent(this); //a commit
 	}
-	
+
 	public AffichageSupprimerAdherent afficherSupprimerAdherent(){
 		return new AffichageSupprimerAdherent(this);
 	}
-	
+
 	public AffichageListeReservations afficherListeReservations() {
 		return new AffichageListeReservations(this, this.polythequeApplication.getReservationList());
 	}
-	
+
 	public AffichageCreationEmprunt afficherCreationEmprunt(){
 		return new AffichageCreationEmprunt(this);
 	}
-	
+
 	public boolean creerEmprunt(Emprunt emprunt) {
 		if (this.polythequeApplication.creerEmprunt(emprunt)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public boolean creerAdherent(Adherent adherent) {
 		if (this.polythequeApplication.creerAdherent(adherent)) {
 			return true;
@@ -265,42 +265,42 @@ public class TacheDAffichage extends JFrame {
 	public void afficherMessage(String message, String titreFenetre, int codeInformation) {
 		JOptionPane.showMessageDialog(this, message, titreFenetre, codeInformation);
 	}
-	
-public Adherent getAdherentByNothing() {
-		
+
+	public Adherent getAdherentByNothing() {
+
 		return this.polythequeApplication.getCurrentAdherent();
 	}
-	
+
 	public Jeu getJeu(String nom) {
 		return this.polythequeApplication.getByName(nom);
-}
+	}
 	public Extension getExt(String nom) {
 		return this.polythequeApplication.getExtByName(nom);
-}
+	}
 	public boolean createReservation(Reservation reservation, int idAdherent, int idJeu, int idJextension,Date date)
 	{
 		if(this.polythequeApplication.createReservation(reservation,idAdherent, idJeu, idJextension,date))
-				{return true;}
+		{return true;}
 		else
-			{return false;}	
+		{return false;}	
 	}
-	
+
 	public boolean createReservation2(Reservation reservation, int idAdherent, int idJeu, Date date)
 	{
 		if(this.polythequeApplication.createReservation2(reservation,idAdherent, idJeu,date))
-				{return true;}
+		{return true;}
 		else
-			{return false;}	
+		{return false;}	
 	}
-	
+
 	public boolean createReservation3(Reservation reservation, int idAdherent, int idExtention, Date date)
 	{
 		if(this.polythequeApplication.createReservation3(reservation,idAdherent, idExtention,date))
-				{return true;}
+		{return true;}
 		else
-			{return false;}	
+		{return false;}	
 	}
-	
+
 	public Reservation getReservation(String id){
 		int idR =Integer.parseInt(id);
 		return this.polythequeApplication.getById(idR);
@@ -308,7 +308,7 @@ public Adherent getAdherentByNothing() {
 	public void deleteReservation(Reservation r){
 		this.polythequeApplication.annulerReservation(r);
 	}
-	
+
 	public boolean modifJeu(Jeu jeu) {
 		if (this.polythequeApplication.enregistrerModifsJeu(jeu)) {
 			return true;
@@ -317,26 +317,26 @@ public Adherent getAdherentByNothing() {
 			return false;
 		}
 	}
-	
+
 	public AffichageModificationJeu afficherModificationJeu(Jeu jeu) {
 		return new AffichageModificationJeu(this, this.polythequeApplication.getByName(jeu.getNom()));
 	}
-	
+
 	public AffichageCreationJeu afficherCreationJeu(){
 		return new AffichageCreationJeu(this); 
 	}
-	
+
 	public AffichageSupprimerJeu afficherSupprimerJeu(){
 		return new AffichageSupprimerJeu(this);
 	}
-	
+
 	public boolean creerJeu(Jeu jeu) {
 		if (this.polythequeApplication.creerJeu(jeu)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public boolean supprimerJeu(int idJeu){
 		if (this.polythequeApplication.supprimerJeu(idJeu)) {
 			return  true;
@@ -345,5 +345,5 @@ public Adherent getAdherentByNothing() {
 			return false;
 		}
 	}
-	
+
 }
