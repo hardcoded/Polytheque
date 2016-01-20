@@ -196,10 +196,12 @@ public class ReservationDAO extends DAO {
 	}
 
 	/**
-	 * permet de r�cup�rer une reservation depuis la base de donn�es � partir d'un adherent et de la date
+	 * Récupérer une réservation depuis la base de données à partir d'un adhérent et de la date
 	 * @param adherent
+	 * 		L'adhérent dont on cherche la réservation
 	 * @param date
-	 * @return
+	 * 		La date de la réservation que l'on cherche
+	 * @return La réseration correspondante
 	 */
 	public Reservation retreive(Adherent adherent, Date date) { 
 		try {
@@ -226,8 +228,8 @@ public class ReservationDAO extends DAO {
 	}
 
 	/**
-	 * Methode de recuperation des reservations
-	 * @return La liste de toutes les reservations
+	 * Méthode de récuperation des réservations
+	 * @return La liste de toutes les réservations
 	 */
 	public ArrayList<Reservation> getAll() {
 		ArrayList<Reservation> toutesLesReservations = new ArrayList<>();
@@ -253,9 +255,10 @@ public class ReservationDAO extends DAO {
 	}
 
 	/**
-	 * permet de r�cup�rer toutes les r�eservations d'un adherent en particulier
+	 * Récupérer toutes les réeservations d'un adhérent en particulier
 	 * @param pseudo
-	 * @return
+	 * 		Le pseudo de l'adhérent dont on cherche les réservations
+	 * @return La liste des réservations de l'adhérent
 	 */
 	public ArrayList<Reservation> searchByPseudo(String pseudo)
 	{
@@ -281,8 +284,13 @@ public class ReservationDAO extends DAO {
 		return reserv;
 	}
 
+	/**
+	 * Méthode permettant de retrouver la liste des réservations par l'ID de l'adhérent
+	 * @param id
+	 * 		L'ID de l'adhérent dont on cherche les réservations
+	 * @return Les réservations correspondantes
+	 */
 	public Reservation getById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

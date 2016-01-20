@@ -16,10 +16,13 @@ import polytheque.model.pojos.Jeu;
 public class JeuDAO extends DAO {
 
 	/**
-	 * Méthode de création.
+	 * Méthode de création de jeu avec catégorie et éditeur
 	 * @param jeu
+	 * 		Le jeu à créer
 	 * @param idCategorie
+	 * 		La catégorie à laquelle il appartient
 	 * @param idEditeur
+	 * 		L'éditeur du jeu
 	 * @return true si la création aeu lieu, false sinon.
 	 */
 	public boolean create(Jeu jeu, int idCategorie, int idEditeur) {
@@ -61,9 +64,10 @@ public class JeuDAO extends DAO {
 	}
 
 	/**
-	 * Methode de creation
+	 * Methode de creation d'un jeu sans catégorie ni éditeur
 	 * @param jeu
-	 * @return boolean 
+	 * 		Le jeu à créer
+	 * @return true si le jeu a bien été créé, false sinon
 	 */
 	public boolean create(Jeu jeu) {
 		try {

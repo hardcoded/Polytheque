@@ -305,6 +305,7 @@ public class TacheDAffichage extends JFrame {
 		int idR =Integer.parseInt(id);
 		return this.polythequeApplication.getById(idR);
 	}
+	
 	public void deleteReservation(Reservation r){
 		this.polythequeApplication.annulerReservation(r);
 	}
